@@ -1,0 +1,32 @@
+========================================
+DAILY SECURITY SCAN
+Monday, February 23, 2026 - 5:53 AM PST
+========================================
+
+SECURITY AUDIT (--deep):
+Status: 0 critical · 1 warning · 1 info
+
+⚠️  WARNING:
+- gateway.trusted_proxies_missing: Reverse proxy headers not trusted
+  (Gateway bind is loopback with empty trustedProxies - acceptable if Control UI remains local-only)
+
+ℹ️  INFO:
+- Attack surface: groups open=0, allowlist=1
+- tools.elevated: enabled
+- hooks: webhooks disabled, internal disabled
+- browser control: enabled
+
+UPDATE STATUS:
+- Install: pnpm
+- Channel: stable (default)
+- Update available: npm 2026.2.22-2
+- Action: Run `openclaw update` to install latest version
+
+SUMMARY:
+✓ No critical issues detected
+• 1 warning about proxy configuration (acceptable for local-only setup)
+• Update available - recommend applying latest stable release
+• Overall security posture: Good
+
+Next scan: Tuesday, February 24, 2026 - 5:50 AM
+========================================

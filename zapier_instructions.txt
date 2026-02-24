@@ -1,0 +1,93 @@
+═══════════════════════════════════════════════════════════════
+STEP-BY-STEP: Add Google Sheets to Zapier MCP
+═══════════════════════════════════════════════════════════════
+
+PART 1: Add Google Sheets Actions in Zapier (Web Browser)
+────────────────────────────────────────────────────────────
+
+1. Open the Zapier MCP Configuration Page:
+   https://mcp.zapier.com/mcp/servers/fb7667c6-bbec-4e20-b4a4-b5d0e4bb45db/config
+
+2. Click "Add Actions" or "+" button
+
+3. Search for "Google Sheets" in the search box
+
+4. Select and Add These Actions (Recommended):
+   ✓ Create Spreadsheet (create new Google Sheets)
+   ✓ Create Spreadsheet Row (add rows to existing sheet)
+   ✓ Update Spreadsheet Row (modify existing rows)
+   ✓ Lookup Spreadsheet Row (search/read rows)
+   ✓ Find Spreadsheet (search for sheets by name)
+
+5. Authorize Google Sheets:
+   - Click "Connect Account" or "Sign in to Google Sheets"
+   - Use your ericfbrown1@gmail.com account
+   - Grant permissions when prompted
+   - ✓ You should see "Connected" status
+
+6. Save/Confirm - make sure all actions show as "Connected" or "Enabled"
+
+═══════════════════════════════════════════════════════════════
+PART 2: Verify the Integration (Terminal)
+═══════════════════════════════════════════════════════════════
+
+Run this command to see if Google Sheets actions are now available:
+
+    mcporter list zapier --schema
+
+Look for entries like:
+- zapier.google_sheets_create_spreadsheet
+- zapier.google_sheets_create_row
+- zapier.google_sheets_update_row
+
+═══════════════════════════════════════════════════════════════
+PART 3: Test the Integration (Terminal)
+═══════════════════════════════════════════════════════════════
+
+Test creating a simple spreadsheet:
+
+    mcporter call zapier.google_sheets_create_spreadsheet \
+      instructions="Create a test spreadsheet called 'Zapier MCP Test'" \
+      title="Zapier MCP Test" \
+      --output json
+
+Expected result:
+- You should get back JSON with a spreadsheet URL
+- Check your Google Drive - you should see "Zapier MCP Test" spreadsheet
+
+═══════════════════════════════════════════════════════════════
+PART 4: Share Results with Jarvis
+═══════════════════════════════════════════════════════════════
+
+Once you've completed the steps above, send Jarvis the output from:
+
+    mcporter list zapier | grep -i sheet
+
+This will show which Google Sheets actions are available.
+
+═══════════════════════════════════════════════════════════════
+TROUBLESHOOTING
+═══════════════════════════════════════════════════════════════
+
+If you don't see "Add Actions" button:
+- Try refreshing the page
+- Make sure you're logged into the correct Zapier account
+
+If Google Sheets doesn't appear in search:
+- It might be under "Google" → "Sheets"
+- Or search for just "Sheets"
+
+If authorization fails:
+- Make sure you're using ericfbrown1@gmail.com
+- Check that pop-ups aren't blocked
+- Try in an incognito/private window
+
+If actions don't show up in mcporter:
+- Wait 1-2 minutes for Zapier to sync
+- Run: mcporter list zapier --refresh
+
+═══════════════════════════════════════════════════════════════
+
+ESTIMATED TIME: 5-10 minutes
+
+Once you complete these steps, Jarvis can immediately create and populate your tax tracking spreadsheet with the 120 items found from your 2025 emails!

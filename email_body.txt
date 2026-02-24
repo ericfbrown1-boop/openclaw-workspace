@@ -1,0 +1,45 @@
+To: ericfbrown1@gmail.com
+Subject: Cohesity Technical Articles - English to French Translation Samples
+
+Hi Eric,
+
+I've completed the English to French translation of 3 technical articles from the Cohesity website.
+
+**Articles Translated:**
+
+1. Cohesity Ransomware Attack Detection | Machine-Learning Models
+   - Topic: ML-based ransomware detection using entropy analysis, multivariate models, and SOAR integration
+   - Word count: ~1,170 words
+   - Source: https://www.cohesity.com/blogs/cohesity-ransomware-detection-machine-learning-models/
+
+2. AI/ML-Driven Ransomware Protection and Recovery
+   - Topic: How AI enhances ransomware defense through MFA, behavior monitoring, and intelligent recovery automation
+   - Word count: ~1,116 words
+   - Source: https://www.cohesity.com/blogs/ai-ml-driven-ransomware-protection-and-recovery/
+
+3. Security-First Approach To Defend And Rapidly Recover From Ransomware Attacks
+   - Topic: Comprehensive anti-ransomware architecture including immutable file systems, DataLock, and instant mass restore
+   - Word count: ~1,332 words
+   - Source: https://www.cohesity.com/blogs/defend-against-ransomware-attacks-a-security-first-approach/
+
+**Translation Approach:**
+- Maintained technical accuracy and professional tone
+- Preserved document structure and formatting
+- Each Word document contains English original followed by French translation
+- Technical terminology handled appropriately for French market:
+  - "Ransomware" kept as "Ransomware" (widely recognized term)
+  - "Data Protection" → "Protection des Données"
+  - "Backup" → "Sauvegarde"
+  - "Machine Learning" → "Apprentissage Automatique"
+  - "Cloud" remains "Cloud"
+  - Technical product names (SpanFS, DataLock, Helios) kept in English
+
+All 3 documents are attached.
+
+From Jarvis - AI Assistant to Eric Brown
+
+---
+Attachments:
+- Cohesity_Article_1_EN_FR.docx (18K)
+- Cohesity_Article_2_EN_FR.docx (18K)
+- Cohesity_Article_3_EN_FR.docx (20K)

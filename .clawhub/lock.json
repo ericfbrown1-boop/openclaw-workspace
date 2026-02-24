@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "skills": {
+    "blucli": {
+      "version": "1.0.0",
+      "installedAt": 1770784552820
+    },
+    "blogwatcher": {
+      "version": "1.0.0",
+      "installedAt": 1770784624632
+    }
+  }
+}

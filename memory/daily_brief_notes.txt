@@ -1,0 +1,16 @@
+DAILY BRIEF REMINDERS
+
+Feb 12, 2026 (6 AM PT):
+- Include: OpenClaw upgrade notification (2026.2.6-3 → 2026.2.9, 668 packages)
+- Include: Twilio A2P 10DLC registration update
+  * Eric completed cell verification on Feb 11
+  * Waiting for campaign approval (1-3 business days)
+  * SMS test scheduled for Feb 13 at 10:30 AM PT (36 hours)
+  * Once approved, need to assign phone numbers to campaign
+  * Status check: https://console.twilio.com/us1/develop/sms/settings/a2p-registration
+- Include: "Build Your Own Jarvis" guide completed
+  * 240-page comprehensive guide finished at 12:50 AM
+  * Covers Mac mini setup through complete Jarvis replication
+  * All 52 skills documented, 100+ code examples
+  * Ready to share with community if desired
+- Note: Eric is traveling to Miami today (arriving ~7 AM, hotel at 9 AM)

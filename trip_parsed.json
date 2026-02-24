@@ -1,0 +1,66 @@
+[
+  {
+    "type": "United Airlines Flight",
+    "date": "2025-09-24 02:27",
+    "subject": "eTicket Itinerary and Receipt for Confirmation PQ2N6Z",
+    "confirmation": "PQ2N6Z",
+    "amounts_found": [
+      "USD 0.00",
+      "USD 0.00",
+      "Total: 649.29"
+    ],
+    "total": "649.29",
+    "text_sample": "@import url (http://fonts.googleapis.com/css?family=Open+Sans); Wed, Sep 24, 2025 Thank you for choosing United . A receipt of your purchase is shown below. Please retain this email receipt for your records. Get ready for your trip: Visit the Travel-Ready Center , your one-stop digital assistant, to find out about important travel requirements specific to your trip. Confirmation Number: PQ2N6Z Flight 1 of 2 UA2034 Class: United Economy (L) Thu, Oct 30, 2025 Fri, Oct 31, 2025 10:35 PM 07:01 AM Sa"
+  },
+  {
+    "type": "United Airlines Flight",
+    "date": "2025-09-24 02:26",
+    "subject": "Your United Airlines booking confirmation \u2013 PQ2N6Z",
+    "confirmation": "PQ2N6Z",
+    "amounts_found": [
+      "$575.53",
+      "$73.76",
+      "$649.29",
+      "$649.29",
+      "$575.53",
+      "$73.76",
+      "$649.29",
+      "$649.29",
+      "Total $649.29"
+    ],
+    "total": "649.29",
+    "text_sample": "United Airlines - United MileagePlus .np_body {        font-family: Arial, Helvetica, sans-serif;        font-size: 18px !important;        line-height: 22px !important;        color: #000000;        word-break: break-word;      }      .np_inline_link {        font-family: Arial, Helvetica, sans-serif;        font-size: 18px ;        font-weight: 700 ;        text-decoration: underline;        color: #000000;      }      .np_heading1 {        font-family: Arial, Helvetica, sans-serif;        fon"
+  },
+  {
+    "type": "United Airlines Flight",
+    "date": "2025-09-30 14:50",
+    "subject": "Your United Airlines booking confirmation \u2013 MH14S3",
+    "confirmation": "MH14S3",
+    "amounts_found": [
+      "$577.62",
+      "$93.32",
+      "$670.94",
+      "$670.94",
+      "$577.62",
+      "$93.32",
+      "$670.94",
+      "$670.94",
+      "Total $670.94"
+    ],
+    "total": "670.94",
+    "text_sample": "United Airlines - United MileagePlus .np_body {        font-family: Arial, Helvetica, sans-serif;        font-size: 18px !important;        line-height: 22px !important;        color: #000000;        word-break: break-word;      }      .np_inline_link {        font-family: Arial, Helvetica, sans-serif;        font-size: 18px ;        font-weight: 700 ;        text-decoration: underline;        color: #000000;      }      .np_heading1 {        font-family: Arial, Helvetica, sans-serif;        fon"
+  },
+  {
+    "type": "United Airlines Flight",
+    "date": "2025-09-30 14:51",
+    "subject": "eTicket Itinerary and Receipt for Confirmation MH14S3",
+    "confirmation": "MH14S3",
+    "amounts_found": [
+      "USD 0.00",
+      "USD 0.00",
+      "Total: 670.94"
+    ],
+    "total": "670.94",
+    "text_sample": "@import url (http://fonts.googleapis.com/css?family=Open+Sans); Tue, Sep 30, 2025 Thank you for choosing United . A receipt of your purchase is shown below. Please retain this email receipt for your records. Get ready for your trip: Visit the Travel-Ready Center , your one-stop digital assistant, to find out about important travel requirements specific to your trip. Confirmation Number: MH14S3 Flight 1 of 4 UA2097 Class: United Economy (K) Wed, Oct 22, 2025 Thu, Oct 23, 2025 11:00 PM 05:13 AM Sa"
+  }
+]
