@@ -6,6 +6,7 @@
 - **Timezone:** America/Los_Angeles (PST)
 - **Cell:** 571 215 3060
 - **Email:** ericfbrown1@gmail.com
+- **Work Email:** Eric.brown@cohesity.com
 
 ## Family
 - **Wife:** Hyun Ju Park (angie_hjpark@yahoo.com)
@@ -66,6 +67,8 @@
 
 ### Email Rules
 - **CC rule:** When sending emails from ericfbrown1@gmail.com, always cc: ericfbrown1@gmail.com
+- **Work email:** Eric.brown@cohesity.com — include for financial analysis reports and work-related deliverables
+- **Email footer:** Always append "Sent by Jarvis - AI assistant to Eric Brown" to emails
 
 ### Daily Tasks
 - **6 AM PT:** 
