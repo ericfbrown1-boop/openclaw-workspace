@@ -1,14 +1,16 @@
 OpenClaw Daily Update Check
-===========================
+============================
+Timestamp:     2026-02-24 06:02 AM PT (Tuesday)
+Status:        ✅ Already on latest version
+Channel:       stable
+Current:       2026.2.23
+Latest:        2026.2.23
+Action taken:  None — no update needed
 
-Timestamp: Sunday, February 22nd, 2026 — 5:57 AM (America/Los_Angeles)
+Summary for 6 AM brief:
+  OpenClaw is up to date (v2026.2.23, stable channel).
 
-Update Status: UNABLE TO DETERMINE
-- Check method: pnpm
-- Channel: stable (default)
-- Result: npm latest version unknown
-
-Summary for Brief:
-OpenClaw update check was unable to determine if updates are available (registry check returned 'unknown'). System remains on current version. Manual check may be needed if this persists.
-
-Action Taken: None (no clear update available to install)
+Notes:
+  - Config warning: duplicate voice-call plugin entry detected
+    (/opt/homebrew/lib/node_modules/openclaw/extensions/voice-call/index.ts)
+    This is non-critical but may be worth reviewing.

@@ -1,32 +1,34 @@
-========================================
+==============================
 DAILY SECURITY SCAN
-Monday, February 23, 2026 - 5:53 AM PST
-========================================
+Thursday, February 26, 2026 — 5:53 AM (America/Los_Angeles)
+==============================
 
-SECURITY AUDIT (--deep):
-Status: 0 critical · 1 warning · 1 info
+--- SECURITY AUDIT (--deep) ---
+Summary: 0 critical · 1 warn · 1 info
 
-⚠️  WARNING:
-- gateway.trusted_proxies_missing: Reverse proxy headers not trusted
-  (Gateway bind is loopback with empty trustedProxies - acceptable if Control UI remains local-only)
+⚠️  WARN: gateway.trusted_proxies_missing
+  Reverse proxy headers are not trusted.
+  gateway.bind is loopback and gateway.trustedProxies is empty.
+  If Control UI is behind a reverse proxy, set gateway.trustedProxies
+  to your proxy IPs; otherwise no action needed if kept local-only.
 
-ℹ️  INFO:
-- Attack surface: groups open=0, allowlist=1
-- tools.elevated: enabled
-- hooks: webhooks disabled, internal disabled
-- browser control: enabled
+ℹ️  INFO: Attack Surface Summary
+  groups: open=0, allowlist=1
+  tools.elevated: enabled
+  hooks.webhooks: disabled
+  hooks.internal: enabled
+  browser control: enabled
+  trust model: personal assistant (one trusted operator boundary)
 
-UPDATE STATUS:
-- Install: pnpm
-- Channel: stable (default)
-- Update available: npm 2026.2.22-2
-- Action: Run `openclaw update` to install latest version
+--- UPDATE STATUS ---
+Install method: pnpm
+Channel: stable (default)
+Update available: npm latest 2026.2.25
 
-SUMMARY:
-✓ No critical issues detected
-• 1 warning about proxy configuration (acceptable for local-only setup)
-• Update available - recommend applying latest stable release
-• Overall security posture: Good
-
-Next scan: Tuesday, February 24, 2026 - 5:50 AM
-========================================
+--- SUMMARY ---
+✅ No critical issues.
+⚠️  1 Warning: Trusted proxies not configured — low risk if Control UI
+   is accessed locally only (no reverse proxy in use).
+🔄 Update available: OpenClaw 2026.2.25 on stable channel.
+   Run: pnpm update -g openclaw (or via npm)
+==============================

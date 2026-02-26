@@ -32,6 +32,21 @@
 - Services: gmail, calendar, contacts, drive, docs, sheets
 - Google Sheets API and Drive API both enabled (project 672907822296)
 
+## Hong Kong Trip
+- March 11-13, 2026, Hong Kong Island
+- Wants harbor view room
+- Top picks: Four Seasons (Central/IFC), Mandarin Oriental, Conrad, Island Shangri-La, Upper House
+
+## CGT (Chateau Grand Traverse) — Pricing Issue
+- Email from Eddie (Feb 2026): claims $8,496.15 overpayment 2024-2025 due to Pinot Gris Brix base error (19° vs contracted 22°)
+- CGT proposes credit $8,496.15 to 2026 + price increase ($1,725→$1,750/ton, PG Brix base 22°→21°)
+- CONTRACT IN DROPBOX — need to verify 22.0° Brix is indeed the contracted PG base
+- Dropbox token expired as of Feb 26, 2026 — Eric needs to refresh
+
+## Dropbox
+- Eric's personal Dropbox token EXPIRED Feb 26, 2026
+- Refresh at dropbox.com/developers
+
 ## Identity
 - Name: Jarvis
 - First established: 2026-02-07
