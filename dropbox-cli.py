@@ -14,8 +14,48 @@ Usage:
 import sys
 import json
 import requests
+import os
+import subprocess
+from datetime import datetime, timedelta
 
-TOKEN = "sl.u.AGXXWnj5954ZdBuwjxCt6CHEGOoKzDMMaY7rVMFE74QBQER6Z7dlqc1fdQ5cIkqbNJ4rclydzu6jkA3SCfaIRjwHVFINHgQmjugj2ja7_CkW9UqU_DE3mAc3jbLBRtmgjYNhY9wH38YXpuhRCjc-vJfW4p0pIdSFkg9iAyxIT3xk0dNvyaOkBIi2dL96WSU0UOIVFc6bTKFIYFVZ92_vAktNQhGrMTRvUs-2FaZb2T1FxcABfJHBOEPl_sodpVxgB2YwnUhCOcLGNiiKXa8R7N1_TrSpb-NIqm_fAEZbtaCJmGA1LZyBeP74m39qMYKC-dMR_XfT176dPn30GwekygUZ5FcZ-qS-yLV0kDmO_SuzGCy9UKaXGlbVnlZ76ORAe34E0ZqP8N7WimTEIP1R2ePuAFRL_ig3M4RQ15qszHCrNKpzwXp3odvMiGVQxmKk2ZJUmsOPocfy18MapBfYd0jVhCtictIR5XE0iZG6nkaWVOWeXTv3Iyi8skISpC6KDKN3sfC5Rt56G2oDrJcPBX46LcA-JN6eul0UT8uUtAJY28MxXw9XXM8jBCOyFq3Wn53Yg0O43TYnNsMozftSekmW7rQw6lLG5O-B4dBXFDAF7lmszEMWvj4lK0bLOLKIj-zY5_YcPBFdYpMoAwp5QUjox_appOPwQjyFwzPt-559aKKohhlCJGMB4n2aGBnNAXZw0rBfWQs2FqknTn8LwjD72tWc1rKhZpmDRxBEB1GjLV0j_hS7qWSwA95pmEnakhiY4AxRkZD-eY7e69NNYEC1ocBdEIrzoaEAqMLfhCuisbJGqr8BCHq7K4gg7xIgOVrjg0mKxBksu4srKpfDj09ud9k4C_AW9t6D_5K0_OtIrm3vYXcpHcHDbmGhKqyDYv9Tc563L4CkmiI6fxxJnejxH-P-D1c2o4JusKIRoFLWJtEniYy7rryg5eI83sw3zN6Y9MB5s4HsBWIyVuSNyARug18CDr308FJJcSlK8k721PeS4-xk3tpzp3jChec3m8tOZfs9mRmiCH2re-fpHjp_dRfSLxbiju1l1STCNLp7Gcidj1_QKHTH_NViTAtI6SZXKgXnw6HQ-wC4Fszy8z1n0-RL3gzW7wJVvP5mBpcKu072jFR70wnwFbkPioYqAUueJjLaCnk1AiuF5HG9CnqIuJGMswpZe5aaX2juG2wadSRtYml-xXjQXOqTvgMQ_oNJwgku_WhQzE4SUp95AxjSd80OEKxDCwHPLkYSlgsI3117bnN6GGem703gWtswwvpx9UhcXKfp-KNC5WVrxDUp"
+# Auto-refresh token integration
+AUTH_CONFIG = os.path.expanduser("~/.openclaw/workspace/.dropbox_auth.json")
+AUTH_SCRIPT = os.path.expanduser("~/.openclaw/workspace/dropbox-auth.py")
+
+def get_valid_token():
+    """Get a valid access token (auto-refresh if needed)"""
+    # Check if auth system is configured
+    if os.path.exists(AUTH_CONFIG):
+        try:
+            with open(AUTH_CONFIG, 'r') as f:
+                config = json.load(f)
+            
+            access_token = config.get("access_token")
+            token_expiry = config.get("token_expiry")
+            
+            # Check if token is expired or about to expire (within 5 minutes)
+            if token_expiry:
+                expiry = datetime.fromisoformat(token_expiry)
+                if datetime.now() >= expiry - timedelta(minutes=5):
+                    # Token expired, refresh it
+                    if os.path.exists(AUTH_SCRIPT):
+                        subprocess.run([sys.executable, AUTH_SCRIPT, "refresh"], 
+                                     capture_output=True, check=True)
+                        # Reload config
+                        with open(AUTH_CONFIG, 'r') as f:
+                            config = json.load(f)
+                        access_token = config.get("access_token")
+            
+            return access_token
+        except Exception as e:
+            print(f"⚠️  Auto-refresh failed: {e}", file=sys.stderr)
+            print(f"   Using fallback token", file=sys.stderr)
+    
+    # Fallback to hardcoded token
+    return "sl.u.AGX_8JZXZLAV1zyJVv9VEAT0vnm12N3Y_2chrPuZLBSQ-zc1Q6eRqXLgKv5qnN6Z-gcMPnAMtzjlq6_D-dFZNwbMZn8wtghsFFncU0_a6qpOy2bYjn2m81jEi_hkUqdEgr_KHsRQqtY4V5MOBo0i2f4EhVXLw3um124NYfefku-6T3hcH_QAWnoDT0R_JneUGb_8IPrwEWjeUHWpYrxKBTPCq25bGUe-swAS6SJKP8kQ2sMeAvIEsx8CUZPfVhVri_cPMyWO2sWT_Dh-e_3MkEUot3GwV0cPruqJ2nWg22azK45irUdj9Jo9MYN76h9tOLaqikkLBrDYe3zMmBhF14tYvNjla6qFyc22T__aAsADinBViLZ-gRL1x0lZQtMTz-OPAGpUjeugJRg8H9iegC1bqV7uVIX4E_jJdx5TldGFEX4z2_Iz0IZKjaOk-tG0Ky0aTJcUBdFLqfztkhAZdG2BOiGZQHlPRAh2STqe-HPYExGh70WCipYWY5SfUOMFESRroFK4rnG58hFbPYIKhFWk3wXFnnYOBQumX_XRTd6I_B81LaD45LIKAk4T3vzCN9FU_8vXQnF6C0ycLLSNTIboDQPQm0KxN5hT_VuElbIyQ_Qk7QV3pAmFkt2h3CuAK0SzDLGSXtEdXBC8BJZ-P2ggeVBta7ynlqC4mS17rWX3FP9dNvn_SLrMEz55cgLzU_j_7PLsdnNAE_Rp3VdTOBk_YARNwAe5mCKEGvWwXRY1OeZlcrrhom9GCNqiPQIxsh1V5jWRz9kUjK5Ne4wOOQuvpnL_-GcS0ACOeVsay3shSYtH2WOqr8kJMVHUzic8TfkfEZfIT-cQXv3yKu1Iry6Lc-1JBuAXVycUFhubdbADV4cNel0VeqcgcxTBxLS655ItFK4Ea4E5YdZmC4Ix81A7RYLt5_R_DRKSwD5U5ZSoh8EmECGe-74-vNsX8NDU_vWS2dLo2Nwt8KQti8Zsv-OgepfZj4kQGrDsA0OLYSjMJS3Hu6B6zHehN8hUt4dWWNjK-lKGBZstfT0StZlC7UG2ec4W8nUin4f-YckDYs4aRFm4Bw0WjETFP-KBzcuK2YXF8AsHelewc9UqN2F1QhiW5o81WbqPGqjjpkGbH1uqDOmRyMEW_oUt1PCC1pBGvhdSK8M_rIJQb1MRDTi5_iacgxVy--GUCqma4Yn46lfZf_1QYrLSd55PDEKDNpRjSecXN80KGzdDJA-xOeV0wztwCJcyB9dj-oYggWk1xWfRcJ0g7VnonC5ktbL5ddl7woxpN-u74U7IP6SpsiKGyUUz"
+
+# Get token with auto-refresh
+TOKEN = get_valid_token()
 
 HEADERS = {
     "Authorization": f"Bearer {TOKEN}",
