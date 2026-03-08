@@ -1,0 +1,31 @@
+{
+  "name": "stock-ticker",
+  "version": "1.0.0",
+  "description": "CLI tool to fetch and display stock prices from a CSV watchlist",
+  "type": "module",
+  "main": "index.js",
+  "bin": {
+    "stock-ticker": "./index.js"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "stock",
+    "ticker",
+    "cli",
+    "yahoo-finance"
+  ],
+  "author": "Eric Brown",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^5.6.2",
+    "cli-table3": "^0.6.5",
+    "commander": "^14.0.3",
+    "csv-parse": "^6.1.0",
+    "yahoo-finance2": "^3.13.2"
+  }
+}
