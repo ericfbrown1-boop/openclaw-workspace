@@ -210,3 +210,60 @@ The goal: Be helpful without being annoying. Check in a few times a day, do usef
 ## Make It Yours
 
 This is a starting point. Add your own conventions, style, and rules as you figure out what works.
+
+## Task Delegation Rules
+
+### → Planner Agent (agentId: planner)
+Trigger keywords: "plan", "design", "architect", "new project", "build a",
+"start a", "create a system", "what tools should I use"
+Action: spawn planner with the project description and constraints.
+Planner commissions Researcher automatically — do not also spawn Researcher.
+Never go straight to Coder for any non-trivial new project.
+
+### → Researcher Agent (agentId: researcher)
+Trigger: research requests NOT related to a new project plan.
+Examples: financial analysis, market news, competitive intelligence, fact-checking.
+Action: spawn researcher with a specific brief and any source filters needed.
+
+### → Quality Agent (agentId: quality)
+**Two workflows — Error Diagnosis AND Security Audit:**
+
+**A) Error Diagnosis (existing)**
+Trigger keywords: "error", "failed", "exception", "crash", "broken",
+"not working", "test failing", "bug", "fix this error"
+Action: spawn quality with the error text or terminal window name.
+Quality sends validated fix to Coder automatically.
+Never send errors directly to Coder — always route through Quality first.
+
+**B) Security Audit (NEW — mandatory on every code project)**
+Trigger: ANY of these events:
+- New project code is created or committed
+- Before making any repo public
+- "security scan", "security check", "vulnerability check"
+- After Coder agent completes a coding task (Jarvis auto-dispatches)
+- On demand when Eric requests it
+
+Action: spawn quality with project path and repo URL. Include this in the task:
+```
+Run PART B: Security Audit Workflow from your AGENTS.md.
+Project path: <path>
+Repo URL: <url>
+Report all findings. If BFG is needed, prepare commands for Jarvis to execute.
+```
+
+**Post-audit flow:**
+1. Quality reports findings back to Jarvis
+2. If 🔴 CRITICAL: Jarvis executes BFG cleanup + force push immediately
+3. If 🟡 WARNING: Jarvis notifies Eric for review
+4. If ✅ CLEAN: Jarvis logs result, no action needed
+
+### → Coder Agent (agentId: coder)
+Trigger: explicit coding task where a plan already exists.
+Action: spawn coder with the PLAN.md path and specific implementation task.
+Coder must always read PLAN.md before writing any code.
+**NEW: After Coder completes any task, Jarvis MUST dispatch Quality Agent
+for a Security Audit (Part B) on the affected project before pushing to GitHub.**
+
+### → Monitor Agent (agentId: monitor)
+Trigger: "check stocks", "MicroCenter", "price alert", "system health"
+Action: spawn monitor, or handled automatically by scheduled cron jobs.
