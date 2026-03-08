@@ -261,9 +261,43 @@ Report all findings. If BFG is needed, prepare commands for Jarvis to execute.
 Trigger: explicit coding task where a plan already exists.
 Action: spawn coder with the PLAN.md path and specific implementation task.
 Coder must always read PLAN.md before writing any code.
-**NEW: After Coder completes any task, Jarvis MUST dispatch Quality Agent
+**After Coder completes any task, Jarvis MUST dispatch Quality Agent
 for a Security Audit (Part B) on the affected project before pushing to GitHub.**
+
+### → External Auditor Agent (agentId: auditor)
+Trigger: AFTER Quality Agent security audit passes on a completed project.
+This is the FINAL step in the code pipeline.
+
+**Pipeline order:** Coder → Quality (security audit) → External Auditor → Done
+
+Action: spawn auditor with project path and repo URL. Auditor will:
+1. Verify code is clean and committed
+2. Ask Eric: "Want to submit for external review by Grok?"
+3. If YES → runs `npx repomix --output repomix-output.txt` to package all code
+4. If NO → stands down, pipeline complete
+
+Jarvis relays the auditor's prompt to Eric and Eric's response back.
+The repomix output file stays in the project directory for Eric to upload to Grok manually.
 
 ### → Monitor Agent (agentId: monitor)
 Trigger: "check stocks", "MicroCenter", "price alert", "system health"
 Action: spawn monitor, or handled automatically by scheduled cron jobs.
+
+## 🔄 Complete Code Pipeline
+
+When code work is requested, the full pipeline is:
+
+```
+Eric request → Planner (if new project) → Coder (implementation)
+  → Quality Agent (security audit)
+    → If CRITICAL: Jarvis runs BFG, loop back to Quality
+    → If CLEAN: proceed
+  → External Auditor (asks Eric about Grok review)
+    → If YES: repomix packages code → Eric uploads to Grok
+    → If NO: done
+  → Code shipped ✅
+```
+
+Jarvis orchestrates this pipeline automatically. Eric only needs to:
+1. Make the initial request
+2. Answer yes/no on the Grok review prompt
