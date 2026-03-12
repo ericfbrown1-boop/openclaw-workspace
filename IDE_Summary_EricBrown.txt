@@ -1,0 +1,292 @@
+GPU Python Development Environment
+Complete IDE & Toolchain Reference
+Eric Brown  ·  EFBPowerSpec  ·  Built March 4, 2026
+ericfbrown1@gmail.com  ·  github.com/ericfbrown1-boop
+1. Hardware
+Component
+Specification
+GPU
+NVIDIA GeForce RTX 5080 (Blackwell, sm_120)
+VRAM
+16,303 MiB (15.9 GB usable)
+CPU Cores (Docker)
+32 vCPUs available
+RAM (Docker)
+31.26 GB available
+GPU Temperature
+31°C idle  ·  12W / 360W max TDP
+GPU Benchmark
+8192×8192 matrix multiply: 79.4ms (~13 TFLOPS)
+
+2. Windows Host Environment
+Component
+Version / Details
+Status
+Windows
+10.0.26200.7922 (Windows 11 22H2+)
+INSTALLED
+PowerShell
+7.5.4 (upgraded from 5.x)
+INSTALLED
+VS 2022 Build Tools
+v17.14.27  ·  x64 native
+INSTALLED
+NVIDIA Driver
+591.86  ·  CUDA 13.1 runtime
+INSTALLED
+Git for Windows
+2.53.0.windows.1
+INSTALLED
+Node.js
+v24.13.0
+INSTALLED
+npm
+11.11.0
+INSTALLED
+Python (host)
+3.14 + pip 26.0.1
+INSTALLED
+Claude Code (Windows)
+2.1.66  ·  Opus 4.6  ·  Claude Max
+INSTALLED
+
+3. WSL2 Linux Environment
+Component
+Version / Details
+Status
+WSL Version
+2.6.3.0  ·  Kernel 6.6.87.2
+INSTALLED
+WSLg
+1.0.71
+INSTALLED
+Ubuntu Distro
+Ubuntu 24.04 Noble  ·  VERSION 2
+INSTALLED
+Node.js (WSL2)
+v22.22.0
+INSTALLED
+npm (WSL2)
+10.9.4
+INSTALLED
+Claude Code (WSL2)
+2.1.66  ·  Native binary  ·  ~/.local/bin
+INSTALLED
+NVIDIA Container Toolkit
+Installed  ·  docker runtime: nvidia
+INSTALLED
+
+4. Docker & Container Environment
+Component
+Version / Details
+Status
+Docker Desktop
+29.2.1  ·  WSL2 backend
+INSTALLED
+Docker Server
+29.2.1  ·  overlayfs storage driver
+INSTALLED
+Docker Compose
+v5.0.2
+INSTALLED
+NVIDIA Runtime
+Registered (nvidia + runc)
+INSTALLED
+GPU in Container
+RTX 5080 fully accessible via --gpus all
+INSTALLED
+Dev Container
+Python GPU Dev  ·  VS Code attached
+INSTALLED
+
+5. GPU Docker Image: mydev
+Component
+Version / Details
+Status
+Base Image
+nvidia/cuda:12.8.0-cudnn-devel-ubuntu22.04
+INSTALLED
+CUDA Version
+12.8.0 (CUDA 13.1 runtime via driver)
+INSTALLED
+Python
+3.12  ·  via deadsnakes PPA
+INSTALLED
+pip
+26.0.1
+INSTALLED
+PyTorch
+2.12.0.dev20260302+cu128  ·  Nightly
+INSTALLED
+Blackwell Support
+sm_120 confirmed  ·  No compatibility warnings
+INSTALLED
+CUDA Available
+True  ·  torch.cuda.is_available()
+INSTALLED
+NumPy
+2.4.2
+INSTALLED
+Pandas
+3.0.1
+INSTALLED
+Jupyter Server
+2.17.0  ·  Port 8888
+INSTALLED
+scikit-learn
+Installed
+INSTALLED
+CuPy (GPU NumPy)
+cupy-cuda12x  ·  Installed
+INSTALLED
+Numba
+GPU-compiled Python  ·  Installed
+INSTALLED
+
+6. VS Code IDE
+Extension / Feature
+Details
+Status
+VS Code
+Installed  ·  Windows host
+INSTALLED
+Dev Containers
+ms-vscode-remote.remote-containers
+INSTALLED
+Remote — WSL
+Connect editor into WSL2
+INSTALLED
+Python Extension
+ms-python.python  ·  Microsoft
+INSTALLED
+Pylance
+ms-python.vscode-pylance  ·  IntelliSense
+INSTALLED
+Jupyter
+ms-toolsai.jupyter  ·  Notebook support
+INSTALLED
+GitLens
+eamodio.gitlens
+INSTALLED
+Docker Extension
+ms-azuretools.vscode-docker
+INSTALLED
+Dev Container Active
+MYPROJECT [Dev Container: Python GPU Dev]
+INSTALLED
+
+7. Claude Code Configuration
+Setting
+Value
+Version
+2.1.66 (native binary)
+Model
+Claude Opus 4.6
+Subscription
+Claude Max
+Account
+ericfbrown1@gmail.com
+Organization
+ericfbrown1@gmail.com's Organization
+GitHub Username
+ericfbrown1-boop
+Install (Windows)
+npm  ·  C:\Users\ericf\AppData\Roaming\npm
+Install (WSL2)
+Native binary  ·  ~/.local/bin/claude
+CLAUDE.md
+~/projects/myproject/CLAUDE.md  ·  Auto-generated
+Authenticated
+Both Windows + WSL2 sessions
+
+8. First Project: myproject
+Item
+Details
+Location (WSL2)
+~/projects/myproject
+Location (Windows)
+\\wsl$\Ubuntu\home\ericf\projects\myproject
+GitHub Repo
+github.com/ericfbrown1-boop/myproject
+Branch
+main  ·  SSH authentication active
+Dockerfile
+CUDA 12.8 + Python 3.12 + PyTorch nightly
+.devcontainer
+devcontainer.json  ·  GPU passthrough enabled
+CLAUDE.md
+Auto-generated  ·  Documents GPU env + commands
+test_gpu.py
+Neural net trained 3 steps on RTX 5080  ·  Verified
+
+9. Verification Tests Passed
+#
+Test
+Result
+1
+Container + Python libs
+PyTorch 2.12 · NumPy 2.4.2 · Pandas 3.0.1 · ALL PASSED
+2
+RTX 5080 compute
+8192×8192 matrix multiply: 79.4ms · 0.78 GB VRAM used
+3
+Jupyter notebook
+Port 8888 · Browser accessible · GPU visible
+4
+VS Code Dev Container
+GPU detected from VS Code terminal: RTX 5080
+5
+Neural net training
+3 steps: Loss 2.34 → 1.87 → 1.47 · 69MB VRAM
+6
+GitHub push
+Committed and pushed to ericfbrown1-boop/myproject
+
+10. Daily Workflow Commands
+Start a Coding Session
+Action
+Command
+Open Ubuntu terminal
+Start menu → search Ubuntu
+Launch Claude Code
+cd ~/projects/myproject && claude
+Open VS Code in container
+cd ~/projects/myproject && code .
+Run Python script
+python test_gpu.py  (in VS Code terminal)
+Start Jupyter
+docker run --gpus all -it -p 8888:8888 mydev jupyter notebook --ip=0.0.0.0 --no-browser --allow-root
+
+Save Work to GitHub
+Action
+Command
+Stage all changes
+git add .
+Commit
+git commit -m "your message"
+Push to GitHub
+git push
+
+Docker & Container Management
+Action
+Command
+Rebuild image
+docker build -t mydev .
+Run with GPU
+docker run --gpus all -it mydev bash
+Test GPU in container
+docker run --gpus all -it mydev python -c "import torch; print(torch.cuda.get_device_name(0))"
+Check GPU status
+nvidia-smi  (PowerShell)
+List running containers
+docker ps
+
+
+Notes & Known Configuration Details
+• PyTorch uses nightly builds (cu128) because the RTX 5080 Blackwell GPU (sm_120) is not yet supported in stable PyTorch releases.
+• Claude Code runs from both Windows PowerShell (npm install) and WSL2 (native binary). Prefer WSL2 for projects inside Linux filesystem.
+• The 'code .' command from WSL2 opens VS Code on Windows and auto-attaches to the Dev Container via the .devcontainer/devcontainer.json file.
+• SSH keys for GitHub are stored inside the Docker container and will not persist if the container is rebuilt. Re-run ssh-keygen and add to GitHub if this occurs.
+• Docker Desktop must be running before launching WSL2 terminals or VS Code Dev Containers.
+• CUDA Toolkit is NOT installed directly on Windows — all GPU code runs inside Docker containers using the NVIDIA Container Toolkit passthrough.
+• PowerShell execution policy is set to RemoteSigned at CurrentUser scope.

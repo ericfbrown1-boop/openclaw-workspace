@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Find tax-related emails from the past 7 days."""
+"""Find tax-related emails from the past 24 hours."""
 
 import imaplib
 import email
@@ -36,18 +36,18 @@ def is_tax_related(subject, from_addr, body_preview):
     return any(keyword.lower() in text for keyword in TAX_KEYWORDS)
 
 def main():
-    """Find tax-related emails from past 7 days."""
+    """Find tax-related emails from past 24 hours."""
     try:
         # Connect to Gmail
         mail = imaplib.IMAP4_SSL(IMAP_SERVER)
         mail.login(EMAIL, PASSWORD)
         mail.select("INBOX")
         
-        # Calculate date 7 days ago
-        seven_days_ago = datetime.now() - timedelta(days=7)
+        # Calculate date 1 day ago
+        seven_days_ago = datetime.now() - timedelta(days=1)
         date_str = seven_days_ago.strftime("%d-%b-%Y")
         
-        # Search for emails from past 7 days
+        # Search for emails from past 24 hours
         status, messages = mail.search(None, f'(SINCE {date_str})')
         if status != "OK":
             print("No messages found")
@@ -56,7 +56,7 @@ def main():
         email_ids = messages[0].split()
         total_emails = len(email_ids)
         
-        print(f"Total emails from past 7 days: {total_emails}")
+        print(f"Total emails from past 24 hours: {total_emails}")
         print("=" * 80)
         
         tax_emails = []

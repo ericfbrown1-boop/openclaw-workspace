@@ -11,10 +11,11 @@ def send_email(subject, body):
     msg = EmailMessage()
     msg['From'] = 'ericfbrown1@gmail.com'
     msg['To'] = 'ericfbrown1@gmail.com'
+    msg['Cc'] = 'ericfbrown1@gmail.com, Eric.brown@cohesity.com'
     msg['Subject'] = subject
     
     # Add signature
-    full_body = body + "\n\n---\nFrom Jarvis - AI Assistant to Eric Brown"
+    full_body = body + "\n\n---\nSent by Jarvis - AI assistant to Eric Brown"
     msg.set_content(full_body)
     
     try:

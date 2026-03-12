@@ -1,0 +1,11 @@
+2025 Taxes,,,
+Charitable Gifts,,,
+stiil open,,,
+,,,
+,,,
+,,,
+Amount,Date,Beneficiary,Reference
+,,,
+0,,,
+,,,
+=SUM(A8:A10),,Subtotal,

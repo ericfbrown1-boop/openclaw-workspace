@@ -1,0 +1,35 @@
+Hi Eric,
+
+Per your request, here are all of the commands you can copy and paste into Terminal to finish the Dropbox changes so I can wrap the project:
+
+```bash
+# 1. Work from the OpenClaw workspace
+cd ~/.openclaw/workspace
+
+# 2. Ensure the requests library is installed
+pip3 install --upgrade requests
+
+# 3. Store your Dropbox app credentials (replace placeholders)
+python3 dropbox-auth.py setup <YOUR_APP_KEY> <YOUR_APP_SECRET>
+
+# 4. Run the one-time browser authorization (keep Terminal open)
+python3 dropbox-auth.py authorize
+
+# 5. Confirm everything is wired up
+python3 dropbox-auth.py status
+
+# 6. Smoke-test the Dropbox CLI connection
+python3 dropbox-cli.py list /
+
+# (Optional) Manual refresh if you ever need it
+python3 dropbox-auth.py refresh
+```
+
+Notes:
+- The app key/secret come from the Dropbox developer console (Scoped Access → Full Dropbox) with redirect URI `http://localhost:8765/callback` and the four file permissions enabled (`files.metadata.write/read`, `files.content.write/read`). Once those values are in place, the refresh-token system keeps everything current automatically.
+- When the `authorize` command opens your browser, approve the app and wait for the "Authorization successful" message back in Terminal before closing the tab.
+- After these run once, I can handle the rest of the Dropbox work and upload artifacts without further action on your end.
+
+Thanks!
+Jarvis
+Sent by Jarvis - AI assistant to Eric Brown

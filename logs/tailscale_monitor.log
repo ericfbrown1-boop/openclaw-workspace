@@ -1,0 +1,1868 @@
+[2026-02-28 19:18:27] Tailscale daemon not running.
+[2026-02-28 19:18:27] Attempting to start Tailscale daemon...
+[2026-02-28 19:18:29] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-02-28 19:33:31] Tailscale daemon not running.
+[2026-02-28 19:33:31] Attempting to start Tailscale daemon...
+[2026-02-28 19:33:33] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-02-28 19:48:35] Tailscale daemon not running.
+[2026-02-28 19:48:35] Attempting to start Tailscale daemon...
+[2026-02-28 19:48:37] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-02-28 20:03:40] Tailscale daemon not running.
+[2026-02-28 20:03:40] Attempting to start Tailscale daemon...
+[2026-02-28 20:03:42] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-02-28 20:18:44] Tailscale daemon not running.
+[2026-02-28 20:18:44] Attempting to start Tailscale daemon...
+[2026-02-28 20:18:46] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-02-28 20:33:48] Tailscale daemon not running.
+[2026-02-28 20:33:48] Attempting to start Tailscale daemon...
+[2026-02-28 20:33:50] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-02-28 22:35:31] Tailscale daemon not running.
+[2026-02-28 22:35:31] Attempting to start Tailscale daemon...
+[2026-02-28 22:35:33] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-01 01:10:29] Tailscale daemon not running.
+[2026-03-01 01:10:29] Attempting to start Tailscale daemon...
+[2026-03-01 01:10:32] Tailscale daemon started.
+[2026-03-01 01:10:32] Funnel already active.
+[2026-03-01 01:39:44] Tailscale daemon is running.
+[2026-03-01 01:39:44] Funnel already active.
+[2026-03-01 04:10:18] Tailscale daemon is running.
+[2026-03-01 04:10:18] Funnel already active.
+[2026-03-01 04:25:18] Tailscale daemon is running.
+[2026-03-01 04:25:18] Funnel already active.
+[2026-03-01 05:12:41] Tailscale daemon is running.
+[2026-03-01 05:12:41] Funnel already active.
+[2026-03-01 07:02:14] Tailscale daemon is running.
+[2026-03-01 07:02:14] Funnel already active.
+[2026-03-01 07:41:17] Tailscale daemon is running.
+[2026-03-01 07:41:17] Funnel already active.
+[2026-03-01 07:56:17] Tailscale daemon is running.
+[2026-03-01 07:56:17] Funnel already active.
+[2026-03-01 08:11:18] Tailscale daemon is running.
+[2026-03-01 08:11:18] Funnel already active.
+[2026-03-01 08:26:18] Tailscale daemon is running.
+[2026-03-01 08:26:18] Funnel already active.
+[2026-03-01 08:41:18] Tailscale daemon is running.
+[2026-03-01 08:41:18] Funnel already active.
+[2026-03-01 08:56:18] Tailscale daemon is running.
+[2026-03-01 08:56:18] Funnel already active.
+[2026-03-01 09:11:18] Tailscale daemon is running.
+[2026-03-01 09:11:18] Funnel already active.
+[2026-03-01 09:26:18] Tailscale daemon is running.
+[2026-03-01 09:26:18] Funnel already active.
+[2026-03-01 09:41:18] Tailscale daemon is running.
+[2026-03-01 09:41:18] Funnel already active.
+[2026-03-01 09:56:18] Tailscale daemon is running.
+[2026-03-01 09:56:18] Funnel already active.
+[2026-03-01 10:11:19] Tailscale daemon is running.
+[2026-03-01 10:11:19] Funnel already active.
+[2026-03-01 10:26:19] Tailscale daemon is running.
+[2026-03-01 10:26:19] Funnel already active.
+[2026-03-01 10:41:19] Tailscale daemon is running.
+[2026-03-01 10:41:19] Funnel already active.
+[2026-03-01 10:56:19] Tailscale daemon is running.
+[2026-03-01 10:56:19] Funnel already active.
+[2026-03-01 11:11:19] Tailscale daemon is running.
+[2026-03-01 11:11:19] Funnel already active.
+[2026-03-01 11:26:19] Tailscale daemon is running.
+[2026-03-01 11:26:19] Funnel already active.
+[2026-03-01 11:41:19] Tailscale daemon is running.
+[2026-03-01 11:41:19] Funnel already active.
+[2026-03-01 11:56:20] Tailscale daemon is running.
+[2026-03-01 11:56:20] Funnel already active.
+[2026-03-01 12:11:20] Tailscale daemon is running.
+[2026-03-01 12:11:20] Funnel already active.
+[2026-03-01 12:26:20] Tailscale daemon is running.
+[2026-03-01 12:26:20] Funnel already active.
+[2026-03-01 12:41:20] Tailscale daemon is running.
+[2026-03-01 12:41:20] Funnel already active.
+[2026-03-01 12:56:20] Tailscale daemon is running.
+[2026-03-01 12:56:20] Funnel already active.
+[2026-03-01 13:11:20] Tailscale daemon is running.
+[2026-03-01 13:11:20] Funnel already active.
+[2026-03-01 13:26:20] Tailscale daemon is running.
+[2026-03-01 13:26:20] Funnel already active.
+[2026-03-01 13:41:21] Tailscale daemon is running.
+[2026-03-01 13:41:21] Funnel already active.
+[2026-03-01 13:56:21] Tailscale daemon is running.
+[2026-03-01 13:56:21] Funnel already active.
+[2026-03-01 14:11:21] Tailscale daemon is running.
+[2026-03-01 14:11:21] Funnel already active.
+[2026-03-01 14:26:21] Tailscale daemon is running.
+[2026-03-01 14:26:21] Funnel already active.
+[2026-03-01 14:41:21] Tailscale daemon is running.
+[2026-03-01 14:41:21] Funnel already active.
+[2026-03-01 14:56:21] Tailscale daemon is running.
+[2026-03-01 14:56:21] Funnel already active.
+[2026-03-01 15:11:21] Tailscale daemon is running.
+[2026-03-01 15:11:21] Funnel already active.
+[2026-03-01 15:26:21] Tailscale daemon is running.
+[2026-03-01 15:26:22] Funnel already active.
+[2026-03-01 15:41:22] Tailscale daemon is running.
+[2026-03-01 15:41:22] Funnel already active.
+[2026-03-01 15:56:22] Tailscale daemon is running.
+[2026-03-01 15:56:22] Funnel already active.
+[2026-03-01 16:11:22] Tailscale daemon is running.
+[2026-03-01 16:11:22] Funnel already active.
+[2026-03-01 16:26:22] Tailscale daemon is running.
+[2026-03-01 16:26:22] Funnel already active.
+[2026-03-01 16:41:22] Tailscale daemon is running.
+[2026-03-01 16:41:22] Funnel already active.
+[2026-03-01 16:56:22] Tailscale daemon is running.
+[2026-03-01 16:56:22] Funnel already active.
+[2026-03-01 17:11:22] Tailscale daemon is running.
+[2026-03-01 17:11:22] Funnel already active.
+[2026-03-01 17:26:23] Tailscale daemon is running.
+[2026-03-01 17:26:23] Funnel already active.
+[2026-03-01 17:41:23] Tailscale daemon is running.
+[2026-03-01 17:41:23] Funnel already active.
+[2026-03-01 17:56:23] Tailscale daemon is running.
+[2026-03-01 17:56:23] Funnel already active.
+[2026-03-01 18:11:23] Tailscale daemon is running.
+[2026-03-01 18:11:23] Funnel already active.
+[2026-03-01 18:26:23] Tailscale daemon is running.
+[2026-03-01 18:26:23] Funnel already active.
+[2026-03-01 18:41:23] Tailscale daemon is running.
+[2026-03-01 18:41:23] Funnel already active.
+[2026-03-01 18:56:23] Tailscale daemon is running.
+[2026-03-01 18:56:23] Funnel already active.
+[2026-03-01 19:11:23] Tailscale daemon is running.
+[2026-03-01 19:11:23] Funnel already active.
+[2026-03-01 19:26:24] Tailscale daemon is running.
+[2026-03-01 19:26:24] Funnel already active.
+[2026-03-01 19:41:24] Tailscale daemon is running.
+[2026-03-01 19:41:24] Funnel already active.
+[2026-03-01 19:56:24] Tailscale daemon is running.
+[2026-03-01 19:56:24] Funnel already active.
+[2026-03-01 20:11:24] Tailscale daemon is running.
+[2026-03-01 20:11:24] Funnel already active.
+[2026-03-01 20:26:24] Tailscale daemon is running.
+[2026-03-01 20:26:24] Funnel already active.
+[2026-03-01 20:41:24] Tailscale daemon is running.
+[2026-03-01 20:41:24] Funnel already active.
+[2026-03-01 20:56:24] Tailscale daemon is running.
+[2026-03-01 20:56:24] Funnel already active.
+[2026-03-01 21:11:25] Tailscale daemon is running.
+[2026-03-01 21:11:25] Funnel already active.
+[2026-03-01 21:26:25] Tailscale daemon is running.
+[2026-03-01 21:26:25] Funnel already active.
+[2026-03-01 21:41:25] Tailscale daemon is running.
+[2026-03-01 21:41:25] Funnel already active.
+[2026-03-01 21:56:25] Tailscale daemon is running.
+[2026-03-01 21:56:25] Funnel already active.
+[2026-03-01 22:11:25] Tailscale daemon is running.
+[2026-03-01 22:11:25] Funnel already active.
+[2026-03-01 22:26:25] Tailscale daemon is running.
+[2026-03-01 22:26:25] Funnel already active.
+[2026-03-01 22:41:25] Tailscale daemon is running.
+[2026-03-01 22:41:25] Funnel already active.
+[2026-03-01 22:56:26] Tailscale daemon is running.
+[2026-03-01 22:56:26] Funnel already active.
+[2026-03-01 23:11:26] Tailscale daemon is running.
+[2026-03-01 23:11:26] Funnel already active.
+[2026-03-01 23:26:26] Tailscale daemon is running.
+[2026-03-01 23:26:26] Funnel already active.
+[2026-03-01 23:41:26] Tailscale daemon is running.
+[2026-03-01 23:41:26] Funnel already active.
+[2026-03-01 23:56:26] Tailscale daemon is running.
+[2026-03-01 23:56:26] Funnel already active.
+[2026-03-02 00:11:26] Tailscale daemon is running.
+[2026-03-02 00:11:26] Funnel already active.
+[2026-03-02 00:26:26] Tailscale daemon is running.
+[2026-03-02 00:26:26] Funnel already active.
+[2026-03-02 00:41:26] Tailscale daemon is running.
+[2026-03-02 00:41:27] Funnel already active.
+[2026-03-02 00:56:27] Tailscale daemon is running.
+[2026-03-02 00:56:27] Funnel already active.
+[2026-03-02 01:11:27] Tailscale daemon is running.
+[2026-03-02 01:11:27] Funnel already active.
+[2026-03-02 01:26:27] Tailscale daemon is running.
+[2026-03-02 01:26:27] Funnel already active.
+[2026-03-02 01:41:27] Tailscale daemon is running.
+[2026-03-02 01:41:27] Funnel already active.
+[2026-03-02 01:56:27] Tailscale daemon is running.
+[2026-03-02 01:56:27] Funnel already active.
+[2026-03-02 02:11:27] Tailscale daemon is running.
+[2026-03-02 02:11:27] Funnel already active.
+[2026-03-02 02:26:27] Tailscale daemon is running.
+[2026-03-02 02:26:27] Funnel already active.
+[2026-03-02 02:41:28] Tailscale daemon is running.
+[2026-03-02 02:41:28] Funnel already active.
+[2026-03-02 02:56:28] Tailscale daemon is running.
+[2026-03-02 02:56:28] Funnel already active.
+[2026-03-02 03:11:28] Tailscale daemon is running.
+[2026-03-02 03:11:28] Funnel already active.
+[2026-03-02 03:26:28] Tailscale daemon is running.
+[2026-03-02 03:26:28] Funnel already active.
+[2026-03-02 03:41:28] Tailscale daemon is running.
+[2026-03-02 03:41:28] Funnel already active.
+[2026-03-02 03:56:28] Tailscale daemon is running.
+[2026-03-02 03:56:28] Funnel already active.
+[2026-03-02 04:11:28] Tailscale daemon is running.
+[2026-03-02 04:11:28] Funnel already active.
+[2026-03-02 04:26:29] Tailscale daemon is running.
+[2026-03-02 04:26:29] Funnel already active.
+[2026-03-02 04:41:29] Tailscale daemon is running.
+[2026-03-02 04:41:29] Funnel already active.
+[2026-03-02 04:56:29] Tailscale daemon is running.
+[2026-03-02 04:56:29] Funnel already active.
+[2026-03-02 05:11:29] Tailscale daemon is running.
+[2026-03-02 05:11:29] Funnel already active.
+[2026-03-02 05:26:29] Tailscale daemon is running.
+[2026-03-02 05:26:29] Funnel already active.
+[2026-03-02 05:41:29] Tailscale daemon is running.
+[2026-03-02 05:41:29] Funnel already active.
+[2026-03-02 05:56:29] Tailscale daemon is running.
+[2026-03-02 05:56:29] Funnel already active.
+[2026-03-02 06:11:30] Tailscale daemon is running.
+[2026-03-02 06:11:30] Funnel already active.
+[2026-03-02 06:26:30] Tailscale daemon is running.
+[2026-03-02 06:26:30] Funnel already active.
+[2026-03-02 06:41:30] Tailscale daemon is running.
+[2026-03-02 06:41:30] Funnel already active.
+[2026-03-02 06:56:30] Tailscale daemon is running.
+[2026-03-02 06:56:30] Funnel already active.
+[2026-03-02 07:11:30] Tailscale daemon is running.
+[2026-03-02 07:11:30] Funnel already active.
+[2026-03-02 07:26:30] Tailscale daemon is running.
+[2026-03-02 07:26:30] Funnel already active.
+[2026-03-02 07:41:30] Tailscale daemon is running.
+[2026-03-02 07:41:30] Funnel already active.
+[2026-03-02 07:56:31] Tailscale daemon is running.
+[2026-03-02 07:56:31] Funnel already active.
+[2026-03-02 08:11:31] Tailscale daemon is running.
+[2026-03-02 08:11:31] Funnel already active.
+[2026-03-02 08:26:31] Tailscale daemon is running.
+[2026-03-02 08:26:31] Funnel already active.
+[2026-03-02 08:41:31] Tailscale daemon is running.
+[2026-03-02 08:41:31] Funnel already active.
+[2026-03-02 08:56:31] Tailscale daemon is running.
+[2026-03-02 08:56:31] Funnel already active.
+[2026-03-02 09:11:31] Tailscale daemon is running.
+[2026-03-02 09:11:31] Funnel already active.
+[2026-03-02 09:26:31] Tailscale daemon is running.
+[2026-03-02 09:26:31] Funnel already active.
+[2026-03-02 09:41:32] Tailscale daemon is running.
+[2026-03-02 09:41:32] Funnel already active.
+[2026-03-02 09:56:32] Tailscale daemon is running.
+[2026-03-02 09:56:32] Funnel already active.
+[2026-03-02 10:11:32] Tailscale daemon is running.
+[2026-03-02 10:11:32] Funnel already active.
+[2026-03-02 10:26:32] Tailscale daemon is running.
+[2026-03-02 10:26:32] Funnel already active.
+[2026-03-02 10:41:32] Tailscale daemon is running.
+[2026-03-02 10:41:32] Funnel already active.
+[2026-03-02 10:56:32] Tailscale daemon is running.
+[2026-03-02 10:56:32] Funnel already active.
+[2026-03-02 11:11:32] Tailscale daemon is running.
+[2026-03-02 11:11:32] Funnel already active.
+[2026-03-02 11:26:32] Tailscale daemon is running.
+[2026-03-02 11:26:33] Funnel already active.
+[2026-03-02 11:41:33] Tailscale daemon is running.
+[2026-03-02 11:41:33] Funnel already active.
+[2026-03-02 11:56:33] Tailscale daemon is running.
+[2026-03-02 11:56:33] Funnel already active.
+[2026-03-02 12:11:33] Tailscale daemon is running.
+[2026-03-02 12:11:33] Funnel already active.
+[2026-03-02 12:26:33] Tailscale daemon is running.
+[2026-03-02 12:26:33] Funnel already active.
+[2026-03-02 12:41:33] Tailscale daemon is running.
+[2026-03-02 12:41:33] Funnel already active.
+[2026-03-02 12:56:33] Tailscale daemon is running.
+[2026-03-02 12:56:33] Funnel already active.
+[2026-03-02 13:11:33] Tailscale daemon is running.
+[2026-03-02 13:11:33] Funnel already active.
+[2026-03-02 13:26:34] Tailscale daemon is running.
+[2026-03-02 13:26:34] Funnel already active.
+[2026-03-02 13:41:34] Tailscale daemon is running.
+[2026-03-02 13:41:34] Funnel already active.
+[2026-03-02 13:56:34] Tailscale daemon is running.
+[2026-03-02 13:56:34] Funnel already active.
+[2026-03-02 14:11:34] Tailscale daemon is running.
+[2026-03-02 14:11:34] Funnel already active.
+[2026-03-02 14:26:34] Tailscale daemon is running.
+[2026-03-02 14:26:34] Funnel already active.
+[2026-03-02 14:41:34] Tailscale daemon is running.
+[2026-03-02 14:41:34] Funnel already active.
+[2026-03-02 14:56:34] Tailscale daemon is running.
+[2026-03-02 14:56:34] Funnel already active.
+[2026-03-02 15:11:35] Tailscale daemon is running.
+[2026-03-02 15:11:35] Funnel already active.
+[2026-03-02 15:26:35] Tailscale daemon is running.
+[2026-03-02 15:26:35] Funnel already active.
+[2026-03-02 15:41:35] Tailscale daemon is running.
+[2026-03-02 15:41:35] Funnel already active.
+[2026-03-02 15:56:35] Tailscale daemon is running.
+[2026-03-02 15:56:35] Funnel already active.
+[2026-03-02 16:11:35] Tailscale daemon is running.
+[2026-03-02 16:11:35] Funnel already active.
+[2026-03-02 16:26:35] Tailscale daemon is running.
+[2026-03-02 16:26:35] Funnel already active.
+[2026-03-02 16:41:35] Tailscale daemon is running.
+[2026-03-02 16:41:35] Funnel already active.
+[2026-03-02 16:56:36] Tailscale daemon is running.
+[2026-03-02 16:56:36] Funnel already active.
+[2026-03-02 17:11:36] Tailscale daemon is running.
+[2026-03-02 17:11:36] Funnel already active.
+[2026-03-02 17:26:36] Tailscale daemon is running.
+[2026-03-02 17:26:36] Funnel already active.
+[2026-03-02 17:41:36] Tailscale daemon is running.
+[2026-03-02 17:41:36] Funnel already active.
+[2026-03-02 17:56:36] Tailscale daemon is running.
+[2026-03-02 17:56:36] Funnel already active.
+[2026-03-02 18:11:36] Tailscale daemon is running.
+[2026-03-02 18:11:36] Funnel already active.
+[2026-03-02 18:26:36] Tailscale daemon is running.
+[2026-03-02 18:26:36] Funnel already active.
+[2026-03-02 18:41:37] Tailscale daemon is running.
+[2026-03-02 18:41:37] Funnel already active.
+[2026-03-02 18:56:37] Tailscale daemon is running.
+[2026-03-02 18:56:37] Funnel already active.
+[2026-03-02 19:11:37] Tailscale daemon is running.
+[2026-03-02 19:11:37] Funnel already active.
+[2026-03-02 19:26:37] Tailscale daemon is running.
+[2026-03-02 19:26:37] Funnel already active.
+[2026-03-02 19:41:37] Tailscale daemon is running.
+[2026-03-02 19:41:37] Funnel already active.
+[2026-03-02 19:56:37] Tailscale daemon is running.
+[2026-03-02 19:56:37] Funnel already active.
+[2026-03-02 20:11:37] Tailscale daemon is running.
+[2026-03-02 20:11:37] Funnel already active.
+[2026-03-02 20:26:37] Tailscale daemon is running.
+[2026-03-02 20:26:38] Funnel already active.
+[2026-03-02 20:41:38] Tailscale daemon is running.
+[2026-03-02 20:41:38] Funnel already active.
+[2026-03-02 20:56:38] Tailscale daemon is running.
+[2026-03-02 20:56:38] Funnel already active.
+[2026-03-02 21:11:38] Tailscale daemon is running.
+[2026-03-02 21:11:38] Funnel already active.
+[2026-03-02 21:26:38] Tailscale daemon is running.
+[2026-03-02 21:26:38] Funnel already active.
+[2026-03-02 21:41:38] Tailscale daemon is running.
+[2026-03-02 21:41:38] Funnel already active.
+[2026-03-02 21:56:38] Tailscale daemon is running.
+[2026-03-02 21:56:38] Funnel already active.
+[2026-03-02 22:11:38] Tailscale daemon is running.
+[2026-03-02 22:11:38] Funnel already active.
+[2026-03-02 22:26:39] Tailscale daemon is running.
+[2026-03-02 22:26:39] Funnel already active.
+[2026-03-02 22:41:39] Tailscale daemon is running.
+[2026-03-02 22:41:39] Funnel already active.
+[2026-03-02 22:56:39] Tailscale daemon is running.
+[2026-03-02 22:56:39] Funnel already active.
+[2026-03-02 23:11:39] Tailscale daemon is running.
+[2026-03-02 23:11:39] Funnel already active.
+[2026-03-02 23:26:39] Tailscale daemon is running.
+[2026-03-02 23:26:39] Funnel already active.
+[2026-03-02 23:41:39] Tailscale daemon is running.
+[2026-03-02 23:41:39] Funnel already active.
+[2026-03-02 23:56:39] Tailscale daemon is running.
+[2026-03-02 23:56:39] Funnel already active.
+[2026-03-03 00:11:40] Tailscale daemon is running.
+[2026-03-03 00:11:40] Funnel already active.
+[2026-03-03 00:26:40] Tailscale daemon is running.
+[2026-03-03 00:26:40] Funnel already active.
+[2026-03-03 00:41:40] Tailscale daemon is running.
+[2026-03-03 00:41:40] Funnel already active.
+[2026-03-03 00:56:40] Tailscale daemon is running.
+[2026-03-03 00:56:40] Funnel already active.
+[2026-03-03 01:11:40] Tailscale daemon is running.
+[2026-03-03 01:11:40] Funnel already active.
+[2026-03-03 01:26:40] Tailscale daemon is running.
+[2026-03-03 01:26:40] Funnel already active.
+[2026-03-03 01:41:40] Tailscale daemon is running.
+[2026-03-03 01:41:40] Funnel already active.
+[2026-03-03 01:56:40] Tailscale daemon is running.
+[2026-03-03 01:56:40] Funnel already active.
+[2026-03-03 02:11:41] Tailscale daemon is running.
+[2026-03-03 02:11:41] Funnel already active.
+[2026-03-03 02:26:41] Tailscale daemon is running.
+[2026-03-03 02:26:41] Funnel already active.
+[2026-03-03 02:41:41] Tailscale daemon is running.
+[2026-03-03 02:41:41] Funnel already active.
+[2026-03-03 02:56:41] Tailscale daemon is running.
+[2026-03-03 02:56:41] Funnel already active.
+[2026-03-03 03:11:41] Tailscale daemon is running.
+[2026-03-03 03:11:41] Funnel already active.
+[2026-03-03 03:26:41] Tailscale daemon is running.
+[2026-03-03 03:26:41] Funnel already active.
+[2026-03-03 03:41:41] Tailscale daemon is running.
+[2026-03-03 03:41:41] Funnel already active.
+[2026-03-03 03:56:42] Tailscale daemon is running.
+[2026-03-03 03:56:42] Funnel already active.
+[2026-03-03 04:11:42] Tailscale daemon is running.
+[2026-03-03 04:11:42] Funnel already active.
+[2026-03-03 04:26:42] Tailscale daemon is running.
+[2026-03-03 04:26:42] Funnel already active.
+[2026-03-03 04:41:42] Tailscale daemon is running.
+[2026-03-03 04:41:42] Funnel already active.
+[2026-03-03 04:56:42] Tailscale daemon is running.
+[2026-03-03 04:56:42] Funnel already active.
+[2026-03-03 05:11:42] Tailscale daemon is running.
+[2026-03-03 05:11:42] Funnel already active.
+[2026-03-03 05:26:42] Tailscale daemon is running.
+[2026-03-03 05:26:42] Funnel already active.
+[2026-03-03 05:41:43] Tailscale daemon is running.
+[2026-03-03 05:41:43] Funnel already active.
+[2026-03-03 05:56:43] Tailscale daemon is running.
+[2026-03-03 05:56:43] Funnel already active.
+[2026-03-03 06:11:43] Tailscale daemon is running.
+[2026-03-03 06:11:43] Funnel already active.
+[2026-03-03 06:26:43] Tailscale daemon is running.
+[2026-03-03 06:26:43] Funnel already active.
+[2026-03-03 06:41:43] Tailscale daemon is running.
+[2026-03-03 06:41:43] Funnel already active.
+[2026-03-03 06:56:43] Tailscale daemon is running.
+[2026-03-03 06:56:43] Funnel already active.
+[2026-03-03 07:11:43] Tailscale daemon is running.
+[2026-03-03 07:11:43] Funnel already active.
+[2026-03-03 07:26:43] Tailscale daemon is running.
+[2026-03-03 07:26:43] Funnel already active.
+[2026-03-03 08:09:33] Tailscale daemon is running.
+[2026-03-03 08:09:33] Funnel already active.
+[2026-03-03 08:24:33] Tailscale daemon is running.
+[2026-03-03 08:24:33] Funnel already active.
+[2026-03-03 08:40:21] Tailscale daemon not running.
+[2026-03-03 08:40:21] Attempting to start Tailscale daemon...
+[2026-03-03 08:40:23] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-03 08:59:36] Tailscale daemon not running.
+[2026-03-03 08:59:36] Attempting to start Tailscale daemon...
+[2026-03-03 08:59:38] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-03 10:02:34] Tailscale daemon not running.
+[2026-03-03 10:02:34] Attempting to start Tailscale daemon...
+[2026-03-03 10:02:36] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-03 12:44:06] Tailscale daemon not running.
+[2026-03-03 12:44:06] Attempting to start Tailscale daemon...
+[2026-03-03 12:44:08] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-03 15:55:00] Tailscale daemon not running.
+[2026-03-03 15:55:00] Attempting to start Tailscale daemon...
+[2026-03-03 15:55:02] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-03 16:10:30] Tailscale daemon not running.
+[2026-03-03 16:10:30] Attempting to start Tailscale daemon...
+[2026-03-03 16:10:32] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-03 16:36:53] Tailscale daemon not running.
+[2026-03-03 16:36:53] Attempting to start Tailscale daemon...
+[2026-03-03 16:36:55] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-03 16:52:29] Tailscale daemon not running.
+[2026-03-03 16:52:29] Attempting to start Tailscale daemon...
+[2026-03-03 16:52:31] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-03 18:45:40] Tailscale daemon not running.
+[2026-03-03 18:45:40] Attempting to start Tailscale daemon...
+[2026-03-03 18:45:42] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-03 19:24:02] Tailscale daemon not running.
+[2026-03-03 19:24:02] Attempting to start Tailscale daemon...
+[2026-03-03 19:24:05] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-03 19:39:07] Tailscale daemon not running.
+[2026-03-03 19:39:07] Attempting to start Tailscale daemon...
+[2026-03-03 19:39:09] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-03 19:54:11] Tailscale daemon not running.
+[2026-03-03 19:54:11] Attempting to start Tailscale daemon...
+[2026-03-03 19:54:13] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-03 20:09:15] Tailscale daemon not running.
+[2026-03-03 20:09:15] Attempting to start Tailscale daemon...
+[2026-03-03 20:09:17] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-03 20:24:19] Tailscale daemon not running.
+[2026-03-03 20:24:19] Attempting to start Tailscale daemon...
+[2026-03-03 20:24:21] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-03 20:39:24] Tailscale daemon not running.
+[2026-03-03 20:39:24] Attempting to start Tailscale daemon...
+[2026-03-03 20:39:26] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-03 20:54:28] Tailscale daemon not running.
+[2026-03-03 20:54:28] Attempting to start Tailscale daemon...
+[2026-03-03 20:54:30] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-03 21:09:32] Tailscale daemon not running.
+[2026-03-03 21:09:32] Attempting to start Tailscale daemon...
+[2026-03-03 21:09:34] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-03 21:24:36] Tailscale daemon not running.
+[2026-03-03 21:24:36] Attempting to start Tailscale daemon...
+[2026-03-03 21:24:38] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-03 21:39:40] Tailscale daemon not running.
+[2026-03-03 21:39:40] Attempting to start Tailscale daemon...
+[2026-03-03 21:39:42] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-03 21:54:44] Tailscale daemon not running.
+[2026-03-03 21:54:44] Attempting to start Tailscale daemon...
+[2026-03-03 21:54:47] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-03 22:09:49] Tailscale daemon not running.
+[2026-03-03 22:09:49] Attempting to start Tailscale daemon...
+[2026-03-03 22:09:51] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-03 22:24:53] Tailscale daemon not running.
+[2026-03-03 22:24:53] Attempting to start Tailscale daemon...
+[2026-03-03 22:24:55] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-03 22:39:57] Tailscale daemon not running.
+[2026-03-03 22:39:57] Attempting to start Tailscale daemon...
+[2026-03-03 22:39:59] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-03 22:55:01] Tailscale daemon not running.
+[2026-03-03 22:55:01] Attempting to start Tailscale daemon...
+[2026-03-03 22:55:03] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-03 23:10:06] Tailscale daemon not running.
+[2026-03-03 23:10:06] Attempting to start Tailscale daemon...
+[2026-03-03 23:10:08] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-03 23:25:10] Tailscale daemon not running.
+[2026-03-03 23:25:10] Attempting to start Tailscale daemon...
+[2026-03-03 23:25:12] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-03 23:40:14] Tailscale daemon not running.
+[2026-03-03 23:40:14] Attempting to start Tailscale daemon...
+[2026-03-03 23:40:16] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-03 23:55:18] Tailscale daemon not running.
+[2026-03-03 23:55:18] Attempting to start Tailscale daemon...
+[2026-03-03 23:55:20] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 00:10:22] Tailscale daemon not running.
+[2026-03-04 00:10:22] Attempting to start Tailscale daemon...
+[2026-03-04 00:10:25] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 00:25:27] Tailscale daemon not running.
+[2026-03-04 00:25:27] Attempting to start Tailscale daemon...
+[2026-03-04 00:25:29] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 00:40:31] Tailscale daemon not running.
+[2026-03-04 00:40:31] Attempting to start Tailscale daemon...
+[2026-03-04 00:40:33] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 00:55:35] Tailscale daemon not running.
+[2026-03-04 00:55:35] Attempting to start Tailscale daemon...
+[2026-03-04 00:55:37] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 01:10:39] Tailscale daemon not running.
+[2026-03-04 01:10:39] Attempting to start Tailscale daemon...
+[2026-03-04 01:10:41] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 01:25:44] Tailscale daemon not running.
+[2026-03-04 01:25:44] Attempting to start Tailscale daemon...
+[2026-03-04 01:25:46] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 01:40:48] Tailscale daemon not running.
+[2026-03-04 01:40:48] Attempting to start Tailscale daemon...
+[2026-03-04 01:40:50] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 01:55:52] Tailscale daemon not running.
+[2026-03-04 01:55:52] Attempting to start Tailscale daemon...
+[2026-03-04 01:55:54] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 02:10:56] Tailscale daemon not running.
+[2026-03-04 02:10:56] Attempting to start Tailscale daemon...
+[2026-03-04 02:10:58] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 02:26:00] Tailscale daemon not running.
+[2026-03-04 02:26:00] Attempting to start Tailscale daemon...
+[2026-03-04 02:26:03] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 02:41:05] Tailscale daemon not running.
+[2026-03-04 02:41:05] Attempting to start Tailscale daemon...
+[2026-03-04 02:41:07] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 02:56:09] Tailscale daemon not running.
+[2026-03-04 02:56:09] Attempting to start Tailscale daemon...
+[2026-03-04 02:56:11] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 03:11:13] Tailscale daemon not running.
+[2026-03-04 03:11:13] Attempting to start Tailscale daemon...
+[2026-03-04 03:11:15] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 03:26:17] Tailscale daemon not running.
+[2026-03-04 03:26:17] Attempting to start Tailscale daemon...
+[2026-03-04 03:26:19] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 03:41:22] Tailscale daemon not running.
+[2026-03-04 03:41:22] Attempting to start Tailscale daemon...
+[2026-03-04 03:41:24] Failed to start Tailscale daemon: failed to connect to local tailscaled (which appears to be running as tailscaled, pid 63872). Got error: Failed to connect to local Tailscale daemon for /localapi/v0/status; not running? Error: dial unix /var/run/tailscaled.socket: connect: no such file or directory
+[2026-03-04 03:56:26] Tailscale daemon not running.
+[2026-03-04 03:56:26] Attempting to start Tailscale daemon...
+[2026-03-04 03:56:28] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 04:11:30] Tailscale daemon not running.
+[2026-03-04 04:11:30] Attempting to start Tailscale daemon...
+[2026-03-04 04:11:32] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 04:26:34] Tailscale daemon not running.
+[2026-03-04 04:26:34] Attempting to start Tailscale daemon...
+[2026-03-04 04:26:36] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 04:41:38] Tailscale daemon not running.
+[2026-03-04 04:41:38] Attempting to start Tailscale daemon...
+[2026-03-04 04:41:41] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 04:56:43] Tailscale daemon not running.
+[2026-03-04 04:56:43] Attempting to start Tailscale daemon...
+[2026-03-04 04:56:45] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 05:11:47] Tailscale daemon not running.
+[2026-03-04 05:11:47] Attempting to start Tailscale daemon...
+[2026-03-04 05:11:49] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 05:26:51] Tailscale daemon not running.
+[2026-03-04 05:26:51] Attempting to start Tailscale daemon...
+[2026-03-04 05:26:53] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 05:41:55] Tailscale daemon not running.
+[2026-03-04 05:41:55] Attempting to start Tailscale daemon...
+[2026-03-04 05:41:57] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 05:57:00] Tailscale daemon not running.
+[2026-03-04 05:57:00] Attempting to start Tailscale daemon...
+[2026-03-04 05:57:02] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 06:12:04] Tailscale daemon not running.
+[2026-03-04 06:12:04] Attempting to start Tailscale daemon...
+[2026-03-04 06:12:06] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 06:27:08] Tailscale daemon not running.
+[2026-03-04 06:27:08] Attempting to start Tailscale daemon...
+[2026-03-04 06:27:10] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 06:42:12] Tailscale daemon not running.
+[2026-03-04 06:42:12] Attempting to start Tailscale daemon...
+[2026-03-04 06:42:14] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 06:57:17] Tailscale daemon not running.
+[2026-03-04 06:57:17] Attempting to start Tailscale daemon...
+[2026-03-04 06:57:19] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 07:12:21] Tailscale daemon not running.
+[2026-03-04 07:12:21] Attempting to start Tailscale daemon...
+[2026-03-04 07:12:23] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 07:55:22] Tailscale daemon not running.
+[2026-03-04 07:55:22] Attempting to start Tailscale daemon...
+[2026-03-04 07:55:24] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 08:10:27] Tailscale daemon not running.
+[2026-03-04 08:10:27] Attempting to start Tailscale daemon...
+[2026-03-04 08:10:29] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 08:25:31] Tailscale daemon not running.
+[2026-03-04 08:25:31] Attempting to start Tailscale daemon...
+[2026-03-04 08:25:33] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 08:40:35] Tailscale daemon not running.
+[2026-03-04 08:40:35] Attempting to start Tailscale daemon...
+[2026-03-04 08:40:37] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 08:55:39] Tailscale daemon not running.
+[2026-03-04 08:55:39] Attempting to start Tailscale daemon...
+[2026-03-04 08:55:41] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 09:10:43] Tailscale daemon not running.
+[2026-03-04 09:10:43] Attempting to start Tailscale daemon...
+[2026-03-04 09:10:46] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 09:25:48] Tailscale daemon not running.
+[2026-03-04 09:25:48] Attempting to start Tailscale daemon...
+[2026-03-04 09:25:50] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 09:40:52] Tailscale daemon not running.
+[2026-03-04 09:40:52] Attempting to start Tailscale daemon...
+[2026-03-04 09:40:54] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 09:55:56] Tailscale daemon not running.
+[2026-03-04 09:55:56] Attempting to start Tailscale daemon...
+[2026-03-04 09:55:58] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 10:11:00] Tailscale daemon not running.
+[2026-03-04 10:11:00] Attempting to start Tailscale daemon...
+[2026-03-04 10:11:02] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 10:26:05] Tailscale daemon not running.
+[2026-03-04 10:26:05] Attempting to start Tailscale daemon...
+[2026-03-04 10:26:07] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 10:41:09] Tailscale daemon not running.
+[2026-03-04 10:41:09] Attempting to start Tailscale daemon...
+[2026-03-04 10:41:11] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 10:56:13] Tailscale daemon not running.
+[2026-03-04 10:56:13] Attempting to start Tailscale daemon...
+[2026-03-04 10:56:15] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 11:11:17] Tailscale daemon not running.
+[2026-03-04 11:11:17] Attempting to start Tailscale daemon...
+[2026-03-04 11:11:19] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 11:26:22] Tailscale daemon not running.
+[2026-03-04 11:26:22] Attempting to start Tailscale daemon...
+[2026-03-04 11:26:24] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 11:41:26] Tailscale daemon not running.
+[2026-03-04 11:41:26] Attempting to start Tailscale daemon...
+[2026-03-04 11:41:28] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 11:56:30] Tailscale daemon not running.
+[2026-03-04 11:56:30] Attempting to start Tailscale daemon...
+[2026-03-04 11:56:32] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 12:11:34] Tailscale daemon not running.
+[2026-03-04 12:11:34] Attempting to start Tailscale daemon...
+[2026-03-04 12:11:36] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 12:26:39] Tailscale daemon not running.
+[2026-03-04 12:26:39] Attempting to start Tailscale daemon...
+[2026-03-04 12:26:41] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 12:41:43] Tailscale daemon not running.
+[2026-03-04 12:41:43] Attempting to start Tailscale daemon...
+[2026-03-04 12:41:45] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 12:56:47] Tailscale daemon not running.
+[2026-03-04 12:56:47] Attempting to start Tailscale daemon...
+[2026-03-04 12:56:49] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 13:11:51] Tailscale daemon not running.
+[2026-03-04 13:11:51] Attempting to start Tailscale daemon...
+[2026-03-04 13:11:53] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 13:26:56] Tailscale daemon not running.
+[2026-03-04 13:26:56] Attempting to start Tailscale daemon...
+[2026-03-04 13:26:58] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 13:42:00] Tailscale daemon not running.
+[2026-03-04 13:42:00] Attempting to start Tailscale daemon...
+[2026-03-04 13:42:02] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 13:57:04] Tailscale daemon not running.
+[2026-03-04 13:57:04] Attempting to start Tailscale daemon...
+[2026-03-04 13:57:06] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 14:12:08] Tailscale daemon not running.
+[2026-03-04 14:12:08] Attempting to start Tailscale daemon...
+[2026-03-04 14:12:10] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 14:27:13] Tailscale daemon not running.
+[2026-03-04 14:27:13] Attempting to start Tailscale daemon...
+[2026-03-04 14:27:15] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 14:42:17] Tailscale daemon not running.
+[2026-03-04 14:42:17] Attempting to start Tailscale daemon...
+[2026-03-04 14:42:19] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 14:57:21] Tailscale daemon not running.
+[2026-03-04 14:57:21] Attempting to start Tailscale daemon...
+[2026-03-04 14:57:23] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 15:12:25] Tailscale daemon not running.
+[2026-03-04 15:12:25] Attempting to start Tailscale daemon...
+[2026-03-04 15:12:27] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 15:27:30] Tailscale daemon not running.
+[2026-03-04 15:27:30] Attempting to start Tailscale daemon...
+[2026-03-04 15:27:32] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 15:42:34] Tailscale daemon not running.
+[2026-03-04 15:42:34] Attempting to start Tailscale daemon...
+[2026-03-04 15:42:36] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 15:57:38] Tailscale daemon not running.
+[2026-03-04 15:57:38] Attempting to start Tailscale daemon...
+[2026-03-04 15:57:40] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 16:12:42] Tailscale daemon not running.
+[2026-03-04 16:12:42] Attempting to start Tailscale daemon...
+[2026-03-04 16:12:44] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 16:27:47] Tailscale daemon not running.
+[2026-03-04 16:27:47] Attempting to start Tailscale daemon...
+[2026-03-04 16:27:49] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 16:42:51] Tailscale daemon not running.
+[2026-03-04 16:42:51] Attempting to start Tailscale daemon...
+[2026-03-04 16:42:53] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 16:57:55] Tailscale daemon not running.
+[2026-03-04 16:57:55] Attempting to start Tailscale daemon...
+[2026-03-04 16:57:57] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 17:12:59] Tailscale daemon not running.
+[2026-03-04 17:12:59] Attempting to start Tailscale daemon...
+[2026-03-04 17:13:01] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 17:28:04] Tailscale daemon not running.
+[2026-03-04 17:28:04] Attempting to start Tailscale daemon...
+[2026-03-04 17:28:06] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 17:43:08] Tailscale daemon not running.
+[2026-03-04 17:43:08] Attempting to start Tailscale daemon...
+[2026-03-04 17:43:10] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 17:58:12] Tailscale daemon not running.
+[2026-03-04 17:58:12] Attempting to start Tailscale daemon...
+[2026-03-04 17:58:14] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 18:13:16] Tailscale daemon not running.
+[2026-03-04 18:13:16] Attempting to start Tailscale daemon...
+[2026-03-04 18:13:18] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 18:28:21] Tailscale daemon not running.
+[2026-03-04 18:28:21] Attempting to start Tailscale daemon...
+[2026-03-04 18:28:23] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 18:43:25] Tailscale daemon not running.
+[2026-03-04 18:43:25] Attempting to start Tailscale daemon...
+[2026-03-04 18:43:27] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 18:58:29] Tailscale daemon not running.
+[2026-03-04 18:58:29] Attempting to start Tailscale daemon...
+[2026-03-04 18:58:31] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 19:13:33] Tailscale daemon not running.
+[2026-03-04 19:13:33] Attempting to start Tailscale daemon...
+[2026-03-04 19:13:35] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 19:28:38] Tailscale daemon not running.
+[2026-03-04 19:28:38] Attempting to start Tailscale daemon...
+[2026-03-04 19:28:40] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 20:15:23] Tailscale daemon not running.
+[2026-03-04 20:15:23] Attempting to start Tailscale daemon...
+[2026-03-04 20:15:25] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 20:30:27] Tailscale daemon not running.
+[2026-03-04 20:30:27] Attempting to start Tailscale daemon...
+[2026-03-04 20:30:29] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 20:45:31] Tailscale daemon not running.
+[2026-03-04 20:45:31] Attempting to start Tailscale daemon...
+[2026-03-04 20:45:33] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 21:00:35] Tailscale daemon not running.
+[2026-03-04 21:00:35] Attempting to start Tailscale daemon...
+[2026-03-04 21:00:37] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 21:15:40] Tailscale daemon not running.
+[2026-03-04 21:15:40] Attempting to start Tailscale daemon...
+[2026-03-04 21:15:42] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 21:30:44] Tailscale daemon not running.
+[2026-03-04 21:30:44] Attempting to start Tailscale daemon...
+[2026-03-04 21:30:46] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 21:45:48] Tailscale daemon not running.
+[2026-03-04 21:45:48] Attempting to start Tailscale daemon...
+[2026-03-04 21:45:50] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 22:00:52] Tailscale daemon not running.
+[2026-03-04 22:00:52] Attempting to start Tailscale daemon...
+[2026-03-04 22:00:54] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 22:15:56] Tailscale daemon not running.
+[2026-03-04 22:15:56] Attempting to start Tailscale daemon...
+[2026-03-04 22:15:58] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 22:31:01] Tailscale daemon not running.
+[2026-03-04 22:31:01] Attempting to start Tailscale daemon...
+[2026-03-04 22:31:03] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 22:46:05] Tailscale daemon not running.
+[2026-03-04 22:46:05] Attempting to start Tailscale daemon...
+[2026-03-04 22:46:07] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 23:01:09] Tailscale daemon not running.
+[2026-03-04 23:01:09] Attempting to start Tailscale daemon...
+[2026-03-04 23:01:11] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 23:16:13] Tailscale daemon not running.
+[2026-03-04 23:16:13] Attempting to start Tailscale daemon...
+[2026-03-04 23:16:15] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 23:31:17] Tailscale daemon not running.
+[2026-03-04 23:31:17] Attempting to start Tailscale daemon...
+[2026-03-04 23:31:20] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-04 23:46:22] Tailscale daemon not running.
+[2026-03-04 23:46:22] Attempting to start Tailscale daemon...
+[2026-03-04 23:46:24] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-05 00:01:26] Tailscale daemon not running.
+[2026-03-05 00:01:26] Attempting to start Tailscale daemon...
+[2026-03-05 00:01:28] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-05 00:16:30] Tailscale daemon not running.
+[2026-03-05 00:16:30] Attempting to start Tailscale daemon...
+[2026-03-05 00:16:32] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-05 00:31:34] Tailscale daemon not running.
+[2026-03-05 00:31:34] Attempting to start Tailscale daemon...
+[2026-03-05 00:31:36] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-05 00:46:39] Tailscale daemon not running.
+[2026-03-05 00:46:39] Attempting to start Tailscale daemon...
+[2026-03-05 00:46:41] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-05 01:01:43] Tailscale daemon not running.
+[2026-03-05 01:01:43] Attempting to start Tailscale daemon...
+[2026-03-05 01:01:45] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-05 01:16:47] Tailscale daemon not running.
+[2026-03-05 01:16:47] Attempting to start Tailscale daemon...
+[2026-03-05 01:16:49] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-05 01:31:51] Tailscale daemon not running.
+[2026-03-05 01:31:51] Attempting to start Tailscale daemon...
+[2026-03-05 01:31:53] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-05 01:46:55] Tailscale daemon not running.
+[2026-03-05 01:46:55] Attempting to start Tailscale daemon...
+[2026-03-05 01:46:58] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-05 02:02:00] Tailscale daemon not running.
+[2026-03-05 02:02:00] Attempting to start Tailscale daemon...
+[2026-03-05 02:02:02] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-05 02:17:04] Tailscale daemon not running.
+[2026-03-05 02:17:04] Attempting to start Tailscale daemon...
+[2026-03-05 02:17:06] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-05 02:32:08] Tailscale daemon not running.
+[2026-03-05 02:32:08] Attempting to start Tailscale daemon...
+[2026-03-05 02:32:10] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-05 02:47:12] Tailscale daemon not running.
+[2026-03-05 02:47:12] Attempting to start Tailscale daemon...
+[2026-03-05 02:47:14] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-05 03:02:16] Tailscale daemon not running.
+[2026-03-05 03:02:17] Attempting to start Tailscale daemon...
+[2026-03-05 03:02:19] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-05 03:17:21] Tailscale daemon not running.
+[2026-03-05 03:17:21] Attempting to start Tailscale daemon...
+[2026-03-05 03:17:23] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-05 03:32:25] Tailscale daemon not running.
+[2026-03-05 03:32:25] Attempting to start Tailscale daemon...
+[2026-03-05 03:32:27] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-05 03:47:29] Tailscale daemon not running.
+[2026-03-05 03:47:29] Attempting to start Tailscale daemon...
+[2026-03-05 03:47:31] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-05 04:02:33] Tailscale daemon not running.
+[2026-03-05 04:02:33] Attempting to start Tailscale daemon...
+[2026-03-05 04:02:35] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-05 04:17:38] Tailscale daemon not running.
+[2026-03-05 04:17:38] Attempting to start Tailscale daemon...
+[2026-03-05 04:17:40] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-05 04:32:42] Tailscale daemon not running.
+[2026-03-05 04:32:42] Attempting to start Tailscale daemon...
+[2026-03-05 04:32:44] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-05 04:47:46] Tailscale daemon not running.
+[2026-03-05 04:47:46] Attempting to start Tailscale daemon...
+[2026-03-05 04:47:48] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-05 05:02:50] Tailscale daemon not running.
+[2026-03-05 05:02:50] Attempting to start Tailscale daemon...
+[2026-03-05 05:02:52] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-05 05:17:55] Tailscale daemon not running.
+[2026-03-05 05:17:55] Attempting to start Tailscale daemon...
+[2026-03-05 05:17:57] Failed to start Tailscale daemon: failed to connect to local Tailscale service; is Tailscale running?
+[2026-03-05 05:32:57] Tailscale daemon is running.
+[2026-03-05 05:32:57] Funnel already active.
+[2026-03-05 05:47:57] Tailscale daemon is running.
+[2026-03-05 05:47:57] Funnel already active.
+[2026-03-05 06:02:57] Tailscale daemon is running.
+[2026-03-05 06:02:57] Funnel already active.
+[2026-03-05 06:17:57] Tailscale daemon is running.
+[2026-03-05 06:17:57] Funnel already active.
+[2026-03-05 06:32:58] Tailscale daemon is running.
+[2026-03-05 06:32:58] Funnel already active.
+[2026-03-05 06:47:58] Tailscale daemon is running.
+[2026-03-05 06:47:58] Funnel already active.
+[2026-03-05 07:02:58] Tailscale daemon is running.
+[2026-03-05 07:02:58] Funnel already active.
+[2026-03-05 07:17:58] Tailscale daemon is running.
+[2026-03-05 07:17:58] Funnel already active.
+[2026-03-05 07:32:58] Tailscale daemon is running.
+[2026-03-05 07:32:58] Funnel already active.
+[2026-03-05 08:19:00] Tailscale daemon is running.
+[2026-03-05 08:19:00] Funnel already active.
+[2026-03-05 08:34:00] Tailscale daemon is running.
+[2026-03-05 08:34:00] Funnel already active.
+[2026-03-05 08:49:00] Tailscale daemon is running.
+[2026-03-05 08:49:00] Funnel already active.
+[2026-03-05 09:04:00] Tailscale daemon is running.
+[2026-03-05 09:04:00] Funnel already active.
+[2026-03-05 09:19:00] Tailscale daemon is running.
+[2026-03-05 09:19:00] Funnel already active.
+[2026-03-05 09:34:00] Tailscale daemon is running.
+[2026-03-05 09:34:00] Funnel already active.
+[2026-03-05 09:49:01] Tailscale daemon is running.
+[2026-03-05 09:49:01] Funnel already active.
+[2026-03-05 10:04:01] Tailscale daemon is running.
+[2026-03-05 10:04:01] Funnel already active.
+[2026-03-05 10:19:01] Tailscale daemon is running.
+[2026-03-05 10:19:01] Funnel already active.
+[2026-03-05 10:34:01] Tailscale daemon is running.
+[2026-03-05 10:34:01] Funnel already active.
+[2026-03-05 10:49:01] Tailscale daemon is running.
+[2026-03-05 10:49:01] Funnel already active.
+[2026-03-05 11:04:01] Tailscale daemon is running.
+[2026-03-05 11:04:01] Funnel already active.
+[2026-03-05 11:19:02] Tailscale daemon is running.
+[2026-03-05 11:19:02] Funnel already active.
+[2026-03-05 11:34:02] Tailscale daemon is running.
+[2026-03-05 11:34:02] Funnel already active.
+[2026-03-05 11:49:02] Tailscale daemon is running.
+[2026-03-05 11:49:02] Funnel already active.
+[2026-03-05 12:04:02] Tailscale daemon is running.
+[2026-03-05 12:04:02] Funnel already active.
+[2026-03-05 12:19:02] Tailscale daemon is running.
+[2026-03-05 12:19:02] Funnel already active.
+[2026-03-05 12:34:02] Tailscale daemon is running.
+[2026-03-05 12:34:02] Funnel already active.
+[2026-03-05 12:49:02] Tailscale daemon is running.
+[2026-03-05 12:49:02] Funnel already active.
+[2026-03-05 13:04:03] Tailscale daemon is running.
+[2026-03-05 13:04:03] Funnel already active.
+[2026-03-05 13:19:03] Tailscale daemon is running.
+[2026-03-05 13:19:03] Funnel already active.
+[2026-03-05 13:34:03] Tailscale daemon is running.
+[2026-03-05 13:34:03] Funnel already active.
+[2026-03-05 13:49:03] Tailscale daemon is running.
+[2026-03-05 13:49:03] Funnel already active.
+[2026-03-05 14:04:03] Tailscale daemon is running.
+[2026-03-05 14:04:03] Funnel already active.
+[2026-03-05 14:19:03] Tailscale daemon is running.
+[2026-03-05 14:19:03] Funnel already active.
+[2026-03-05 14:34:03] Tailscale daemon is running.
+[2026-03-05 14:34:03] Funnel already active.
+[2026-03-05 14:49:04] Tailscale daemon is running.
+[2026-03-05 14:49:04] Funnel already active.
+[2026-03-05 15:04:04] Tailscale daemon is running.
+[2026-03-05 15:04:04] Funnel already active.
+[2026-03-05 15:19:04] Tailscale daemon is running.
+[2026-03-05 15:19:04] Funnel already active.
+[2026-03-05 15:34:04] Tailscale daemon is running.
+[2026-03-05 15:34:04] Funnel already active.
+[2026-03-05 15:49:04] Tailscale daemon is running.
+[2026-03-05 15:49:04] Funnel already active.
+[2026-03-05 16:04:04] Tailscale daemon is running.
+[2026-03-05 16:04:04] Funnel already active.
+[2026-03-05 16:19:04] Tailscale daemon is running.
+[2026-03-05 16:19:04] Funnel already active.
+[2026-03-05 16:34:05] Tailscale daemon is running.
+[2026-03-05 16:34:05] Funnel already active.
+[2026-03-05 16:49:05] Tailscale daemon is running.
+[2026-03-05 16:49:05] Funnel already active.
+[2026-03-05 17:04:05] Tailscale daemon is running.
+[2026-03-05 17:04:05] Funnel already active.
+[2026-03-05 17:19:05] Tailscale daemon is running.
+[2026-03-05 17:19:05] Funnel already active.
+[2026-03-05 17:34:05] Tailscale daemon is running.
+[2026-03-05 17:34:05] Funnel already active.
+[2026-03-05 17:49:05] Tailscale daemon is running.
+[2026-03-05 17:49:05] Funnel already active.
+[2026-03-05 18:04:05] Tailscale daemon is running.
+[2026-03-05 18:04:05] Funnel already active.
+[2026-03-05 18:19:06] Tailscale daemon is running.
+[2026-03-05 18:19:06] Funnel already active.
+[2026-03-05 18:34:06] Tailscale daemon is running.
+[2026-03-05 18:34:06] Funnel already active.
+[2026-03-05 19:55:17] Tailscale daemon is running.
+[2026-03-05 19:55:17] Funnel already active.
+[2026-03-05 20:10:17] Tailscale daemon is running.
+[2026-03-05 20:10:17] Funnel already active.
+[2026-03-05 20:25:17] Tailscale daemon is running.
+[2026-03-05 20:25:17] Funnel already active.
+[2026-03-05 20:40:18] Tailscale daemon is running.
+[2026-03-05 20:40:18] Funnel already active.
+[2026-03-05 20:55:18] Tailscale daemon is running.
+[2026-03-05 20:55:18] Funnel already active.
+[2026-03-05 21:10:18] Tailscale daemon is running.
+[2026-03-05 21:10:18] Funnel already active.
+[2026-03-05 21:25:18] Tailscale daemon is running.
+[2026-03-05 21:25:18] Funnel already active.
+[2026-03-05 21:40:18] Tailscale daemon is running.
+[2026-03-05 21:40:18] Funnel already active.
+[2026-03-05 21:55:18] Tailscale daemon is running.
+[2026-03-05 21:55:18] Funnel already active.
+[2026-03-05 22:10:18] Tailscale daemon is running.
+[2026-03-05 22:10:18] Funnel already active.
+[2026-03-05 22:25:19] Tailscale daemon is running.
+[2026-03-05 22:25:19] Funnel already active.
+[2026-03-05 22:40:19] Tailscale daemon is running.
+[2026-03-05 22:40:19] Funnel already active.
+[2026-03-05 22:55:19] Tailscale daemon is running.
+[2026-03-05 22:55:19] Funnel already active.
+[2026-03-05 23:10:19] Tailscale daemon is running.
+[2026-03-05 23:10:19] Funnel already active.
+[2026-03-05 23:25:19] Tailscale daemon is running.
+[2026-03-05 23:25:19] Funnel already active.
+[2026-03-05 23:40:19] Tailscale daemon is running.
+[2026-03-05 23:40:19] Funnel already active.
+[2026-03-05 23:55:20] Tailscale daemon is running.
+[2026-03-05 23:55:20] Funnel already active.
+[2026-03-06 00:10:20] Tailscale daemon is running.
+[2026-03-06 00:10:20] Funnel already active.
+[2026-03-06 00:25:20] Tailscale daemon is running.
+[2026-03-06 00:25:20] Funnel already active.
+[2026-03-06 00:40:20] Tailscale daemon is running.
+[2026-03-06 00:40:20] Funnel already active.
+[2026-03-06 00:55:20] Tailscale daemon is running.
+[2026-03-06 00:55:20] Funnel already active.
+[2026-03-06 01:10:21] Tailscale daemon is running.
+[2026-03-06 01:10:21] Funnel already active.
+[2026-03-06 01:25:21] Tailscale daemon is running.
+[2026-03-06 01:25:21] Funnel already active.
+[2026-03-06 01:40:21] Tailscale daemon is running.
+[2026-03-06 01:40:21] Funnel already active.
+[2026-03-06 01:55:21] Tailscale daemon is running.
+[2026-03-06 01:55:21] Funnel already active.
+[2026-03-06 02:10:21] Tailscale daemon is running.
+[2026-03-06 02:10:21] Funnel already active.
+[2026-03-06 02:25:21] Tailscale daemon is running.
+[2026-03-06 02:25:22] Funnel already active.
+[2026-03-06 02:40:22] Tailscale daemon is running.
+[2026-03-06 02:40:22] Funnel already active.
+[2026-03-06 02:55:22] Tailscale daemon is running.
+[2026-03-06 02:55:22] Funnel already active.
+[2026-03-06 03:10:22] Tailscale daemon is running.
+[2026-03-06 03:10:22] Funnel already active.
+[2026-03-06 03:25:22] Tailscale daemon is running.
+[2026-03-06 03:25:22] Funnel already active.
+[2026-03-06 03:40:23] Tailscale daemon is running.
+[2026-03-06 03:40:23] Funnel already active.
+[2026-03-06 03:55:23] Tailscale daemon is running.
+[2026-03-06 03:55:23] Funnel already active.
+[2026-03-06 04:10:23] Tailscale daemon is running.
+[2026-03-06 04:10:23] Funnel already active.
+[2026-03-06 04:25:23] Tailscale daemon is running.
+[2026-03-06 04:25:23] Funnel already active.
+[2026-03-06 04:40:23] Tailscale daemon is running.
+[2026-03-06 04:40:23] Funnel already active.
+[2026-03-06 04:55:24] Tailscale daemon is running.
+[2026-03-06 04:55:24] Funnel already active.
+[2026-03-06 05:10:24] Tailscale daemon is running.
+[2026-03-06 05:10:24] Funnel already active.
+[2026-03-06 05:25:24] Tailscale daemon is running.
+[2026-03-06 05:25:24] Funnel already active.
+[2026-03-06 05:40:24] Tailscale daemon is running.
+[2026-03-06 05:40:24] Funnel already active.
+[2026-03-06 05:55:24] Tailscale daemon is running.
+[2026-03-06 05:55:24] Funnel already active.
+[2026-03-06 06:10:25] Tailscale daemon is running.
+[2026-03-06 06:10:25] Funnel already active.
+[2026-03-06 06:25:25] Tailscale daemon is running.
+[2026-03-06 06:25:25] Funnel already active.
+[2026-03-06 06:40:25] Tailscale daemon is running.
+[2026-03-06 06:40:25] Funnel already active.
+[2026-03-06 06:55:25] Tailscale daemon is running.
+[2026-03-06 06:55:25] Funnel already active.
+[2026-03-06 07:10:25] Tailscale daemon is running.
+[2026-03-06 07:10:25] Funnel already active.
+[2026-03-06 07:25:25] Tailscale daemon is running.
+[2026-03-06 07:25:25] Funnel already active.
+[2026-03-06 08:15:51] Tailscale daemon is running.
+[2026-03-06 08:15:51] Funnel already active.
+[2026-03-06 08:35:02] Tailscale daemon is running.
+[2026-03-06 08:35:02] Funnel already active.
+[2026-03-06 09:01:51] Tailscale daemon is running.
+[2026-03-06 09:01:51] Funnel already active.
+[2026-03-06 09:20:38] Tailscale daemon is running.
+[2026-03-06 09:20:38] Funnel already active.
+[2026-03-06 09:41:01] Tailscale daemon is running.
+[2026-03-06 09:41:01] Funnel already active.
+[2026-03-06 09:56:39] Tailscale daemon is running.
+[2026-03-06 09:56:39] Funnel already active.
+[2026-03-06 10:29:58] Tailscale daemon is running.
+[2026-03-06 10:29:58] Funnel already active.
+[2026-03-06 11:17:05] Tailscale daemon is running.
+[2026-03-06 11:17:05] Funnel already active.
+[2026-03-06 12:16:18] Tailscale daemon is running.
+[2026-03-06 12:16:18] Funnel already active.
+[2026-03-06 13:05:12] Tailscale daemon is running.
+[2026-03-06 13:05:12] Funnel already active.
+[2026-03-06 14:35:06] Tailscale daemon is running.
+[2026-03-06 14:35:06] Funnel already active.
+[2026-03-06 15:59:11] Tailscale daemon is running.
+[2026-03-06 15:59:11] Funnel already active.
+[2026-03-06 16:14:12] Tailscale daemon is running.
+[2026-03-06 16:14:12] Funnel already active.
+[2026-03-06 16:29:12] Tailscale daemon is running.
+[2026-03-06 16:29:12] Funnel already active.
+[2026-03-06 16:44:12] Tailscale daemon is running.
+[2026-03-06 16:44:12] Funnel already active.
+[2026-03-06 17:15:14] Tailscale daemon is running.
+[2026-03-06 17:15:14] Funnel already active.
+[2026-03-06 17:55:22] Tailscale daemon is running.
+[2026-03-06 17:55:22] Funnel already active.
+[2026-03-06 18:10:22] Tailscale daemon is running.
+[2026-03-06 18:10:22] Funnel already active.
+[2026-03-06 18:25:22] Tailscale daemon is running.
+[2026-03-06 18:25:22] Funnel already active.
+[2026-03-06 18:40:22] Tailscale daemon is running.
+[2026-03-06 18:40:22] Funnel already active.
+[2026-03-06 18:55:22] Tailscale daemon is running.
+[2026-03-06 18:55:22] Funnel already active.
+[2026-03-06 19:10:23] Tailscale daemon is running.
+[2026-03-06 19:10:23] Funnel already active.
+[2026-03-06 19:25:23] Tailscale daemon is running.
+[2026-03-06 19:25:23] Funnel already active.
+[2026-03-06 19:40:23] Tailscale daemon is running.
+[2026-03-06 19:40:23] Funnel already active.
+[2026-03-06 19:55:23] Tailscale daemon is running.
+[2026-03-06 19:55:23] Funnel already active.
+[2026-03-06 20:10:23] Tailscale daemon is running.
+[2026-03-06 20:10:23] Funnel already active.
+[2026-03-06 20:25:23] Tailscale daemon is running.
+[2026-03-06 20:25:23] Funnel already active.
+[2026-03-06 20:40:24] Tailscale daemon is running.
+[2026-03-06 20:40:24] Funnel already active.
+[2026-03-06 20:55:24] Tailscale daemon is running.
+[2026-03-06 20:55:24] Funnel already active.
+[2026-03-06 21:10:24] Tailscale daemon is running.
+[2026-03-06 21:10:24] Funnel already active.
+[2026-03-06 21:25:24] Tailscale daemon is running.
+[2026-03-06 21:25:24] Funnel already active.
+[2026-03-06 21:40:24] Tailscale daemon is running.
+[2026-03-06 21:40:24] Funnel already active.
+[2026-03-06 21:55:24] Tailscale daemon is running.
+[2026-03-06 21:55:24] Funnel already active.
+[2026-03-06 22:10:24] Tailscale daemon is running.
+[2026-03-06 22:10:24] Funnel already active.
+[2026-03-06 22:25:24] Tailscale daemon is running.
+[2026-03-06 22:25:25] Funnel already active.
+[2026-03-06 22:40:25] Tailscale daemon is running.
+[2026-03-06 22:40:25] Funnel already active.
+[2026-03-06 22:55:25] Tailscale daemon is running.
+[2026-03-06 22:55:25] Funnel already active.
+[2026-03-06 23:10:25] Tailscale daemon is running.
+[2026-03-06 23:10:25] Funnel already active.
+[2026-03-06 23:25:25] Tailscale daemon is running.
+[2026-03-06 23:25:25] Funnel already active.
+[2026-03-06 23:40:26] Tailscale daemon is running.
+[2026-03-06 23:40:26] Funnel already active.
+[2026-03-06 23:55:26] Tailscale daemon is running.
+[2026-03-06 23:55:26] Funnel already active.
+[2026-03-07 00:10:26] Tailscale daemon is running.
+[2026-03-07 00:10:26] Funnel already active.
+[2026-03-07 00:25:26] Tailscale daemon is running.
+[2026-03-07 00:25:26] Funnel already active.
+[2026-03-07 00:40:26] Tailscale daemon is running.
+[2026-03-07 00:40:26] Funnel already active.
+[2026-03-07 00:55:27] Tailscale daemon is running.
+[2026-03-07 00:55:27] Funnel already active.
+[2026-03-07 01:10:27] Tailscale daemon is running.
+[2026-03-07 01:10:27] Funnel already active.
+[2026-03-07 01:25:27] Tailscale daemon is running.
+[2026-03-07 01:25:27] Funnel already active.
+[2026-03-07 01:40:27] Tailscale daemon is running.
+[2026-03-07 01:40:27] Funnel already active.
+[2026-03-07 01:55:27] Tailscale daemon is running.
+[2026-03-07 01:55:27] Funnel already active.
+[2026-03-07 02:10:28] Tailscale daemon is running.
+[2026-03-07 02:10:28] Funnel already active.
+[2026-03-07 02:25:28] Tailscale daemon is running.
+[2026-03-07 02:25:28] Funnel already active.
+[2026-03-07 02:40:28] Tailscale daemon is running.
+[2026-03-07 02:40:28] Funnel already active.
+[2026-03-07 02:55:28] Tailscale daemon is running.
+[2026-03-07 02:55:28] Funnel already active.
+[2026-03-07 03:10:28] Tailscale daemon is running.
+[2026-03-07 03:10:28] Funnel already active.
+[2026-03-07 03:25:28] Tailscale daemon is running.
+[2026-03-07 03:25:29] Funnel already active.
+[2026-03-07 03:40:29] Tailscale daemon is running.
+[2026-03-07 03:40:29] Funnel already active.
+[2026-03-07 03:55:29] Tailscale daemon is running.
+[2026-03-07 03:55:29] Funnel already active.
+[2026-03-07 04:10:29] Tailscale daemon is running.
+[2026-03-07 04:10:29] Funnel already active.
+[2026-03-07 04:46:50] Tailscale daemon is running.
+[2026-03-07 04:46:50] Funnel already active.
+[2026-03-07 05:01:50] Tailscale daemon is running.
+[2026-03-07 05:01:51] Funnel already active.
+[2026-03-07 05:16:51] Tailscale daemon is running.
+[2026-03-07 05:16:51] Funnel already active.
+[2026-03-07 05:31:51] Tailscale daemon is running.
+[2026-03-07 05:31:51] Funnel already active.
+[2026-03-07 05:46:51] Tailscale daemon is running.
+[2026-03-07 05:46:51] Funnel already active.
+[2026-03-07 06:01:51] Tailscale daemon is running.
+[2026-03-07 06:01:51] Funnel already active.
+[2026-03-07 06:16:51] Tailscale daemon is running.
+[2026-03-07 06:16:51] Funnel already active.
+[2026-03-07 06:31:51] Tailscale daemon is running.
+[2026-03-07 06:31:52] Funnel already active.
+[2026-03-07 06:46:52] Tailscale daemon is running.
+[2026-03-07 06:46:52] Funnel already active.
+[2026-03-07 07:01:52] Tailscale daemon is running.
+[2026-03-07 07:01:52] Funnel already active.
+[2026-03-07 07:16:52] Tailscale daemon is running.
+[2026-03-07 07:16:52] Funnel already active.
+[2026-03-07 07:31:52] Tailscale daemon is running.
+[2026-03-07 07:31:52] Funnel already active.
+[2026-03-07 07:46:52] Tailscale daemon is running.
+[2026-03-07 07:46:52] Funnel already active.
+[2026-03-07 08:01:53] Tailscale daemon is running.
+[2026-03-07 08:01:53] Funnel already active.
+[2026-03-07 08:16:53] Tailscale daemon is running.
+[2026-03-07 08:16:53] Funnel already active.
+[2026-03-07 08:31:53] Tailscale daemon is running.
+[2026-03-07 08:31:53] Funnel already active.
+[2026-03-07 11:33:48] Tailscale daemon is running.
+[2026-03-07 11:33:48] Funnel already active.
+[2026-03-07 15:16:32] Tailscale daemon is running.
+[2026-03-07 15:16:32] Funnel already active.
+[2026-03-07 19:20:30] Tailscale daemon is running.
+[2026-03-07 19:20:30] Funnel already active.
+[2026-03-07 21:36:58] Tailscale daemon is running.
+[2026-03-07 21:36:58] Funnel already active.
+[2026-03-07 21:51:58] Tailscale daemon is running.
+[2026-03-07 21:51:58] Funnel already active.
+[2026-03-07 22:06:58] Tailscale daemon is running.
+[2026-03-07 22:06:58] Funnel already active.
+[2026-03-07 22:21:58] Tailscale daemon is running.
+[2026-03-07 22:21:58] Funnel already active.
+[2026-03-07 22:36:58] Tailscale daemon is running.
+[2026-03-07 22:36:58] Funnel already active.
+[2026-03-08 03:08:59] Tailscale daemon is running.
+[2026-03-08 03:08:59] Funnel already active.
+[2026-03-08 05:54:16] Tailscale daemon is running.
+[2026-03-08 05:54:16] Funnel already active.
+[2026-03-08 07:55:36] Tailscale daemon is running.
+[2026-03-08 07:55:36] Funnel already active.
+[2026-03-08 08:10:36] Tailscale daemon is running.
+[2026-03-08 08:10:36] Funnel already active.
+[2026-03-08 08:25:36] Tailscale daemon is running.
+[2026-03-08 08:25:36] Funnel already active.
+[2026-03-08 08:40:36] Tailscale daemon is running.
+[2026-03-08 08:40:36] Funnel already active.
+[2026-03-08 08:55:36] Tailscale daemon is running.
+[2026-03-08 08:55:36] Funnel already active.
+[2026-03-08 09:17:36] Tailscale daemon is running.
+[2026-03-08 09:17:36] Funnel already active.
+[2026-03-08 09:32:36] Tailscale daemon is running.
+[2026-03-08 09:32:36] Funnel already active.
+[2026-03-08 09:47:37] Tailscale daemon is running.
+[2026-03-08 09:47:37] Funnel already active.
+[2026-03-08 10:02:37] Tailscale daemon is running.
+[2026-03-08 10:02:37] Funnel already active.
+[2026-03-08 10:17:37] Tailscale daemon is running.
+[2026-03-08 10:17:37] Funnel already active.
+[2026-03-08 10:32:37] Tailscale daemon is running.
+[2026-03-08 10:32:37] Funnel already active.
+[2026-03-08 10:47:37] Tailscale daemon is running.
+[2026-03-08 10:47:37] Funnel already active.
+[2026-03-08 11:02:38] Tailscale daemon is running.
+[2026-03-08 11:02:38] Funnel already active.
+[2026-03-08 11:17:38] Tailscale daemon is running.
+[2026-03-08 11:17:38] Funnel already active.
+[2026-03-08 11:32:38] Tailscale daemon is running.
+[2026-03-08 11:32:38] Funnel already active.
+[2026-03-08 11:47:38] Tailscale daemon is running.
+[2026-03-08 11:47:38] Funnel already active.
+[2026-03-08 12:02:38] Tailscale daemon is running.
+[2026-03-08 12:02:38] Funnel already active.
+[2026-03-08 12:17:38] Tailscale daemon is running.
+[2026-03-08 12:17:38] Funnel already active.
+[2026-03-08 12:32:38] Tailscale daemon is running.
+[2026-03-08 12:32:38] Funnel already active.
+[2026-03-08 12:47:39] Tailscale daemon is running.
+[2026-03-08 12:47:39] Funnel already active.
+[2026-03-08 13:02:39] Tailscale daemon is running.
+[2026-03-08 13:02:39] Funnel already active.
+[2026-03-08 13:17:39] Tailscale daemon is running.
+[2026-03-08 13:17:39] Funnel already active.
+[2026-03-08 13:32:39] Tailscale daemon is running.
+[2026-03-08 13:32:39] Funnel already active.
+[2026-03-08 13:47:39] Tailscale daemon is running.
+[2026-03-08 13:47:39] Funnel already active.
+[2026-03-08 14:02:40] Tailscale daemon is running.
+[2026-03-08 14:02:40] Funnel already active.
+[2026-03-08 14:17:40] Tailscale daemon is running.
+[2026-03-08 14:17:40] Funnel already active.
+[2026-03-08 14:32:40] Tailscale daemon is running.
+[2026-03-08 14:32:40] Funnel already active.
+[2026-03-08 14:47:40] Tailscale daemon is running.
+[2026-03-08 14:47:40] Funnel already active.
+[2026-03-08 15:02:40] Tailscale daemon is running.
+[2026-03-08 15:02:40] Funnel already active.
+[2026-03-08 15:17:40] Tailscale daemon is running.
+[2026-03-08 15:17:40] Funnel already active.
+[2026-03-08 15:32:40] Tailscale daemon is running.
+[2026-03-08 15:32:41] Funnel already active.
+[2026-03-08 15:47:41] Tailscale daemon is running.
+[2026-03-08 15:47:41] Funnel already active.
+[2026-03-08 16:02:41] Tailscale daemon is running.
+[2026-03-08 16:02:41] Funnel already active.
+[2026-03-08 16:17:41] Tailscale daemon is running.
+[2026-03-08 16:17:41] Funnel already active.
+[2026-03-08 16:32:41] Tailscale daemon is running.
+[2026-03-08 16:32:41] Funnel already active.
+[2026-03-08 16:47:41] Tailscale daemon is running.
+[2026-03-08 16:47:41] Funnel already active.
+[2026-03-08 17:24:19] Tailscale daemon is running.
+[2026-03-08 17:24:19] Funnel already active.
+[2026-03-08 17:39:19] Tailscale daemon is running.
+[2026-03-08 17:39:19] Funnel already active.
+[2026-03-08 17:54:19] Tailscale daemon is running.
+[2026-03-08 17:54:19] Funnel already active.
+[2026-03-08 18:09:19] Tailscale daemon is running.
+[2026-03-08 18:09:19] Funnel already active.
+[2026-03-08 18:24:20] Tailscale daemon is running.
+[2026-03-08 18:24:20] Funnel already active.
+[2026-03-08 18:39:20] Tailscale daemon is running.
+[2026-03-08 18:39:20] Funnel already active.
+[2026-03-08 18:54:20] Tailscale daemon is running.
+[2026-03-08 18:54:20] Funnel already active.
+[2026-03-08 19:09:20] Tailscale daemon is running.
+[2026-03-08 19:09:20] Funnel already active.
+[2026-03-08 19:24:20] Tailscale daemon is running.
+[2026-03-08 19:24:20] Funnel already active.
+[2026-03-08 19:39:21] Tailscale daemon is running.
+[2026-03-08 19:39:21] Funnel already active.
+[2026-03-08 19:54:21] Tailscale daemon is running.
+[2026-03-08 19:54:21] Funnel already active.
+[2026-03-08 20:09:21] Tailscale daemon is running.
+[2026-03-08 20:09:21] Funnel already active.
+[2026-03-08 20:24:21] Tailscale daemon is running.
+[2026-03-08 20:24:21] Funnel already active.
+[2026-03-08 20:39:21] Tailscale daemon is running.
+[2026-03-08 20:39:21] Funnel already active.
+[2026-03-08 20:54:22] Tailscale daemon is running.
+[2026-03-08 20:54:22] Funnel already active.
+[2026-03-08 21:09:22] Tailscale daemon is running.
+[2026-03-08 21:09:22] Funnel already active.
+[2026-03-08 21:24:22] Tailscale daemon is running.
+[2026-03-08 21:24:22] Funnel already active.
+[2026-03-08 21:39:22] Tailscale daemon is running.
+[2026-03-08 21:39:22] Funnel already active.
+[2026-03-08 21:54:22] Tailscale daemon is running.
+[2026-03-08 21:54:22] Funnel already active.
+[2026-03-08 22:09:23] Tailscale daemon is running.
+[2026-03-08 22:09:23] Funnel already active.
+[2026-03-08 22:24:23] Tailscale daemon is running.
+[2026-03-08 22:24:23] Funnel already active.
+[2026-03-08 22:39:23] Tailscale daemon is running.
+[2026-03-08 22:39:23] Funnel already active.
+[2026-03-08 22:54:23] Tailscale daemon is running.
+[2026-03-08 22:54:23] Funnel already active.
+[2026-03-08 23:09:23] Tailscale daemon is running.
+[2026-03-08 23:09:23] Funnel already active.
+[2026-03-08 23:24:24] Tailscale daemon is running.
+[2026-03-08 23:24:24] Funnel already active.
+[2026-03-08 23:39:24] Tailscale daemon is running.
+[2026-03-08 23:39:24] Funnel already active.
+[2026-03-08 23:54:24] Tailscale daemon is running.
+[2026-03-08 23:54:24] Funnel already active.
+[2026-03-09 00:09:24] Tailscale daemon is running.
+[2026-03-09 00:09:24] Funnel already active.
+[2026-03-09 00:24:24] Tailscale daemon is running.
+[2026-03-09 00:24:24] Funnel already active.
+[2026-03-09 00:39:24] Tailscale daemon is running.
+[2026-03-09 00:39:24] Funnel already active.
+[2026-03-09 00:54:24] Tailscale daemon is running.
+[2026-03-09 00:54:25] Funnel already active.
+[2026-03-09 01:09:25] Tailscale daemon is running.
+[2026-03-09 01:09:25] Funnel already active.
+[2026-03-09 01:24:25] Tailscale daemon is running.
+[2026-03-09 01:24:25] Funnel already active.
+[2026-03-09 01:39:25] Tailscale daemon is running.
+[2026-03-09 01:39:25] Funnel already active.
+[2026-03-09 01:54:25] Tailscale daemon is running.
+[2026-03-09 01:54:25] Funnel already active.
+[2026-03-09 02:09:25] Tailscale daemon is running.
+[2026-03-09 02:09:25] Funnel already active.
+[2026-03-09 02:24:25] Tailscale daemon is running.
+[2026-03-09 02:24:25] Funnel already active.
+[2026-03-09 02:39:26] Tailscale daemon is running.
+[2026-03-09 02:39:26] Funnel already active.
+[2026-03-09 02:54:26] Tailscale daemon is running.
+[2026-03-09 02:54:26] Funnel already active.
+[2026-03-09 03:09:26] Tailscale daemon is running.
+[2026-03-09 03:09:26] Funnel already active.
+[2026-03-09 03:24:26] Tailscale daemon is running.
+[2026-03-09 03:24:26] Funnel already active.
+[2026-03-09 03:39:26] Tailscale daemon is running.
+[2026-03-09 03:39:26] Funnel already active.
+[2026-03-09 03:54:26] Tailscale daemon is running.
+[2026-03-09 03:54:26] Funnel already active.
+[2026-03-09 04:09:27] Tailscale daemon is running.
+[2026-03-09 04:09:27] Funnel already active.
+[2026-03-09 04:24:27] Tailscale daemon is running.
+[2026-03-09 04:24:27] Funnel already active.
+[2026-03-09 04:39:27] Tailscale daemon is running.
+[2026-03-09 04:39:27] Funnel already active.
+[2026-03-09 04:54:27] Tailscale daemon is running.
+[2026-03-09 04:54:27] Funnel already active.
+[2026-03-09 05:09:27] Tailscale daemon is running.
+[2026-03-09 05:09:27] Funnel already active.
+[2026-03-09 05:24:27] Tailscale daemon is running.
+[2026-03-09 05:24:27] Funnel already active.
+[2026-03-09 05:39:27] Tailscale daemon is running.
+[2026-03-09 05:39:27] Funnel already active.
+[2026-03-09 05:54:28] Tailscale daemon is running.
+[2026-03-09 05:54:28] Funnel already active.
+[2026-03-09 06:09:28] Tailscale daemon is running.
+[2026-03-09 06:09:28] Funnel already active.
+[2026-03-09 06:24:28] Tailscale daemon is running.
+[2026-03-09 06:24:28] Funnel already active.
+[2026-03-09 06:39:28] Tailscale daemon is running.
+[2026-03-09 06:39:28] Funnel already active.
+[2026-03-09 06:54:28] Tailscale daemon is running.
+[2026-03-09 06:54:28] Funnel already active.
+[2026-03-09 07:09:28] Tailscale daemon is running.
+[2026-03-09 07:09:28] Funnel already active.
+[2026-03-09 07:24:29] Tailscale daemon is running.
+[2026-03-09 07:24:29] Funnel already active.
+[2026-03-09 07:39:29] Tailscale daemon is running.
+[2026-03-09 07:39:29] Funnel already active.
+[2026-03-09 07:54:29] Tailscale daemon is running.
+[2026-03-09 07:54:29] Funnel already active.
+[2026-03-09 08:09:29] Tailscale daemon is running.
+[2026-03-09 08:09:29] Funnel already active.
+[2026-03-09 08:24:29] Tailscale daemon is running.
+[2026-03-09 08:24:29] Funnel already active.
+[2026-03-09 08:39:29] Tailscale daemon is running.
+[2026-03-09 08:39:29] Funnel already active.
+[2026-03-09 08:54:29] Tailscale daemon is running.
+[2026-03-09 08:54:29] Funnel already active.
+[2026-03-09 09:09:30] Tailscale daemon is running.
+[2026-03-09 09:09:30] Funnel already active.
+[2026-03-09 09:24:30] Tailscale daemon is running.
+[2026-03-09 09:24:30] Funnel already active.
+[2026-03-09 09:39:30] Tailscale daemon is running.
+[2026-03-09 09:39:30] Funnel already active.
+[2026-03-09 09:54:30] Tailscale daemon is running.
+[2026-03-09 09:54:30] Funnel already active.
+[2026-03-09 10:09:30] Tailscale daemon is running.
+[2026-03-09 10:09:30] Funnel already active.
+[2026-03-09 10:24:30] Tailscale daemon is running.
+[2026-03-09 10:24:30] Funnel already active.
+[2026-03-09 10:39:31] Tailscale daemon is running.
+[2026-03-09 10:39:31] Funnel already active.
+[2026-03-09 10:54:31] Tailscale daemon is running.
+[2026-03-09 10:54:31] Funnel already active.
+[2026-03-09 11:09:31] Tailscale daemon is running.
+[2026-03-09 11:09:31] Funnel already active.
+[2026-03-09 11:24:31] Tailscale daemon is running.
+[2026-03-09 11:24:31] Funnel already active.
+[2026-03-09 11:39:31] Tailscale daemon is running.
+[2026-03-09 11:39:31] Funnel already active.
+[2026-03-09 11:54:31] Tailscale daemon is running.
+[2026-03-09 11:54:31] Funnel already active.
+[2026-03-09 12:09:32] Tailscale daemon is running.
+[2026-03-09 12:09:32] Funnel already active.
+[2026-03-09 12:24:32] Tailscale daemon is running.
+[2026-03-09 12:24:32] Funnel already active.
+[2026-03-09 12:39:32] Tailscale daemon is running.
+[2026-03-09 12:39:32] Funnel already active.
+[2026-03-09 12:54:32] Tailscale daemon is running.
+[2026-03-09 12:54:32] Funnel already active.
+[2026-03-09 13:09:32] Tailscale daemon is running.
+[2026-03-09 13:09:32] Funnel already active.
+[2026-03-09 13:24:33] Tailscale daemon is running.
+[2026-03-09 13:24:33] Funnel already active.
+[2026-03-09 13:39:33] Tailscale daemon is running.
+[2026-03-09 13:39:33] Funnel already active.
+[2026-03-09 13:54:33] Tailscale daemon is running.
+[2026-03-09 13:54:33] Funnel already active.
+[2026-03-09 14:09:33] Tailscale daemon is running.
+[2026-03-09 14:09:33] Funnel already active.
+[2026-03-09 14:24:33] Tailscale daemon is running.
+[2026-03-09 14:24:33] Funnel already active.
+[2026-03-09 14:39:33] Tailscale daemon is running.
+[2026-03-09 14:39:33] Funnel already active.
+[2026-03-09 14:54:34] Tailscale daemon is running.
+[2026-03-09 14:54:34] Funnel already active.
+[2026-03-09 15:09:34] Tailscale daemon is running.
+[2026-03-09 15:09:34] Funnel already active.
+[2026-03-09 15:24:34] Tailscale daemon is running.
+[2026-03-09 15:24:34] Funnel already active.
+[2026-03-09 15:39:34] Tailscale daemon is running.
+[2026-03-09 15:39:34] Funnel already active.
+[2026-03-09 15:54:34] Tailscale daemon is running.
+[2026-03-09 15:54:34] Funnel already active.
+[2026-03-09 16:09:34] Tailscale daemon is running.
+[2026-03-09 16:09:34] Funnel already active.
+[2026-03-09 16:24:35] Tailscale daemon is running.
+[2026-03-09 16:24:35] Funnel already active.
+[2026-03-09 16:39:35] Tailscale daemon is running.
+[2026-03-09 16:39:35] Funnel already active.
+[2026-03-09 16:54:35] Tailscale daemon is running.
+[2026-03-09 16:54:35] Funnel already active.
+[2026-03-09 17:09:35] Tailscale daemon is running.
+[2026-03-09 17:09:35] Funnel already active.
+[2026-03-09 17:24:35] Tailscale daemon is running.
+[2026-03-09 17:24:35] Funnel already active.
+[2026-03-09 17:39:36] Tailscale daemon is running.
+[2026-03-09 17:39:36] Funnel already active.
+[2026-03-09 17:54:36] Tailscale daemon is running.
+[2026-03-09 17:54:36] Funnel already active.
+[2026-03-09 18:09:36] Tailscale daemon is running.
+[2026-03-09 18:09:36] Funnel already active.
+[2026-03-09 18:24:36] Tailscale daemon is running.
+[2026-03-09 18:24:36] Funnel already active.
+[2026-03-09 18:39:36] Tailscale daemon is running.
+[2026-03-09 18:39:36] Funnel already active.
+[2026-03-09 18:54:36] Tailscale daemon is running.
+[2026-03-09 18:54:36] Funnel already active.
+[2026-03-09 19:09:37] Tailscale daemon is running.
+[2026-03-09 19:09:37] Funnel already active.
+[2026-03-09 19:24:37] Tailscale daemon is running.
+[2026-03-09 19:24:37] Funnel already active.
+[2026-03-09 19:39:37] Tailscale daemon is running.
+[2026-03-09 19:39:37] Funnel already active.
+[2026-03-09 19:54:37] Tailscale daemon is running.
+[2026-03-09 19:54:37] Funnel already active.
+[2026-03-09 20:09:37] Tailscale daemon is running.
+[2026-03-09 20:09:37] Funnel already active.
+[2026-03-09 20:24:38] Tailscale daemon is running.
+[2026-03-09 20:24:38] Funnel already active.
+[2026-03-09 20:39:38] Tailscale daemon is running.
+[2026-03-09 20:39:38] Funnel already active.
+[2026-03-09 20:54:38] Tailscale daemon is running.
+[2026-03-09 20:54:38] Funnel already active.
+[2026-03-09 21:09:38] Tailscale daemon is running.
+[2026-03-09 21:09:38] Funnel already active.
+[2026-03-09 21:24:38] Tailscale daemon is running.
+[2026-03-09 21:24:38] Funnel already active.
+[2026-03-09 21:39:38] Tailscale daemon is running.
+[2026-03-09 21:39:38] Funnel already active.
+[2026-03-09 21:54:39] Tailscale daemon is running.
+[2026-03-09 21:54:39] Funnel already active.
+[2026-03-09 22:09:39] Tailscale daemon is running.
+[2026-03-09 22:09:39] Funnel already active.
+[2026-03-09 22:24:39] Tailscale daemon is running.
+[2026-03-09 22:24:39] Funnel already active.
+[2026-03-09 22:39:39] Tailscale daemon is running.
+[2026-03-09 22:39:39] Funnel already active.
+[2026-03-09 22:54:39] Tailscale daemon is running.
+[2026-03-09 22:54:39] Funnel already active.
+[2026-03-09 23:09:39] Tailscale daemon is running.
+[2026-03-09 23:09:39] Funnel already active.
+[2026-03-09 23:24:40] Tailscale daemon is running.
+[2026-03-09 23:24:40] Funnel already active.
+[2026-03-09 23:39:40] Tailscale daemon is running.
+[2026-03-09 23:39:40] Funnel already active.
+[2026-03-09 23:54:40] Tailscale daemon is running.
+[2026-03-09 23:54:40] Funnel already active.
+[2026-03-10 00:09:40] Tailscale daemon is running.
+[2026-03-10 00:09:40] Funnel already active.
+[2026-03-10 00:24:40] Tailscale daemon is running.
+[2026-03-10 00:24:40] Funnel already active.
+[2026-03-10 00:39:40] Tailscale daemon is running.
+[2026-03-10 00:39:40] Funnel already active.
+[2026-03-10 00:54:41] Tailscale daemon is running.
+[2026-03-10 00:54:41] Funnel already active.
+[2026-03-10 01:09:41] Tailscale daemon is running.
+[2026-03-10 01:09:41] Funnel already active.
+[2026-03-10 01:24:41] Tailscale daemon is running.
+[2026-03-10 01:24:41] Funnel already active.
+[2026-03-10 01:39:41] Tailscale daemon is running.
+[2026-03-10 01:39:41] Funnel already active.
+[2026-03-10 01:54:41] Tailscale daemon is running.
+[2026-03-10 01:54:41] Funnel already active.
+[2026-03-10 02:09:41] Tailscale daemon is running.
+[2026-03-10 02:09:41] Funnel already active.
+[2026-03-10 02:24:42] Tailscale daemon is running.
+[2026-03-10 02:24:42] Funnel already active.
+[2026-03-10 02:39:42] Tailscale daemon is running.
+[2026-03-10 02:39:42] Funnel already active.
+[2026-03-10 02:54:42] Tailscale daemon is running.
+[2026-03-10 02:54:42] Funnel already active.
+[2026-03-10 03:09:42] Tailscale daemon is running.
+[2026-03-10 03:09:42] Funnel already active.
+[2026-03-10 03:24:42] Tailscale daemon is running.
+[2026-03-10 03:24:42] Funnel already active.
+[2026-03-10 03:39:42] Tailscale daemon is running.
+[2026-03-10 03:39:42] Funnel already active.
+[2026-03-10 03:54:42] Tailscale daemon is running.
+[2026-03-10 03:54:42] Funnel already active.
+[2026-03-10 04:09:43] Tailscale daemon is running.
+[2026-03-10 04:09:43] Funnel already active.
+[2026-03-10 04:24:43] Tailscale daemon is running.
+[2026-03-10 04:24:43] Funnel already active.
+[2026-03-10 04:39:43] Tailscale daemon is running.
+[2026-03-10 04:39:43] Funnel already active.
+[2026-03-10 04:54:43] Tailscale daemon is running.
+[2026-03-10 04:54:43] Funnel already active.
+[2026-03-10 05:09:43] Tailscale daemon is running.
+[2026-03-10 05:09:43] Funnel already active.
+[2026-03-10 05:24:43] Tailscale daemon is running.
+[2026-03-10 05:24:43] Funnel already active.
+[2026-03-10 05:39:44] Tailscale daemon is running.
+[2026-03-10 05:39:44] Funnel already active.
+[2026-03-10 05:54:44] Tailscale daemon is running.
+[2026-03-10 05:54:44] Funnel already active.
+[2026-03-10 06:09:44] Tailscale daemon is running.
+[2026-03-10 06:09:44] Funnel already active.
+[2026-03-10 06:24:44] Tailscale daemon is running.
+[2026-03-10 06:24:44] Funnel already active.
+[2026-03-10 06:39:44] Tailscale daemon is running.
+[2026-03-10 06:39:44] Funnel already active.
+[2026-03-10 06:54:44] Tailscale daemon is running.
+[2026-03-10 06:54:44] Funnel already active.
+[2026-03-10 07:09:45] Tailscale daemon is running.
+[2026-03-10 07:09:45] Funnel already active.
+[2026-03-10 07:24:45] Tailscale daemon is running.
+[2026-03-10 07:24:45] Funnel already active.
+[2026-03-10 07:39:45] Tailscale daemon is running.
+[2026-03-10 07:39:45] Funnel already active.
+[2026-03-10 07:54:45] Tailscale daemon is running.
+[2026-03-10 07:54:45] Funnel already active.
+[2026-03-10 08:09:45] Tailscale daemon is running.
+[2026-03-10 08:09:45] Funnel already active.
+[2026-03-10 08:24:45] Tailscale daemon is running.
+[2026-03-10 08:24:45] Funnel already active.
+[2026-03-10 08:39:46] Tailscale daemon is running.
+[2026-03-10 08:39:46] Funnel already active.
+[2026-03-10 08:54:46] Tailscale daemon is running.
+[2026-03-10 08:54:46] Funnel already active.
+[2026-03-10 09:09:46] Tailscale daemon is running.
+[2026-03-10 09:09:46] Funnel already active.
+[2026-03-10 09:24:46] Tailscale daemon is running.
+[2026-03-10 09:24:46] Funnel already active.
+[2026-03-10 09:39:46] Tailscale daemon is running.
+[2026-03-10 09:39:46] Funnel already active.
+[2026-03-10 09:54:46] Tailscale daemon is running.
+[2026-03-10 09:54:46] Funnel already active.
+[2026-03-10 10:09:46] Tailscale daemon is running.
+[2026-03-10 10:09:46] Funnel already active.
+[2026-03-10 10:24:47] Tailscale daemon is running.
+[2026-03-10 10:24:47] Funnel already active.
+[2026-03-10 10:39:47] Tailscale daemon is running.
+[2026-03-10 10:39:47] Funnel already active.
+[2026-03-10 10:54:47] Tailscale daemon is running.
+[2026-03-10 10:54:47] Funnel already active.
+[2026-03-10 11:09:47] Tailscale daemon is running.
+[2026-03-10 11:09:47] Funnel already active.
+[2026-03-10 11:24:47] Tailscale daemon is running.
+[2026-03-10 11:24:47] Funnel already active.
+[2026-03-10 11:39:47] Tailscale daemon is running.
+[2026-03-10 11:39:47] Funnel already active.
+[2026-03-10 11:54:48] Tailscale daemon is running.
+[2026-03-10 11:54:48] Funnel already active.
+[2026-03-10 12:09:48] Tailscale daemon is running.
+[2026-03-10 12:09:48] Funnel already active.
+[2026-03-10 12:24:48] Tailscale daemon is running.
+[2026-03-10 12:24:48] Funnel already active.
+[2026-03-10 12:39:48] Tailscale daemon is running.
+[2026-03-10 12:39:48] Funnel already active.
+[2026-03-10 12:54:48] Tailscale daemon is running.
+[2026-03-10 12:54:48] Funnel already active.
+[2026-03-10 13:09:48] Tailscale daemon is running.
+[2026-03-10 13:09:48] Funnel already active.
+[2026-03-10 13:24:49] Tailscale daemon is running.
+[2026-03-10 13:24:49] Funnel already active.
+[2026-03-10 13:39:49] Tailscale daemon is running.
+[2026-03-10 13:39:49] Funnel already active.
+[2026-03-10 13:54:49] Tailscale daemon is running.
+[2026-03-10 13:54:49] Funnel already active.
+[2026-03-10 14:09:49] Tailscale daemon is running.
+[2026-03-10 14:09:49] Funnel already active.
+[2026-03-10 14:24:49] Tailscale daemon is running.
+[2026-03-10 14:24:49] Funnel already active.
+[2026-03-10 14:39:49] Tailscale daemon is running.
+[2026-03-10 14:39:49] Funnel already active.
+[2026-03-10 14:54:50] Tailscale daemon is running.
+[2026-03-10 14:54:50] Funnel already active.
+[2026-03-10 15:09:50] Tailscale daemon is running.
+[2026-03-10 15:09:50] Funnel already active.
+[2026-03-10 15:24:50] Tailscale daemon is running.
+[2026-03-10 15:24:50] Funnel already active.
+[2026-03-10 15:39:50] Tailscale daemon is running.
+[2026-03-10 15:39:50] Funnel already active.
+[2026-03-10 15:54:50] Tailscale daemon is running.
+[2026-03-10 15:54:50] Funnel already active.
+[2026-03-10 16:09:50] Tailscale daemon is running.
+[2026-03-10 16:09:50] Funnel already active.
+[2026-03-10 16:24:50] Tailscale daemon is running.
+[2026-03-10 16:24:50] Funnel already active.
+[2026-03-10 16:39:51] Tailscale daemon is running.
+[2026-03-10 16:39:51] Funnel already active.
+[2026-03-10 16:54:51] Tailscale daemon is running.
+[2026-03-10 16:54:51] Funnel already active.
+[2026-03-10 17:09:51] Tailscale daemon is running.
+[2026-03-10 17:09:51] Funnel already active.
+[2026-03-10 17:24:51] Tailscale daemon is running.
+[2026-03-10 17:24:51] Funnel already active.
+[2026-03-10 17:39:51] Tailscale daemon is running.
+[2026-03-10 17:39:51] Funnel already active.
+[2026-03-10 17:54:51] Tailscale daemon is running.
+[2026-03-10 17:54:51] Funnel already active.
+[2026-03-10 18:09:52] Tailscale daemon is running.
+[2026-03-10 18:09:52] Funnel already active.
+[2026-03-10 18:24:52] Tailscale daemon is running.
+[2026-03-10 18:24:52] Funnel already active.
+[2026-03-10 18:39:52] Tailscale daemon is running.
+[2026-03-10 18:39:52] Funnel already active.
+[2026-03-10 18:54:52] Tailscale daemon is running.
+[2026-03-10 18:54:52] Funnel already active.
+[2026-03-10 19:09:52] Tailscale daemon is running.
+[2026-03-10 19:09:52] Funnel already active.
+[2026-03-10 19:24:52] Tailscale daemon is running.
+[2026-03-10 19:24:52] Funnel already active.
+[2026-03-10 19:39:53] Tailscale daemon is running.
+[2026-03-10 19:39:53] Funnel already active.
+[2026-03-10 19:54:53] Tailscale daemon is running.
+[2026-03-10 19:54:53] Funnel already active.
+[2026-03-10 20:09:53] Tailscale daemon is running.
+[2026-03-10 20:09:53] Funnel already active.
+[2026-03-10 20:24:53] Tailscale daemon is running.
+[2026-03-10 20:24:53] Funnel already active.
+[2026-03-10 20:39:53] Tailscale daemon is running.
+[2026-03-10 20:39:53] Funnel already active.
+[2026-03-10 20:54:53] Tailscale daemon is running.
+[2026-03-10 20:54:53] Funnel already active.
+[2026-03-10 21:09:54] Tailscale daemon is running.
+[2026-03-10 21:09:54] Funnel already active.
+[2026-03-10 21:24:54] Tailscale daemon is running.
+[2026-03-10 21:24:54] Funnel already active.
+[2026-03-10 21:39:54] Tailscale daemon is running.
+[2026-03-10 21:39:54] Funnel already active.
+[2026-03-10 21:54:54] Tailscale daemon is running.
+[2026-03-10 21:54:54] Funnel already active.
+[2026-03-10 22:09:54] Tailscale daemon is running.
+[2026-03-10 22:09:54] Funnel already active.
+[2026-03-10 22:24:54] Tailscale daemon is running.
+[2026-03-10 22:24:54] Funnel already active.
+[2026-03-10 22:39:55] Tailscale daemon is running.
+[2026-03-10 22:39:55] Funnel already active.
+[2026-03-10 22:54:55] Tailscale daemon is running.
+[2026-03-10 22:54:55] Funnel already active.
+[2026-03-10 23:09:55] Tailscale daemon is running.
+[2026-03-10 23:09:55] Funnel already active.
+[2026-03-10 23:24:55] Tailscale daemon is running.
+[2026-03-10 23:24:55] Funnel already active.
+[2026-03-10 23:39:55] Tailscale daemon is running.
+[2026-03-10 23:39:55] Funnel already active.
+[2026-03-10 23:54:55] Tailscale daemon is running.
+[2026-03-10 23:54:55] Funnel already active.
+[2026-03-11 00:09:56] Tailscale daemon is running.
+[2026-03-11 00:09:56] Funnel already active.
+[2026-03-11 00:24:56] Tailscale daemon is running.
+[2026-03-11 00:24:56] Funnel already active.
+[2026-03-11 00:39:56] Tailscale daemon is running.
+[2026-03-11 00:39:56] Funnel already active.
+[2026-03-11 00:54:56] Tailscale daemon is running.
+[2026-03-11 00:54:56] Funnel already active.
+[2026-03-11 01:09:56] Tailscale daemon is running.
+[2026-03-11 01:09:56] Funnel already active.
+[2026-03-11 01:24:56] Tailscale daemon is running.
+[2026-03-11 01:24:56] Funnel already active.
+[2026-03-11 01:39:57] Tailscale daemon is running.
+[2026-03-11 01:39:57] Funnel already active.
+[2026-03-11 01:54:57] Tailscale daemon is running.
+[2026-03-11 01:54:57] Funnel already active.
+[2026-03-11 02:09:57] Tailscale daemon is running.
+[2026-03-11 02:09:57] Funnel already active.
+[2026-03-11 02:24:57] Tailscale daemon is running.
+[2026-03-11 02:24:57] Funnel already active.
+[2026-03-11 02:39:57] Tailscale daemon is running.
+[2026-03-11 02:39:57] Funnel already active.
+[2026-03-11 02:54:57] Tailscale daemon is running.
+[2026-03-11 02:54:57] Funnel already active.
+[2026-03-11 03:09:58] Tailscale daemon is running.
+[2026-03-11 03:09:58] Funnel already active.
+[2026-03-11 03:24:58] Tailscale daemon is running.
+[2026-03-11 03:24:58] Funnel already active.
+[2026-03-11 03:39:58] Tailscale daemon is running.
+[2026-03-11 03:39:58] Funnel already active.
+[2026-03-11 03:54:58] Tailscale daemon is running.
+[2026-03-11 03:54:58] Funnel already active.
+[2026-03-11 04:09:58] Tailscale daemon is running.
+[2026-03-11 04:09:58] Funnel already active.
+[2026-03-11 04:24:58] Tailscale daemon is running.
+[2026-03-11 04:24:58] Funnel already active.
+[2026-03-11 04:39:59] Tailscale daemon is running.
+[2026-03-11 04:39:59] Funnel already active.
+[2026-03-11 04:54:59] Tailscale daemon is running.
+[2026-03-11 04:54:59] Funnel already active.
+[2026-03-11 05:09:59] Tailscale daemon is running.
+[2026-03-11 05:09:59] Funnel already active.
+[2026-03-11 05:24:59] Tailscale daemon is running.
+[2026-03-11 05:24:59] Funnel already active.
+[2026-03-11 05:39:59] Tailscale daemon is running.
+[2026-03-11 05:39:59] Funnel already active.
+[2026-03-11 05:54:59] Tailscale daemon is running.
+[2026-03-11 05:54:59] Funnel already active.
+[2026-03-11 06:10:00] Tailscale daemon is running.
+[2026-03-11 06:10:00] Funnel already active.
+[2026-03-11 06:25:00] Tailscale daemon is running.
+[2026-03-11 06:25:00] Funnel already active.
+[2026-03-11 06:40:00] Tailscale daemon is running.
+[2026-03-11 06:40:00] Funnel already active.
+[2026-03-11 06:55:00] Tailscale daemon is running.
+[2026-03-11 06:55:00] Funnel already active.
+[2026-03-11 07:10:00] Tailscale daemon is running.
+[2026-03-11 07:10:00] Funnel already active.
+[2026-03-11 07:25:00] Tailscale daemon is running.
+[2026-03-11 07:25:00] Funnel already active.
+[2026-03-11 07:40:01] Tailscale daemon is running.
+[2026-03-11 07:40:01] Funnel already active.
+[2026-03-11 07:55:01] Tailscale daemon is running.
+[2026-03-11 07:55:01] Funnel already active.
+[2026-03-11 08:10:01] Tailscale daemon is running.
+[2026-03-11 08:10:01] Funnel already active.
+[2026-03-11 08:25:01] Tailscale daemon is running.
+[2026-03-11 08:25:01] Funnel already active.
+[2026-03-11 08:40:01] Tailscale daemon is running.
+[2026-03-11 08:40:01] Funnel already active.
+[2026-03-11 08:55:01] Tailscale daemon is running.
+[2026-03-11 08:55:01] Funnel already active.
+[2026-03-11 09:10:01] Tailscale daemon is running.
+[2026-03-11 09:10:01] Funnel already active.
+[2026-03-11 09:25:02] Tailscale daemon is running.
+[2026-03-11 09:25:02] Funnel already active.
+[2026-03-11 09:40:02] Tailscale daemon is running.
+[2026-03-11 09:40:02] Funnel already active.
+[2026-03-11 09:55:02] Tailscale daemon is running.
+[2026-03-11 09:55:02] Funnel already active.
+[2026-03-11 10:10:02] Tailscale daemon is running.
+[2026-03-11 10:10:02] Funnel already active.
+[2026-03-11 10:25:02] Tailscale daemon is running.
+[2026-03-11 10:25:02] Funnel already active.
+[2026-03-11 10:40:02] Tailscale daemon is running.
+[2026-03-11 10:40:02] Funnel already active.
+[2026-03-11 10:55:03] Tailscale daemon is running.
+[2026-03-11 10:55:03] Funnel already active.
+[2026-03-11 11:10:03] Tailscale daemon is running.
+[2026-03-11 11:10:03] Funnel already active.
+[2026-03-11 11:25:03] Tailscale daemon is running.
+[2026-03-11 11:25:03] Funnel already active.
+[2026-03-11 11:40:03] Tailscale daemon is running.
+[2026-03-11 11:40:03] Funnel already active.
+[2026-03-11 11:55:03] Tailscale daemon is running.
+[2026-03-11 11:55:03] Funnel already active.
+[2026-03-11 12:10:03] Tailscale daemon is running.
+[2026-03-11 12:10:03] Funnel already active.
+[2026-03-11 12:25:04] Tailscale daemon is running.
+[2026-03-11 12:25:04] Funnel already active.
+[2026-03-11 12:40:04] Tailscale daemon is running.
+[2026-03-11 12:40:04] Funnel already active.
+[2026-03-11 12:55:04] Tailscale daemon is running.
+[2026-03-11 12:55:04] Funnel already active.
+[2026-03-11 13:10:04] Tailscale daemon is running.
+[2026-03-11 13:10:04] Funnel already active.
+[2026-03-11 13:25:04] Tailscale daemon is running.
+[2026-03-11 13:25:04] Funnel already active.
+[2026-03-11 13:40:04] Tailscale daemon is running.
+[2026-03-11 13:40:04] Funnel already active.
+[2026-03-11 13:55:04] Tailscale daemon is running.
+[2026-03-11 13:55:05] Funnel already active.
+[2026-03-11 14:10:05] Tailscale daemon is running.
+[2026-03-11 14:10:05] Funnel already active.
+[2026-03-11 14:25:05] Tailscale daemon is running.
+[2026-03-11 14:25:05] Funnel already active.
+[2026-03-11 14:40:05] Tailscale daemon is running.
+[2026-03-11 14:40:05] Funnel already active.
+[2026-03-11 14:55:05] Tailscale daemon is running.
+[2026-03-11 14:55:05] Funnel already active.
+[2026-03-11 15:10:05] Tailscale daemon is running.
+[2026-03-11 15:10:05] Funnel already active.
+[2026-03-11 15:25:05] Tailscale daemon is running.
+[2026-03-11 15:25:05] Funnel already active.
+[2026-03-11 15:40:06] Tailscale daemon is running.
+[2026-03-11 15:40:06] Funnel already active.
+[2026-03-11 15:55:06] Tailscale daemon is running.
+[2026-03-11 15:55:06] Funnel already active.
+[2026-03-11 16:10:06] Tailscale daemon is running.
+[2026-03-11 16:10:06] Funnel already active.
+[2026-03-11 16:25:06] Tailscale daemon is running.
+[2026-03-11 16:25:06] Funnel already active.
+[2026-03-11 16:40:06] Tailscale daemon is running.
+[2026-03-11 16:40:06] Funnel already active.
+[2026-03-11 16:55:06] Tailscale daemon is running.
+[2026-03-11 16:55:06] Funnel already active.
+[2026-03-11 17:10:06] Tailscale daemon is running.
+[2026-03-11 17:10:07] Funnel already active.
+[2026-03-11 17:25:07] Tailscale daemon is running.
+[2026-03-11 17:25:07] Funnel already active.
+[2026-03-11 17:40:07] Tailscale daemon is running.
+[2026-03-11 17:40:07] Funnel already active.
+[2026-03-11 17:55:07] Tailscale daemon is running.
+[2026-03-11 17:55:07] Funnel already active.
+[2026-03-11 18:10:07] Tailscale daemon is running.
+[2026-03-11 18:10:07] Funnel already active.
+[2026-03-11 18:25:07] Tailscale daemon is running.
+[2026-03-11 18:25:07] Funnel already active.

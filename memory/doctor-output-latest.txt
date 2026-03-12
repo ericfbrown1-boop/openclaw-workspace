@@ -1,0 +1,86 @@
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+██░▄▄▄░██░▄▄░██░▄▄▄██░▀██░██░▄▄▀██░████░▄▄▀██░███░██
+██░███░██░▀▀░██░▄▄▄██░█░█░██░█████░████░▀▀░██░█░█░██
+██░▀▀▀░██░█████░▀▀▀██░██▄░██░▀▀▄██░▀▀░█░██░██▄▀▄▀▄██
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+                  🦞 OPENCLAW 🦞                    
+ 
+┌  OpenClaw doctor
+│
+◇  State integrity ────────────────────────────────────────────────╮
+│                                                                  │
+│  - Found 3 orphan transcript file(s) in                          │
+│    ~/.openclaw/agents/main/sessions. They are not referenced by  │
+│    sessions.json and can consume disk over time.                 │
+│                                                                  │
+├──────────────────────────────────────────────────────────────────╯
+│
+◇  Other gateway-like services detected ───────────────────────────────────────╮
+│                                                                              │
+│  - com.openclaw.gatewaywatchdog (user, plist:                                │
+│                                                                              │
+│  /Users/ericbrown/Library/LaunchAgents/com.openclaw.gatewaywatchdog.plist)   │
+│  - com.openclaw.logrotation (user, plist:                                    │
+│    /Users/ericbrown/Library/LaunchAgents/com.openclaw.logrotation.plist)     │
+│  - com.openclaw.selfheal (user, plist:                                       │
+│    /Users/ericbrown/Library/LaunchAgents/com.openclaw.selfheal.plist)        │
+│  - com.openclaw.sessionmonitor (user, plist:                                 │
+│    /Users/ericbrown/Library/LaunchAgents/com.openclaw.sessionmonitor.plist)  │
+│  - com.openclaw.tailscale.monitor (user, plist:                              │
+│    /Users/ericbrown/Library/LaunchAgents/com.openclaw.tailscale.monitor.pli  │
+│  st)                                                                         │
+│  - com.openclaw.weeklysecurity (user, plist:                                 │
+│    /Users/ericbrown/Library/LaunchAgents/com.openclaw.weeklysecurity.plist)  │
+│                                                                              │
+├──────────────────────────────────────────────────────────────────────────────╯
+│
+◇  Cleanup hints ─────────────────────────────────────────╮
+│                                                         │
+│  - launchctl bootout gui/$UID/ai.openclaw.gateway       │
+│  - rm ~/Library/LaunchAgents/ai.openclaw.gateway.plist  │
+│                                                         │
+├─────────────────────────────────────────────────────────╯
+│
+◇  Gateway recommendation ───────────────────────────────────────────────╮
+│                                                                        │
+│  Recommendation: run a single gateway per machine for most setups.     │
+│  One gateway supports multiple agents.                                 │
+│  If you need multiple gateways (e.g., a rescue bot on the same host),  │
+│  isolate ports + config/state (see docs:                               │
+│  /gateway#multiple-gateways-same-host).                                │
+│                                                                        │
+├────────────────────────────────────────────────────────────────────────╯
+│
+◇  Security ─────────────────────────────────╮
+│                                            │
+│  - No channel security warnings detected.  │
+│  - Run: openclaw security audit --deep     │
+│                                            │
+├────────────────────────────────────────────╯
+│
+◇  Skills status ────────────╮
+│                            │
+│  Eligible: 23              │
+│  Missing requirements: 29  │
+│  Blocked by allowlist: 0   │
+│                            │
+├────────────────────────────╯
+│
+◇  Plugins ──────╮
+│                │
+│  Loaded: 7     │
+│  Disabled: 31  │
+│  Errors: 0     │
+│                │
+├────────────────╯
+Telegram: ok (@EFB_Jarvis_bot) (973ms)
+Agents: main (default), researcher, planner, coder, quality, monitor, auditor
+Heartbeat interval: 30m (main)
+Session store (main): /Users/ericbrown/.openclaw/agents/main/sessions/sessions.json (20 entries)
+- agent:main:telegram:direct:5387843769 (29m ago)
+- agent:main:subagent:2cb79d5b-e334-406a-b590-54a4e6d4ea09 (29m ago)
+- agent:main:subagent:f9e0d7a8-83d1-429d-a95b-c094c055c1ae (35m ago)
+- agent:main:subagent:4299e0f9-75fb-4885-b18a-ce024c569ffd (39m ago)
+- agent:main:cron:da942e7a-3360-40ca-84af-9b2fdcd4b158 (733m ago)
+│
+└  Doctor complete.

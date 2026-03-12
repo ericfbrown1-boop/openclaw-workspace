@@ -283,21 +283,65 @@ The repomix output file stays in the project directory for Eric to upload to Gro
 Trigger: "check stocks", "MicroCenter", "price alert", "system health"
 Action: spawn monitor, or handled automatically by scheduled cron jobs.
 
+## 🧪 GPT 5.4 Trial (Started 2026-03-11)
+- **Trial purpose:** Test GPT 5.4 (openai/gpt-5.1-codex) for speed improvements
+- **Primary use:** Cross-review of Planner output (dual-model review loop)
+- **Secondary use:** Routine subagent tasks where speed > depth
+- **Jarvis main model:** Remains Opus 4.6 for primary orchestration
+- **Evaluation criteria:** Speed, accuracy, plan quality, cost
+- **Review after:** 2 weeks (by 2026-03-25)
+
 ## 🔄 Complete Code Pipeline
 
 When code work is requested, the full pipeline is:
 
 ```
-Eric request → Planner (if new project) → Coder (implementation)
-  → Quality Agent (security audit)
+Eric request → Planner (if new project)
+  → PARALLEL:
+    ├─ GPT 5.4 Cross-Review (model: openai/gpt-5.1-codex)
+    └─ Conductor Preflight Check (verify Docker, Railway, env vars)
+  → Jarvis merges: incorporates review + confirms environment ready
+  → Final PLAN.md + PROJECT_CONTEXT.md produced
+  → Coder (implementation, model: anthropic/claude-sonnet-4-6)
+    → Writes CHECKPOINT.md at each phase
+    → Writes HANDOFF.md on completion
+  → Tester (import verification + test suite, model: anthropic/claude-sonnet-4-6)
+    → If FAIL: returns to Coder with specific fix instructions
+    → If PASS: writes HANDOFF.md for Quality
+  → PARALLEL:
+    ├─ Quality Part B: Security Audit
+    └─ Quality Part C: Code Quality Review
+    (model: anthropic/claude-sonnet-4-6)
     → If CRITICAL: Jarvis runs BFG, loop back to Quality
     → If CLEAN: proceed
   → External Auditor (asks Eric about Grok review)
     → If YES: repomix packages code → Eric uploads to Grok
     → If NO: done
+  → Conductor (Docker build + Railway deploy + smoke tests)
+  → Librarian (post-audit review, suggests agent improvements)
+    → Eric reviews/approves changes in Librarian Dashboard
   → Code shipped ✅
 ```
+
+### Model Tiering Strategy (Cost Optimization)
+| Agent | Model | Rationale |
+|-------|-------|-----------|
+| Jarvis (main) | Opus 4.6 | Orchestration needs best reasoning |
+| Planner | Opus 4.6 or GPT 5.4 | Architecture needs depth |
+| GPT 5.4 Reviewer | GPT 5.4 | Speed + fresh perspective |
+| Coder | **Sonnet 4.6** | Code tasks are well-defined; saves ~40-60% |
+| Tester | **Sonnet 4.6** | Test execution is deterministic |
+| Quality | **Sonnet 4.6** | Checklist-driven; Opus not needed |
+| Conductor | **Sonnet 4.6** | Infrastructure tasks are well-defined |
+| External Auditor | Sonnet 4.6 | Packaging is straightforward |
+| Librarian | Sonnet 4.6 | Analysis can use cheaper model |
+| Monitor | **Sonnet 4.6** | Simple monitoring tasks |
+| Researcher | Sonnet 4.6 | Web search + synthesis |
+
+**Expected savings:** ~40-60% reduction in token costs by using Sonnet for
+deterministic/well-defined tasks while keeping Opus for orchestration and planning.
 
 Jarvis orchestrates this pipeline automatically. Eric only needs to:
 1. Make the initial request
 2. Answer yes/no on the Grok review prompt
+3. Review Librarian's suggested agent improvements in the dashboard

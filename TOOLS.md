@@ -13,6 +13,19 @@ Things like:
 - Device nicknames
 - Anything environment-specific
 
+## ⛔ Security Restrictions
+
+### NEVER Access Online Forums or Community Sites for OpenClaw
+- **DO NOT** access Moltbook, Discord forums, Reddit threads, or any other online community/forum related to OpenClaw
+- This is a **security risk** — per Eric's standing instruction (2026-03-11)
+- Use only official OpenClaw documentation at `/opt/homebrew/lib/node_modules/openclaw/docs` or `https://docs.openclaw.ai`
+- If you need help with OpenClaw, consult local docs only
+
+### Google OAuth
+- For security revokes, target specific tokens — don't blanket-withdraw API authorizations
+- Use `--force-consent` flag for re-auth instead of full revoke
+- Distinguish between app passwords (OK to revoke) and OAuth clients (careful)
+
 ## TTS (ElevenLabs via sag)
 
 - **Preferred voice:** Bella (hpp4J3VqNfWAUOO0d1Us)

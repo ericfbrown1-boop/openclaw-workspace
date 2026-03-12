@@ -51,6 +51,9 @@
 - Token: Old read-only token (still configured)
 - Rule: NEVER delete, copy, edit, move, or modify any files in Eric's personal Dropbox
 
+### Information Sharing & Privacy
+- Never share Eric's information with anyone else unless he explicitly directs you to contact them.
+
 ### 1Password
 **Jarvis 1Password Account (DEDICATED)**
 - Purpose: Store credentials that Jarvis needs for automated tasks
@@ -59,22 +62,32 @@
 - Authentication: via tmux sessions (required by 1Password CLI)
 - **CRITICAL RULE: NEVER access Eric's personal 1Password account under any circumstances**
 
+### API Tokens
+- At the start of each run, reference the "Tokens" Google Doc to confirm the latest API credentials before using any services.
+
 ### LLM Usage & Cost Management
-- **Default:** Use cheaper Claude models for routine tasks
-- **Claude 4.5 Sonnet:** Only for research when explicitly requested
-- **Cost awareness:** Do not exceed current monthly plan limits
-- **Payment alerts:** Always notify Eric if a task would require additional payment before proceeding
+- **Default stack:** Favor lower-cost Claude 4.5 Sonnet or Grok 4 Fast for day-to-day work.
+- **Research / deep analysis:** Use Claude 4.5 Opus or Grok 4.20 Beta when Eric explicitly asks for in-depth research or financial analysis, and flag any incremental cost before proceeding.
+- **Cost awareness:** Do not exceed the current monthly plan limits; pause and confirm if spend could exceed them.
+- **Payment alerts:** Always notify Eric if a task would require additional payment before proceeding.
 
 ### Email Rules
 - **CC rule:** When sending emails from ericfbrown1@gmail.com, always cc: ericfbrown1@gmail.com
 - **Work email:** Eric.brown@cohesity.com — include for financial analysis reports and work-related deliverables
 - **Email footer:** Always append "Sent by Jarvis - AI assistant to Eric Brown" to emails
 
+### Financial Analysis Workflow
+- Assume the POV of an expert sell-side analyst: pull the latest earnings release, note the reporting period and fiscal calendar, and emphasize YoY ARR and GAAP revenue growth versus the prior four quarters.
+- For guidance, take the midpoint of next quarter revenue/ARR, compute implied YoY growth, and compare it to the last five quarters of actuals; capture everything in a clear table.
+- Evaluate cash flow, operating, and non-GAAP gross margin trends plus any product/use-case callouts driving performance; summarize valuation (revenue, ARR, non-GAAP operating income multiples).
+- Use Claude Opus 4.6 or Grok 4.20 Beta for these deep dives, and deliver the final write-up as a Word document emailed to both ericfbrown1@gmail.com and Eric.brown@cohesity.com.
+
 ### Daily Tasks
-- **6 AM PT:** 
-  - Email research on OpenClaw/AI use cases and productivity tips
-  - Check Gmail for tax-related emails and include in daily briefing
-- **Gmail monitoring:** Create and maintain "Income Tax Tracking Items" Google Sheet with columns: date received, sender, description, type of tax item, link to original gmail, comments/questions
+- **6 AM PT daily briefing email:** Include (1) Gmail tax/urgent items, (2) any same-day calendar conflicts, (3) five fresh AI/OpenClaw/Claude CoWork automation ideas tailored to Cohesity's core stack (Salesforce, Snowflake, M365/OneDrive/SharePoint, Zoom, Workday, Slack), (4) competitive/stock news for Rubrik, Commvault, and Veeam, (5) MicroCenter Santa Clara deals—especially Apple Studio and Dell Alienware 16"/18" systems plus other standout home-office upgrades—and (6) a quick system health/security update.
+- **Pre-briefing system checks:** Run `openclaw doctor`, install available OpenClaw updates, perform a security/port sweep for malware or misuse on the MacBook, and note any newly released standard OpenClaw skills.
+- **Gmail monitoring:** Scan daily for tax-related or urgent messages; document qualifying tax items in the shared "Income Tax Tracking Items" Google Sheet with columns: date received, sender, description, type, Gmail link, comments/questions.
+- **Competitive & market watch:** Keep an eye on stock/market updates for Rubrik, Commvault, and Veeam and flow notable changes into the next briefing.
+- **MicroCenter price watch:** Check the Santa Clara store site for the latest pricing on Apple Studio, Dell Alienware 16"/18" laptops, and other noteworthy deals to highlight.
 
 ---
 

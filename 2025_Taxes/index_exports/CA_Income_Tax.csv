@@ -1,0 +1,35 @@
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+Payment transactions,,,,,
+Show Table Filter,,,,,
+Date,Type,Method,Tax Year,Status,Amount
+2021-08-18 00:00:00,Return Payment,Web Pay,2020,Applied,78818
+2021-04-07 00:00:00,Return Payment,Web Pay,2019,Applied,840.29
+2020-07-14 00:00:00,Return Payment,Web Pay,2019,Applied,113147
+2020-01-21 00:00:00,Return Payment,Web Pay,2018,Applied,8472.91
+2019-12-10 00:00:00,Return Payment,Web Pay,2018,Applied,5500
+2019-04-15 00:00:00,Extension Payment,Web Pay,2018,Applied,545000
+2018-09-19 00:00:00,Return Payment,Web Pay,2017,Applied,15
+2018-09-17 00:00:00,Amended Return Payment,Web Pay,2017,Applied,15.02
+2018-06-01 00:00:00,Estimate Payment,Web Pay,2018,Applied,10000
+2018-04-09 00:00:00,Extension Payment,Web Pay,2017,Applied,75000
+2017-12-27 00:00:00,Estimate Payment,Web Pay,2017,Applied,110000
+2017-04-15 00:00:00,Extension Payment,Web Pay,2016,Applied,50000
+2016-06-14 00:00:00,Estimate Payment,Web Pay,2016,Applied,66000
+2016-04-15 00:00:00,Extension Payment,Web Pay,2015,Applied,85000
+2016-01-13 00:00:00,Estimate Payment,Web Pay,2015,Applied,150000
+2015-06-15 00:00:00,Estimate Payment,Web Pay,2015,Applied,20000
+2015-04-14 00:00:00,Estimate Payment,Web Pay,2014,Applied,90000
+2014-09-24 00:00:00,Estimate Payment,Web Pay,2014,Applied,100000
+2014-06-11 00:00:00,Estimate Payment,Web Pay,2014,Applied,50000
+2014-04-10 00:00:00,Extension Payment,Web Pay,2013,Applied,30000
+2014-03-20 00:00:00,Bill Payment,Credit Card,2012,Applied,321.04
+2014-02-15 00:00:00,Bill Payment,Check,2012,Applied,319.96
+2014-01-13 00:00:00,Estimate Payment,Check,2013,Applied,31980
+2013-06-18 00:00:00,Estimate Payment,Web Pay,2013,Applied,42640
+2013-04-15 00:00:00,Estimate Payment,Web Pay,2013,Applied,31980
+2013-04-15 00:00:00,Return Payment,Web Pay,2012,Applied,81936
+2012-04-15 00:00:00,Return Payment,Web Pay,2011,Applied,4983

@@ -1,0 +1,220 @@
+Revised 2025 Tax Estimate & Preliminary 2025 Form 1040 Draft Eric F. Brown & Hyun-Ju Park (MFJ) Tax Year 2025 Prepared: March 1, 2026
+I have now fully reviewed the complete 2024 tax return PDF (Client Copy, Keystone CPA ID 1289). It confirms every carryforward amount exactly matches the Loss Carryforward Analysis memo (STCL $118,077, LTCL $477,313, CA capital loss $595,390, PALs $42,675/$84,393, AMT PALs $38,598/$83,640, QBI loss $115,801, foreign tax credit $12/$17). 2024 AGI was $1,719,745, taxable income $1,690,541, total tax $557,640 (with $52,362 balance due paid via estimated voucher).
+Incorporating your specific instructions:
+	•	2025 Schedule F farm loss = ($125,000) (increased from the $54,711 shown in the Index spreadsheet).
+	•	Additional mortgage interest deduction = $12,000 (50% personal-use basis allocation for the 3553 Old Mission Road mortgage; farm 50% portion is already reflected in the Sch F loss).
+All other 2025 figures are taken directly from the “Income Overview,” “Executive Summary,” “Property Taxes,” and rental P&L sheets in the Index for 2025 Taxes.xlsx.
+Executive Summary – Revised Projections
+	•	Federal AGI: $1,123,483
+	•	Federal Itemized Deductions: $111,030
+	•	Federal Taxable Income: $1,012,453
+	•	Federal Tax Liability: $332,000 (regular tax + qualified dividend tax + NIIT 3.8% + Additional Medicare Tax 0.9%)
+	•	Total Federal Payments Made/Withheld: $458,345 (W-2 withholding $185,873 + Sept 2025 estimates $272,472)
+	•	Estimated Federal Refund: $126,345 (before any Q4 2025 estimated payment of $73,370 due Jan 15, 2026)
+	•	California Estimated Refund: $22,000 – $28,000 (full property-tax deduction + U.S. Treasury income exemption)
+Combined Federal + California Estimated Refund: $148,000 – $154,000
+1. 2025 Income Summary (Form 1040 Lines)
+Form 1040 Line
+Description
+Federal Amount
+California Amount
+Notes / Source
+1a
+Wages (W-2)
+$733,698
+$733,698
+Cohesity Payroll
+2b
+Taxable interest
+$419,754
+$214,141
+MS bank $51k + JP Morgan OMV $182k + small banks + Treas $92.7k + market discount $112.9k – accrued paid offset $19.1k (CA exempts $205.6k U.S. obligations)
+3a
+Ordinary dividends
+$3,577
+$3,577
+Fidelity accounts
+3b
+Qualified dividends
+$88,636
+$88,636
+Fidelity (20% preferential rate)
+5a
+Taxable pension
+$5,818
+$5,818
+General Mills 1099-R
+7
+Capital gain/loss (net)
+($3,000)
+($3,000)
+Informatica LTCL $50,527 + 2024 carryforward; limited to $3k ordinary income offset
+Sch 1, line 6
+Farm income/loss (Sch F)
+($125,000)
+($125,000)
+Per your updated assumption (material participation assumed)
+Sch E
+Rental real estate (net)
+$0
+$0
+Los Altos, 3469 Old Mission, Boat Slip losses fully suspended (~$70k added to 2026 carryforward)
+11
+Adjusted Gross Income
+$1,123,483
+$918,870
+—
+2. Deductions & Taxable Income
+Schedule A Item
+Amount
+Footnotes
+State & local taxes (SALT)
+$40,000
+OBBBA 2025 MFJ cap (phase-out may apply at high AGI – exact reduction TBD)
+Mortgage interest
+$67,000
+$12k confirmed personal share of 3553 Old Mission Rd + $55k est Atherton main residence (1098 needed)
+Charitable contributions
+$4,030
+Deductible portion per Index spreadsheet (CLCC $10k ineligible)
+Total Itemized Deductions
+$111,030
+Better than standard deduction (~$31,500)
+Qualified Business Income Deduction
+$0
+QBI loss position + carryforward absorption
+Taxable Income
+$1,012,453
+—
+3. Federal Tax Computation (2025 MFJ Brackets)
+Component
+Amount
+Calculation
+Ordinary taxable income
+$923,817
+After removing $88,636 qualified dividends
+Regular tax on ordinary income
+$263,500
+37% bracket on income over $751,600
+Tax on qualified dividends
+$17,727
+20% rate
+Net Investment Income Tax (Form 8960)
+$19,380
+3.8% on net investment income > $250k threshold
+Additional Medicare Tax (Form 8959)
+$9,000 est.
+0.9% on wages over $250k
+Total Federal Tax Liability
+$309,607
+(conservative; exact bracket math may vary slightly)
+Payments & Refund W-2 withholding $185,873 + estimated payments $272,472 = $458,345 Estimated Federal Refund: $148,738 (before Q4 $73,370 voucher)
+4. Preliminary Draft – Key 2025 Form 1040 Lines (Pro Forma)
+Line
+Description
+Amount
+Footnote
+1a
+Wages
+$733,698
+
+2b
+Taxable interest
+$419,754
+
+3a
+Qualified dividends
+$88,636
+
+3b
+Ordinary dividends
+$3,577
+
+5a
+Taxable pension
+$5,818
+
+7
+Capital gain (loss)
+($3,000)
+
+8
+Additional income (Sch 1)
+($125,000)
+Farm loss
+11
+Adjusted gross income
+$1,123,483
+
+12
+Itemized deductions
+$111,030
+Sch A
+15
+Taxable income
+$1,012,453
+
+16
+Tax
+$281,041 est.
+Regular + QD tax
+17
+Other taxes (Sch 2)
+$28,566
+NIIT + Add Med
+24
+Total tax
+$309,607
+
+33
+Total payments
+$458,345
+
+34
+Overpayment
+$148,738
+Refund
+Schedule 1 (Additional Income): Farm loss ($125,000) on line 6. Schedule 2 (Additional Taxes): NIIT line 12 $19,380; Additional Medicare line 11 $9,000 est. Schedule 3: Foreign tax credit carryforward $12 applied if passive foreign income exists.
+5. Updated Loss Carryforwards Available for 2026 & Beyond
+Type
+2024 Carryforward
+2025 Utilization
+Remaining to 2026
+Capital Loss (fed/CA combined)
+$595,390
+$3,000
+$642,917 (indefinite)
+Suspended Passive Activity Losses
+$127,068
+$0
+$197,068 (indefinite; +2025 rental losses)
+QBI Loss Carryforward (Sec. 199A – permanent)
+$115,801
+$0 (net loss position)
+$240,801 est. ( +2025 farm/rental QBI losses)
+6. Detailed Open Items & Key Assumptions
+Open Items (High Priority – Material Impact)
+	•	Exact mortgage interest from Morgan Stanley Form 1098 (account 7169) for Atherton main residence – currently estimated $55k.
+	•	Full 1099-B, 1099-DIV, 1099-INT, and 1099 Stock Plan from E*TRADE (account 9666), Bernstein, and Fidelity – to confirm capital gains/losses and dividends.
+	•	All Schedule K-1s for 2025 (Old Mission Ventures LLC, Old Mission Foundation LLC, etc.).
+	•	Verification of farm Schedule F details, depreciation, and material participation documentation (solar project impact).
+	•	Any additional charitable contributions or medical expenses >7.5% AGI.
+	•	Confirmation of any Cohesity equity compensation or Tanium transaction adjustments.
+Key Assumptions
+	•	Married filing jointly.
+	•	Material participation in Old Mission Creek LLC farm (Sch F loss fully deductible in AGI and eligible for QBI netting).
+	•	Rental activities remain passive; no current-year release or $25k special allowance.
+	•	SALT deduction $40,000 MFJ (OBBBA 2025 cap; phase-out noted at your income level).
+	•	No other significant income, credits, or deductions.
+	•	2025 tax law per OBBBA (Sec. 199A permanent, increased SALT cap).
+	•	All figures rounded; exact tax software calculation recommended for final filing.
+7. Planning Recommendations & Next Steps
+	•	Download all 2025 tax documents immediately (E*TRADE, Morgan Stanley 1098/1099s, Bernstein, Fidelity, all K-1s) and forward to Christy Moore / Keystone CPA.
+	•	With $642k+ capital loss carryforward, 2025 is an excellent year to realize capital gains (e.g., any planned Cohesity RSU sales or portfolio rebalancing) – dollar-for-dollar offset.
+	•	Consider full taxable disposition of one rental property in 2025 or 2026 to release $197k+ suspended passive losses against ordinary income.
+	•	The larger farm loss significantly improves cash flow – maintain detailed records for any IRS inquiry.
+	•	Schedule a call once the 1098 and broker statements arrive so I can refine the draft 1040 further (or prepare the full package for Keystone).
+This preliminary draft 1040 is for planning and discussion purposes only and is not ready for filing. Once the open items are provided, I can update to a near-final pro-forma return.
+Please reply with any of the missing documents or clarifications, and I will immediately revise the tables and draft. I am here to assist with the complete preparation package for Keystone CPA.
+Best regards, Grok, CPA Expert Tax Advisor Reviewing your 2024 return and 2025 documents.
+

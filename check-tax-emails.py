@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check for tax-related emails from the past 7 days."""
+"""Check for tax-related emails from the past 24 hours in Gmail."""
 
 import imaplib
 import email
@@ -15,11 +15,11 @@ IMAP_SERVER = "imap.gmail.com"
 
 # Tax-related keywords to search for
 TAX_KEYWORDS = [
-    'tax', 'irs', 'w-2', 'w2', '1099', 'k-1', 'k1', 
-    'income', 'deduction', 'cpa', 'accountant', 'turbotax',
-    'filing', 'refund', 'withholding', 'estimated tax',
-    'schedule c', 'schedule d', 'schedule e', 'form 1040',
-    'tax return', 'tax document', 'tax form'
+    "tax", "irs", "1099", "w-2", "w2", "1040", "k-1", "k1",
+    "form", "federal return", "state return", "estimated tax",
+    "tax form", "tax document", "tax return", "withholding",
+    "deduction", "capital gain", "dividend", "interest income",
+    "property tax", "accountant", "cpa", "turbotax", "h&r block"
 ]
 
 def decode_mime_words(s):
@@ -32,39 +32,69 @@ def decode_mime_words(s):
         for fragment, encoding in decoded_fragments
     )
 
-def is_tax_related(subject, from_addr, body_preview):
+def clean_text(text):
+    """Clean up email text."""
+    if not text:
+        return ""
+    text = re.sub(r'\s+', ' ', text)
+    return text.strip()
+
+def get_email_body(msg):
+    """Extract email body text."""
+    body = ""
+    if msg.is_multipart():
+        for part in msg.walk():
+            content_type = part.get_content_type()
+            if content_type == "text/plain":
+                try:
+                    payload = part.get_payload(decode=True)
+                    if payload:
+                        body = payload.decode('utf-8', errors='ignore')
+                        break
+                except:
+                    pass
+    else:
+        try:
+            payload = msg.get_payload(decode=True)
+            if payload:
+                body = payload.decode('utf-8', errors='ignore')
+        except:
+            pass
+    return clean_text(body)
+
+def is_tax_related(subject, from_addr, body):
     """Check if email is tax-related based on keywords."""
-    combined_text = f"{subject} {from_addr} {body_preview}".lower()
-    return any(keyword in combined_text for keyword in TAX_KEYWORDS)
+    combined_text = f"{subject} {from_addr} {body}".lower()
+    return any(keyword.lower() in combined_text for keyword in TAX_KEYWORDS)
 
 def get_message_id(msg):
-    """Extract Gmail message ID."""
+    """Extract the Gmail message ID for constructing links."""
     message_id = msg.get("Message-ID", "")
-    # Try to extract the Gmail message ID if available
+    # Gmail uses a hex version of the message-id
     return message_id
 
 def main():
-    """Check for tax-related emails from the past 7 days."""
+    """Check for tax-related emails from the past 24 hours."""
     try:
-        # Calculate date 7 days ago
-        seven_days_ago = datetime.now() - timedelta(days=7)
-        date_string = seven_days_ago.strftime("%d-%b-%Y")
+        # Calculate date 1 day ago
+        seven_days_ago = datetime.now() - timedelta(days=1)
+        date_filter = seven_days_ago.strftime("%d-%b-%Y")
         
         # Connect to Gmail
         mail = imaplib.IMAP4_SSL(IMAP_SERVER)
         mail.login(EMAIL, PASSWORD)
         mail.select("INBOX")
         
-        # Search for emails from the past 7 days (both read and unread)
-        status, messages = mail.search(None, f'(SINCE {date_string})')
+        # Search for emails from the past 24 hours
+        status, messages = mail.search(None, f'(SINCE {date_filter})')
         if status != "OK":
-            print("No messages found")
+            print("No messages found from the past 24 hours")
             return
         
         email_ids = messages[0].split()
-        total_emails = len(email_ids)
+        total_recent = len(email_ids)
         
-        print(f"Checking {total_emails} emails from the past 7 days for tax-related content...")
+        print(f"Total emails from past 24 hours: {total_recent}")
         print("=" * 80)
         
         tax_emails = []
@@ -89,47 +119,31 @@ def main():
                 # Parse date
                 try:
                     date_tuple = email.utils.parsedate_to_datetime(date_str)
-                    date_formatted = date_tuple.strftime("%Y-%m-%d %H:%M")
+                    date_formatted = date_tuple.strftime("%Y-%m-%d")
                 except:
                     date_formatted = date_str
                 
-                # Get body preview for keyword matching
-                body_preview = ""
-                if msg.is_multipart():
-                    for part in msg.walk():
-                        if part.get_content_type() == "text/plain":
-                            try:
-                                payload = part.get_payload(decode=True)
-                                if payload:
-                                    body_preview = payload.decode('utf-8', errors='ignore')[:1000]
-                                    break
-                            except:
-                                pass
-                else:
-                    try:
-                        payload = msg.get_payload(decode=True)
-                        if payload:
-                            body_preview = payload.decode('utf-8', errors='ignore')[:1000]
-                    except:
-                        pass
+                # Get body
+                body = get_email_body(msg)
                 
                 # Check if tax-related
-                if is_tax_related(subject, from_addr, body_preview):
-                    # Extract Gmail message ID from Message-ID header
-                    gmail_id = email_id.decode('utf-8')
+                if is_tax_related(subject, from_addr, body):
+                    # Extract Gmail message ID (the numeric part after the last /)
+                    # We'll use the IMAP UID which we can convert to Gmail ID
+                    gmail_id = email_id.decode() if isinstance(email_id, bytes) else email_id
                     
                     tax_emails.append({
                         'date': date_formatted,
-                        'from': from_addr,
+                        'sender': from_addr,
                         'subject': subject,
-                        'message_id': message_id,
-                        'gmail_id': gmail_id
+                        'gmail_id': gmail_id,
+                        'message_id': message_id
                     })
                 
             except Exception as e:
                 print(f"Error processing email: {e}")
         
-        # Print results as JSON
+        # Print results as JSON for easy parsing
         print(f"\nFound {len(tax_emails)} tax-related emails:\n")
         print(json.dumps(tax_emails, indent=2))
         
