@@ -1,0 +1,96 @@
+flowchart TD
+    Eric["👤 Eric<br/>(Telegram / Web)"]
+
+    subgraph Orchestrator["🤖 Jarvis — Orchestrator (Opus 4.6)"]
+        J_route{{"Classify & Route"}}
+        J_merge["Merge Reviews<br/>Final PLAN.md"]
+        J_relay["Relay Audit Prompt"]
+        J_done["✅ Ship It"]
+    end
+
+    subgraph Planning["Phase 1: Architecture"]
+        P["📐 Architect — Planner<br/>(GPT 5.4)<br/>System design, PLAN.md"]
+        GPT["🧠 GPT 5.4 Cross-Review<br/>Speed + fresh perspective"]
+        COND_PRE["🚂 Conductor Preflight<br/>(Sonnet 4.6)<br/>Docker, Railway, env vars"]
+    end
+
+    subgraph Implementation["Phase 2: Build"]
+        C["⚙️ Scotty — Coder<br/>(Sonnet 4.6)<br/>Code + CHECKPOINT.md"]
+    end
+
+    subgraph Testing["Phase 3: Test"]
+        T["🧪 Tester<br/>Import verify + test suite"]
+    end
+
+    subgraph QualityGate["Phase 4: Quality Gate"]
+        Q_SEC["🔍 Inspector — Security<br/>(Sonnet 4.6)<br/>Secrets, deps, Tailscale"]
+        Q_CODE["🔍 Inspector — Quality<br/>(Sonnet 4.6)<br/>Best practices, patterns"]
+    end
+
+    subgraph Audit["Phase 5: External Review"]
+        A["🛡️ External Auditor<br/>(Sonnet 4.6)<br/>repomix + Grok option"]
+    end
+
+    subgraph Deploy["Phase 6: Deploy"]
+        COND["🚂 Conductor<br/>(Sonnet 4.6)<br/>Docker → Railway → Smoke"]
+    end
+
+    subgraph Research["Research Path"]
+        R["🔬 Oracle — Researcher<br/>(Sonnet 4.6)<br/>Web, financial, competitive"]
+    end
+
+    subgraph Background["Always Running"]
+        M["📡 Sentinel — Monitor<br/>(Sonnet 4.6)<br/>Stocks, prices, health"]
+    end
+
+    %% Main code flow
+    Eric -->|"New project"| J_route
+    J_route -->|"Plan it"| P
+    P -->|"Draft"| GPT
+    P -->|"Check infra"| COND_PRE
+    GPT -->|"Review notes"| J_merge
+    COND_PRE -->|"Env ready ✅"| J_merge
+    J_merge -->|"Final PLAN.md"| C
+    C -->|"HANDOFF.md"| T
+    T -->|"❌ FAIL"| C
+    T -->|"✅ PASS"| Q_SEC
+    T -->|"✅ PASS"| Q_CODE
+    Q_SEC -->|"🔴 CRITICAL"| C
+    Q_SEC -->|"✅ CLEAN"| A
+    Q_CODE -->|"✅ CLEAN"| A
+    A -->|"Grok review?"| J_relay
+    J_relay -->|"Ask Eric"| Eric
+    A -->|"Done"| COND
+    COND -->|"Deployed ✅"| J_done
+    J_done -->|"Report"| Eric
+
+    %% Research flow
+    Eric -->|"Research request"| J_route
+    J_route -->|"Research"| R
+    R -->|"Findings"| Eric
+
+    %% Error flow
+    Eric -->|"Bug / error"| J_route
+    J_route -->|"Diagnose"| Q_SEC
+
+    %% Monitor
+    Eric -.->|"Alerts"| M
+    M -.->|"Notifications"| Eric
+
+    %% Styling
+    style Eric fill:#4a90d9,color:#fff,stroke:#2d6cb4
+    style J_route fill:#ff6b35,color:#fff,stroke:#cc5529
+    style J_merge fill:#ff6b35,color:#fff,stroke:#cc5529
+    style J_relay fill:#ff6b35,color:#fff,stroke:#cc5529
+    style J_done fill:#2ecc71,color:#fff,stroke:#27ae60
+    style P fill:#9b59b6,color:#fff,stroke:#7d3c98
+    style GPT fill:#f39c12,color:#fff,stroke:#d68910
+    style COND_PRE fill:#1abc9c,color:#fff,stroke:#16a085
+    style C fill:#e74c3c,color:#fff,stroke:#c0392b
+    style T fill:#3498db,color:#fff,stroke:#2980b9
+    style Q_SEC fill:#e67e22,color:#fff,stroke:#ca6f1e
+    style Q_CODE fill:#e67e22,color:#fff,stroke:#ca6f1e
+    style A fill:#95a5a6,color:#fff,stroke:#7f8c8d
+    style COND fill:#1abc9c,color:#fff,stroke:#16a085
+    style M fill:#2c3e50,color:#fff,stroke:#1a252f
+    style R fill:#7b68ee,color:#fff,stroke:#5a4bc7

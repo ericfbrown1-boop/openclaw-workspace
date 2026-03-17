@@ -1,0 +1,19 @@
+[2026-03-17 04:07:27] Session agent:main:cron:5399a1f1-1bf5-48f7-81cc-f573e69e84b2 stale for 19.12 hours.
+[2026-03-17 04:07:27] Session agent:main:cron:5399a1f1-1bf5-48f7-81cc-f573e69e84b2:run:94263ed7-4e2e-4ed3-91fe-87ea98252edc stale for 19.12 hours.
+[2026-03-17 04:07:27] Session agent:main:cron:c79c8317-5cf7-4e01-b170-a849094a6265 stale for 21.95 hours.
+[2026-03-17 04:07:27] Session agent:main:cron:c79c8317-5cf7-4e01-b170-a849094a6265:run:cec4f0d8-5a0c-4990-8780-44a52b0f5f96 stale for 21.95 hours.
+[2026-03-17 04:07:27] Session agent:main:cron:da942e7a-3360-40ca-84af-9b2fdcd4b158 stale for 21.96 hours.
+[2026-03-17 04:07:27] Session agent:main:cron:da942e7a-3360-40ca-84af-9b2fdcd4b158:run:5d8479b6-a3c0-46f6-a203-ae6d222c5089 stale for 21.96 hours.
+[2026-03-17 04:07:27] Session agent:main:cron:c79c8317-5cf7-4e01-b170-a849094a6265:run:9d60f03b-9749-41ab-955e-090f47e21938 stale for 22.12 hours.
+[2026-03-17 04:07:27] Session agent:main:cron:3842de26-d982-4802-80ad-668931978b74 stale for 22.29 hours.
+[2026-03-17 04:07:27] Session agent:main:cron:3842de26-d982-4802-80ad-668931978b74:run:192a5410-ccd4-4d17-ad91-36fff1ea5252 stale for 22.29 hours.
+[2026-03-17 04:07:27] Session agent:main:cron:120565a6-6241-4158-9632-a94d07d120a7 stale for 22.36 hours.
+[2026-03-17 04:07:27] Session agent:main:cron:120565a6-6241-4158-9632-a94d07d120a7:run:9c288a8d-2bac-4a3e-8b4a-c9abd1a46c46 stale for 22.36 hours.
+[2026-03-17 04:07:27] Session agent:main:cron:a8469499-5052-4865-9252-dd34b195bacd stale for 22.37 hours.
+[2026-03-17 04:07:27] Session agent:main:cron:a8469499-5052-4865-9252-dd34b195bacd:run:2dbd03ac-33d4-4fea-89c2-853bfb192d04 stale for 22.37 hours.
+[2026-03-17 04:07:27] Session agent:main:cron:fe280cdf-d077-43e7-a902-889b44b6629e stale for 23.12 hours.
+[2026-03-17 04:07:27] Session agent:main:cron:fe280cdf-d077-43e7-a902-889b44b6629e:run:034c59d0-4a1f-4539-a4f0-2239bb11f2b2 stale for 23.12 hours.
+[2026-03-17 04:07:27] Session agent:main:main stale for 29.29 hours.
+[2026-03-17 04:07:27] Session agent:main:cron:6f8866cc-4373-41d1-9473-bd4a1fbe9340 stale for 105.03 hours.
+[2026-03-17 04:51:18] Failed to fetch sessions: env: node: No such file or directory
+[2026-03-17 05:51:19] Failed to fetch sessions: env: node: No such file or directory

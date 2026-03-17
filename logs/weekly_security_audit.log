@@ -72,3 +72,40 @@ OpenClaw update status
 
 Update available (npm 2026.3.8). Run: openclaw update
 [2026-03-09 03:00:05] Completed update status check.
+[2026-03-16 03:00:05] Starting weekly security audit...
+OpenClaw security audit
+Summary: 0 critical · 3 warn · 1 info
+Run deeper: openclaw security audit --deep
+
+WARN
+gateway.trusted_proxies_missing Reverse proxy headers are not trusted
+  gateway.bind is loopback and gateway.trustedProxies is empty. If you expose the Control UI through a reverse proxy, configure trusted proxies so local-client checks cannot be spoofed.
+  Fix: Set gateway.trustedProxies to your proxy IPs or keep the Control UI local-only.
+gateway.nodes.deny_commands_ineffective Some gateway.nodes.denyCommands entries are ineffective
+  gateway.nodes.denyCommands uses exact node command-name matching only (for example `system.run`), not shell-text filtering inside a command payload.
+- Unknown command names (not in defaults/allowCommands): camera.snap (did you mean: camera.list), camera.clip (did you mean: camera.list), screen.record, calendar.add, contacts.add, reminders.add (did you mean: reminders.list)
+  Fix: Use exact command names (for example: canvas.present, canvas.hide, canvas.navigate, canvas.eval, canvas.snapshot, canvas.a2ui.push, canvas.a2ui.pushJSONL, canvas.a2ui.reset). If you need broader restrictions, remove risky command IDs from allowCommands/default workflows and tighten tools.exec policy.
+gateway.probe_failed Gateway probe failed (deep)
+  missing scope: operator.read
+  Fix: Run "openclaw status --all" to debug connectivity/auth, then re-run "openclaw security audit --deep".
+
+INFO
+summary.attack_surface Attack surface summary
+  groups: open=0, allowlist=1
+tools.elevated: enabled
+hooks.webhooks: disabled
+hooks.internal: disabled
+browser control: enabled
+trust model: personal assistant (one trusted operator boundary), not hostile multi-tenant on one shared gateway
+[2026-03-16 03:00:07] Completed security audit.
+OpenClaw update status
+
+┌──────────┬───────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│ Item     │ Value                                                                                                     │
+├──────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ Install  │ pnpm                                                                                                      │
+│ Channel  │ stable (default)                                                                                          │
+│ Update   │ pnpm · npm latest 2026.3.13                                                                               │
+└──────────┴───────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+[2026-03-16 03:00:09] Completed update status check.

@@ -1,3 +1,4 @@
+=== OpenClaw Doctor Run: 2026-03-17 05:00:06 PDT ===
 ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
 ██░▄▄▄░██░▄▄░██░▄▄▄██░▀██░██░▄▄▀██░████░▄▄▀██░███░██
 ██░███░██░▀▀░██░▄▄▄██░█░█░██░█████░████░▀▀░██░█░█░██
@@ -7,13 +8,14 @@
  
 ┌  OpenClaw doctor
 │
-◇  State integrity ────────────────────────────────────────────────╮
-│                                                                  │
-│  - Found 3 orphan transcript file(s) in                          │
-│    ~/.openclaw/agents/main/sessions. They are not referenced by  │
-│    sessions.json and can consume disk over time.                 │
-│                                                                  │
-├──────────────────────────────────────────────────────────────────╯
+◇  Session locks ──────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  - Found 1 session lock file.                                                │
+│  - ~/.openclaw/agents/main/sessions/2eae79a5-5e4b-4f40-886d-76c7908cb78d.js  │
+│  onl.lock                                                                    │
+│    pid=90387 (alive) age=8s stale=no                                         │
+│                                                                              │
+├──────────────────────────────────────────────────────────────────────────────╯
 │
 ◇  Other gateway-like services detected ───────────────────────────────────────╮
 │                                                                              │
@@ -60,7 +62,7 @@
 │
 ◇  Skills status ────────────╮
 │                            │
-│  Eligible: 23              │
+│  Eligible: 28              │
 │  Missing requirements: 29  │
 │  Blocked by allowlist: 0   │
 │                            │
@@ -69,18 +71,19 @@
 ◇  Plugins ──────╮
 │                │
 │  Loaded: 7     │
-│  Disabled: 31  │
+│  Disabled: 34  │
 │  Errors: 0     │
 │                │
 ├────────────────╯
-Telegram: ok (@EFB_Jarvis_bot) (973ms)
-Agents: main (default), researcher, planner, coder, quality, monitor, auditor
+Telegram: ok (@EFB_Jarvis_bot) (321ms)
+Agents: main (default), researcher, planner, coder, quality, monitor, auditor, conductor
 Heartbeat interval: 30m (main)
-Session store (main): /Users/ericbrown/.openclaw/agents/main/sessions/sessions.json (20 entries)
-- agent:main:telegram:direct:5387843769 (29m ago)
-- agent:main:subagent:2cb79d5b-e334-406a-b590-54a4e6d4ea09 (29m ago)
-- agent:main:subagent:f9e0d7a8-83d1-429d-a95b-c094c055c1ae (35m ago)
-- agent:main:subagent:4299e0f9-75fb-4885-b18a-ce024c569ffd (39m ago)
-- agent:main:cron:da942e7a-3360-40ca-84af-9b2fdcd4b158 (733m ago)
+Session store (main): /Users/ericbrown/.openclaw/agents/main/sessions/sessions.json (21 entries)
+- agent:main:main (1m ago)
+- agent:main:subagent:16b9c437-0e46-462e-84bf-597e19785b40 (11m ago)
+- agent:main:telegram:direct:5387843769 (27m ago)
+- agent:main:cron:828b2524-3eb5-4100-a81a-bc906d56432d (300m ago)
+- agent:main:cron:828b2524-3eb5-4100-a81a-bc906d56432d:run:f807968c-fdf0-4c1c-b5ad-a430000024e7 (300m ago)
 │
 └  Doctor complete.
+

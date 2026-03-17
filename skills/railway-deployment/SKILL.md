@@ -97,7 +97,7 @@ so uvicorn grabs the next token (`--workers`) as the port number.
 ```dockerfile
 # WRONG
 CMD ["uvicorn", "app.main:app", "--port", "--workers", "4"]
-#                                         ^^^^^^^^^^^ grabbed as port value
+#                                          ^^^^^^^^^^^ grabbed as port value
 ```
 
 **Bug B — `$PORT` not expanding:** JSON array `CMD` does not expand environment
@@ -228,11 +228,11 @@ no HTTP response. The container is running but not serving traffic.
 
 ### Healthy startup looks like
 ```
-INFO: Started parent process [2]
-INFO: Started server process [4]
-INFO: Waiting for application startup.
-INFO: Application startup complete.
-INFO: Uvicorn running on http://0.0.0.0:8000
+INFO:     Started parent process [2]
+INFO:     Started server process [4]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000
 ```
 
 If you see workers starting and then dying repeatedly, the app is crashing
@@ -436,8 +436,8 @@ git log --oneline -3
 
 **Healthy startup logs:**
 ```
-INFO: Application startup complete.
-INFO: Uvicorn running on http://0.0.0.0:8000
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000
 ```
 
 ---
@@ -454,3 +454,148 @@ INFO: Uvicorn running on http://0.0.0.0:8000
 | Login returns "Invalid credentials" | Add AUTH_USERNAME/AUTH_PASSWORD to Railway Variables tab |
 | Build succeeds but deploy fails | Read Runtime/Deploy Logs tab, not Build Logs tab |
 | Railway keeps redeploying on its own | Railway Agent is active; close it and delete railway.json |
+
+## Section 11: Background Tasks Running Extremely Slowly (Missing Celery Workers)
+
+### Symptom
+- App works locally in ~30 minutes but takes 6+ hours on Railway
+- Tasks appear queued but never complete
+- No worker service visible in Railway project dashboard
+
+### Root Cause
+Docker Compose locally runs the FastAPI web server AND Celery workers together. On Railway, only the web service is deployed — Celery workers are a completely separate service that must be deployed independently. Without workers, tasks either queue indefinitely in Redis or fall back to slow synchronous processing.
+
+### Diagnosis
+Check your Railway project dashboard. You need separate tiles for:
+- `ContractAnalyzer` (web/API service) ✅
+- `Postgres` ✅
+- `Redis` ✅
+- `celery-worker` ← this is what's missing
+
+### Fix: Add a Celery Worker Service
+1. In Railway dashboard click **"+ Add"**
+2. Select **"GitHub Repo"** → same repo as your main app
+3. Rename the new service to `celery-worker`
+4. Click **Settings** → **Deploy** → **Custom Start Command**:
+```
+celery -A app.tasks.celery_app worker --concurrency=2 --queues=contracts --loglevel=info
+```
+5. Add Variables (same as main app):
+
+| Variable | Value |
+|----------|-------|
+| `DATABASE_URL` | same `postgresql+asyncpg://...` URL |
+| `REDIS_URL` | from Redis service Variables tab |
+| `ANTHROPIC_API_KEY` | your key |
+| `ANTHROPIC_MODEL` | `claude-sonnet-4-6` |
+| `LLM_PROVIDER` | `anthropic` |
+
+6. Deploy
+
+### Healthy Celery worker startup looks like
+```
+[celery@hostname] Connected to redis://...
+[celery@hostname] mingle: searching for neighbors
+[celery@hostname] mingle: all alone
+[celery@hostname] celery@hostname ready.
+Task app.tasks.contract_tasks.process_contract[uuid] received
+```
+
+### If tasks were queued before the worker existed
+Tasks queued while no worker was running may have expired (default 24h TTL). Re-upload or resubmit the documents through the web interface to re-queue them.
+
+---
+
+## Section 12: MinIO Connection Failure in Celery Workers
+
+### Symptom
+```
+Failed to process contract
+urllib3.exceptions.NameResolutionError: AWSHTTPConnection(host='minio', port=9000): Failed to resolve 'minio'
+```
+
+### Root Cause
+The app uses MinIO for PDF file storage. Locally MinIO runs as a Docker Compose service. On Railway, MinIO is not deployed by default — it must be added as a separate Docker image service. The hostname `minio` resolves locally but not on Railway.
+
+### Fix: Deploy MinIO on Railway
+1. Click **"+ Add"** → **"Docker Image"**
+2. Enter image: `minio/minio`
+3. Click **Settings** → **Deploy** → **Custom Start Command**:
+```
+minio server /data --console-address :9001
+```
+4. Add variables to MinIO service:
+
+| Variable | Value |
+|----------|-------|
+| `MINIO_ROOT_USER` | `minioadmin` |
+| `MINIO_ROOT_PASSWORD` | `minioadmin` |
+
+5. Add variables to **ContractAnalyzer** AND **celery-worker**:
+
+| Variable | Value |
+|----------|-------|
+| `MINIO_ENDPOINT` | `minio.railway.internal:9000` |
+| `MINIO_ACCESS_KEY` | `minioadmin` |
+| `MINIO_SECRET_KEY` | `minioadmin` |
+| `MINIO_SECURE` | `false` |
+
+### Create the bucket after MinIO deploys
+1. Click MinIO service → **Settings** → **Networking** → **Generate Domain**
+2. Open the URL in browser (MinIO console on port 9001)
+3. Log in: `minioadmin` / `minioadmin`
+4. Create bucket named `contracts`
+
+### MinIO start command not found error
+```
+Container failed to start
+The executable `server` could not be found.
+```
+This means Railway is building from source instead of using the Docker image. Fix: Go to MinIO → **Settings** → **Deploy** → **Custom Start Command** and set it to `minio server /data --console-address :9001`.
+
+---
+
+## Section 13: Celery Worker Crashes After "mingle: searching for neighbors"
+
+### Symptom
+```
+[INFO/MainProcess] mingle: searching for neighbors
+[ERROR] level: error
+```
+Worker crashes immediately after the mingle step with no further output.
+
+### Root Cause
+Celery 5.x emits a `CPendingDeprecationWarning` about `broker_connection_retry_on_startup`. In some configurations this causes a crash rather than just a warning.
+
+### Fix
+Add `broker_connection_retry_on_startup=True` to your Celery config:
+
+```python
+# api/app/tasks/celery_app.py
+celery_app.conf.update(
+    broker_connection_retry_on_startup=True,  # ADD THIS
+    result_expires=86400,
+    task_soft_time_limit=600,
+    task_time_limit=900,
+    task_serializer="json",
+    result_serializer="json",
+    accept_content=["json"],
+    task_default_queue="contracts",
+)
+```
+
+Then push and manually trigger a redeploy of the celery-worker service.
+
+---
+
+## Complete Production Architecture for ContractAnalyzer on Railway
+
+| Service | Type | Purpose |
+|---------|------|---------|
+| `ContractAnalyzer` | GitHub repo | FastAPI web server |
+| `celery-worker` | GitHub repo (same) | Background task processor |
+| `Postgres` | Railway managed | Database |
+| `Redis` | Railway managed | Celery broker + result backend |
+| `minio` | Docker image | PDF file storage |
+
+All five services must be running for full functionality.

@@ -1,0 +1,105 @@
+flowchart TD
+    Eric["👤 Eric<br/>(Telegram / Web)"]
+
+    subgraph Orchestrator["🤖 JARVIS — Orchestrator (Opus 4.6)"]
+        J_route{{"Classify & Route"}}
+    end
+
+    Eric --> J_route
+
+    %% ===== RESEARCH PATH (LEFT) =====
+    subgraph ResearchPath["🔬 RESEARCH WORKFLOW"]
+        R["🔬 Oracle — Researcher<br/>(Sonnet 4.6)<br/>Web search, financial analysis,<br/>competitive intel, fact-checking"]
+    end
+
+    J_route -->|"Research request<br/>(not a project)"| R
+    R -->|"Findings &<br/>analysis"| Eric
+
+    %% ===== ERROR PATH =====
+    J_route -->|"Bug / error<br/>(diagnose first)"| Q_SEC
+
+    %% ===== CODE PIPELINE (RIGHT) =====
+    subgraph Phase1["📐 PHASE 1: ARCHITECTURE"]
+        P["📐 Architect — Planner<br/>(GPT 5.4)<br/>System design, PLAN.md,<br/>tech stack decisions"]
+    end
+
+    subgraph Phase1Review["🔄 PARALLEL REVIEW"]
+        GPT["🧠 GPT 5.4 Cross-Review<br/>Speed + fresh perspective"]
+        COND_PRE["🚂 Conductor Preflight<br/>(Sonnet 4.6)<br/>Verify Docker, Railway, env"]
+    end
+
+    J_route -->|"New project"| P
+    P --> GPT
+    P --> COND_PRE
+
+    J_merge["🤖 Jarvis Merges<br/>→ Final PLAN.md"]
+    GPT --> J_merge
+    COND_PRE --> J_merge
+
+    subgraph Phase2["⚙️ PHASE 2: BUILD"]
+        C["⚙️ Scotty — Coder<br/>(Sonnet 4.6)<br/>Reads PLAN.md → writes code<br/>CHECKPOINT.md each phase<br/>HANDOFF.md on completion"]
+    end
+
+    J_merge --> C
+
+    subgraph Phase3["🧪 PHASE 3: TEST"]
+        T["🧪 Tester<br/>(Sonnet 4.6)<br/>Import verification<br/>+ test suite execution"]
+    end
+
+    C -->|"HANDOFF.md"| T
+    T -->|"❌ FAIL<br/>fix instructions"| C
+
+    subgraph Phase4["🔍 PHASE 4: QUALITY GATE (PARALLEL)"]
+        Q_SEC["🔍 Inspector — Security Audit<br/>(Sonnet 4.6)<br/>Secrets, deps, Tailscale,<br/>6 security checks"]
+        Q_CODE["🔍 Inspector — Code Quality<br/>(Sonnet 4.6)<br/>Best practices, patterns,<br/>maintainability"]
+    end
+
+    T -->|"✅ PASS"| Q_SEC
+    T -->|"✅ PASS"| Q_CODE
+    Q_SEC -->|"🔴 CRITICAL<br/>BFG cleanup"| C
+
+    subgraph Phase5["🛡️ PHASE 5: EXTERNAL REVIEW"]
+        A["🛡️ External Auditor<br/>(Sonnet 4.6)<br/>Packages code via repomix<br/>Offers Grok review to Eric"]
+    end
+
+    Q_SEC -->|"✅ CLEAN"| A
+    Q_CODE -->|"✅ CLEAN"| A
+    A -->|"Grok review?<br/>Yes / No"| Eric
+
+    subgraph Phase6["🚂 PHASE 6: DEPLOY"]
+        COND["🚂 Conductor<br/>(Sonnet 4.6)<br/>Docker build → Railway deploy<br/>→ smoke tests"]
+    end
+
+    A --> COND
+
+    subgraph Phase7["📚 PHASE 7: LEARN"]
+        LIB["📚 Librarian<br/>(via Jarvis)<br/>Post-audit review<br/>Suggests agent improvements"]
+    end
+
+    COND -->|"Deployed ✅"| LIB
+    LIB -->|"✅ Code Shipped"| Eric
+
+    %% ===== MONITOR (BACKGROUND) =====
+    subgraph BGMonitor["📡 ALWAYS RUNNING"]
+        M["📡 Sentinel — Monitor<br/>(Sonnet 4.6)<br/>Stock alerts, price watches,<br/>system health, cron jobs"]
+    end
+
+    Eric -.->|"Check stocks,<br/>price alerts"| M
+    M -.->|"Alerts &<br/>notifications"| Eric
+
+    %% Styling
+    style Eric fill:#4a90d9,color:#fff,stroke:#2d6cb4,stroke-width:3px
+    style J_route fill:#ff6b35,color:#fff,stroke:#cc5529,stroke-width:2px
+    style J_merge fill:#ff6b35,color:#fff,stroke:#cc5529,stroke-width:2px
+    style R fill:#7b68ee,color:#fff,stroke:#5a4bc7,stroke-width:2px
+    style P fill:#9b59b6,color:#fff,stroke:#7d3c98,stroke-width:2px
+    style GPT fill:#f39c12,color:#fff,stroke:#d68910,stroke-width:2px
+    style COND_PRE fill:#1abc9c,color:#fff,stroke:#16a085,stroke-width:2px
+    style C fill:#e74c3c,color:#fff,stroke:#c0392b,stroke-width:2px
+    style T fill:#3498db,color:#fff,stroke:#2980b9,stroke-width:2px
+    style Q_SEC fill:#e67e22,color:#fff,stroke:#ca6f1e,stroke-width:2px
+    style Q_CODE fill:#e67e22,color:#fff,stroke:#ca6f1e,stroke-width:2px
+    style A fill:#95a5a6,color:#fff,stroke:#7f8c8d,stroke-width:2px
+    style COND fill:#1abc9c,color:#fff,stroke:#16a085,stroke-width:2px
+    style LIB fill:#8e44ad,color:#fff,stroke:#6c3483,stroke-width:2px
+    style M fill:#2c3e50,color:#fff,stroke:#1a252f,stroke-width:2px

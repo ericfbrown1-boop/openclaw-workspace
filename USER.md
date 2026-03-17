@@ -38,6 +38,13 @@
 - When in doubt, ask first
 - This applies to ALL files, not just obvious personal data
 
+### 🚀 Code Deployment Default
+- **All code projects default to Docker + Railway deployment** unless Eric says otherwise
+- Always reference the `railway-deployment` skill when writing code
+- Every project must include: Dockerfile, proper CMD with `${PORT:-8000}`, `.dockerignore`, and Railway-compatible env var handling
+- No local file paths — all config via environment variables
+- See `skills/railway-deployment/SKILL.md` for the full deployment standard
+
 ### Dropbox Storage
 **NEW: Jarvis Dropbox Account (READ/WRITE)**
 - Purpose: Store accumulated data from MacBook Pro to free up local storage

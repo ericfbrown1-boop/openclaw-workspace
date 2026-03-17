@@ -1,0 +1,132 @@
+DAILY BRIEFING — Friday, March 13, 2026
+
+============================================================
+1. GMAIL URGENT/TAX ITEMS
+============================================================
+⚠️ Gmail API timed out during this run (gog CLI unresponsive at 1 AM PT).
+Will retry on next heartbeat. Check inbox manually if urgent.
+
+============================================================
+2. CALENDAR — TODAY (Friday, Mar 13)
+============================================================
+⚠️ Calendar API also timed out. Will retry on next heartbeat.
+Recommend checking Google Calendar directly this morning.
+
+============================================================
+3. AI / OPENCLAW AUTOMATION IDEAS FOR COHESITY
+============================================================
+
+1. **Salesforce Deal-Risk Sentinel** — Use Claude to monitor Salesforce opportunity stage changes nightly. When a deal slips stages or renewal date approaches within 60 days, auto-generate a risk summary with recommended next actions and post to the relevant Slack channel. Reduces surprise churn.
+
+2. **Snowflake Cost Anomaly Alerts** — Deploy an OpenClaw cron job that queries Snowflake's ACCOUNT_USAGE.WAREHOUSE_METERING_HISTORY daily, flags warehouses with >30% week-over-week spend increase, and sends a digest to Finance via Slack. Catches runaway queries before the monthly bill.
+
+3. **M365/SharePoint Contract Ingestion Pipeline** — Extend ContractAnalyzer to watch a SharePoint folder for new vendor contracts (via Graph API webhook). Auto-extract terms, flag Cohesity/Arctera entity succession issues, and append findings to a Sheets tracker. Eliminates manual PDF wrangling.
+
+4. **Zoom Meeting Intelligence** — After each recorded Zoom call, use Whisper + Claude to transcribe, extract action items, and push a structured summary to the attendees' Slack DMs. Cross-reference with Workday org chart to tag the right escalation paths.
+
+5. **Workday Headcount Drift Dashboard** — Weekly cron job pulls Workday headcount by department, compares to plan/budget in Snowflake, and generates a variance report. Posts summary to a leadership Slack channel with drill-down link. Surfaces hiring velocity vs. plan without manual spreadsheet updates.
+
+============================================================
+4. COMPETITIVE / STOCK NEWS
+============================================================
+
+📊 RUBRIK (RBRK) — EARNINGS JUST DROPPED (Mar 12 after-hours)
+• FQ4 2026 results: EPS $0.04 (beat est. -$0.11), Revenue $377.7M (+46% YoY, beat est. $350.6M)
+• Subscription revenue $346.9M (+50% YoY) — impressive growth at scale
+• Full FY2026: Revenue $1.32B (+48% YoY), adjusted loss narrowed to -$0.01/share (was -$1.57)
+• Cash: $1.68B on hand; operating cash flow $93M (up from $83.6M)
+• NEW: Rubrik Agent Cloud (GA) — AI agent governance/rollback for Bedrock & Copilot Studio
+• NEW: Security Cloud Sovereign (data sovereignty play) + DevOps Protection for Azure DevOps/GitHub
+• Partnership: Multiyear deal with McLaren Racing (F1 + IndyCar)
+• FQ1 2027 guidance: adjusted loss of 2-4 cents/share (market didn't love the return to loss)
+• Stock slipped after-hours despite the beat — options were pricing 14% move
+• Stock ~$57.52, down ~24% YTD
+
+⚠️ COMPETITIVE NOTE: Rubrik's 50% subscription growth and AI agent governance play (RAC) are directly competitive with Cohesity. Their "mission control for AI enterprise" messaging is aggressive. Worth watching their Security Cloud Sovereign positioning vs. Cohesity DataProtect.
+
+📊 COMMVAULT (CVLT) — UNDER PRESSURE
+• Stock at ~$80.37, down 13% from $92.34 in Feb, down ~31% from Jan highs
+• Shareholder lawsuit filed (Johnson Fistel) over Jan 27 stock drop (-$40.23/share, -31.1% in one day)
+• Positive: New Okta + CloudSEK identity resilience integrations announced
+• Analysts asking "time to buy the dip?" — mixed sentiment
+• Yahoo Finance piece questioning whether current price reflects true worth
+
+📊 VEEAM — CRITICAL SECURITY VULNERABILITIES (Mar 12)
+• 🔴 MAJOR: Veeam patched 7 critical Backup & Replication vulnerabilities including:
+  - 4 remote code execution (RCE) flaws, one rated CVSS 9.9
+  - CVE-2026-21671: RCE via Backup Administrator role
+  - CVE-2026-21672: Local privilege escalation (CVSS 8.8)
+• BleepingComputer and HackerNews both covering — high visibility
+• Pure Storage/Veeam anomaly detection integration went GA on Mar 6
+
+💡 TALKING POINT: Veeam's critical CVEs are a selling opportunity — Cohesity can position its security posture against Veeam's track record of backup server vulnerabilities.
+
+============================================================
+5. MICROCENTER SANTA CLARA DEALS
+============================================================
+Note: MicroCenter website showed St. Louis Park store inventory (store filter didn't isolate Santa Clara). Prices shown are national/available inventory:
+
+🍎 APPLE STUDIO
+• Mac Studio M4 Max 16-Core / 64GB / 1TB — $2,899.99
+• Mac Studio M4 Max 14-Core / 36GB / 1TB — $2,199.99
+• Apple Studio Display accessories on clearance: $99.95 (was $169.99, save $70)
+
+🎮 DELL ALIENWARE
+• Alienware Desktop i9-285K / RTX 5080 / 32GB — $2,199.99 (was $3,599.99, SAVE $1,400)
+• Alienware 18" Laptop i9-275HX / RTX 5090 / 64GB — $3,499.99 (was $4,399.99, SAVE $900)
+• Alienware Desktop i7-265KF / RTX 5070 / 32GB — $1,499.99 (was $2,799.99, SAVE $1,300)
+• Alienware 16" Laptop i9-275HX / RTX 5070 Ti / 32GB — $1,999.99 (was $3,499.99, SAVE $1,500) ⭐ Best value
+• Alienware Desktop i9-285 / RTX 5070 Ti / 32GB — $1,999.99 (was $3,099.99, SAVE $1,100)
+• Alienware 34" OLED Monitor — $899.99 (was $1,199.99, SAVE $300)
+  + Get $100 off any Dell monitor with Dell desktop purchase
+
+🔥 STANDOUT: The Alienware 16" at $1,999 (was $3,499, 43% off) with RTX 5070 Ti is exceptional value. The desktop i9/RTX 5080 at $2,199 (39% off) is also a strong pick.
+
+💡 All deals include free Resident Evil Requiem game with RTX 50 Series GPU purchase.
+
+============================================================
+6. OPENCLAW SYSTEM HEALTH & SECURITY
+============================================================
+
+📦 VERSION STATUS
+• Installed: OpenClaw 2026.3.11 (29dc654)
+• Latest available: 2026.3.12
+• ⚠️ UPDATE AVAILABLE — one version behind. Recommend: npm install -g openclaw@latest
+
+🔒 SECURITY AUDIT (openclaw security audit)
+• 0 Critical | 2 Warnings | 1 Info
+• WARN: gateway.trusted_proxies_missing — Reverse proxy headers not trusted (low risk if local-only)
+• WARN: gateway.nodes.deny_commands_ineffective — Some denyCommands entries use non-existent command names (camera.snap, camera.clip, screen.record, etc.)
+  → Fix: Update denyCommands to use exact command names
+• INFO: Trust model = personal assistant (single operator), not multi-tenant
+• Tools elevated: enabled | Browser control: enabled | Webhooks: disabled
+
+🏥 DOCTOR OUTPUT (from latest run)
+• Session locks: 2 active, both healthy (pid 71648, not stale)
+• Cron: 12 jobs need payload kind normalization → Run: openclaw doctor --fix
+• LaunchAgents running: gatewaywatchdog, logrotation, selfheal, sessionmonitor, tailscale.monitor, weeklysecurity
+• Cleanup hint: Old ai.openclaw.gateway plist can be removed
+• Skills: 23 eligible, 29 missing requirements
+• Plugins: 7 loaded, 31 disabled, 0 errors
+• Telegram: OK (997ms)
+• Agents: main, researcher, planner, coder, quality, monitor, auditor
+
+📋 SELFHEAL WATCHDOG
+• Log file not found at ~/.openclaw/logs/selfheal.log
+• LaunchAgent com.openclaw.selfheal IS registered and running
+• Likely logging elsewhere or log rotated — not a concern
+
+🔐 GITHUB DEPENDABOT (ContractAnalyzer)
+• Could not check — gh CLI returned 401 (authentication required)
+• Recommend: gh auth login to refresh token
+
+📋 RECOMMENDATIONS
+1. Run npm install -g openclaw@latest to get 2026.3.12
+2. Run openclaw doctor --fix to normalize 12 cron job payloads
+3. Fix denyCommands in gateway config (remove non-existent command names)
+4. Refresh gh CLI auth token for Dependabot alert monitoring
+5. Clean up old ai.openclaw.gateway plist per doctor recommendation
+6. Investigate gog CLI timeout — may need token refresh for Gmail/Calendar
+
+============================================================
+Sent by Jarvis - AI assistant to Eric Brown

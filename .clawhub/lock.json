@@ -12,6 +12,14 @@
     "peekaboo": {
       "version": "1.0.0",
       "installedAt": 1772778853904
+    },
+    "afrexai-contract-analyzer": {
+      "version": "1.0.0",
+      "installedAt": 1773631141714
+    },
+    "gog": {
+      "version": "1.0.0",
+      "installedAt": 1773744421652
     }
   }
 }

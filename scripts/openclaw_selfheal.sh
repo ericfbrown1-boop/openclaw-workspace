@@ -1,17 +1,13 @@
 #!/bin/bash
-# OpenClaw Self-Healing Watchdog
-# Runs every 10 minutes via launchd. Detects and fixes common issues
-# so OpenClaw stays healthy while Eric is away.
+# OpenClaw Self-Healing Watchdog v2
+# Runs every 10 minutes via launchd. Detects and fixes common issues.
 #
-# Checks:
-#   1. Gateway process alive + responding to RPC
-#   2. WebSocket probe (actual connectivity)
-#   3. openclaw doctor --fix (auto-repair)
-#   4. Tailscale connectivity (for voice calls, Remote Coder)
-#   5. Disk space check
-#   6. Log rotation (prevent /tmp from filling up)
-#
-# Escalation: restart gateway → doctor --fix → force restart → log alert
+# v2 improvements:
+#   - Detects LLM timeout patterns in logs and auto-restarts gateway to clear cooldowns
+#   - Clears stale auth profile cooldowns
+#   - Monitors for "missing tool result" transcript errors
+#   - Auto-runs openclaw doctor --fix on degraded state
+#   - Improved escalation path
 
 set -uo pipefail
 PATH="/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
@@ -19,214 +15,164 @@ PATH="/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 LOG_DIR="$HOME/.openclaw/workspace/logs"
 LOG_FILE="$LOG_DIR/selfheal.log"
 STATE_FILE="$LOG_DIR/selfheal_state.json"
-NOTIFY_SCRIPT="$HOME/.openclaw/workspace/scripts/notify.sh"
 MAX_LOG_LINES=5000
+ERR_LOG="$HOME/.openclaw/logs/gateway.err.log"
 
 mkdir -p "$LOG_DIR"
 
 ts() { date '+%Y-%m-%d %H:%M:%S'; }
+log() { echo "[$(ts)] $1" | tee -a "$LOG_FILE"; }
 
-log() {
-    echo "[$(ts)] $1" | tee -a "$LOG_FILE"
-}
-
-notify() {
-    log "ALERT: $1"
-    [[ -x "$NOTIFY_SCRIPT" ]] && "$NOTIFY_SCRIPT" "🛡️ Self-Heal: $1" 2>/dev/null || true
-}
-
-# ── 1. Gateway Process Check ─────────────────────────────────────────
-check_gateway_process() {
-    if pgrep -f "openclaw.*gateway" > /dev/null 2>&1; then
-        return 0
-    else
-        log "Gateway process not found"
-        return 1
-    fi
-}
-
-# ── 2. Gateway RPC Probe ─────────────────────────────────────────────
-check_gateway_rpc() {
-    local result
-    result=$(openclaw gateway status 2>&1)
-    if echo "$result" | grep -q "RPC probe: ok"; then
-        return 0
-    else
-        log "Gateway RPC probe failed"
-        return 1
-    fi
-}
-
-# ── 3. WebSocket Connectivity ─────────────────────────────────────────
-check_websocket() {
-    # Quick HTTP check on the gateway port
-    if curl -sf -o /dev/null -m 5 "http://127.0.0.1:18789/" 2>/dev/null; then
-        return 0
-    else
-        log "Gateway HTTP probe failed on port 18789"
-        return 1
-    fi
-}
-
-# ── 4. Tailscale Check ───────────────────────────────────────────────
-check_tailscale() {
-    if command -v tailscale &>/dev/null; then
-        local status
-        status=$(tailscale status --json 2>/dev/null | python3 -c "import sys,json; print(json.load(sys.stdin).get('BackendState',''))" 2>/dev/null)
-        if [[ "$status" == "Running" ]]; then
-            return 0
-        else
-            log "Tailscale not running (state: $status)"
-            return 1
-        fi
-    else
-        return 0  # Tailscale not installed, skip
-    fi
-}
-
-# ── 5. Disk Space Check ──────────────────────────────────────────────
-check_disk_space() {
-    local pct
-    pct=$(df -h / | awk 'NR==2 {gsub(/%/,"",$5); print $5}')
-    if [[ "$pct" -gt 90 ]]; then
-        log "Disk usage critical: ${pct}%"
-        # Clean up old OpenClaw logs
-        find /tmp/openclaw -name "*.log" -mtime +3 -delete 2>/dev/null || true
-        find "$LOG_DIR" -name "*.log" -size +10M -exec truncate -s 1M {} \; 2>/dev/null || true
-        notify "Disk usage at ${pct}%. Cleaned old logs."
-        return 1
-    fi
-    return 0
-}
-
-# ── 6. Log Rotation ──────────────────────────────────────────────────
-rotate_logs() {
-    # Trim selfheal log if too long
-    if [[ -f "$LOG_FILE" ]]; then
-        local lines
-        lines=$(wc -l < "$LOG_FILE")
-        if [[ "$lines" -gt "$MAX_LOG_LINES" ]]; then
-            tail -n 2000 "$LOG_FILE" > "${LOG_FILE}.tmp"
-            mv "${LOG_FILE}.tmp" "$LOG_FILE"
-            log "Rotated selfheal log (was $lines lines)"
-        fi
-    fi
-    # Clean OpenClaw daily logs older than 7 days
-    find /tmp/openclaw -name "openclaw-*.log" -mtime +7 -delete 2>/dev/null || true
-}
-
-# ── Restart Gateway ──────────────────────────────────────────────────
-restart_gateway() {
-    log "Attempting gateway restart..."
-    if openclaw gateway restart 2>&1 | tee -a "$LOG_FILE"; then
-        sleep 10  # Give it time to come up
-        if check_gateway_rpc; then
-            log "Gateway restarted successfully"
-            notify "Gateway was down, restarted successfully."
-            return 0
-        fi
-    fi
-    log "Gateway restart failed"
-    return 1
-}
-
-# ── Run Doctor ────────────────────────────────────────────────────────
-run_doctor() {
-    log "Running openclaw doctor --fix..."
-    local output
-    output=$(openclaw doctor --fix --non-interactive 2>&1)
-    echo "$output" >> "$LOG_FILE"
-    # Save latest doctor output for daily briefing
-    echo "$output" > "$HOME/.openclaw/workspace/memory/doctor-output-latest.txt"
-    return 0
-}
-
-# ── Force Restart (nuclear option) ────────────────────────────────────
-force_restart() {
-    log "Force-killing and restarting gateway..."
-    pkill -9 -f "openclaw.*gateway" 2>/dev/null || true
-    sleep 5
-    # Restart via launchd
-    launchctl kickstart -k "gui/$(id -u)/ai.openclaw.gateway" 2>/dev/null || \
-        openclaw gateway start 2>&1 | tee -a "$LOG_FILE"
-    sleep 15
-    if check_gateway_rpc; then
-        log "Force restart succeeded"
-        notify "Gateway force-restarted after multiple failures."
-        return 0
-    else
-        notify "⚠️ CRITICAL: Gateway unrecoverable after force restart. Manual intervention needed."
-        return 1
-    fi
-}
-
-# ══════════════════════════════════════════════════════════════════════
-# MAIN
-# ══════════════════════════════════════════════════════════════════════
+# ── 0. Log Rotation ──────────────────────────────────────────────────
+line_count=$(wc -l < "$LOG_FILE" 2>/dev/null || echo 0)
+if [[ $line_count -gt $MAX_LOG_LINES ]]; then
+    tail -n $((MAX_LOG_LINES / 2)) "$LOG_FILE" > "$LOG_FILE.tmp" && mv "$LOG_FILE.tmp" "$LOG_FILE"
+    log "Log rotated (was $line_count lines)"
+fi
 
 log "─── Self-heal check starting ───"
 
-# Always rotate logs first
-rotate_logs
+ISSUES_FOUND=0
+RESTART_NEEDED=0
 
-# Check disk space
-check_disk_space
-
-# Check Tailscale
-if ! check_tailscale; then
-    notify "Tailscale is not running. Voice calls and Remote Coder won't work."
-fi
-
-# Gateway health — escalating recovery
-gateway_ok=false
-
-if check_gateway_process && check_gateway_rpc && check_websocket; then
-    gateway_ok=true
-    log "Gateway healthy ✓"
+# ── 1. Gateway Process Check ─────────────────────────────────────────
+if pgrep -f "openclaw.*gateway" > /dev/null 2>&1; then
+    log "✅ Gateway process running"
 else
-    log "Gateway unhealthy — starting recovery..."
-
-    # Level 1: Simple restart
-    if restart_gateway; then
-        gateway_ok=true
+    log "❌ Gateway process not found — starting"
+    openclaw gateway start 2>&1 | tail -3 >> "$LOG_FILE"
+    sleep 10
+    if pgrep -f "openclaw.*gateway" > /dev/null 2>&1; then
+        log "✅ Gateway started successfully"
     else
-        # Level 2: Doctor fix
-        run_doctor
-        sleep 5
-        if check_gateway_rpc; then
-            gateway_ok=true
-            log "Doctor fix resolved the issue"
-        else
-            # Level 3: Force restart
-            if force_restart; then
-                gateway_ok=true
-            fi
-        fi
+        log "❌ Gateway failed to start — running doctor --fix"
+        openclaw doctor --fix 2>&1 | tail -10 >> "$LOG_FILE"
+        openclaw gateway start 2>&1 | tail -3 >> "$LOG_FILE"
     fi
+    ISSUES_FOUND=$((ISSUES_FOUND + 1))
 fi
 
-# Run doctor periodically even when healthy (every 6 hours = ~36 checks at 10min intervals)
-# Use state file to track last doctor run
-if $gateway_ok; then
-    last_doctor=0
-    if [[ -f "$STATE_FILE" ]]; then
-        last_doctor=$(python3 -c "import json; print(json.load(open('$STATE_FILE')).get('last_doctor',0))" 2>/dev/null || echo 0)
-    fi
-    now=$(date +%s)
-    elapsed=$((now - last_doctor))
-    if [[ "$elapsed" -gt 21600 ]]; then  # 6 hours
-        run_doctor
-        python3 -c "import json; json.dump({'last_doctor': $(date +%s), 'last_check': $(date +%s)}, open('$STATE_FILE','w'))"
-    else
-        python3 -c "
+# ── 2. Gateway RPC Health Probe ───────────────────────────────────────
+GATEWAY_PORT=$(python3 -c "import json; print(json.load(open('$HOME/.openclaw/openclaw.json')).get('gateway',{}).get('port',18789))" 2>/dev/null || echo 18789)
+GATEWAY_TOKEN=$(python3 -c "import json; print(json.load(open('$HOME/.openclaw/openclaw.json')).get('gateway',{}).get('auth',{}).get('token',''))" 2>/dev/null || echo "")
+
+HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" \
+    -H "Authorization: Bearer $GATEWAY_TOKEN" \
+    "http://127.0.0.1:$GATEWAY_PORT/health" 2>/dev/null || echo "000")
+
+if [[ "$HTTP_CODE" == "200" ]]; then
+    log "✅ Gateway RPC healthy (HTTP $HTTP_CODE)"
+else
+    log "⚠️ Gateway RPC unhealthy (HTTP $HTTP_CODE)"
+    RESTART_NEEDED=1
+    ISSUES_FOUND=$((ISSUES_FOUND + 1))
+fi
+
+# ── 3. LLM Timeout Detection (NEW in v2) ─────────────────────────────
+# Check for recent LLM timeouts in the last 30 minutes
+if [[ -f "$ERR_LOG" ]]; then
+    RECENT_TIMEOUTS=$(tail -100 "$ERR_LOG" 2>/dev/null | grep -c "LLM request timed out\|model fallback decision\|FailoverError" || echo 0)
+    if [[ $RECENT_TIMEOUTS -gt 2 ]]; then
+        log "⚠️ Detected $RECENT_TIMEOUTS recent LLM timeouts — clearing cooldowns"
+        
+        # Clear auth profile cooldowns by resetting errorCount
+        python3 << 'PYEOF'
 import json, os
-state = {}
-if os.path.exists('$STATE_FILE'):
-    state = json.load(open('$STATE_FILE'))
-state['last_check'] = $(date +%s)
-json.dump(state, open('$STATE_FILE','w'))
-" 2>/dev/null
+ap_file = os.path.expanduser("~/.openclaw/agents/main/agent/auth-profiles.json")
+try:
+    with open(ap_file) as f:
+        ap = json.load(f)
+    stats = ap.get("usageStats", {})
+    cleared = 0
+    for profile_id, stat in stats.items():
+        if stat.get("cooldownUntil") or stat.get("disabledUntil") or stat.get("errorCount", 0) > 0:
+            stat.pop("cooldownUntil", None)
+            stat.pop("disabledUntil", None)
+            stat.pop("disabledReason", None)
+            stat["errorCount"] = 0
+            cleared += 1
+    if cleared > 0:
+        with open(ap_file, 'w') as f:
+            json.dump(ap, f, indent=4)
+        print(f"Cleared cooldowns for {cleared} profiles")
+    else:
+        print("No cooldowns to clear")
+except Exception as e:
+    print(f"Error clearing cooldowns: {e}")
+PYEOF
+        RESTART_NEEDED=1
+        ISSUES_FOUND=$((ISSUES_FOUND + 1))
+    else
+        log "✅ No excessive LLM timeouts"
     fi
 fi
 
-log "─── Self-heal check complete ───"
+# ── 4. Transcript Error Detection (NEW in v2) ────────────────────────
+if [[ -f "$ERR_LOG" ]]; then
+    TRANSCRIPT_ERRORS=$(tail -50 "$ERR_LOG" 2>/dev/null | grep -c "missing tool result in session history" || echo 0)
+    if [[ $TRANSCRIPT_ERRORS -gt 0 ]]; then
+        log "⚠️ Detected $TRANSCRIPT_ERRORS transcript repair events (non-critical, monitoring)"
+    fi
+fi
+
+# ── 5. Tailscale Check ───────────────────────────────────────────────
+if command -v tailscale &>/dev/null; then
+    TS_STATUS=$(tailscale status --json 2>/dev/null | python3 -c "import sys,json; print(json.load(sys.stdin).get('BackendState',''))" 2>/dev/null || echo "unknown")
+    if [[ "$TS_STATUS" == "Running" ]]; then
+        log "✅ Tailscale running"
+    else
+        log "⚠️ Tailscale state: $TS_STATUS"
+        ISSUES_FOUND=$((ISSUES_FOUND + 1))
+    fi
+fi
+
+# ── 6. Disk Space Check ──────────────────────────────────────────────
+DISK_PCT=$(df -h / | tail -1 | awk '{print $5}' | tr -d '%')
+if [[ $DISK_PCT -lt 90 ]]; then
+    log "✅ Disk usage: ${DISK_PCT}%"
+else
+    log "⚠️ Disk usage HIGH: ${DISK_PCT}%"
+    ISSUES_FOUND=$((ISSUES_FOUND + 1))
+fi
+
+# ── 7. Gateway Restart if Needed ─────────────────────────────────────
+if [[ $RESTART_NEEDED -eq 1 ]]; then
+    log "🔄 Restarting gateway to clear issues..."
+    openclaw gateway restart 2>&1 | tail -5 >> "$LOG_FILE"
+    sleep 15
+    
+    # Verify restart worked
+    HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" \
+        -H "Authorization: Bearer $GATEWAY_TOKEN" \
+        "http://127.0.0.1:$GATEWAY_PORT/health" 2>/dev/null || echo "000")
+    
+    if [[ "$HTTP_CODE" == "200" ]]; then
+        log "✅ Gateway restarted successfully"
+    else
+        log "❌ Gateway restart failed — running doctor --fix"
+        openclaw doctor --fix 2>&1 | tail -10 >> "$LOG_FILE"
+        openclaw gateway start 2>&1 | tail -3 >> "$LOG_FILE"
+        sleep 10
+    fi
+fi
+
+# ── 8. Periodic Doctor Run (every 6th check ≈ hourly) ────────────────
+CHECK_COUNT=$(python3 -c "
+import json, os
+sf = '$STATE_FILE'
+try:
+    with open(sf) as f: s = json.load(f)
+except: s = {}
+c = s.get('check_count', 0) + 1
+s['check_count'] = c
+s['last_check'] = '$(ts)'
+with open(sf, 'w') as f: json.dump(s, f)
+print(c)
+" 2>/dev/null || echo "1")
+
+if [[ $((CHECK_COUNT % 6)) -eq 0 ]]; then
+    log "🔧 Running periodic openclaw doctor --fix"
+    openclaw doctor --fix 2>&1 | tail -20 >> "$LOG_FILE"
+fi
+
+log "─── Self-heal check complete ($ISSUES_FOUND issues found) ───"

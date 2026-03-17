@@ -1,39 +1,28 @@
-═══════════════════════════════════════════════════════
-  DAILY SECURITY SCAN — Wed Mar 11, 2026 · 5:55 AM PT
-═══════════════════════════════════════════════════════
+═══════════════════════════════════════════════════
+  Daily Security Scan — 2026-03-17 05:51 AM PT
+═══════════════════════════════════════════════════
 
-── SECURITY AUDIT ──────────────────────────────────────
-Result: 0 CRITICAL · 2 WARN · 1 INFO
+── Security Audit ──
+Result: 0 CRITICAL · 3 WARN · 1 INFO
 
-WARNINGS:
-1. gateway.trusted_proxies_missing — Reverse proxy headers not trusted.
-   Impact: Low (gateway binds to loopback; only relevant if exposed via reverse proxy).
-2. gateway.nodes.deny_commands_ineffective — Some denyCommands entries use
-   unrecognized command names (camera.snap, camera.clip, screen.record, etc.).
-   Impact: Low (commands don't exist, so nothing to block).
+Warnings:
+1. trusted_proxies_missing — Reverse proxy headers not trusted (low risk if Control UI stays local-only)
+2. deny_commands_ineffective — Some denyCommands entries use non-existent command names (camera.snap, camera.clip, screen.record, etc.)
+3. probe_failed (deep) — Missing scope: operator.read; deep probe couldn't complete fully
 
-INFO:
+Info:
 - Attack surface: 0 open groups, 1 allowlist group
-- tools.elevated: enabled | webhooks: disabled | browser control: enabled
-- Trust model: personal assistant (single trusted operator)
+- Elevated tools: enabled
+- Webhooks/hooks: disabled
+- Browser control: enabled
+- Trust model: personal assistant (single operator)
 
-── UPDATE STATUS ───────────────────────────────────────
-Installed: OpenClaw 2026.3.8 (stable)
-Latest:    2026.3.8 (stable)
-Status:    ✅ Up to date
+── Update Status ──
+Install: pnpm | Channel: stable
+Latest available: 2026.3.13
 
-── DOCTOR CHECK ────────────────────────────────────────
-- 3 orphan transcript files (disk cleanup opportunity)
-- Telegram: OK (@EFB_Jarvis_bot)
-- Active agents: main, researcher, planner, coder, quality, monitor, auditor
-- Heartbeat: 30m (main)
-- Skills: 23 eligible | Plugins: 7 loaded, 0 errors
-- No channel security warnings
-- Cleanup hint: stale ai.openclaw.gateway LaunchAgent plist can be removed
-
-── SUMMARY ─────────────────────────────────────────────
-System is healthy. No critical issues. Two low-impact warnings
-(proxy trust config and unused denyCommands entries) — neither
-requires immediate action. OpenClaw is current at 2026.3.8.
-Minor housekeeping: 3 orphan transcripts and 1 stale plist.
-═══════════════════════════════════════════════════════
+── Summary for 6 AM Brief ──
+✅ No critical issues.
+⚠️ 3 warnings (all existing/known — proxy config, denyCommands naming, deep probe scope).
+📦 OpenClaw up to date on stable channel (latest: 2026.3.13).
+🔒 No new attack surface changes detected.

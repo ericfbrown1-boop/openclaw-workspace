@@ -235,6 +235,22 @@ Action: spawn quality with the error text or terminal window name.
 Quality sends validated fix to Coder automatically.
 Never send errors directly to Coder — always route through Quality first.
 
+**J5 — Error Classification Before Dispatch:**
+Before spawning Quality for error diagnosis, classify the error into one of these categories:
+- **import** — ModuleNotFoundError, ImportError, missing dependency
+- **auth** — OAuth, token expiry, invalid_grant, 401/403
+- **Docker** — build failure, CMD issues, PORT binding, image errors
+- **Railway** — deployment failure, healthcheck, 502, railway.json conflict
+- **database** — migration ordering, extension creation, connection pool, transaction errors
+- **other** — anything not matching above
+
+Include in the Quality dispatch message:
+```
+Error Category: <category>
+KNOWN_FAILURES.md entry (if applicable): <cite entry or "none">
+Raw error: <full error text>
+```
+
 **B) Security Audit (NEW — mandatory on every code project)**
 Trigger: ANY of these events:
 - New project code is created or committed
@@ -264,6 +280,15 @@ Coder must always read PLAN.md before writing any code.
 **After Coder completes any task, Jarvis MUST dispatch Quality Agent
 for a Security Audit (Part B) on the affected project before pushing to GitHub.**
 
+**J3 — Deployment Readiness Gate:**
+Before dispatching work to Conductor, Coder must confirm ALL three of the following:
+- (a) `docker build .` succeeds without errors
+- (b) `docker run` + `curl localhost:PORT/health` returns 200
+- (c) `HANDOFF.md` exists in the project directory
+
+If ANY of these are missing, send the task back to Coder with specific failure details.
+Do NOT dispatch to Conductor until all three are confirmed.
+
 ### → External Auditor Agent (agentId: auditor)
 Trigger: AFTER Quality Agent security audit passes on a completed project.
 This is the FINAL step in the code pipeline.
@@ -282,6 +307,97 @@ The repomix output file stays in the project directory for Eric to upload to Gro
 ### → Monitor Agent (agentId: monitor)
 Trigger: "check stocks", "MicroCenter", "price alert", "system health"
 Action: spawn monitor, or handled automatically by scheduled cron jobs.
+
+---
+
+## 🔐 Auth Health Pre-Check (MANDATORY before credential-dependent work)
+
+Before dispatching ANY work that requires Google/GitHub/IMAP access, run these two checks first:
+
+```bash
+gog gmail search "newer_than:1h" --max 1   # Google/Gmail health
+gh auth status                               # GitHub health
+```
+
+**If either check fails:**
+1. Notify Eric immediately with the failure details
+2. Switch to fallback paths:
+   - **Email:** Use Zapier MCP (`mcporter call zapier.gmail_send_email`)
+   - **Notifications:** Use Telegram
+   - **GitHub:** Attempt token refresh or notify Eric to re-auth
+3. Do NOT attempt to continue the original task until auth is restored
+
+This prevents cascading failures (like 7 failed briefings in a row) by catching dead credentials before they waste agent cycles.
+
+---
+
+## 🔄 Cron Deduplication Rule
+
+Before running ANY cron task, check for recent successful completion:
+
+1. Read `memory/cron-state.json` for the cron job's ID
+2. If last successful run was within the past **4 hours** → skip with `HEARTBEAT_OK`
+3. If no record or older than 4 hours → run the task normally
+4. After successful completion → write timestamp to `memory/cron-state.json`:
+
+```json
+{
+  "cron_jobs": {
+    "<cron_id>": {
+      "last_success": "<ISO8601 timestamp>",
+      "last_run": "<ISO8601 timestamp>",
+      "run_count_today": 1
+    }
+  }
+}
+```
+
+This prevents cron storms (same briefing running 7 times) caused by multiple heartbeat triggers or session restarts.
+
+---
+
+## 📊 Centralized Incident Tracking
+
+When ANY agent encounters a failure during a pipeline run, log it to `memory/incidents.jsonl`:
+
+```json
+{"timestamp": "<ISO8601>", "agent": "<agent_name>", "project": "<project_name>", "error_category": "<import|auth|Docker|Railway|database|other>", "error_summary": "<one sentence>", "resolution": "<what fixed it or 'unresolved'>", "known_failure": "<KNOWN_FAILURES.md entry or null>"}
+```
+
+**Review cadence:** Weekly — scan incidents.jsonl for patterns, update KNOWN_FAILURES.md with new entries, suggest agent improvements.
+
+**Auto-log trigger:** Any agent returning an error state to Jarvis gets logged. Successes are not logged (only failures and resolutions).
+
+---
+
+## 🖥️ Windows Remote Coding (remote-coder-main)
+
+**⚠️ NOTE: SSH access is PENDING SETUP — run all work on MacBook only until SSH is confirmed working.**
+
+Route Coder to execute on **remote-coder-main** (Tailscale IP: 100.67.128.123) via SSH over Tailscale when ANY of the following criteria are met:
+
+| Trigger | Threshold |
+|---------|-----------|
+| GPU required | ML, CUDA, AI model inference |
+| Docker build time | >5 minutes estimated |
+| Docker image size | >2 GB |
+| Codebase size | >50K lines |
+| RAM requirement | >16 GB |
+| GPU libraries | PyTorch, TensorFlow, RAPIDS |
+| Explicit request | Eric says "heavy" or "remote" |
+
+**Default:** Use MacBook for all other work (light web apps, simple API servers, quick fixes).
+
+**Pre-dispatch verification:**
+```bash
+tailscale ping remote-coder-main   # Must succeed before SSH dispatch
+```
+
+If `tailscale ping` fails → fall back to MacBook and notify Eric that remote-coder-main is unreachable.
+
+**SSH access (once confirmed working):** `ssh ericf@100.67.128.123`
+
+---
 
 ## 🧪 GPT 5.4 Trial (Started 2026-03-11)
 - **Trial purpose:** Test GPT 5.4 (openai/gpt-5.1-codex) for speed improvements
@@ -323,6 +439,8 @@ Eric request → Planner (if new project)
   → Code shipped ✅
 ```
 
+> **Pipeline state tracking:** Jarvis tracks pipeline stage in conversation context, not external JSON files.
+
 ### Model Tiering Strategy (Cost Optimization)
 | Agent | Model | Rationale |
 |-------|-------|-----------|
@@ -345,3 +463,22 @@ Jarvis orchestrates this pipeline automatically. Eric only needs to:
 1. Make the initial request
 2. Answer yes/no on the Grok review prompt
 3. Review Librarian's suggested agent improvements in the dashboard
+
+## 🔄 Recursive Self-Improvement Protocol
+
+During detailed problem-solving sessions, **proactively evaluate whether the solution should become a permanent Skill.** Suggest it to Eric when:
+
+1. **Pattern detected** — Same type of problem has occurred before or is likely to recur
+2. **Complex solution** — The fix involved multiple steps, trial-and-error, or non-obvious knowledge
+3. **Cross-agent value** — Other agents (Coder, Conductor, Quality) would benefit from this knowledge
+4. **Configuration lesson** — A stability/security issue was resolved that should never happen again
+
+**How to suggest:**
+> "💡 Skill suggestion: We just solved [problem]. This involved [key learnings]. Want me to create a `[skill-name]` Skill so all agents handle this automatically next time?"
+
+**Priorities (never violate):**
+1. Stability — no Skill should introduce fragility
+2. Security — no Skill should weaken protections
+3. Efficiency — Skills should save real time on recurring tasks
+
+**Track suggestions** in `memory/skill-suggestions.md` so we don't lose good ideas even if Eric says "not now."
