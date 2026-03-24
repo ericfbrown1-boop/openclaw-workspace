@@ -1,9 +1,10 @@
-2026-03-19 06:01 PT | Status: already current | Version: 2026.3.13 | Notes: OpenClaw already on latest stable build; no updates applied.
-2026-03-20T05:58:29-0700 | Status: already current | Version: 2026.3.13 (61d171a) | Summary: OpenClaw already on latest version per 'openclaw update status'.
-2026-03-21 06:01:33 PDT | status: already current | version: 2026.3.13 → 2026.3.13 | summary: OpenClaw already on latest stable build; update.run executed (npm global install) with no version delta.
-2026-03-22 12:03:28 PDT | Status: already current | Version: 2026.3.13 (61d171a) | Summary: OpenClaw already at stable release per 'openclaw update status'; no update run required.
-[2026-03-23 06:38:33 PDT / 2026-03-23T13:38:32Z]
-Status: already current
-Version: OpenClaw 2026.3.22 (4dcc39c)
-Summary: OpenClaw already on latest version.
+OpenClaw Daily Update Check
+===========================
+Timestamp: 2026-03-24 05:52 AM PT (12:52 UTC)
+Status: ✅ Already on latest version
+Current Version: 2026.3.23-2 (7ffe7e4)
+Channel: stable
+Install Method: pnpm
 
+Summary for 6 AM brief:
+OpenClaw is current at v2026.3.23-2 (stable). No updates available.

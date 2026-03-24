@@ -422,6 +422,12 @@ The Conductor agent (or Jarvis acting as Conductor) MUST enforce this gate:
 Trigger: "check stocks", "MicroCenter", "price alert", "system health"
 Action: spawn monitor, or handled automatically by scheduled cron jobs.
 
+**Auth Pre-Flight (MANDATORY — runs before all other sweep steps):**
+- `gog gmail search "newer_than:1h" --max 1 --account ericfbrown1@gmail.com` — if `invalid_grant` or timeout → run `gog auth add ericfbrown1@gmail.com --services gmail,calendar,drive,contacts,docs,sheets --force-consent` immediately, then log incident.
+- `gh auth status` — if fails → alert Eric, log incident.
+- If either auth is broken, all credential-dependent cron jobs must be paused until auth is restored.
+- This check prevents cascading cron failures (e.g., 7 failed briefings from a dead token).
+
 **Mission-Control Sweep (every 5 minutes):**
 1. `curl http://localhost:3000/health` + `curl http://localhost:3001/health` (or `pm2 status`) — restart + alert if either fails.
 2. Cross-check `/api/backend/tasks` → Task Board UI → Agents conveyor → Mission Control cards. Any mismatch = critical incident; log to `memory/incidents.jsonl` and alert Eric.
@@ -645,21 +651,78 @@ Action: spawn librarian with project path and deployment summary.
 
 ---
 
-## 🔄 Recursive Self-Improvement Protocol
+## 🔄 Recursive Self-Improvement Protocol (MANDATORY)
 
-During detailed problem-solving sessions, **proactively evaluate whether the solution should become a permanent Skill.** Suggest it to Eric when:
+**This is not optional. Every failure triggers this loop. Every project completion triggers this loop.**
 
-1. **Pattern detected** — Same type of problem has occurred before or is likely to recur
-2. **Complex solution** — The fix involved multiple steps, trial-and-error, or non-obvious knowledge
-3. **Cross-agent value** — Other agents (Coder, Conductor, Quality) would benefit from this knowledge
-4. **Configuration lesson** — A stability/security issue was resolved that should never happen again
+### The Loop: Fail → RCA → Fix → Prevent
 
-**How to suggest:**
-> "💡 Skill suggestion: We just solved [problem]. This involved [key learnings]. Want me to create a `[skill-name]` Skill so all agents handle this automatically next time?"
+**Step 1 — Detect:** Any agent encounters a failure, timeout, stall, or unexpected behavior.
+
+**Step 2 — Root Cause Analysis (immediate):**
+- Document in `memory/incidents.jsonl`: timestamp, agent, project, error category, error summary, root cause (not just symptoms).
+- Ask "Why did this happen?" at least 3 times (5-Whys method) to get past surface causes.
+- Example: "Cron failed" → Why? "Token expired" → Why? "No auto-refresh" → Why? "Auth check wasn't a standing cron job" → **Root cause: auth monitoring was a rule on paper, not an automated process.**
+
+**Step 3 — Implement Fix:**
+- Fix the immediate problem.
+- Then update the relevant AGENTS.md section, SKILL.md file, or cron job so the same class of failure is prevented automatically.
+- If the fix requires a new cron job, script, or monitoring check — create it, don't just document it.
+
+**Step 4 — Verify Prevention:**
+- Confirm the fix is live (cron running, skill updated, rule enforced).
+- Add a test case or Monitor check that would catch this failure if it recurred.
+- Update `memory/incidents.jsonl` with the resolution and prevention measure.
+
+**Step 5 — Learn & Propagate:**
+- If the fix applies to multiple agents, update ALL affected agent profiles.
+- Update `memory/skill-suggestions.md` with the pattern for Librarian's weekly review.
+- If the same error category appears >2 times in `incidents.jsonl`, escalate to Eric with a structural fix proposal.
+
+### Triggers for the Loop
+- **Every failure** — cron error, auth timeout, stalled task, dashboard mismatch, broken link, missing deliverable
+- **Every project completion** — what went well? what was slow? what should be automated?
+- **Every Eric complaint** — if Eric has to ask "why isn't this done?" or "why did this break?", that's a loop trigger
+- **Weekly Librarian review** — scan incidents.jsonl for patterns, propose AGENTS.md updates
+
+### Standing Failures Log
+All incidents go to `memory/incidents.jsonl` with this schema:
+```json
+{
+  "timestamp": "<ISO8601>",
+  "agent": "<agent_name>",
+  "project": "<project_name>",
+  "error_category": "<auth|dashboard|git|powerspec|cron|deliverable|ui|other>",
+  "error_summary": "<one sentence>",
+  "root_cause": "<5-Whys result>",
+  "fix_applied": "<what was done>",
+  "prevention": "<what was changed in AGENTS.md/SKILL.md/cron to prevent recurrence>",
+  "resolved": true
+}
+```
+
+### Recent Lessons Applied (2026-03-22 to 2026-03-24)
+| Incident | Root Cause | Prevention Implemented |
+|----------|-----------|----------------------|
+| Dashboard showed 100% without commits | Progress calculated from elapsed time | `server.js` now uses milestone-based progress; Conductor gate requires commit SHA |
+| PowerSpec idle while tasks queued | Usage was optional, not mandatory | PowerSpec-First policy; Monitor alerts on idle GPU |
+| Terminal nav link dead | Placeholder shipped without QA | External Auditor must click every nav item; dead links = auto-fail |
+| gog token expired, cron jobs failed | No automated auth refresh | 4-hour auth health check cron; Monitor pre-flight auth check |
+| Steps 1-2 stalled for 12+ hours | Context-switching, no Monitor enforcement | 5-minute Monitor sweep cron; stale task alerting |
+| No GitHub repo for Mission Control | Git init not part of standard process | Planner must include repo setup in every PLAN.md |
+| Report marked complete without email | No deliverable verification gate | Conductor/Quality must verify email sent before 100% |
+
+### Proactive Improvement (not just reactive)
+After EVERY completed project, ask:
+1. What took longer than expected? → Can it be automated?
+2. What required manual intervention? → Can an agent handle it?
+3. What knowledge was gained? → Should it become a Skill?
+4. Was PowerSpec fully utilized? → If not, why?
+
+**Track all suggestions** in `memory/skill-suggestions.md` so we don't lose good ideas even if Eric says "not now."
 
 **Priorities (never violate):**
-1. Stability — no Skill should introduce fragility
-2. Security — no Skill should weaken protections
-3. Efficiency — Skills should save real time on recurring tasks
-
-**Track suggestions** in `memory/skill-suggestions.md` so we don't lose good ideas even if Eric says "not now."
+1. Stability — no change should introduce fragility
+2. Security — no change should weaken protections
+3. Efficiency — changes should save real time on recurring tasks
+4. Automation — if a human has to do it more than once, automate it

@@ -21310,3 +21310,15 @@ No cooldowns to clear
 [2026-03-24 05:47:02] 🔄 Restarting gateway to clear issues...
 [2026-03-24 05:47:21] ✅ Gateway restarted successfully
 [2026-03-24 05:47:21] ─── Self-heal check complete (1 issues found) ───
+[2026-03-24 05:57:21] ─── Self-heal check starting ───
+[2026-03-24 05:57:21] ✅ Gateway process running
+[2026-03-24 05:57:21] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-24 05:57:21] ⚠️ Detected 5 LLM timeouts in the last 5 minutes — clearing cooldowns
+No cooldowns to clear
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-24 05:57:21] ✅ Tailscale running
+[2026-03-24 05:57:21] ✅ Disk usage: 5%
+[2026-03-24 05:57:21] 🔄 Restarting gateway to clear issues...
+[2026-03-24 05:57:39] ✅ Gateway restarted successfully
+[2026-03-24 05:57:40] ─── Self-heal check complete (1 issues found) ───

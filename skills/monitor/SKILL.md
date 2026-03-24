@@ -14,6 +14,18 @@ Use this skill whenever Jarvis (or a sub-agent) needs to perform the Mission Con
 
 ## Sweep Checklist (every 5 minutes)
 
+### 0. Auth Pre-Flight (MANDATORY — runs first)
+```bash
+gog gmail search "newer_than:1h" --max 1 --account ericfbrown1@gmail.com
+gh auth status
+```
+- If `gog` returns `invalid_grant` or timeout → immediately run:
+  `gog auth add ericfbrown1@gmail.com --services gmail,calendar,drive,contacts,docs,sheets --force-consent`
+- If `gh` fails → alert Eric via Telegram
+- Log any auth failure to `memory/incidents.jsonl`
+- If auth is broken, pause all credential-dependent work until restored
+- **This prevents cascading cron failures from dead tokens**
+
 ### 1. App Health
 ```bash
 curl -fsS http://localhost:3000/health   # Frontend
@@ -102,6 +114,15 @@ ssh ericf@100.67.128.123 nvidia-smi       # GPU status
 - Dashboard parity mismatch → freeze deployments, notify Quality + Coder
 - Auth failures (gog/gh) → switch to fallback channels before continuing
 - Stale running task >24h → alert Eric + open incident
+
+## Root Cause Analysis (on every failure)
+When ANY sweep step fails:
+1. Log the failure to `memory/incidents.jsonl` with full schema (including root_cause and prevention fields)
+2. Run 5-Whys analysis: ask "Why?" at least 3 times to get past symptoms
+3. Implement the fix immediately (don't just document it)
+4. Update the relevant SKILL.md or AGENTS.md section so the failure class is prevented
+5. Add a monitoring check that would catch recurrence
+6. If the same error category appears >2 times, escalate to Eric with a structural fix proposal
 
 ## References
 - IBM "Observability Trends 2026" — AI-assisted, open-standard telemetry
