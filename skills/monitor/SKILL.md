@@ -14,6 +14,11 @@
 ### Nothing Stalls
 - Every task in `tasks.json` marked `running` must show progress within 2 hours.
 - If a running task has no updates for >2h, Monitor must investigate and take action: restart, reassign, or escalate.
+- **Subagent watchdog:** When a subagent (Coder, Researcher, etc.) is spawned for a task, Monitor tracks its session. If the subagent hasn't reported back within 10 minutes, Monitor must:
+  1. Check if the subagent session is still alive
+  2. If dead/timed out → immediately re-spawn with the same task
+  3. Alert Eric that a restart occurred
+  4. Log the timeout in `memory/incidents.jsonl`
 - **Eric should never have to ask "status?" or "why isn't this done?"**
 
 ### PowerSpec Is Always Working
