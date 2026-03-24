@@ -1,0 +1,31 @@
+{
+  "timestamp": "2026-03-24T14:01:37Z",
+  "macbook": {
+    "cpu_pct": 25.89,
+    "ram_used_mb": 23552,
+    "ram_total_mb": 24576,
+    "battery_pct": 100,
+    "battery_status": "discharging",
+    "battery_remaining_min": 736,
+    "disk_used_gi": 15,
+    "disk_avail_gi": 293
+  },
+  "powerspec": {
+    "gpu_util_pct": 0,
+    "vram_used_mb": 2376,
+    "vram_total_mb": 16303,
+    "reachable": true,
+    "docker_version": "29.2.1",
+    "gpu_name": "NVIDIA GeForce RTX 5080"
+  },
+  "app_health": {
+    "frontend": "ok",
+    "backend": "ok",
+    "pm2_backend_uptime": "14h",
+    "pm2_frontend_uptime": "7h"
+  },
+  "auth": {
+    "gog": "ok",
+    "gh": "ok"
+  }
+}

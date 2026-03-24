@@ -81,6 +81,13 @@ gh auth status                               # GitHub
 ```
 If either fails → notify Eric, switch to fallbacks (Zapier MCP for email, Telegram for notifications), do NOT continue until auth is restored.
 
+## 🧠 Context Hygiene (Anthropic Best Practice)
+
+When context gets heavy (compaction warnings, long conversations):
+- Save current state to `memory/YYYY-MM-DD.md` immediately
+- Don't try to carry everything forward — files survive, context doesn't
+- For multi-step tasks, write progress to files between steps so a fresh session can pick up
+
 ## 🔄 Cron Deduplication
 
 Before running ANY cron task: check `memory/cron-state.json`. If last success was <4h ago → skip. After success → write timestamp. Prevents cron storms.

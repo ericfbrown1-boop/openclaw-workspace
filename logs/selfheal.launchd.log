@@ -21322,3 +21322,76 @@ No cooldowns to clear
 [2026-03-24 05:57:21] 🔄 Restarting gateway to clear issues...
 [2026-03-24 05:57:39] ✅ Gateway restarted successfully
 [2026-03-24 05:57:40] ─── Self-heal check complete (1 issues found) ───
+[2026-03-24 06:07:40] ─── Self-heal check starting ───
+[2026-03-24 06:07:40] ✅ Gateway process running
+[2026-03-24 06:07:40] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-24 06:07:40] ⚠️ Detected 5 LLM timeouts in the last 5 minutes — clearing cooldowns
+No cooldowns to clear
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-24 06:07:40] ✅ Tailscale running
+[2026-03-24 06:07:40] ✅ Disk usage: 5%
+[2026-03-24 06:07:40] 🔄 Restarting gateway to clear issues...
+[2026-03-24 06:07:58] ✅ Gateway restarted successfully
+[2026-03-24 06:07:58] ─── Self-heal check complete (1 issues found) ───
+[2026-03-24 06:17:58] ─── Self-heal check starting ───
+[2026-03-24 06:17:58] ✅ Gateway process running
+[2026-03-24 06:17:58] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-24 06:17:58] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-24 06:17:58] ✅ Tailscale running
+[2026-03-24 06:17:58] ✅ Disk usage: 5%
+[2026-03-24 06:17:58] ─── Self-heal check complete (0 issues found) ───
+[2026-03-24 06:27:58] ─── Self-heal check starting ───
+[2026-03-24 06:27:58] ✅ Gateway process running
+[2026-03-24 06:27:58] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-24 06:27:58] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-24 06:27:58] ✅ Tailscale running
+[2026-03-24 06:27:58] ✅ Disk usage: 5%
+[2026-03-24 06:27:58] ─── Self-heal check complete (0 issues found) ───
+[2026-03-24 06:37:59] ─── Self-heal check starting ───
+[2026-03-24 06:37:59] ✅ Gateway process running
+[2026-03-24 06:37:59] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-24 06:37:59] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-24 06:37:59] ✅ Tailscale running
+[2026-03-24 06:37:59] ✅ Disk usage: 5%
+[2026-03-24 06:37:59] 🔧 Running periodic openclaw doctor --fix
+[2026-03-24 06:38:04] ─── Self-heal check complete (0 issues found) ───
+[2026-03-24 06:48:04] ─── Self-heal check starting ───
+[2026-03-24 06:48:04] ✅ Gateway process running
+[2026-03-24 06:48:04] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-24 06:48:04] ⚠️ Detected 7 LLM timeouts in the last 5 minutes — clearing cooldowns
+No cooldowns to clear
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-24 06:48:04] ✅ Tailscale running
+[2026-03-24 06:48:04] ✅ Disk usage: 5%
+[2026-03-24 06:48:04] 🔄 Restarting gateway to clear issues...
+[2026-03-24 06:48:22] ✅ Gateway restarted successfully
+[2026-03-24 06:48:22] ─── Self-heal check complete (1 issues found) ───
+[2026-03-24 06:58:23] ─── Self-heal check starting ───
+[2026-03-24 06:58:23] ✅ Gateway process running
+[2026-03-24 06:58:23] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-24 06:58:23] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-24 06:58:23] ✅ Tailscale running
+[2026-03-24 06:58:23] ✅ Disk usage: 5%
+[2026-03-24 06:58:23] ─── Self-heal check complete (0 issues found) ───
+[2026-03-24 07:08:23] ─── Self-heal check starting ───
+[2026-03-24 07:08:23] ✅ Gateway process running
+[2026-03-24 07:08:23] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-24 07:08:23] ⚠️ Detected 5 LLM timeouts in the last 5 minutes — clearing cooldowns
+No cooldowns to clear
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-24 07:08:23] ✅ Tailscale running
+[2026-03-24 07:08:23] ✅ Disk usage: 5%
+[2026-03-24 07:08:23] 🔄 Restarting gateway to clear issues...
+[2026-03-24 07:08:42] ✅ Gateway restarted successfully
+[2026-03-24 07:08:42] ─── Self-heal check complete (1 issues found) ───

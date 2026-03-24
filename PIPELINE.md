@@ -29,6 +29,16 @@ No task may reach 100% / `completed` without BOTH:
 
 Enforced by Conductor, verified by External Auditor, monitored by Monitor.
 
+## Context Management Rules (Anthropic Best Practice)
+
+**Cron payload limit:** No cron job message payload should exceed 500 tokens. Instead of embedding full instructions, have agents read their SKILL.md file for details. The cron message should be a brief trigger with a pointer to the skill.
+
+**Isolated sessions:** Each pipeline stage runs in an isolated session (enforced by OpenClaw agent spawning). The main session orchestrates but does NOT execute heavy work. This prevents context bloat.
+
+**Context hygiene:** When compaction warnings appear or context gets heavy, proactively save state to memory files and start fresh rather than dragging a massive conversation forward. Files survive sessions; context doesn't.
+
+**Verification criteria:** Every task dispatch must include success criteria that the agent can verify programmatically (e.g., "tests pass", "curl /health returns 200", "lint clean"). Tasks without verification criteria are incomplete.
+
 ## Dashboard-as-Source-of-Truth Rule
 
 Mission Control (`tasks.json`) must reflect real-time state of ALL projects at ALL times.

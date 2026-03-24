@@ -1,0 +1,33 @@
+{
+  "timestamp": "2026-03-24T13:33:00Z",
+  "macbook": {
+    "cpu_idle_pct": 74.56,
+    "load_avg_1m": 2.60,
+    "ram_used_gb": 23,
+    "ram_free_mb": 291,
+    "disk_used_pct": 29,
+    "battery": "100% charged, AC Power"
+  },
+  "powerspec": {
+    "reachable": true,
+    "connection": "DERP relay (sfo) - no direct",
+    "latency_ms": 30,
+    "gpu_util_pct": 0,
+    "vram_used_mb": 2384,
+    "vram_total_mb": 16303
+  },
+  "sweep_results": {
+    "auth_gog": "pass",
+    "auth_gh": "pass",
+    "app_health_frontend": "pass",
+    "app_health_backend": "pass",
+    "pm2": "pass",
+    "dashboard_parity": "pass",
+    "git_hygiene": "no_repos_found",
+    "powerspec": "pass_via_derp",
+    "cron_drift": "warn_stale_state_file",
+    "observability": "fail_not_running",
+    "deliverable_sweep": "pass_no_running_tasks",
+    "stalled_tasks": "warn_5_remediation_tasks_queued_24h"
+  }
+}

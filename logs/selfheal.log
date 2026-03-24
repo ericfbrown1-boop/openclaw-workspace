@@ -4836,3 +4836,82 @@ Restarted LaunchAgent: gui/501/ai.openclaw.gateway
 Restarted LaunchAgent: gui/501/ai.openclaw.gateway
 [2026-03-24 05:57:39] ✅ Gateway restarted successfully
 [2026-03-24 05:57:40] ─── Self-heal check complete (1 issues found) ───
+[2026-03-24 06:07:40] ─── Self-heal check starting ───
+[2026-03-24 06:07:40] ✅ Gateway process running
+[2026-03-24 06:07:40] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-24 06:07:40] ⚠️ Detected 5 LLM timeouts in the last 5 minutes — clearing cooldowns
+[2026-03-24 06:07:40] ✅ Tailscale running
+[2026-03-24 06:07:40] ✅ Disk usage: 5%
+[2026-03-24 06:07:40] 🔄 Restarting gateway to clear issues...
+Restarted LaunchAgent: gui/501/ai.openclaw.gateway
+[2026-03-24 06:07:58] ✅ Gateway restarted successfully
+[2026-03-24 06:07:58] ─── Self-heal check complete (1 issues found) ───
+[2026-03-24 06:17:58] ─── Self-heal check starting ───
+[2026-03-24 06:17:58] ✅ Gateway process running
+[2026-03-24 06:17:58] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-24 06:17:58] ✅ No excessive LLM timeouts
+[2026-03-24 06:17:58] ✅ Tailscale running
+[2026-03-24 06:17:58] ✅ Disk usage: 5%
+[2026-03-24 06:17:58] ─── Self-heal check complete (0 issues found) ───
+[2026-03-24 06:27:58] ─── Self-heal check starting ───
+[2026-03-24 06:27:58] ✅ Gateway process running
+[2026-03-24 06:27:58] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-24 06:27:58] ✅ No excessive LLM timeouts
+[2026-03-24 06:27:58] ✅ Tailscale running
+[2026-03-24 06:27:58] ✅ Disk usage: 5%
+[2026-03-24 06:27:58] ─── Self-heal check complete (0 issues found) ───
+[2026-03-24 06:37:59] ─── Self-heal check starting ───
+[2026-03-24 06:37:59] ✅ Gateway process running
+[2026-03-24 06:37:59] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-24 06:37:59] ✅ No excessive LLM timeouts
+[2026-03-24 06:37:59] ✅ Tailscale running
+[2026-03-24 06:37:59] ✅ Disk usage: 5%
+[2026-03-24 06:37:59] 🔧 Running periodic openclaw doctor --fix
+│  Workspace bootstrap files exceed limits and will be truncated:        │
+│  - AGENTS.md: 37,506 raw / 18,110 injected (52% truncated; max/file)   │
+│  Total bootstrap injected chars: 40,167 (27% of max/total 150,000).    │
+│  Total bootstrap raw chars (before truncation): 59,563.                │
+│                                                                        │
+│  - Tip: tune `agents.defaults.bootstrapMaxChars` for per-file limits.  │
+│                                                                        │
+├────────────────────────────────────────────────────────────────────────╯
+Telegram: ok (@EFB_Jarvis_bot) (1416ms)
+Agents: main (default), researcher, planner, coder, quality, monitor, auditor, conductor
+Heartbeat interval: 30m (main)
+Session store (main): /Users/ericbrown/.openclaw/agents/main/sessions/sessions.json (28 entries)
+- agent:main:telegram:direct:5387843769 (1m ago)
+- agent:main:cron:da942e7a-3360-40ca-84af-9b2fdcd4b158 (28m ago)
+- agent:main:cron:da942e7a-3360-40ca-84af-9b2fdcd4b158:run:6876d4f5-23a6-4b6e-9ea4-7755086f92a1 (28m ago)
+- agent:main:cron:c79c8317-5cf7-4e01-b170-a849094a6265 (38m ago)
+- agent:main:cron:c79c8317-5cf7-4e01-b170-a849094a6265:run:16d0bbb3-db2c-4ab1-898a-e32c3e5242f1 (38m ago)
+│
+└  Doctor complete.
+
+[2026-03-24 06:38:04] ─── Self-heal check complete (0 issues found) ───
+[2026-03-24 06:48:04] ─── Self-heal check starting ───
+[2026-03-24 06:48:04] ✅ Gateway process running
+[2026-03-24 06:48:04] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-24 06:48:04] ⚠️ Detected 7 LLM timeouts in the last 5 minutes — clearing cooldowns
+[2026-03-24 06:48:04] ✅ Tailscale running
+[2026-03-24 06:48:04] ✅ Disk usage: 5%
+[2026-03-24 06:48:04] 🔄 Restarting gateway to clear issues...
+Restarted LaunchAgent: gui/501/ai.openclaw.gateway
+[2026-03-24 06:48:22] ✅ Gateway restarted successfully
+[2026-03-24 06:48:22] ─── Self-heal check complete (1 issues found) ───
+[2026-03-24 06:58:23] ─── Self-heal check starting ───
+[2026-03-24 06:58:23] ✅ Gateway process running
+[2026-03-24 06:58:23] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-24 06:58:23] ✅ No excessive LLM timeouts
+[2026-03-24 06:58:23] ✅ Tailscale running
+[2026-03-24 06:58:23] ✅ Disk usage: 5%
+[2026-03-24 06:58:23] ─── Self-heal check complete (0 issues found) ───
+[2026-03-24 07:08:23] ─── Self-heal check starting ───
+[2026-03-24 07:08:23] ✅ Gateway process running
+[2026-03-24 07:08:23] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-24 07:08:23] ⚠️ Detected 5 LLM timeouts in the last 5 minutes — clearing cooldowns
+[2026-03-24 07:08:23] ✅ Tailscale running
+[2026-03-24 07:08:23] ✅ Disk usage: 5%
+[2026-03-24 07:08:23] 🔄 Restarting gateway to clear issues...
+Restarted LaunchAgent: gui/501/ai.openclaw.gateway
+[2026-03-24 07:08:42] ✅ Gateway restarted successfully
+[2026-03-24 07:08:42] ─── Self-heal check complete (1 issues found) ───

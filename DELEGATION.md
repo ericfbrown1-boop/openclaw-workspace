@@ -5,6 +5,11 @@ Trigger: "plan", "design", "architect", "new project", "build a", "start a", "cr
 Action: spawn planner with project description. Planner commissions Researcher automatically.
 Never go straight to Coder for non-trivial new projects.
 
+**Explore First (Anthropic Best Practice):** Before creating PLAN.md, Planner MUST:
+1. Read the existing codebase structure (`find . -type f | head -50`, key config files)
+2. Understand current patterns, frameworks, and conventions already in use
+3. Only then create the plan — never plan in a vacuum
+
 **Hybrid Capacity Plan:** Every PLAN.md must include a "Compute Allocation" table assigning each task to MacBook or PowerSpec. Default is PowerSpec. See `POWERSPEC.md`.
 
 **Git & Repo Mandate:** Every PLAN.md must include a "Repository Setup" section. No coding begins until the repo exists on GitHub.
@@ -35,7 +40,11 @@ Action: spawn researcher with a specific brief and source filters.
 ## → Coder Agent (agentId: coder)
 Trigger: explicit coding task where a plan already exists. Must read PLAN.md first.
 
+**Verify Your Work (Anthropic #1 Rule):** After EVERY code change, run the project's test suite. If no tests exist, write at least one smoke test (health endpoint check, lint pass, basic unit test) before creating HANDOFF.md. Never hand off untested code.
+
 **Git-Before-HANDOFF:** `git add . && git commit && git push` before creating HANDOFF.md. Record commit SHA. If no repo exists → `git init` + `gh repo create` first.
+
+**Read Before Write:** Before writing any new code, read at least 3 existing files in the project to understand patterns, conventions, and style. Reference existing patterns in your implementation. Don't invent new conventions when the project already has them.
 
 **Hybrid Build Routing:** >15min builds route to PowerSpec. Record host in HANDOFF.md.
 
@@ -47,6 +56,8 @@ Trigger: explicit coding task where a plan already exists. Must read PLAN.md fir
 
 ## → Tester Agent (agentId: tester)
 Trigger: AFTER Coder completes; BEFORE Quality audit.
+
+**Minimum Test Gate:** Every project MUST have at least a basic test suite (health endpoint check, lint pass, one unit test) before it can proceed to Quality. If no tests exist, Tester creates them.
 
 **Deliverable Check:** Verify output doc exists + email queued/sent for report tasks.
 **Hybrid Test Distribution:** >15min test suites split across MacBook + PowerSpec.
@@ -66,6 +77,8 @@ Trigger: AFTER Quality security audit passes. FINAL step in code pipeline.
 6. Sign-off Artifact (update tasks.json with completedCommit, completedAt, deliverablePath)
 
 Only after all 6 pass can a task reach 100%.
+
+**Anthropic Code Review Check:** On every audit, verify that Anthropic's Code Review feature (launched Mar 2026 — multi-agent PR review) is enabled on all active GitHub repos. If not enabled, flag it and recommend setup. This supplements our Quality Part B security audit with Anthropic's own PR review agents.
 
 **Weekly Claude Best Practices Audit (standing instruction):**
 Every Monday, the External Auditor must:
@@ -102,6 +115,13 @@ Every Monday, the External Auditor must:
 **Auto-Wake PowerSpec:** If any queued task has >15min remaining and PowerSpec is offline → 3 wake retries → alert Eric.
 
 **Hybrid Execution:** Load-balance across MacBook + PowerSpec. Record hosts in HANDOFF.md.
+
+## 📋 Global Dispatch Rule (Anthropic Best Practice)
+When dispatching work to ANY agent, Jarvis must always include:
+- **(a) Specific file paths** — not "update the config" but "update `/JarvisMissionControl/Dockerfile`"
+- **(b) Example patterns to follow** — "use the pattern in `docker-compose.yml`" or "match the style in `GlassCard.tsx`"
+- **(c) Explicit success criteria** the agent can verify programmatically — "build succeeds", "curl /health returns 200", "tests pass"
+Vague dispatches waste context and produce wrong results.
 
 ## → Monitor Agent (agentId: monitor)
 Trigger: "check stocks", "MicroCenter", "system health", or automated cron.
