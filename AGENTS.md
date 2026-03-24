@@ -500,28 +500,54 @@ When ANY agent encounters a failure during a pipeline run, log it to `memory/inc
 
 **✅ SSH access confirmed working (2026-03-18).** Key-based login via `ssh ericf@100.67.128.123`.
 
-Route Coder to execute on **remote-coder-main** (Tailscale IP: 100.67.128.123) via SSH over Tailscale when ANY of the following criteria are met:
+### ⚠️ MANDATORY: PowerSpec-First Execution Policy
 
-| Trigger | Threshold |
-|---------|-----------|
-| GPU required | ML, CUDA, AI model inference |
-| Docker build time | >5 minutes estimated |
-| Docker image size | >2 GB |
-| Codebase size | >50K lines |
-| RAM requirement | >16 GB |
-| GPU libraries | PyTorch, TensorFlow, RAPIDS |
-| Explicit request | Eric says "heavy" or "remote" |
+**PowerSpec is NOT optional. It is the PRIMARY compute resource for all non-trivial work.**
 
-**Default:** Use MacBook for all other work (light web apps, simple API servers, quick fixes).
+Every agent (Jarvis, Planner, Researcher, Coder, Tester, Conductor) MUST route work to PowerSpec via SSH unless the task specifically requires the MacBook (pm2 management, Mission Control UI serving, OpenClaw gateway, macOS-only tools).
 
-**Pre-dispatch verification:**
+**PowerSpec MUST be used for:**
+| Task Type | Why PowerSpec |
+|-----------|--------------|
+| ANY Docker build | 32 vCPUs + 128GB RAM vs MacBook's limited resources |
+| ANY test suite execution | Parallel test runners benefit from 32 cores |
+| ANY Next.js production build | Faster builds on more cores |
+| ANY research/data processing >5 min | Don't block the MacBook |
+| ANY AI/ML/GPU workload | RTX 5080 with 16GB VRAM |
+| ANY codebase >10K lines | More RAM, faster disk I/O |
+| ALL Docker image creation | Keep Docker off the MacBook entirely |
+
+**MacBook ONLY for:**
+- pm2 process management (local services)
+- Mission Control UI serving (localhost)
+- OpenClaw gateway operation
+- Tailscale/network management
+- Quick file edits and git operations
+- Sending emails/messages via gog/mcporter
+
+**Pre-task PowerSpec check (MANDATORY for every task dispatch):**
 ```bash
-tailscale ping remote-coder-main   # Must succeed before SSH dispatch
+tailscale ping remote-coder-main && ssh ericf@100.67.128.123 "hostname && nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader"
 ```
 
-If `tailscale ping` fails → fall back to MacBook and notify Eric that remote-coder-main is unreachable.
+**If PowerSpec is unreachable:**
+1. Attempt 3 retries (30s apart)
+2. If still down → alert Eric via Telegram immediately
+3. Fall back to MacBook ONLY after Eric acknowledges
+4. Log the fallback in `memory/incidents.jsonl`
 
-**SSH access (once confirmed working):** `ssh ericf@100.67.128.123`
+**SSH command:** `ssh ericf@100.67.128.123`
+**Tailscale IP:** 100.67.128.123
+**Hostname:** EFBPowerSpec / remote-coder-main
+
+### Researcher Agent — PowerSpec Rule
+When research involves data scraping, document processing, API-heavy workloads, or any task >5 minutes:
+- SSH into PowerSpec and run the work there
+- Sync results back to MacBook via rsync: `rsync -avz ericf@100.67.128.123:/path/to/output /local/path/`
+- This frees the MacBook for interactive work and gateway duties
+
+### Planner Agent — PowerSpec Rule
+Every PLAN.md MUST include a "Compute Allocation" section that explicitly assigns each task to either MacBook or PowerSpec. The DEFAULT assignment is PowerSpec unless the task requires macOS-specific resources. Plans that don't include compute allocation are incomplete and must be sent back for revision.
 
 ---
 
