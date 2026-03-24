@@ -67,6 +67,27 @@ Trigger: AFTER Quality security audit passes. FINAL step in code pipeline.
 
 Only after all 6 pass can a task reach 100%.
 
+**Weekly Claude Best Practices Audit (standing instruction):**
+Every Monday, the External Auditor must:
+1. Fetch the latest Claude/Claude Code best practices from Anthropic's official docs:
+   - https://docs.anthropic.com/en/docs/claude-code/overview
+   - https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering
+   - https://docs.anthropic.com/en/docs/build-with-claude/agentic-tool-use
+   - https://docs.anthropic.com/en/docs/claude-code/best-practices
+   - Search for any new Anthropic blog posts or changelog entries from the past 7 days
+2. Compare findings against ALL current agent configuration files:
+   - `AGENTS.md`, `DELEGATION.md`, `PIPELINE.md`, `POWERSPEC.md`, `INCIDENTS.md`
+   - `skills/monitor/SKILL.md`, `skills/remote-coder/SKILL.md`
+   - Any per-agent workspace AGENTS.md files under `~/.openclaw/agents/*/agent/`
+3. Produce a report at `plans/claude-best-practices-audit.md` with:
+   - New/changed Anthropic recommendations found
+   - Current agent files that conflict with or miss these recommendations
+   - Specific suggested changes (with before/after diffs where helpful)
+   - Priority ranking (critical alignment gaps vs nice-to-haves)
+4. Send the report to Eric via Telegram for review + approval
+5. Do NOT apply changes until Eric approves — this is a review gate, not auto-update
+6. After Eric approves, implement changes, commit to GitHub, and update the lessons table in Monitor SKILL.md
+
 ## → Conductor Agent — Completion Gate
 **The 100% Rule:** No task is complete unless committed to GitHub.
 
