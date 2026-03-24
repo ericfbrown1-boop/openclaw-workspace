@@ -14,7 +14,7 @@ SMTP_SERVER = "smtp.gmail.com"
 SMTP_PORT = 587
 FROM_EMAIL = "ericfbrown1@gmail.com"
 FROM_NAME = "Jarvis"
-PASSWORD = "sxugqgnxpfgvxcik"  # App password
+PASSWORD = "jplmfcfecipqwkgi"  # App password
 
 def send_email_with_attachment(to_email, subject, body, attachment_path):
     """Send email with attachment."""

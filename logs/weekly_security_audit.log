@@ -109,3 +109,51 @@ OpenClaw update status
 └──────────┴───────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 
 [2026-03-16 03:00:09] Completed update status check.
+[2026-03-23 03:00:04] Starting weekly security audit...
+OpenClaw security audit
+Summary: 1 critical · 4 warn · 1 info
+Run deeper: openclaw security audit --deep
+
+CRITICAL
+models.small_params Small models require sandboxing and web tools disabled
+  Small models (<=300B params) detected:
+- ollama-local/qwen3.5:35b-a3b (35B) @ agents.list.qwen-local.model.primary (unsafe; sandbox=off; web=[web_search, web_fetch])
+Uncontrolled input tools allowed: web_search, web_fetch.
+Small models are not recommended for untrusted inputs.
+  Fix: If you must use small models, enable sandboxing for all sessions (agents.defaults.sandbox.mode="all") and disable web_search/web_fetch/browser (tools.deny=["group:web","browser"]).
+
+WARN
+gateway.trusted_proxies_missing Reverse proxy headers are not trusted
+  gateway.bind is loopback and gateway.trustedProxies is empty. If you expose the Control UI through a reverse proxy, configure trusted proxies so local-client checks cannot be spoofed.
+  Fix: Set gateway.trustedProxies to your proxy IPs or keep the Control UI local-only.
+gateway.nodes.deny_commands_ineffective Some gateway.nodes.denyCommands entries are ineffective
+  gateway.nodes.denyCommands uses exact node command-name matching only (for example `system.run`), not shell-text filtering inside a command payload.
+- Unknown command names (not in defaults/allowCommands): camera.snap (did you mean: camera.list), camera.clip (did you mean: camera.list), screen.record, calendar.add, contacts.add, reminders.add (did you mean: reminders.list)
+  Fix: Use exact command names (for example: canvas.present, canvas.hide, canvas.navigate, canvas.eval, canvas.snapshot, canvas.a2ui.push, canvas.a2ui.pushJSONL, canvas.a2ui.reset). If you need broader restrictions, remove risky command IDs from allowCommands/default workflows and tighten tools.exec policy.
+fs.auth_profiles.perms_readable auth-profiles.json is readable by others
+  /Users/ericbrown/.openclaw/agents/qwen-local/agent/auth-profiles.json mode=644; auth-profiles.json contains API keys and OAuth tokens.
+  Fix: chmod 600 /Users/ericbrown/.openclaw/agents/qwen-local/agent/auth-profiles.json
+gateway.probe_failed Gateway probe failed (deep)
+  missing scope: operator.read
+  Fix: Run "openclaw status --all" to debug connectivity/auth, then re-run "openclaw security audit --deep".
+
+INFO
+summary.attack_surface Attack surface summary
+  groups: open=0, allowlist=1
+tools.elevated: enabled
+hooks.webhooks: disabled
+hooks.internal: disabled
+browser control: enabled
+trust model: personal assistant (one trusted operator boundary), not hostile multi-tenant on one shared gateway
+[2026-03-23 03:00:08] Completed security audit.
+OpenClaw update status
+
+┌──────────┬───────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│ Item     │ Value                                                                                                     │
+├──────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ Install  │ pnpm                                                                                                      │
+│ Channel  │ stable (default)                                                                                          │
+│ Update   │ pnpm · npm latest 2026.3.13                                                                               │
+└──────────┴───────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+[2026-03-23 03:00:10] Completed update status check.

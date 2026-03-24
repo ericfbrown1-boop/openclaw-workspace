@@ -25,7 +25,7 @@ attachments = sys.argv[4:]  # All remaining arguments are attachment paths
 smtp_server = "smtp.gmail.com"
 smtp_port = 587
 from_email = "ericfbrown1@gmail.com"
-password = "sxugqgnxpfgvxcik"  # App password
+password = "jplmfcfecipqwkgi"  # App password
 
 # Create message
 msg = MIMEMultipart()

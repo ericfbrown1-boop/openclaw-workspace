@@ -11,7 +11,7 @@ from email.header import decode_header
 IMAP_SERVER = "imap.gmail.com"
 IMAP_PORT = 993
 EMAIL_ACCOUNT = "ericfbrown1@gmail.com"
-EMAIL_PASSWORD = "sxugqgnxpfgvxcik"  # App password
+EMAIL_PASSWORD = "jplmfcfecipqwkgi"  # App password
 
 def search_and_download_attachment(search_filename, output_dir):
     """Search for email with specific attachment and download it"""

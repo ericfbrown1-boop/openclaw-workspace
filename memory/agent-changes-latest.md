@@ -73,5 +73,7 @@
 ### 📝 Agent Configuration Changes
 
 **📝 Modified:**
-- `main/AGENTS.md` — updated 2026-03-17 06:41 (484 lines)
-- `researcher/AGENTS.md` — updated 2026-03-17 06:41 (222 lines)
+- `main/AGENTS.md` — updated 2026-03-23 23:54 (628 lines)
+
+**🆕 Newly tracked:**
+- `main/skills/monitor/SKILL.md`

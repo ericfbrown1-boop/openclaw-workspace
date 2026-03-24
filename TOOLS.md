@@ -82,8 +82,8 @@ Add whatever helps you do your job. This is your cheat sheet.
 - **CPU:** 32 vCPUs
 - **RAM:** 128 GB
 - **GPU:** NVIDIA RTX 5080 Blackwell (CUDA 13.1)
-- **SSH User:** ericf (⚠️ PENDING — password auth not yet working; fix sshd_config first)
-- **SSH Command:** `ssh ericf@100.67.128.123` (once working)
+- **SSH User:** ericf (key-based login trusted; uses ~/.ssh/id_ed25519)
+- **SSH Command:** `ssh ericf@100.67.128.123` (BatchMode works)
 - **Docker:** Docker Desktop with NVIDIA Container Toolkit (GPU passthrough via WSL2)
 - **Git:** Configured with Eric's GitHub credentials
 - **Tailscale key expiry:** Disabled (permanent access)
@@ -99,21 +99,10 @@ Add whatever helps you do your job. This is your cheat sheet.
 ### Do NOT use for (use MacBook instead):
 - Light web apps, simple API servers
 - Quick fixes and small changes
-- Any work until SSH is confirmed working
 
-### SSH Fix Pending (sshd_config):
-Need to edit `C:\ProgramData\ssh\sshd_config` on Windows:
-1. Set `PasswordAuthentication yes` (uncomment)
-2. Comment out last two lines: `#Match Group administrators` and `# AuthorizedKeysFile __PROGRAMDATA__/ssh/administrators_authorized_keys`
-3. Run `Restart-Service sshd` in Admin PowerShell
-
-### Once SSH working — set up key-based auth:
-```bash
-ssh-keygen -t ed25519 -C "jarvis@openclaw" -f ~/.ssh/remote_coder_key
-ssh-copy-id -i ~/.ssh/remote_coder_key.pub ericf@100.67.128.123
-# Then add to ~/.ssh/config:
-# Host remote-coder-main
-#   HostName 100.67.128.123
-#   User ericf
-#   IdentityFile ~/.ssh/remote_coder_key
-```
+### SSH Notes (updated 2026-03-18)
+1. `sshd_config` already patched (PasswordAuthentication yes, Match block commented).
+2. Windows host trusts the MacBook's default `~/.ssh/id_ed25519` key (stored in `C:/Users/ericf/.ssh/authorized_keys`).
+3. Connectivity test from Mac: `tailscale ping remote-coder-main` then `ssh ericf@100.67.128.123 hostname` (returns `EFBPowerSpec`).
+4. If SSH breaks, re-open `C:/ProgramData/ssh/sshd_config`, confirm settings, and run `Restart-Service sshd`.
+5. Optional convenience: add `Host remote-coder-main` block to `~/.ssh/config` pointing to this host/key.

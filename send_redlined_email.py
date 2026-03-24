@@ -9,7 +9,7 @@ from datetime import datetime
 
 # Gmail credentials
 FROM_EMAIL = "ericfbrown1@gmail.com"
-APP_PASSWORD = "sxugqgnxpfgvxcik"
+APP_PASSWORD = "jplmfcfecipqwkgi"
 TO_EMAIL = "ericfbrown1@gmail.com"
 SMTP_SERVER = "smtp.gmail.com"
 SMTP_PORT = 587

@@ -9,7 +9,7 @@ from datetime import datetime, timedelta
 
 # Gmail credentials
 EMAIL = "ericfbrown1@gmail.com"
-PASSWORD = "sxugqgnxpfgvxcik"  # App password
+PASSWORD = "jplmfcfecipqwkgi"  # App password
 IMAP_SERVER = "imap.gmail.com"
 
 def decode_mime_words(s):

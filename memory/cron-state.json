@@ -1,0 +1,49 @@
+{
+  "cron_jobs": {
+    "c79c8317-5cf7-4e01-b170-a849094a6265": {
+      "last_success": "2026-03-19T13:12:36Z",
+      "last_run": "2026-03-19T13:12:36Z",
+      "run_count_today": 2
+    },
+    "fe280cdf-d077-43e7-a902-889b44b6629e": {
+      "last_success": "2026-03-23T12:00:36Z",
+      "last_run": "2026-03-23T12:00:36Z",
+      "run_count_today": 1,
+      "last_run_date": "2026-03-23"
+    },
+    "e48616bc-7eed-44d2-b1e7-a30089f59667": {
+      "last_success": "2026-03-23T12:30:20Z",
+      "last_run": "2026-03-23T12:30:20Z",
+      "run_count_today": 1,
+      "last_run_date": "2026-03-23"
+    },
+    "da942e7a-3360-40ca-84af-9b2fdcd4b158": {
+      "last_success": "2026-03-23T13:11:00Z",
+      "last_run": "2026-03-23T13:11:00Z",
+      "run_count_today": 1,
+      "last_run_date": "2026-03-23"
+    },
+    "828b2524-3eb5-4100-a81a-bc906d56432d": {
+      "last_success": "2026-03-23T07:00:30Z",
+      "last_run": "2026-03-23T07:00:30Z",
+      "run_count_today": 1
+    },
+    "a8469499-5052-4865-9252-dd34b195bacd": {
+      "last_success": "2026-03-23T12:45:43.442395Z",
+      "last_run": "2026-03-23T12:45:43.442395Z",
+      "run_count_today": 1,
+      "last_run_date": "2026-03-23"
+    },
+    "120565a6-6241-4158-9632-a94d07d120a7": {
+      "last_success": "2026-03-23T13:38:32Z",
+      "last_run": "2026-03-23T13:38:32Z",
+      "run_count_today": 1,
+      "last_run_date": "2026-03-23"
+    },
+    "3842de26-d982-4802-80ad-668931978b74": {
+      "last_success": "2026-03-22T18:50:00Z",
+      "last_run": "2026-03-22T18:50:00Z",
+      "run_count_today": 1
+    }
+  }
+}

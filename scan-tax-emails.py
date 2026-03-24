@@ -9,7 +9,7 @@ import re
 from datetime import datetime, timedelta
 
 EMAIL = "ericfbrown1@gmail.com"
-PASSWORD = "sxugqgnxpfgvxcik"
+PASSWORD = "jplmfcfecipqwkgi"
 IMAP_SERVER = "imap.gmail.com"
 
 # Key tax search terms for IMAP OR queries

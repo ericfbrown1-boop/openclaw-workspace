@@ -13,7 +13,7 @@ import json
 
 # Gmail credentials
 EMAIL = "ericfbrown1@gmail.com"
-PASSWORD = "sxugqgnxpfgvxcik"
+PASSWORD = "jplmfcfecipqwkgi"
 
 # Tax-related search keywords
 INCOME_KEYWORDS = [

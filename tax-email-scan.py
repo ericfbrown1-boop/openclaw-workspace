@@ -9,7 +9,7 @@ import json
 from datetime import datetime, timedelta
 
 EMAIL_ADDR = "ericfbrown1@gmail.com"
-PASSWORD = "sxugqgnxpfgvxcik"
+PASSWORD = "jplmfcfecipqwkgi"
 IMAP_SERVER = "imap.gmail.com"
 
 TAX_KEYWORDS = [

@@ -63,7 +63,7 @@ with open(attachment_path, 'rb') as f:
 try:
     with smtplib.SMTP('smtp.gmail.com', 587) as smtp:
         smtp.starttls()
-        smtp.login('ericfbrown1@gmail.com', 'sxugqgnxpfgvxcik')
+        smtp.login('ericfbrown1@gmail.com', 'jplmfcfecipqwkgi')
         smtp.send_message(msg)
     print("Email sent successfully!")
 except Exception as e:

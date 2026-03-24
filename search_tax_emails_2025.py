@@ -12,7 +12,7 @@ import time
 
 # Gmail credentials
 EMAIL = "ericfbrown1@gmail.com"
-PASSWORD = "sxugqgnxpfgvxcik"
+PASSWORD = "jplmfcfecipqwkgi"
 
 # Primary search terms (simplified to avoid IMAP complexity)
 SEARCH_TERMS = [

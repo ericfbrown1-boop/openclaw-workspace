@@ -1,28 +1,17 @@
-═══════════════════════════════════════════════════
-  Daily Security Scan — 2026-03-17 05:51 AM PT
-═══════════════════════════════════════════════════
+Daily Security Scan — 2026-03-23 05:50 PT
 
-── Security Audit ──
-Result: 0 CRITICAL · 3 WARN · 1 INFO
+OpenClaw Security Audit (--deep)
+- Summary: 1 critical, 3 warn, 1 info
+- CRITICAL: Small model (ollama-local/qwen3.5:35b) running without sandbox and with web_search/web_fetch enabled; enable sandboxing and disable web tools for small models.
+- WARN: gateway.trustedProxies empty (untrusted reverse proxy headers if exposed); gateway.nodes.denyCommands contains unknown command names (camera.snap, camera.clip, screen.record, calendar.add, contacts.add, reminders.add); auth-profiles.json (qwen-local) is world-readable (chmod 600).
+- INFO: Attack surface summary (open=0, allowlist=1; browser control enabled; tools.elevated enabled).
 
-Warnings:
-1. trusted_proxies_missing — Reverse proxy headers not trusted (low risk if Control UI stays local-only)
-2. deny_commands_ineffective — Some denyCommands entries use non-existent command names (camera.snap, camera.clip, screen.record, etc.)
-3. probe_failed (deep) — Missing scope: operator.read; deep probe couldn't complete fully
+OpenClaw Update Status
+- Channel: stable
+- Install: pnpm
+- Status: Up to date (npm latest 2026.3.22)
 
-Info:
-- Attack surface: 0 open groups, 1 allowlist group
-- Elevated tools: enabled
-- Webhooks/hooks: disabled
-- Browser control: enabled
-- Trust model: personal assistant (single operator)
-
-── Update Status ──
-Install: pnpm | Channel: stable
-Latest available: 2026.3.13
-
-── Summary for 6 AM Brief ──
-✅ No critical issues.
-⚠️ 3 warnings (all existing/known — proxy config, denyCommands naming, deep probe scope).
-📦 OpenClaw up to date on stable channel (latest: 2026.3.13).
-🔒 No new attack surface changes detected.
+Brief Summary
+- Critical action: sandbox/disable web tools for qwen3.5 small model sessions.
+- Additional warnings: set trusted proxies if exposing Control UI, fix denyCommands list, tighten permissions on qwen-local auth-profiles.json.
+- No updates pending.

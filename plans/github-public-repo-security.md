@@ -11,7 +11,7 @@
 ### Finding 1 — Hardcoded Gmail App Password in ContractAnalyzer (SEVERITY: CRITICAL)
 **File:** `send_report_email.py` (committed to git history, Phase 1 commit, March 7, 2026)  
 ```
-PASSWORD = "sxugqgnxpfgvxcik"
+PASSWORD = "jplmfcfecipqwkgi"
 ```
 This is a Gmail app password, hardcoded in source code, committed to the repository's git history. If this repo becomes public, **this credential is immediately accessible to anyone** and could be used to send email as your Gmail account.
 
@@ -73,7 +73,7 @@ The `send_report_email.py` body text contains detailed Morgan Stanley contract t
 ### ContractAnalyzer — Step-by-Step
 
 **Phase 1: Immediate Credential Actions (Do NOW)**
-- [ ] **1a.** Revoke the Gmail app password `sxugqgnxpfgvxcik` at accounts.google.com → Security → App passwords
+- [ ] **1a.** Revoke the Gmail app password `jplmfcfecipqwkgi` at accounts.google.com → Security → App passwords
 - [ ] **1b.** Generate a new Gmail app password and store it in 1Password (your Jarvis vault)
 - [ ] **1c.** Update `send_report_email.py` to load password from environment variable: `os.environ.get("GMAIL_APP_PASSWORD")`
 
@@ -321,13 +321,13 @@ Thumbs.db
 
 ### Cleaning ContractAnalyzer (Remove Gmail Password from History)
 
-The Gmail password `sxugqgnxpfgvxcik` was committed in `3727817` (Phase 1 commit). Here are two methods:
+The Gmail password `jplmfcfecipqwkgi` was committed in `3727817` (Phase 1 commit). Here are two methods:
 
 #### Method A: Replace the secret string with BFG (Recommended)
 
 ```bash
 # Step 1: Create a file listing strings to replace
-echo "sxugqgnxpfgvxcik" > /tmp/passwords.txt
+echo "jplmfcfecipqwkgi" > /tmp/passwords.txt
 
 # Step 2: Make a fresh clone (BFG needs a bare clone)
 cd ~
@@ -558,7 +558,7 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 
 ```
 TODAY (before anything else):
-  1. Revoke Gmail app password sxugqgnxpfgvxcik at accounts.google.com
+  1. Revoke Gmail app password jplmfcfecipqwkgi at accounts.google.com
   2. Decide: make ProjectScraper public as-is (bad), clean it (hard), or new repo (easy)
 
 THIS WEEK (ContractAnalyzer):

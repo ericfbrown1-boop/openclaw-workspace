@@ -7,7 +7,7 @@ from datetime import datetime
 
 # Gmail credentials
 EMAIL = "ericfbrown1@gmail.com"
-PASSWORD = "sxugqgnxpfgvxcik"
+PASSWORD = "jplmfcfecipqwkgi"
 IMAP_SERVER = "imap.gmail.com"
 
 def connect_gmail():

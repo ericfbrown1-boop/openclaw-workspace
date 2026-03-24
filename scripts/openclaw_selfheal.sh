@@ -71,9 +71,31 @@ fi
 # ── 3. LLM Timeout Detection (NEW in v2) ─────────────────────────────
 # Check for recent LLM timeouts in the last 30 minutes
 if [[ -f "$ERR_LOG" ]]; then
-    RECENT_TIMEOUTS=$(tail -100 "$ERR_LOG" 2>/dev/null | grep -c "LLM request timed out\|model fallback decision\|FailoverError" || echo 0)
-    if [[ $RECENT_TIMEOUTS -gt 2 ]]; then
-        log "⚠️ Detected $RECENT_TIMEOUTS recent LLM timeouts — clearing cooldowns"
+    RECENT_TIMEOUTS=$(ERR_LOG="$ERR_LOG" python3 <<'PYEOF'
+from datetime import datetime, timedelta
+import os, re
+path = os.environ.get('ERR_LOG')
+cutoff = datetime.now().astimezone() - timedelta(minutes=5)
+pattern = re.compile(r"(LLM request timed out|FailoverError|model fallback decision)")
+count = 0
+if path and os.path.exists(path):
+    with open(path) as f:
+        lines = f.readlines()[-400:]
+    for line in lines:
+        if not pattern.search(line):
+            continue
+        ts = line.split(' ', 1)[0]
+        try:
+            dt = datetime.fromisoformat(ts)
+        except ValueError:
+            continue
+        if dt >= cutoff:
+            count += 1
+print(count)
+PYEOF
+)
+    if [[ ${RECENT_TIMEOUTS:-0} -gt 2 ]]; then
+        log "⚠️ Detected $RECENT_TIMEOUTS LLM timeouts in the last 5 minutes — clearing cooldowns"
         
         # Clear auth profile cooldowns by resetting errorCount
         python3 << 'PYEOF'

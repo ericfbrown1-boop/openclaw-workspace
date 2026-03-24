@@ -1,4 +1,4 @@
-=== OpenClaw Doctor Run: 2026-03-17 05:00:06 PDT ===
+=== OpenClaw Doctor Run: 2026-03-24 05:00:05 PDT ===
 ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
 ██░▄▄▄░██░▄▄░██░▄▄▄██░▀██░██░▄▄▀██░████░▄▄▀██░███░██
 ██░███░██░▀▀░██░▄▄▄██░█░█░██░█████░████░▀▀░██░█░█░██
@@ -8,12 +8,24 @@
  
 ┌  OpenClaw doctor
 │
+◇  Doctor warnings ───────────────────────────────────────────────────────╮
+│                                                                         │
+│  - channels.telegram: Telegram is in first-time setup mode. DMs use     │
+│    pairing mode, so new senders must start a chat and be approved       │
+│    before regular messages are accepted. Group messages stay blocked    │
+│    until you add allowed chats under channels.telegram.groups (and      │
+│    optional sender IDs under channels.telegram.groupAllowFrom), or set  │
+│    channels.telegram.groupPolicy to "open" if you want broad group      │
+│    access.                                                              │
+│                                                                         │
+├─────────────────────────────────────────────────────────────────────────╯
+│
 ◇  Session locks ──────────────────────────────────────────────────────────────╮
 │                                                                              │
 │  - Found 1 session lock file.                                                │
-│  - ~/.openclaw/agents/main/sessions/2eae79a5-5e4b-4f40-886d-76c7908cb78d.js  │
+│  - ~/.openclaw/agents/main/sessions/e8320500-c2c3-4be8-8778-791e3f3b1b44.js  │
 │  onl.lock                                                                    │
-│    pid=90387 (alive) age=8s stale=no                                         │
+│    pid=65549 (alive) age=7s stale=no                                         │
 │                                                                              │
 ├──────────────────────────────────────────────────────────────────────────────╯
 │
@@ -62,28 +74,39 @@
 │
 ◇  Skills status ────────────╮
 │                            │
-│  Eligible: 28              │
-│  Missing requirements: 29  │
+│  Eligible: 27              │
+│  Missing requirements: 27  │
 │  Blocked by allowlist: 0   │
 │                            │
 ├────────────────────────────╯
 │
 ◇  Plugins ──────╮
 │                │
-│  Loaded: 7     │
-│  Disabled: 34  │
+│  Loaded: 6     │
+│  Disabled: 74  │
 │  Errors: 0     │
 │                │
 ├────────────────╯
-Telegram: ok (@EFB_Jarvis_bot) (321ms)
+│
+◇  Bootstrap file size ──────────────────────────────────────────────────╮
+│                                                                        │
+│  Workspace bootstrap files exceed limits and will be truncated:        │
+│  - AGENTS.md: 31,119 raw / 18,110 injected (42% truncated; max/file)   │
+│  Total bootstrap injected chars: 40,167 (27% of max/total 150,000).    │
+│  Total bootstrap raw chars (before truncation): 53,176.                │
+│                                                                        │
+│  - Tip: tune `agents.defaults.bootstrapMaxChars` for per-file limits.  │
+│                                                                        │
+├────────────────────────────────────────────────────────────────────────╯
+Telegram: ok (@EFB_Jarvis_bot) (965ms)
 Agents: main (default), researcher, planner, coder, quality, monitor, auditor, conductor
 Heartbeat interval: 30m (main)
-Session store (main): /Users/ericbrown/.openclaw/agents/main/sessions/sessions.json (21 entries)
-- agent:main:main (1m ago)
-- agent:main:subagent:16b9c437-0e46-462e-84bf-597e19785b40 (11m ago)
-- agent:main:telegram:direct:5387843769 (27m ago)
+Session store (main): /Users/ericbrown/.openclaw/agents/main/sessions/sessions.json (27 entries)
+- agent:main:telegram:direct:5387843769 (297m ago)
 - agent:main:cron:828b2524-3eb5-4100-a81a-bc906d56432d (300m ago)
-- agent:main:cron:828b2524-3eb5-4100-a81a-bc906d56432d:run:f807968c-fdf0-4c1c-b5ad-a430000024e7 (300m ago)
+- agent:main:cron:828b2524-3eb5-4100-a81a-bc906d56432d:run:d3386779-70e2-4dd8-8348-cb6eebae2848 (300m ago)
+- agent:main:main (313m ago)
+- agent:main:subagent:56b07ad0-b6a8-446d-84cb-eb6380a6a10d (1081m ago)
 │
 └  Doctor complete.
 

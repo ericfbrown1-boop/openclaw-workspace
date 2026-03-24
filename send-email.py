@@ -21,7 +21,7 @@ def send_email(subject, body):
     try:
         with smtplib.SMTP('smtp.gmail.com', 587) as smtp:
             smtp.starttls()
-            smtp.login('ericfbrown1@gmail.com', 'sxugqgnxpfgvxcik')
+            smtp.login('ericfbrown1@gmail.com', 'jplmfcfecipqwkgi')
             smtp.send_message(msg)
         return True
     except Exception as e:

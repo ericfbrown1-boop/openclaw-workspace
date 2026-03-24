@@ -1,137 +1,100 @@
 #!/usr/bin/env python3
-"""Check oldest unread emails in Gmail."""
+"""Find unread tax-related emails from the past 7 days using gog CLI."""
 
-import imaplib
-import email
-from email.header import decode_header
+import json
 import re
+import subprocess
 from datetime import datetime
+from typing import List, Dict
 
-# Gmail credentials
-EMAIL = "ericfbrown1@gmail.com"
-PASSWORD = "sxugqgnxpfgvxcik"  # App password
-IMAP_SERVER = "imap.gmail.com"
+TAX_KEYWORDS = [
+    'tax', 'irs', '1099', 'w-2', 'w2', '1040', 'cpa', 'accountant',
+    'deduction', 'withholding', 'refund', 'schedule', 'k-1', 'k1',
+    'estimated tax', 'quarterly tax', 'filing', 'return', 'form 1099',
+    'revenue service', 'assessment', 'property tax', 'income tax', 'capital gain',
+    '1098', '1095', 'taxation', 'taxes', 'tax document', 'tax payment'
+]
 
-def decode_mime_words(s):
-    """Decode MIME encoded-words in header."""
-    if s is None:
-        return ""
-    decoded_fragments = decode_header(s)
-    return ''.join(
-        str(fragment, encoding or 'utf-8') if isinstance(fragment, bytes) else str(fragment)
-        for fragment, encoding in decoded_fragments
-    )
+QUERY = 'label:inbox label:unread newer_than:7d'
+MAX_RESULTS = '500'
 
-def clean_text(text):
-    """Clean up email text."""
-    if not text:
-        return ""
-    # Remove excessive whitespace
-    text = re.sub(r'\s+', ' ', text)
-    return text.strip()
 
-def get_email_body(msg):
-    """Extract email body text."""
-    body = ""
-    if msg.is_multipart():
-        for part in msg.walk():
-            content_type = part.get_content_type()
-            if content_type == "text/plain":
-                try:
-                    payload = part.get_payload(decode=True)
-                    if payload:
-                        body = payload.decode('utf-8', errors='ignore')
-                        break
-                except:
-                    pass
-    else:
-        try:
-            payload = msg.get_payload(decode=True)
-            if payload:
-                body = payload.decode('utf-8', errors='ignore')
-        except:
-            pass
-    return clean_text(body)[:500]  # First 500 chars
+def run_gog_query() -> List[Dict]:
+    """Run gog CLI to fetch unread messages from the past 7 days."""
+    cmd = [
+        'gog',
+        'gmail',
+        'messages',
+        'search',
+        QUERY,
+        '--max',
+        MAX_RESULTS,
+        '--json'
+    ]
+    result = subprocess.run(cmd, capture_output=True, text=True)
+    if result.returncode != 0:
+        raise RuntimeError(
+            f"gog command failed (code {result.returncode}): {result.stderr.strip()}"
+        )
+    payload = json.loads(result.stdout or '{}')
+    return payload.get('messages', [])
 
-def main():
-    """Check oldest 100 unread emails."""
+
+def keyword_matches(text: str, keyword: str) -> bool:
+    text = text.lower()
+    keyword = keyword.lower()
+    if any(ch in keyword for ch in [' ', '-', '/']):
+        return keyword in text
+    pattern = r'\b' + re.escape(keyword) + r'\b'
+    return re.search(pattern, text) is not None
+
+
+def is_tax_related(subject: str, sender: str) -> bool:
+    """Check if the subject/sender text contains tax keywords."""
+    haystack = f"{subject} {sender}".lower()
+    return any(keyword_matches(haystack, keyword) for keyword in TAX_KEYWORDS)
+
+
+def normalize_date(date_str: str) -> str:
+    """Normalize gog date (YYYY-MM-DD HH:MM) to YYYY-MM-DD."""
     try:
-        # Connect to Gmail
-        mail = imaplib.IMAP4_SSL(IMAP_SERVER)
-        mail.login(EMAIL, PASSWORD)
-        mail.select("INBOX")
-        
-        # Search for unread emails
-        status, messages = mail.search(None, 'UNSEEN')
-        if status != "OK":
-            print("No unread messages found")
-            return
-        
-        email_ids = messages[0].split()
-        total_unread = len(email_ids)
-        
-        print(f"Total unread emails: {total_unread}")
-        print("=" * 80)
-        
-        # Get oldest 100 (or all if less than 100)
-        oldest_ids = email_ids[:min(100, total_unread)]
-        
-        emails_data = []
-        
-        for i, email_id in enumerate(oldest_ids, 1):
-            try:
-                # Fetch email
-                status, msg_data = mail.fetch(email_id, "(RFC822)")
-                if status != "OK":
-                    continue
-                
-                # Parse email
-                msg = email.message_from_bytes(msg_data[0][1])
-                
-                # Extract headers
-                subject = decode_mime_words(msg.get("Subject", ""))
-                from_addr = decode_mime_words(msg.get("From", ""))
-                date_str = msg.get("Date", "")
-                
-                # Parse date
-                try:
-                    date_tuple = email.utils.parsedate_to_datetime(date_str)
-                    date_formatted = date_tuple.strftime("%Y-%m-%d %H:%M")
-                except:
-                    date_formatted = date_str
-                
-                # Get body preview
-                body_preview = get_email_body(msg)
-                
-                emails_data.append({
-                    'num': i,
-                    'subject': subject,
-                    'from': from_addr,
-                    'date': date_formatted,
-                    'body': body_preview
-                })
-                
-            except Exception as e:
-                print(f"Error processing email {i}: {e}")
-        
-        # Print results
-        print(f"\nOldest {len(emails_data)} unread emails:\n")
-        
-        for email_data in emails_data:
-            print(f"{email_data['num']}. [{email_data['date']}]")
-            print(f"   From: {email_data['from']}")
-            print(f"   Subject: {email_data['subject']}")
-            if email_data['body']:
-                print(f"   Preview: {email_data['body'][:200]}...")
-            print()
-        
-        mail.close()
-        mail.logout()
-        
-    except Exception as e:
-        print(f"Error: {e}")
-        import traceback
-        traceback.print_exc()
+        dt = datetime.strptime(date_str, '%Y-%m-%d %H:%M')
+        return dt.strftime('%Y-%m-%d')
+    except ValueError:
+        return date_str.split(' ')[0]
 
-if __name__ == "__main__":
-    main()
+
+def main() -> int:
+    try:
+        messages = run_gog_query()
+    except Exception as exc:
+        print(json.dumps({'error': str(exc)}))
+        return 1
+
+    tax_emails: List[Dict] = []
+
+    for msg in messages:
+        subject = msg.get('subject', '')
+        sender = msg.get('from', '')
+        if not subject and not sender:
+            continue
+        if not is_tax_related(subject, sender):
+            continue
+        tax_emails.append({
+            'date_received': normalize_date(msg.get('date', '')),
+            'sender': sender,
+            'subject': subject,
+            'message_id': msg.get('id')
+        })
+
+    output = {
+        'query': QUERY,
+        'count': len(tax_emails),
+        'emails': tax_emails
+    }
+    print(json.dumps(output, indent=2))
+    return 0
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())

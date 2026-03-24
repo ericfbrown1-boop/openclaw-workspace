@@ -598,6 +598,17 @@ Eric request → Planner (if new project)
 > 2. **Report tasks:** deliverable emailed + Gmail message ID in `tasks.json`.
 > This gate is enforced by Conductor, verified by External Auditor, and monitored by Monitor.
 
+> **Dashboard-as-Source-of-Truth Rule:** Mission Control (`tasks.json`) must reflect the real-time state of ALL projects at ALL times.
+> - **Every agent** (Jarvis, Planner, Coder, Researcher, Quality, Conductor, Monitor) must update `tasks.json` when:
+>   - A task starts → set `status: "running"` + `progress: 25`
+>   - A milestone is hit → increment `progress` (25 → 50 → 75)
+>   - A task completes → set `status: "completed"` + `progress: 100` (only after gate passes)
+>   - A task fails or is cancelled → set `status: "failed"` + add `error` field
+>   - A new task is created → add it to `tasks.json` immediately with `status: "queued"`
+> - **New projects** must appear on the Task Board the moment they are requested — not days later.
+> - **Monitor** verifies every 5 minutes that `tasks.json` matches reality; stale entries (>2h without update while running) trigger an alert.
+> - **Eric should never have to ask "status?"** — the dashboard tells the story.
+
 ### Model Tiering Strategy (Cost Optimization)
 | Agent | Model | Rationale |
 |-------|-------|-----------|
