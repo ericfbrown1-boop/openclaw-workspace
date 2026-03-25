@@ -1,0 +1,43 @@
+{
+  "updated_at": "2026-03-25T19:52:15.657957+00:00",
+  "monthly_limit_usd": 100.0,
+  "monthly_cost_usd": 0.0,
+  "monthly_pct": 0.0,
+  "daily_cost_usd": 0.0,
+  "projected_monthly_usd": 0.0,
+  "days_remaining": 7,
+  "days_elapsed": 25,
+  "alert_level": "none",
+  "daily_tokens": {
+    "input_tokens": 0,
+    "output_tokens": 0
+  },
+  "monthly_tokens": {
+    "input_tokens": 0,
+    "output_tokens": 0
+  },
+  "profile_stats": {
+    "anthropic:default": {
+      "last_used": 1774444220608,
+      "error_count": 0,
+      "failure_counts": {
+        "billing": 6
+      }
+    },
+    "openai:default": {
+      "last_used": 1774374750508,
+      "error_count": 0,
+      "failure_counts": {}
+    },
+    "xai:default": {
+      "last_used": 1774461753997,
+      "error_count": 0,
+      "failure_counts": {}
+    }
+  },
+  "thresholds": {
+    "info_pct": 50.0,
+    "warn_pct": 75.0,
+    "critical_pct": 90.0
+  }
+}

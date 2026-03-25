@@ -21,6 +21,8 @@ Don't ask permission. Just do it.
 | File | What it contains | When to read |
 |------|-----------------|--------------|
 | `DELEGATION.md` | All 9 agent routing rules + triggers | Before spawning any agent |
+| `DISPATCH_TEMPLATE.md` | Mandatory fields for every agent dispatch | Before spawning any subagent |
+| `AUTH_FALLBACKS.md` | Credential expiry handling + fallback paths | When any auth fails |
 | `PIPELINE.md` | Code pipeline, completion gates, dashboard rules, model tiering | Before any code/build/deploy task |
 | `POWERSPEC.md` | PowerSpec-first policy, SSH details, compute allocation rules | Before any compute task |
 | `INCIDENTS.md` | RCA protocol, incident tracking, lessons learned | After any failure or project completion |
@@ -91,10 +93,22 @@ When context gets heavy (compaction warnings, long conversations):
 - Save current state to `memory/YYYY-MM-DD.md` immediately
 - Don't try to carry everything forward — files survive, context doesn't
 - For multi-step tasks, write progress to files between steps so a fresh session can pick up
+- **After completing any task, if the next task is UNRELATED (different project, different type), use a fresh subagent session. Don't carry forward stale context.**
 
-## 🔄 Cron Deduplication
+## 🔄 Cron Deduplication & Auth Circuit Breaker
 
-Before running ANY cron task: check `memory/cron-state.json`. If last success was <4h ago → skip. After success → write timestamp. Prevents cron storms.
+Before running ANY cron task:
+1. Check `memory/cron-state.json` → if `auth_healthy === false` AND the task depends on Google OAuth (Gmail, Calendar, Sheets, Drive) → skip with `HEARTBEAT_OK`. Do NOT retry — selfheal will restore the flag when auth is fixed.
+2. If last success was <4h ago → skip. After success → write timestamp. Prevents cron storms.
+
+**Auth-dependent cron jobs** (Gmail sends, calendar reads, Sheets updates) MUST check `auth_healthy` first. Auth-independent jobs (git, Telegram, system health) run normally regardless.
+
+## 💰 API Budget Check (MANDATORY)
+
+Before spawning any Opus 4.6 subagent, check `memory/api-usage-state.json`:
+- `alert_level: "warning"` → use Sonnet 4.6 instead (except Jarvis orchestration)
+- `alert_level: "critical"` → pause non-essential work, alert Eric. Critical fixes may still proceed on Sonnet.
+See `PIPELINE.md` → "API Budget Cost Gate" for full rules.
 
 ## 📊 Incident Tracking
 

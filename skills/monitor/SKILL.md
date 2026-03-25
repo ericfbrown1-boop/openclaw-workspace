@@ -4,12 +4,18 @@
 
 ## Standing Instructions
 
-### Auth Never Expires
+### Auth Never Expires (with Auto-Fallback)
 - Monitor owns credential health for the entire system.
-- gog OAuth tokens MUST be checked every sweep and proactively re-authorized if expired.
-- If `gog auth add --force-consent` fails (e.g., browser required), alert Eric immediately with the exact command.
+- gog OAuth tokens MUST be checked every sweep.
+- **If gog fails:** Do NOT attempt `gog auth add --force-consent` (requires browser, always fails in cron/agent context). Instead:
+  1. Set `auth_healthy: false` in `memory/cron-state.json` (circuit breaker — stops cron storms)
+  2. Set `memory/auth-fallback-state.json` to route Gmail/Calendar/Sheets/Drive through Zapier MCP
+  3. Log incident to `memory/incidents.jsonl`
+  4. Send Telegram alert to Eric with the exact manual fix command
+  5. All agents route Google operations through Zapier MCP until auth is restored
+- **selfheal.sh** handles steps 1-4 automatically every 10 minutes. Monitor verifies the state is consistent.
 - gh (GitHub) auth must be verified every sweep. If expired, attempt `gh auth refresh`. If that fails, alert Eric.
-- **No cron job may fail because of an expired token.** This is Monitor's #1 reliability guarantee.
+- **No cron job may fail because of an expired token.** Circuit breaker + Zapier fallback guarantee this.
 
 ### Nothing Stalls
 - Every task in `tasks.json` marked `running` must show progress within 2 hours.
@@ -69,13 +75,23 @@
 
 ### 0. Auth Pre-Flight (MANDATORY — runs first)
 ```bash
+# 1. Check circuit breaker state (set by selfheal.sh every 10 min)
+cat memory/cron-state.json | python3 -c "import sys,json; d=json.load(sys.stdin); print('AUTH_OK' if d.get('auth_healthy',True) else 'AUTH_BROKEN')"
+
+# 2. If circuit breaker says healthy, verify with a live probe
 gog gmail search "newer_than:1h" --max 1 --account ericfbrown1@gmail.com
 gh auth status
+
+# 3. Check fallback state
+cat memory/auth-fallback-state.json
 ```
-- If `gog` fails → immediately run: `gog auth add ericfbrown1@gmail.com --services gmail,calendar,drive,contacts,docs,sheets --force-consent`
+- If `gog` fails → do NOT run `gog auth add` (requires browser, fails in cron/agent). Instead:
+  - Verify `memory/cron-state.json` has `auth_healthy: false` (selfheal sets this)
+  - Verify `memory/auth-fallback-state.json` routes to Zapier MCP
+  - If either is stale, update them manually and alert Eric via Telegram
 - If `gh` fails → try `gh auth refresh` → if still fails, alert Eric
+- **When in fallback mode:** Use Zapier MCP tools (`gmail_find_email`, `dropbox_upload_file`) instead of `gog` commands
 - Log every auth event to `memory/incidents.jsonl`
-- Pause all credential-dependent work until auth is restored
 
 ### 1. App Health
 ```bash
@@ -136,21 +152,33 @@ Save to `logs/monitoring/<ISO8601>.json`:
 - Queued tasks >4h with available resources → alert that work should start
 - **Context-switch detection:** If an agent started a new task without completing the current one → flag it
 
-### 11. Status Report
-Brief when healthy: `✅ All systems healthy`
-Detailed on failure:
+### 11. Status Report — SIZE BOUNDED (max 500 chars to Telegram)
+
+**Healthy sweep:** `✅ All green [HH:MM]` (< 30 chars)
+**Degraded sweep:** One line per failing check, max 5 lines:
 ```
-🔍 Monitor Sweep [<timestamp>]
-✅/❌ Auth: gog <status> / gh <status>
-✅/❌ App Health: <status>
-✅/❌ Dashboard Parity: <status>
-✅/❌ Git Hygiene: <n> repos clean, <n> dirty, <n> files >10KB
-✅/❌ PowerSpec: <online/offline> GPU <util>%
-✅/❌ Cron Drift: <status>
-✅/❌ Deliverables: <n> stale tasks
-✅/❌ Stalled Tasks: <n> with no progress >2h
-📊 Incidents logged: <n>
+❌ Auth: gog expired, switched to Zapier
+❌ PowerSpec: offline, 3 retries failed
+✅ 4/6 other checks passed
 ```
+
+**RULES:**
+- NEVER exceed 500 chars in a Telegram message
+- If detail needed → write full report to `memory/monitor/sweep-YYYY-MM-DDTHH.md` and link it
+- If message would exceed limit → truncate to summary + file link
+- Healthy sweeps: report every 2 hours (not every 5 min)
+- Failures: report IMMEDIATELY
+
+**Proactive push triggers:**
+- Task milestone change (25→50→75→100): `📊 [TaskName]: 50%`
+- Every 2h if ANY task running: brief summary
+- Any failure or stall: immediately
+- Eric should NEVER need to ask "status?" — Monitor tells him first
+
+### 12. Dispatch Verification Check
+- For every running task in tasks.json, verify a `verificationCmd` field exists
+- Missing verification = incident → flag to Jarvis: "Task X has no verification command"
+- Reference: DISPATCH_TEMPLATE.md — every dispatch must include verification criteria
 
 ## Escalation Rules
 - Auth expired + auto-reauth failed → CRITICAL → alert Eric with exact command

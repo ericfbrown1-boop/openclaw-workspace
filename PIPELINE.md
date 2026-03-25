@@ -29,6 +29,20 @@ No task may reach 100% / `completed` without BOTH:
 
 Enforced by Conductor, verified by External Auditor, monitored by Monitor.
 
+## Task Complexity Gate (Anthropic: "only use multi-agent for high-value parallelizable tasks")
+
+Before spawning ANY subagent, classify the task:
+
+| Complexity | Time Est | Scope | Action |
+|-----------|----------|-------|--------|
+| **SIMPLE** | < 5 min | Single file edit, quick fix | Jarvis does it directly. NO subagent. |
+| **MODERATE** | 5-30 min | Multi-file, one concern | Single subagent with verification command |
+| **COMPLEX** | > 30 min | Multi-step, parallelizable | Up to 3 concurrent subagents, each with plan |
+
+**Ask before spawning:** "Could I do this in 2 minutes myself?" If yes → do it. Don't waste tokens on agent overhead.
+
+**Token budget awareness:** Multi-agent uses ~15x more tokens than chat (per Anthropic). Only COMPLEX tasks justify the cost.
+
 ## Context Management Rules (Anthropic Best Practice)
 
 **Cron payload limit:** No cron job message payload should exceed 500 tokens. Instead of embedding full instructions, have agents read their SKILL.md file for details. The cron message should be a brief trigger with a pointer to the skill.
@@ -53,6 +67,21 @@ Mission Control (`tasks.json`) must reflect real-time state of ALL projects at A
 **New projects** appear on Task Board the moment they are requested.
 **Monitor** verifies every 5 minutes; stale entries (>2h no update) trigger alert.
 **Eric should never have to ask "status?"**
+
+## API Budget Cost Gate (MANDATORY)
+
+Before any Opus 4.6 task, check `memory/api-usage-state.json`:
+
+| Budget Used | Action |
+|-------------|--------|
+| < 75% | Normal operations — use Model Tiering below |
+| 75–90% | **Downgrade**: All non-critical tasks use Sonnet 4.6 (only Jarvis orchestration stays on Opus) |
+| > 90% | **Pause**: Non-essential work stops. Alert Eric. Only critical fixes proceed (on Sonnet) |
+
+Agents read `alert_level` from the state file:
+- `"none"` or `"info"` → normal
+- `"warning"` → downgrade to Sonnet
+- `"critical"` → pause + alert
 
 ## Model Tiering Strategy
 

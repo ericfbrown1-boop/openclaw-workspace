@@ -68,6 +68,114 @@ else
     ISSUES_FOUND=$((ISSUES_FOUND + 1))
 fi
 
+# ── 2.5 Google OAuth Health Probe ────────────────────────────────
+CRON_STATE="$HOME/.openclaw/workspace/memory/cron-state.json"
+AUTH_FALLBACK="$HOME/.openclaw/workspace/memory/auth-fallback-state.json"
+INCIDENTS_FILE="$HOME/.openclaw/workspace/memory/incidents.jsonl"
+
+GOG_TEST=$(gog gmail search "newer_than:1d" --max 1 --account ericfbrown1@gmail.com 2>&1)
+GOG_EXIT=$?
+if [[ $GOG_EXIT -ne 0 ]] || echo "$GOG_TEST" | grep -q "invalid_grant\|token.*expired\|token.*revoked\|Authorization failed\|authentication failed"; then
+    log "❌ Google OAuth FAILED — switching to fallback mode"
+    ISSUES_FOUND=$((ISSUES_FOUND + 1))
+
+    # Set circuit breaker: auth_healthy = false
+    python3 <<PYEOF
+import json, os
+from datetime import datetime, timezone
+sf = "$CRON_STATE"
+try:
+    with open(sf) as f: s = json.load(f)
+except: s = {"cron_jobs": {}}
+s["auth_healthy"] = False
+s["auth_checked_at"] = datetime.now(timezone.utc).isoformat()
+s["auth_failure_reason"] = "Google OAuth token expired or revoked"
+with open(sf, "w") as f: json.dump(s, f, indent=2)
+print("Circuit breaker set: auth_healthy=false")
+PYEOF
+
+    # Set Zapier fallback mode
+    python3 <<PYEOF
+import json, os
+from datetime import datetime, timezone
+af = "$AUTH_FALLBACK"
+state = {
+    "gmail": {"fallback": "zapier_mcp", "since": datetime.now(timezone.utc).isoformat(), "reason": "gog OAuth expired"},
+    "calendar": {"fallback": "zapier_mcp", "since": datetime.now(timezone.utc).isoformat(), "reason": "gog OAuth expired"},
+    "sheets": {"fallback": "zapier_mcp", "since": datetime.now(timezone.utc).isoformat(), "reason": "gog OAuth expired"},
+    "drive": {"fallback": "zapier_mcp", "since": datetime.now(timezone.utc).isoformat(), "reason": "gog OAuth expired"}
+}
+with open(af, "w") as f: json.dump(state, f, indent=2)
+print("Fallback state: all Google services → Zapier MCP")
+PYEOF
+
+    # Log incident
+    python3 <<PYEOF
+import json, os
+from datetime import datetime, timezone
+entry = {
+    "timestamp": datetime.now(timezone.utc).isoformat(),
+    "category": "auth",
+    "severity": "critical",
+    "service": "google_oauth",
+    "description": "Google OAuth token expired/revoked — circuit breaker activated, Zapier fallback enabled",
+    "auto_action": "Set auth_healthy=false, enabled Zapier MCP fallback"
+}
+with open("$INCIDENTS_FILE", "a") as f:
+    f.write(json.dumps(entry) + "\n")
+print("Incident logged")
+PYEOF
+
+    # Send Telegram alert
+    TG_TOKEN=$(python3 -c "import json; print(json.load(open('$HOME/.openclaw/openclaw.json')).get('channels',{}).get('telegram',{}).get('botToken',''))" 2>/dev/null)
+    TG_CHAT=$(python3 -c "import json; print(json.load(open('$HOME/.openclaw/openclaw.json')).get('channels',{}).get('telegram',{}).get('chatId',''))" 2>/dev/null)
+    if [[ -n "$TG_TOKEN" && -n "$TG_CHAT" ]]; then
+        curl -s -X POST "https://api.telegram.org/bot${TG_TOKEN}/sendMessage" \
+            -d chat_id="$TG_CHAT" \
+            -d text="🔴 Google OAuth EXPIRED — cron circuit breaker ON, Zapier fallback active. Fix: gog auth add ericfbrown1@gmail.com --services gmail,calendar,drive,contacts,docs,sheets --force-consent" \
+            > /dev/null 2>&1
+        log "📨 Telegram alert sent to Eric"
+    fi
+else
+    log "✅ Google OAuth healthy"
+
+    # Ensure circuit breaker is clear
+    python3 <<PYEOF
+import json, os
+from datetime import datetime, timezone
+sf = "$CRON_STATE"
+try:
+    with open(sf) as f: s = json.load(f)
+except: s = {"cron_jobs": {}}
+was_broken = not s.get("auth_healthy", True)
+s["auth_healthy"] = True
+s["auth_checked_at"] = datetime.now(timezone.utc).isoformat()
+s["auth_failure_reason"] = None
+with open(sf, "w") as f: json.dump(s, f, indent=2)
+if was_broken:
+    print("Circuit breaker RESTORED: auth_healthy=true")
+else:
+    print("Circuit breaker confirmed: auth_healthy=true")
+PYEOF
+
+    # Clear fallback mode if it was active
+    if [[ -f "$AUTH_FALLBACK" ]]; then
+        python3 <<PYEOF
+import json, os
+af = "$AUTH_FALLBACK"
+try:
+    with open(af) as f: state = json.load(f)
+    if any(v.get("fallback") for v in state.values()):
+        for k in state: state[k] = {"fallback": None, "since": None, "reason": None}
+        with open(af, "w") as f: json.dump(state, f, indent=2)
+        print("Fallback mode CLEARED — gog auth restored")
+    else:
+        print("No active fallbacks to clear")
+except: pass
+PYEOF
+    fi
+fi
+
 # ── 3. LLM Timeout Detection (NEW in v2) ─────────────────────────────
 # Check for recent LLM timeouts in the last 30 minutes
 if [[ -f "$ERR_LOG" ]]; then
@@ -177,6 +285,41 @@ if [[ $RESTART_NEEDED -eq 1 ]]; then
         sleep 10
     fi
 fi
+
+# ── 7.5 API Usage Tracking ──────────────────────────────────────
+USAGE_RESULT=$(python3 "$HOME/.openclaw/workspace/scripts/api_usage_monitor.py" 2>&1)
+log "📊 $USAGE_RESULT"
+
+# Also snapshot token usage from auth-profiles.json
+python3 << 'PYEOF'
+import json, os, time
+from datetime import datetime, timezone
+
+ap_file = os.path.expanduser("~/.openclaw/agents/main/agent/auth-profiles.json")
+usage_log = os.path.expanduser("~/.openclaw/workspace/logs/api_usage.jsonl")
+
+try:
+    with open(ap_file) as f:
+        ap = json.load(f)
+    stats = ap.get("usageStats", {})
+    snapshot = {
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "source": "auth-profiles",
+        "profiles": {}
+    }
+    for pid, stat in stats.items():
+        snapshot["profiles"][pid] = {
+            "error_count": stat.get("errorCount", 0),
+            "last_used": stat.get("lastUsed", 0),
+            "failure_counts": stat.get("failureCounts", {}),
+            "in_cooldown": bool(stat.get("cooldownUntil", 0) > int(time.time() * 1000)),
+            "disabled": bool(stat.get("disabledUntil", 0) > int(time.time() * 1000)),
+        }
+    with open(usage_log, "a") as f:
+        f.write(json.dumps(snapshot) + "\n")
+except Exception as e:
+    print(f"Usage snapshot error: {e}")
+PYEOF
 
 # ── 8. Periodic Doctor Run (every 6th check ≈ hourly) ────────────────
 CHECK_COUNT=$(python3 -c "

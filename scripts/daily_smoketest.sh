@@ -366,6 +366,77 @@ fi
 
 echo ""
 
+# ── 6.5 API USAGE & BUDGET ──────────────────────────────────────
+echo "## 6.5 API Usage & Budget"
+echo ""
+
+# Run usage monitor to get fresh data
+python3 "$HOME/.openclaw/workspace/scripts/api_usage_monitor.py" > /dev/null 2>&1
+
+API_STATE="$HOME/.openclaw/workspace/memory/api-usage-state.json"
+if [ -f "$API_STATE" ]; then
+    python3 << 'PYEOF'
+import json, os
+
+state_file = os.path.expanduser("~/.openclaw/workspace/memory/api-usage-state.json")
+try:
+    with open(state_file) as f:
+        s = json.load(f)
+
+    monthly_cost = s.get("monthly_cost_usd", 0)
+    monthly_limit = s.get("monthly_limit_usd", 100)
+    monthly_pct = s.get("monthly_pct", 0)
+    daily_cost = s.get("daily_cost_usd", 0)
+    projected = s.get("projected_monthly_usd", 0)
+    days_remaining = s.get("days_remaining", 0)
+    alert_level = s.get("alert_level", "none")
+    daily_tokens = s.get("daily_tokens", {})
+    monthly_tokens = s.get("monthly_tokens", {})
+
+    di = daily_tokens.get("input_tokens", 0)
+    do = daily_tokens.get("output_tokens", 0)
+    mi = monthly_tokens.get("input_tokens", 0)
+    mo = monthly_tokens.get("output_tokens", 0)
+
+    print(f"  Monthly spend: ${monthly_cost:.2f} / ${monthly_limit:.2f} ({monthly_pct}%)")
+    print(f"  Today's spend: ${daily_cost:.4f}")
+    print(f"  Projected monthly: ${projected:.2f}")
+    print(f"  Days remaining: {days_remaining}")
+    print(f"  Daily tokens: {di:,} in / {do:,} out")
+    print(f"  Monthly tokens: {mi:,} in / {mo:,} out")
+    print(f"  Alert level: {alert_level}")
+
+    if monthly_pct >= 90:
+        print(f"  ❌ CRITICAL: Budget at {monthly_pct}% — non-essential work should pause")
+    elif monthly_pct >= 75:
+        print(f"  ⚠️  WARNING: Budget at {monthly_pct}% — downgrade to Sonnet for non-critical tasks")
+    elif monthly_pct >= 50:
+        print(f"  ⚠️  INFO: Budget at {monthly_pct}% — monitor closely")
+    else:
+        print(f"  ✅ Budget healthy ({monthly_pct}% used)")
+
+except Exception as e:
+    print(f"  ❌ Cannot read API usage state: {e}")
+PYEOF
+
+    # Track in check counts
+    API_PCT=$(python3 -c "import json; print(json.load(open('$API_STATE')).get('monthly_pct', 0))" 2>/dev/null || echo "0")
+    if python3 -c "exit(0 if float('$API_PCT') < 75 else 1)" 2>/dev/null; then
+        check_pass "API budget within limits ($API_PCT%)"
+    elif python3 -c "exit(0 if float('$API_PCT') < 90 else 1)" 2>/dev/null; then
+        check_warn "API budget at warning level ($API_PCT%)"
+        add_action "[BUDGET] API spend at $API_PCT% — consider downgrading non-critical agents to Sonnet"
+    else
+        check_fail "API budget CRITICAL ($API_PCT%)"
+        add_action "[CRITICAL-BUDGET] API spend at $API_PCT% — pause non-essential work immediately"
+    fi
+else
+    check_warn "API usage state file not found — run api_usage_monitor.py"
+    add_action "[BUDGET] Initialize API usage monitoring: python3 scripts/api_usage_monitor.py"
+fi
+
+echo ""
+
 # ── 7. AGENT CONFIGURATION ──────────────────────────────────────
 echo "## 7. Agent Configuration"
 echo ""
