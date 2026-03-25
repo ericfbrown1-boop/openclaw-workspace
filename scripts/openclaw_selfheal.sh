@@ -239,7 +239,7 @@ fi
 
 # ── 4. Transcript Error Detection (NEW in v2) ────────────────────────
 if [[ -f "$ERR_LOG" ]]; then
-    TRANSCRIPT_ERRORS=$(tail -50 "$ERR_LOG" 2>/dev/null | grep -c "missing tool result in session history" || echo 0)
+    TRANSCRIPT_ERRORS=$(tail -50 "$ERR_LOG" 2>/dev/null | grep -c "missing tool result in session history" || true)
     if [[ $TRANSCRIPT_ERRORS -gt 0 ]]; then
         log "⚠️ Detected $TRANSCRIPT_ERRORS transcript repair events (non-critical, monitoring)"
     fi

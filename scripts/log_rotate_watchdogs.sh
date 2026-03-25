@@ -7,7 +7,7 @@ mkdir -p "$LOG_DIR"
 
 cd "$LOG_DIR"
 
-for logfile in gateway_watchdog.log tailscale_monitor.log weekly_security_audit.log session_activity_monitor.log voice_bootstrap.log; do
+for logfile in gateway_watchdog.log tailscale_monitor.log weekly_security_audit.log session_activity_monitor.log voice_bootstrap.log heartbeat.log heartbeat_launchd.log battery_guard.log battery_guard_launchd.log; do
   if [[ -f "$logfile" ]]; then
     size=$(stat -f %z "$logfile" 2>/dev/null || echo 0)
     if (( size > MAX_SIZE )); then
