@@ -1,30 +1,30 @@
 ═══════════════════════════════════════════════════
-  DAILY SECURITY SCAN — 2026-03-24 05:52 PDT
+  DAILY SECURITY SCAN — 2026-03-25 05:50 AM PT
 ═══════════════════════════════════════════════════
 
-── Security Audit (Deep) ──────────────────────────
-Result: 0 CRITICAL · 2 WARN · 1 INFO
+── SECURITY AUDIT ──────────────────────────────────
+Result: 0 critical · 2 warnings · 1 info
 
-⚠ WARN: gateway.trusted_proxies_missing
-  Reverse proxy headers not trusted. Low risk if Control UI stays local-only.
+WARNINGS:
+1. gateway.trusted_proxies_missing — Reverse proxy headers not trusted.
+   Impact: Low (gateway bound to loopback; only matters if exposed via reverse proxy).
+   
+2. gateway.nodes.deny_commands_ineffective — Some denyCommands entries use
+   unknown command names (camera.snap, camera.clip, screen.record, etc.).
+   Impact: Low (deny rules won't match; tighten if these commands are added later).
 
-⚠ WARN: gateway.nodes.deny_commands_ineffective
-  Some denyCommands entries use non-existent command names (camera.snap,
-  camera.clip, screen.record, calendar.add, contacts.add, reminders.add).
-  These have no effect — use exact command IDs if restrictions are needed.
+INFO:
+- Attack surface: 0 open groups, 1 allowlist group
+- tools.elevated: enabled
+- browser control: enabled
+- webhooks/hooks: disabled
+- Trust model: personal assistant (single trusted operator)
 
-ℹ INFO: Attack surface summary
-  Open groups: 0 | Allowlist groups: 1
-  Elevated exec: enabled | Webhooks: disabled
-  Browser control: enabled
-  Trust model: personal assistant (single operator)
+── UPDATE STATUS ────────────────────────────────────
+Channel: stable
+Version: up to date (latest: 2026.3.23-2)
+Install method: pnpm
 
-── Update Status ──────────────────────────────────
-Install: pnpm | Channel: stable
-Status: ✅ Up to date (latest: 2026.3.23-2)
-
-── Summary for 6 AM Brief ─────────────────────────
-No critical issues. Two low-priority warnings (proxy trust config and
-ineffective denyCommands entries) — both cosmetic for a local-only setup.
-OpenClaw is on the latest stable release. System healthy.
-═══════════════════════════════════════════════════
+── SUMMARY FOR BRIEF ───────────────────────────────
+✅ No critical issues. System up to date.
+⚠️ 2 low-severity warnings (proxy trust config, stale deny rules) — no action needed unless setup changes.

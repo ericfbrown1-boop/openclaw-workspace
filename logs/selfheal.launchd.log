@@ -22037,3 +22037,704 @@ No cooldowns to clear
 [2026-03-25 00:10:09] ✅ Tailscale running
 [2026-03-25 00:10:09] ✅ Disk usage: 5%
 [2026-03-25 00:10:09] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 00:20:09] ─── Self-heal check starting ───
+[2026-03-25 00:20:09] ✅ Gateway process running
+[2026-03-25 00:20:10] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 00:20:10] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 00:20:10] ✅ Tailscale running
+[2026-03-25 00:20:10] ✅ Disk usage: 5%
+[2026-03-25 00:20:10] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 00:30:10] ─── Self-heal check starting ───
+[2026-03-25 00:30:10] ✅ Gateway process running
+[2026-03-25 00:30:10] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 00:30:10] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 00:30:10] ✅ Tailscale running
+[2026-03-25 00:30:10] ✅ Disk usage: 5%
+[2026-03-25 00:30:10] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 00:40:10] ─── Self-heal check starting ───
+[2026-03-25 00:40:10] ✅ Gateway process running
+[2026-03-25 00:40:10] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 00:40:10] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 00:40:10] ✅ Tailscale running
+[2026-03-25 00:40:10] ✅ Disk usage: 5%
+[2026-03-25 00:40:10] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 00:50:10] ─── Self-heal check starting ───
+[2026-03-25 00:50:10] ✅ Gateway process running
+[2026-03-25 00:50:10] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 00:50:10] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 00:50:10] ✅ Tailscale running
+[2026-03-25 00:50:10] ✅ Disk usage: 5%
+[2026-03-25 00:50:10] 🔧 Running periodic openclaw doctor --fix
+[2026-03-25 00:50:14] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 01:00:14] ─── Self-heal check starting ───
+[2026-03-25 01:00:14] ✅ Gateway process running
+[2026-03-25 01:00:14] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 01:00:14] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 01:00:14] ✅ Tailscale running
+[2026-03-25 01:00:14] ✅ Disk usage: 5%
+[2026-03-25 01:00:14] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 01:10:14] ─── Self-heal check starting ───
+[2026-03-25 01:10:14] ✅ Gateway process running
+[2026-03-25 01:10:14] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 01:10:14] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 01:10:14] ✅ Tailscale running
+[2026-03-25 01:10:14] ✅ Disk usage: 5%
+[2026-03-25 01:10:14] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 01:20:14] ─── Self-heal check starting ───
+[2026-03-25 01:20:14] ✅ Gateway process running
+[2026-03-25 01:20:14] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 01:20:14] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 01:20:15] ✅ Tailscale running
+[2026-03-25 01:20:15] ✅ Disk usage: 5%
+[2026-03-25 01:20:15] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 01:30:15] ─── Self-heal check starting ───
+[2026-03-25 01:30:15] ✅ Gateway process running
+[2026-03-25 01:30:15] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 01:30:15] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 01:30:15] ✅ Tailscale running
+[2026-03-25 01:30:15] ✅ Disk usage: 5%
+[2026-03-25 01:30:15] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 01:40:15] ─── Self-heal check starting ───
+[2026-03-25 01:40:15] ✅ Gateway process running
+[2026-03-25 01:40:15] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 01:40:15] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 01:40:15] ✅ Tailscale running
+[2026-03-25 01:40:15] ✅ Disk usage: 5%
+[2026-03-25 01:40:15] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 01:50:15] ─── Self-heal check starting ───
+[2026-03-25 01:50:15] ✅ Gateway process running
+[2026-03-25 01:50:15] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 01:50:15] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 01:50:15] ✅ Tailscale running
+[2026-03-25 01:50:15] ✅ Disk usage: 5%
+[2026-03-25 01:50:15] 🔧 Running periodic openclaw doctor --fix
+[2026-03-25 01:50:20] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 02:00:20] ─── Self-heal check starting ───
+[2026-03-25 02:00:20] ✅ Gateway process running
+[2026-03-25 02:00:20] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 02:00:20] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 02:00:20] ✅ Tailscale running
+[2026-03-25 02:00:20] ✅ Disk usage: 5%
+[2026-03-25 02:00:20] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 02:10:20] ─── Self-heal check starting ───
+[2026-03-25 02:10:20] ✅ Gateway process running
+[2026-03-25 02:10:20] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 02:10:20] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 02:10:20] ✅ Tailscale running
+[2026-03-25 02:10:20] ✅ Disk usage: 5%
+[2026-03-25 02:10:20] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 02:20:20] ─── Self-heal check starting ───
+[2026-03-25 02:20:20] ✅ Gateway process running
+[2026-03-25 02:20:20] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 02:20:20] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 02:20:20] ✅ Tailscale running
+[2026-03-25 02:20:20] ✅ Disk usage: 5%
+[2026-03-25 02:20:20] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 02:30:21] ─── Self-heal check starting ───
+[2026-03-25 02:30:21] ✅ Gateway process running
+[2026-03-25 02:30:21] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 02:30:21] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 02:30:21] ✅ Tailscale running
+[2026-03-25 02:30:21] ✅ Disk usage: 5%
+[2026-03-25 02:30:21] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 02:40:21] ─── Self-heal check starting ───
+[2026-03-25 02:40:21] ✅ Gateway process running
+[2026-03-25 02:40:21] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 02:40:21] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 02:40:21] ✅ Tailscale running
+[2026-03-25 02:40:21] ✅ Disk usage: 5%
+[2026-03-25 02:40:21] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 02:50:21] ─── Self-heal check starting ───
+[2026-03-25 02:50:21] ✅ Gateway process running
+[2026-03-25 02:50:21] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 02:50:21] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 02:50:21] ✅ Tailscale running
+[2026-03-25 02:50:21] ✅ Disk usage: 5%
+[2026-03-25 02:50:21] 🔧 Running periodic openclaw doctor --fix
+[2026-03-25 02:50:26] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 03:00:27] ─── Self-heal check starting ───
+[2026-03-25 03:00:27] ✅ Gateway process running
+[2026-03-25 03:00:27] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 03:00:27] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 03:00:27] ✅ Tailscale running
+[2026-03-25 03:00:27] ✅ Disk usage: 5%
+[2026-03-25 03:00:27] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 03:10:27] ─── Self-heal check starting ───
+[2026-03-25 03:10:27] ✅ Gateway process running
+[2026-03-25 03:10:27] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 03:10:27] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 03:10:27] ✅ Tailscale running
+[2026-03-25 03:10:27] ✅ Disk usage: 5%
+[2026-03-25 03:10:27] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 03:20:27] ─── Self-heal check starting ───
+[2026-03-25 03:20:27] ✅ Gateway process running
+[2026-03-25 03:20:27] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 03:20:27] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 03:20:27] ✅ Tailscale running
+[2026-03-25 03:20:27] ✅ Disk usage: 5%
+[2026-03-25 03:20:27] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 03:30:27] ─── Self-heal check starting ───
+[2026-03-25 03:30:27] ✅ Gateway process running
+[2026-03-25 03:30:27] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 03:30:27] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 03:30:27] ✅ Tailscale running
+[2026-03-25 03:30:27] ✅ Disk usage: 5%
+[2026-03-25 03:30:27] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 03:40:28] ─── Self-heal check starting ───
+[2026-03-25 03:40:28] ✅ Gateway process running
+[2026-03-25 03:40:28] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 03:40:28] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 03:40:28] ✅ Tailscale running
+[2026-03-25 03:40:28] ✅ Disk usage: 5%
+[2026-03-25 03:40:28] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 03:50:28] ─── Self-heal check starting ───
+[2026-03-25 03:50:28] ✅ Gateway process running
+[2026-03-25 03:50:28] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 03:50:28] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 03:50:28] ✅ Tailscale running
+[2026-03-25 03:50:28] ✅ Disk usage: 5%
+[2026-03-25 03:50:28] 🔧 Running periodic openclaw doctor --fix
+[2026-03-25 03:50:31] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 04:00:32] ─── Self-heal check starting ───
+[2026-03-25 04:00:32] ✅ Gateway process running
+[2026-03-25 04:00:32] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 04:00:32] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 04:00:32] ✅ Tailscale running
+[2026-03-25 04:00:32] ✅ Disk usage: 5%
+[2026-03-25 04:00:32] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 04:10:32] ─── Self-heal check starting ───
+[2026-03-25 04:10:32] ✅ Gateway process running
+[2026-03-25 04:10:32] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 04:10:32] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 04:10:32] ✅ Tailscale running
+[2026-03-25 04:10:32] ✅ Disk usage: 5%
+[2026-03-25 04:10:32] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 04:20:32] ─── Self-heal check starting ───
+[2026-03-25 04:20:32] ✅ Gateway process running
+[2026-03-25 04:20:32] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 04:20:32] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 04:20:32] ✅ Tailscale running
+[2026-03-25 04:20:32] ✅ Disk usage: 5%
+[2026-03-25 04:20:32] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 04:30:32] ─── Self-heal check starting ───
+[2026-03-25 04:30:32] ✅ Gateway process running
+[2026-03-25 04:30:32] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 04:30:32] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 04:30:32] ✅ Tailscale running
+[2026-03-25 04:30:32] ✅ Disk usage: 5%
+[2026-03-25 04:30:32] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 04:40:33] ─── Self-heal check starting ───
+[2026-03-25 04:40:33] ✅ Gateway process running
+[2026-03-25 04:40:33] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 04:40:33] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 04:40:33] ✅ Tailscale running
+[2026-03-25 04:40:33] ✅ Disk usage: 5%
+[2026-03-25 04:40:33] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 04:50:33] ─── Self-heal check starting ───
+[2026-03-25 04:50:33] ✅ Gateway process running
+[2026-03-25 04:50:33] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 04:50:33] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 04:50:33] ✅ Tailscale running
+[2026-03-25 04:50:33] ✅ Disk usage: 5%
+[2026-03-25 04:50:33] 🔧 Running periodic openclaw doctor --fix
+[2026-03-25 04:50:37] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 05:00:37] ─── Self-heal check starting ───
+[2026-03-25 05:00:37] ✅ Gateway process running
+[2026-03-25 05:00:37] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 05:00:37] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 05:00:37] ✅ Tailscale running
+[2026-03-25 05:00:37] ✅ Disk usage: 5%
+[2026-03-25 05:00:37] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 05:10:37] ─── Self-heal check starting ───
+[2026-03-25 05:10:37] ✅ Gateway process running
+[2026-03-25 05:10:37] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 05:10:37] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 05:10:37] ✅ Tailscale running
+[2026-03-25 05:10:37] ✅ Disk usage: 5%
+[2026-03-25 05:10:37] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 05:20:37] ─── Self-heal check starting ───
+[2026-03-25 05:20:37] ✅ Gateway process running
+[2026-03-25 05:20:38] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 05:20:38] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 05:20:38] ✅ Tailscale running
+[2026-03-25 05:20:38] ✅ Disk usage: 5%
+[2026-03-25 05:20:38] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 05:30:38] ─── Self-heal check starting ───
+[2026-03-25 05:30:38] ✅ Gateway process running
+[2026-03-25 05:30:38] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 05:30:38] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 05:30:38] ✅ Tailscale running
+[2026-03-25 05:30:38] ✅ Disk usage: 5%
+[2026-03-25 05:30:38] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 05:40:38] ─── Self-heal check starting ───
+[2026-03-25 05:40:38] ✅ Gateway process running
+[2026-03-25 05:40:38] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 05:40:38] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 05:40:38] ✅ Tailscale running
+[2026-03-25 05:40:38] ✅ Disk usage: 5%
+[2026-03-25 05:40:38] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 05:50:38] ─── Self-heal check starting ───
+[2026-03-25 05:50:38] ✅ Gateway process running
+[2026-03-25 05:50:38] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 05:50:38] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 05:50:38] ✅ Tailscale running
+[2026-03-25 05:50:38] ✅ Disk usage: 5%
+[2026-03-25 05:50:38] 🔧 Running periodic openclaw doctor --fix
+[2026-03-25 05:50:42] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 06:00:42] ─── Self-heal check starting ───
+[2026-03-25 06:00:42] ✅ Gateway process running
+[2026-03-25 06:00:42] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 06:00:42] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 06:00:42] ✅ Tailscale running
+[2026-03-25 06:00:42] ✅ Disk usage: 5%
+[2026-03-25 06:00:42] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 06:10:42] ─── Self-heal check starting ───
+[2026-03-25 06:10:42] ✅ Gateway process running
+[2026-03-25 06:10:42] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 06:10:42] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 06:10:42] ✅ Tailscale running
+[2026-03-25 06:10:42] ✅ Disk usage: 5%
+[2026-03-25 06:10:42] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 06:20:42] ─── Self-heal check starting ───
+[2026-03-25 06:20:42] ✅ Gateway process running
+[2026-03-25 06:20:43] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 06:20:43] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 06:20:43] ✅ Tailscale running
+[2026-03-25 06:20:43] ✅ Disk usage: 5%
+[2026-03-25 06:20:43] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 06:30:43] ─── Self-heal check starting ───
+[2026-03-25 06:30:43] ✅ Gateway process running
+[2026-03-25 06:30:43] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 06:30:43] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 06:30:43] ✅ Tailscale running
+[2026-03-25 06:30:43] ✅ Disk usage: 5%
+[2026-03-25 06:30:43] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 06:40:43] ─── Self-heal check starting ───
+[2026-03-25 06:40:43] ✅ Gateway process running
+[2026-03-25 06:40:43] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 06:40:43] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 06:40:43] ✅ Tailscale running
+[2026-03-25 06:40:43] ✅ Disk usage: 5%
+[2026-03-25 06:40:43] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 06:50:43] ─── Self-heal check starting ───
+[2026-03-25 06:50:43] ❌ Gateway process not found — starting
+[2026-03-25 06:50:54] ❌ Gateway failed to start — running doctor --fix
+[2026-03-25 06:50:57] ⚠️ Gateway RPC unhealthy (HTTP 000000)
+[2026-03-25 06:50:57] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 06:50:57] ✅ Tailscale running
+[2026-03-25 06:50:57] ✅ Disk usage: 5%
+[2026-03-25 06:50:57] 🔄 Restarting gateway to clear issues...
+[2026-03-25 06:51:14] ❌ Gateway restart failed — running doctor --fix
+[2026-03-25 06:51:26] 🔧 Running periodic openclaw doctor --fix
+[2026-03-25 06:51:28] ─── Self-heal check complete (2 issues found) ───
+[2026-03-25 07:01:28] ─── Self-heal check starting ───
+[2026-03-25 07:01:28] ❌ Gateway process not found — starting
+[2026-03-25 07:01:39] ❌ Gateway failed to start — running doctor --fix
+[2026-03-25 07:01:42] ⚠️ Gateway RPC unhealthy (HTTP 000000)
+[2026-03-25 07:01:42] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 07:01:42] ✅ Tailscale running
+[2026-03-25 07:01:42] ✅ Disk usage: 5%
+[2026-03-25 07:01:42] 🔄 Restarting gateway to clear issues...
+[2026-03-25 07:01:59] ❌ Gateway restart failed — running doctor --fix
+[2026-03-25 07:02:11] ─── Self-heal check complete (2 issues found) ───
+[2026-03-25 07:12:11] ─── Self-heal check starting ───
+[2026-03-25 07:12:11] ❌ Gateway process not found — starting
+[2026-03-25 07:12:22] ❌ Gateway failed to start — running doctor --fix
+[2026-03-25 07:12:25] ⚠️ Gateway RPC unhealthy (HTTP 000000)
+[2026-03-25 07:12:25] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 07:12:25] ✅ Tailscale running
+[2026-03-25 07:12:25] ✅ Disk usage: 5%
+[2026-03-25 07:12:25] 🔄 Restarting gateway to clear issues...
+[2026-03-25 07:12:42] ❌ Gateway restart failed — running doctor --fix
+[2026-03-25 07:12:55] ─── Self-heal check complete (2 issues found) ───
+[2026-03-25 07:22:55] ─── Self-heal check starting ───
+[2026-03-25 07:22:55] ❌ Gateway process not found — starting
+[2026-03-25 07:23:06] ❌ Gateway failed to start — running doctor --fix
+[2026-03-25 07:23:09] ⚠️ Gateway RPC unhealthy (HTTP 000000)
+[2026-03-25 07:23:09] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 07:23:09] ✅ Tailscale running
+[2026-03-25 07:23:09] ✅ Disk usage: 5%
+[2026-03-25 07:23:09] 🔄 Restarting gateway to clear issues...
+[2026-03-25 07:23:26] ❌ Gateway restart failed — running doctor --fix
+[2026-03-25 07:23:38] ─── Self-heal check complete (2 issues found) ───
+[2026-03-25 07:33:39] ─── Self-heal check starting ───
+[2026-03-25 07:33:39] ❌ Gateway process not found — starting
+[2026-03-25 07:33:50] ❌ Gateway failed to start — running doctor --fix
+[2026-03-25 07:33:52] ⚠️ Gateway RPC unhealthy (HTTP 000000)
+[2026-03-25 07:33:52] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 07:33:52] ✅ Tailscale running
+[2026-03-25 07:33:52] ✅ Disk usage: 5%
+[2026-03-25 07:33:52] 🔄 Restarting gateway to clear issues...
+[2026-03-25 07:34:09] ❌ Gateway restart failed — running doctor --fix
+[2026-03-25 07:34:22] ─── Self-heal check complete (2 issues found) ───
+[2026-03-25 07:44:22] ─── Self-heal check starting ───
+[2026-03-25 07:44:22] ❌ Gateway process not found — starting
+[2026-03-25 07:44:33] ❌ Gateway failed to start — running doctor --fix
+[2026-03-25 07:44:35] ⚠️ Gateway RPC unhealthy (HTTP 000000)
+[2026-03-25 07:44:35] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 07:44:35] ✅ Tailscale running
+[2026-03-25 07:44:35] ✅ Disk usage: 5%
+[2026-03-25 07:44:35] 🔄 Restarting gateway to clear issues...
+[2026-03-25 07:44:52] ❌ Gateway restart failed — running doctor --fix
+[2026-03-25 07:45:05] ─── Self-heal check complete (2 issues found) ───
+[2026-03-25 07:55:05] ─── Self-heal check starting ───
+[2026-03-25 07:55:05] ❌ Gateway process not found — starting
+[2026-03-25 07:55:16] ❌ Gateway failed to start — running doctor --fix
+[2026-03-25 07:55:19] ⚠️ Gateway RPC unhealthy (HTTP 000000)
+[2026-03-25 07:55:19] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 07:55:19] ✅ Tailscale running
+[2026-03-25 07:55:19] ✅ Disk usage: 5%
+[2026-03-25 07:55:19] 🔄 Restarting gateway to clear issues...
+[2026-03-25 07:55:36] ❌ Gateway restart failed — running doctor --fix
+[2026-03-25 07:55:49] 🔧 Running periodic openclaw doctor --fix
+[2026-03-25 07:55:51] ─── Self-heal check complete (2 issues found) ───
+[2026-03-25 09:11:55] ─── Self-heal check starting ───
+[2026-03-25 09:11:55] ❌ Gateway process not found — starting
+[2026-03-25 09:12:07] ❌ Gateway failed to start — running doctor --fix
+[2026-03-25 09:12:10] ⚠️ Gateway RPC unhealthy (HTTP 000000)
+[2026-03-25 09:12:10] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 09:12:10] ✅ Tailscale running
+[2026-03-25 09:12:10] ✅ Disk usage: 5%
+[2026-03-25 09:12:10] 🔄 Restarting gateway to clear issues...
+[2026-03-25 09:12:27] ❌ Gateway restart failed — running doctor --fix
+[2026-03-25 09:12:40] ─── Self-heal check complete (2 issues found) ───
+[2026-03-25 09:22:40] ─── Self-heal check starting ───
+[2026-03-25 09:22:40] ❌ Gateway process not found — starting
+[2026-03-25 09:22:52] ❌ Gateway failed to start — running doctor --fix
+[2026-03-25 09:22:54] ⚠️ Gateway RPC unhealthy (HTTP 000000)
+[2026-03-25 09:22:54] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 09:22:54] ✅ Tailscale running
+[2026-03-25 09:22:54] ✅ Disk usage: 5%
+[2026-03-25 09:22:54] 🔄 Restarting gateway to clear issues...
+[2026-03-25 09:23:11] ❌ Gateway restart failed — running doctor --fix
+[2026-03-25 09:23:24] ─── Self-heal check complete (2 issues found) ───
+[2026-03-25 09:33:24] ─── Self-heal check starting ───
+[2026-03-25 09:33:24] ❌ Gateway process not found — starting
+[2026-03-25 09:33:35] ❌ Gateway failed to start — running doctor --fix
+[2026-03-25 09:33:38] ⚠️ Gateway RPC unhealthy (HTTP 000000)
+[2026-03-25 09:33:38] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 09:33:38] ✅ Tailscale running
+[2026-03-25 09:33:38] ✅ Disk usage: 5%
+[2026-03-25 09:33:38] 🔄 Restarting gateway to clear issues...
+[2026-03-25 09:33:55] ❌ Gateway restart failed — running doctor --fix
+[2026-03-25 09:34:07] ─── Self-heal check complete (2 issues found) ───
+[2026-03-25 09:50:56] ─── Self-heal check starting ───
+[2026-03-25 09:50:56] ❌ Gateway process not found — starting
+[2026-03-25 09:51:08] ❌ Gateway failed to start — running doctor --fix
+[2026-03-25 09:51:11] ⚠️ Gateway RPC unhealthy (HTTP 000000)
+[2026-03-25 09:51:11] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 09:51:11] ✅ Tailscale running
+[2026-03-25 09:51:11] ✅ Disk usage: 5%
+[2026-03-25 09:51:11] 🔄 Restarting gateway to clear issues...
+[2026-03-25 09:51:28] ❌ Gateway restart failed — running doctor --fix
+[2026-03-25 09:51:41] ─── Self-heal check complete (2 issues found) ───
+[2026-03-25 10:01:41] ─── Self-heal check starting ───
+[2026-03-25 10:01:41] ❌ Gateway process not found — starting
+[2026-03-25 10:01:52] ❌ Gateway failed to start — running doctor --fix
+[2026-03-25 10:01:54] ⚠️ Gateway RPC unhealthy (HTTP 000000)
+[2026-03-25 10:01:54] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 10:01:54] ✅ Tailscale running
+[2026-03-25 10:01:54] ✅ Disk usage: 5%
+[2026-03-25 10:01:54] 🔄 Restarting gateway to clear issues...
+[2026-03-25 10:02:11] ❌ Gateway restart failed — running doctor --fix
+[2026-03-25 10:02:24] ─── Self-heal check complete (2 issues found) ───
+[2026-03-25 10:12:24] ─── Self-heal check starting ───
+[2026-03-25 10:12:24] ❌ Gateway process not found — starting
+[2026-03-25 10:12:35] ❌ Gateway failed to start — running doctor --fix
+[2026-03-25 10:12:38] ⚠️ Gateway RPC unhealthy (HTTP 000000)
+[2026-03-25 10:12:38] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 10:12:38] ✅ Tailscale running
+[2026-03-25 10:12:38] ✅ Disk usage: 5%
+[2026-03-25 10:12:38] 🔄 Restarting gateway to clear issues...
+[2026-03-25 10:12:55] ❌ Gateway restart failed — running doctor --fix
+[2026-03-25 10:13:07] 🔧 Running periodic openclaw doctor --fix
+[2026-03-25 10:13:09] ─── Self-heal check complete (2 issues found) ───
+[2026-03-25 10:23:09] ─── Self-heal check starting ───
+[2026-03-25 10:23:09] ❌ Gateway process not found — starting
+[2026-03-25 10:23:20] ❌ Gateway failed to start — running doctor --fix
+[2026-03-25 10:23:23] ⚠️ Gateway RPC unhealthy (HTTP 000000)
+[2026-03-25 10:23:23] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 10:23:23] ✅ Tailscale running
+[2026-03-25 10:23:23] ✅ Disk usage: 5%
+[2026-03-25 10:23:23] 🔄 Restarting gateway to clear issues...
+[2026-03-25 10:23:40] ✅ Gateway restarted successfully
+[2026-03-25 10:23:40] ─── Self-heal check complete (2 issues found) ───
+[2026-03-25 10:33:40] ─── Self-heal check starting ───
+[2026-03-25 10:33:40] ✅ Gateway process running
+[2026-03-25 10:33:40] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 10:33:40] ⚠️ Detected 10 LLM timeouts in the last 5 minutes — clearing cooldowns
+Cleared cooldowns for 1 profiles
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 10:33:40] ✅ Tailscale running
+[2026-03-25 10:33:40] ✅ Disk usage: 5%
+[2026-03-25 10:33:40] 🔄 Restarting gateway to clear issues...
+[2026-03-25 10:33:59] ✅ Gateway restarted successfully
+[2026-03-25 10:33:59] ─── Self-heal check complete (1 issues found) ───
+[2026-03-25 10:43:59] ─── Self-heal check starting ───
+[2026-03-25 10:43:59] ✅ Gateway process running
+[2026-03-25 10:43:59] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 10:43:59] ⚠️ Detected 4 LLM timeouts in the last 5 minutes — clearing cooldowns
+Cleared cooldowns for 1 profiles
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 10:43:59] ✅ Tailscale running
+[2026-03-25 10:43:59] ✅ Disk usage: 5%
+[2026-03-25 10:43:59] 🔄 Restarting gateway to clear issues...
+[2026-03-25 10:44:18] ✅ Gateway restarted successfully
+[2026-03-25 10:44:18] ─── Self-heal check complete (1 issues found) ───
+[2026-03-25 10:54:18] ─── Self-heal check starting ───
+[2026-03-25 10:54:18] ✅ Gateway process running
+[2026-03-25 10:54:18] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 10:54:18] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 10:54:19] ✅ Tailscale running
+[2026-03-25 10:54:19] ✅ Disk usage: 5%
+[2026-03-25 10:54:19] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 11:04:19] ─── Self-heal check starting ───
+[2026-03-25 11:04:19] ✅ Gateway process running
+[2026-03-25 11:04:19] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 11:04:19] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 11:04:19] ✅ Tailscale running
+[2026-03-25 11:04:19] ✅ Disk usage: 5%
+[2026-03-25 11:04:19] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 11:14:19] ─── Self-heal check starting ───
+[2026-03-25 11:14:19] ✅ Gateway process running
+[2026-03-25 11:14:19] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 11:14:19] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 11:14:19] ✅ Tailscale running
+[2026-03-25 11:14:19] ✅ Disk usage: 5%
+[2026-03-25 11:14:19] 🔧 Running periodic openclaw doctor --fix
+[2026-03-25 11:14:25] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 11:24:25] ─── Self-heal check starting ───
+[2026-03-25 11:24:25] ✅ Gateway process running
+[2026-03-25 11:24:25] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 11:24:25] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 135: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 11:24:25] ✅ Tailscale running
+[2026-03-25 11:24:25] ✅ Disk usage: 5%
+[2026-03-25 11:24:25] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 11:34:26] ─── Self-heal check starting ───
+[2026-03-25 11:34:26] ✅ Gateway process running
+[2026-03-25 11:34:26] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 11:34:28] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+[2026-03-25 11:34:28] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 242: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 11:34:28] ✅ Tailscale running
+[2026-03-25 11:34:28] ✅ Disk usage: 5%
+[2026-03-25 11:34:28] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 11:44:28] ─── Self-heal check starting ───
+[2026-03-25 11:44:28] ✅ Gateway process running
+[2026-03-25 11:44:28] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 11:44:30] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+[2026-03-25 11:44:30] ⚠️ Detected 5 LLM timeouts in the last 5 minutes — clearing cooldowns
+Cleared cooldowns for 1 profiles
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 242: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 11:44:30] ✅ Tailscale running
+[2026-03-25 11:44:30] ✅ Disk usage: 5%
+[2026-03-25 11:44:30] 🔄 Restarting gateway to clear issues...
+[2026-03-25 11:44:49] ✅ Gateway restarted successfully
+[2026-03-25 11:44:49] ─── Self-heal check complete (1 issues found) ───
+[2026-03-25 11:54:49] ─── Self-heal check starting ───
+[2026-03-25 11:54:49] ✅ Gateway process running
+[2026-03-25 11:54:49] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 11:54:50] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+[2026-03-25 11:54:50] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 242: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 11:54:50] ✅ Tailscale running
+[2026-03-25 11:54:51] ✅ Disk usage: 5%
+[2026-03-25 11:54:51] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 12:04:51] ─── Self-heal check starting ───
+[2026-03-25 12:04:51] ✅ Gateway process running
+[2026-03-25 12:04:51] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 12:04:52] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+[2026-03-25 12:04:52] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 242: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 12:04:52] ✅ Tailscale running
+[2026-03-25 12:04:52] ✅ Disk usage: 5%
+[2026-03-25 12:04:53] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 12:14:53] ─── Self-heal check starting ───
+[2026-03-25 12:14:53] ✅ Gateway process running
+[2026-03-25 12:14:53] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 12:14:54] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+[2026-03-25 12:14:54] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 242: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 12:14:54] ✅ Tailscale running
+[2026-03-25 12:14:54] ✅ Disk usage: 5%
+[2026-03-25 12:14:54] 🔧 Running periodic openclaw doctor --fix
+[2026-03-25 12:14:59] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 12:24:59] ─── Self-heal check starting ───
+[2026-03-25 12:24:59] ✅ Gateway process running
+[2026-03-25 12:24:59] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 12:25:01] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+[2026-03-25 12:25:01] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 242: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 12:25:01] ✅ Tailscale running
+[2026-03-25 12:25:01] ✅ Disk usage: 5%
+[2026-03-25 12:25:01] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 12:35:02] ─── Self-heal check starting ───
+[2026-03-25 12:35:02] ✅ Gateway process running
+[2026-03-25 12:35:02] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 12:35:04] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-25 12:35:04] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 242: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 12:35:04] ✅ Tailscale running
+[2026-03-25 12:35:04] ✅ Disk usage: 5%
+[2026-03-25 12:35:04] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-25 12:35:04] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 12:45:05] ─── Self-heal check starting ───
+[2026-03-25 12:45:05] ✅ Gateway process running
+[2026-03-25 12:45:05] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 12:45:06] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-25 12:45:06] ⚠️ Detected 5 LLM timeouts in the last 5 minutes — clearing cooldowns
+No cooldowns to clear
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 242: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 12:45:06] ✅ Tailscale running
+[2026-03-25 12:45:06] ✅ Disk usage: 5%
+[2026-03-25 12:45:06] 🔄 Restarting gateway to clear issues...
+[2026-03-25 12:45:25] ✅ Gateway restarted successfully
+[2026-03-25 12:45:25] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-25 12:45:25] ─── Self-heal check complete (1 issues found) ───
+[2026-03-25 12:55:25] ─── Self-heal check starting ───
+[2026-03-25 12:55:25] ✅ Gateway process running
+[2026-03-25 12:55:25] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 12:55:26] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-25 12:55:26] ✅ No excessive LLM timeouts
+/Users/ericbrown/.openclaw/workspace/scripts/openclaw_selfheal.sh: line 243: [[: 0
+0: syntax error in expression (error token is "0")
+[2026-03-25 12:55:26] ✅ Tailscale running
+[2026-03-25 12:55:26] ✅ Disk usage: 5%
+[2026-03-25 12:55:26] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-25 12:55:26] ─── Self-heal check complete (0 issues found) ───

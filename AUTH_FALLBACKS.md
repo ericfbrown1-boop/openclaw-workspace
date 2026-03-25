@@ -1,0 +1,20 @@
+# AUTH_FALLBACKS.md — Credential Expiry Handling
+
+**No agent may stall because of expired credentials. Every auth has an automated fallback.**
+
+## Credentials & Fallback Paths
+
+| Credential | Expiry | Auto-Renew | Manual Renew | Fallback When Down |
+|-----------|--------|------------|--------------|-------------------|
+| gog (Google OAuth) | ~7 days | `gog auth add --force-consent` (needs browser) | Eric runs in Terminal | Switch to Zapier MCP (`mcporter call zapier.gmail_send_email`) for email; skip calendar/drive tasks |
+| gh (GitHub) | Token-based | `gh auth refresh` | Eric runs `gh auth login` | Alert Eric; pause git-dependent tasks only |
+| Railway | Project token | N/A (GitHub-push deploys) | Eric logs in once at railway.app | **NEVER use `railway` CLI.** Deploy via `git push` only. |
+| Dropbox | Auto-refresh | `dropbox-cli.py` handles it | Eric refreshes at dropbox.com/developers | Save files locally; upload later |
+| Anthropic API | API key | N/A | Rotate at console.anthropic.com | Model fallback chain handles it |
+
+## Rules
+1. **Railway CLI is BANNED.** All Railway deployment is GitHub-push → auto-deploy → curl verify. No `railway login`, no `railway up`, no `railway init`. Section 16 of railway SKILL.md is the only workflow.
+2. **gog failure = switch to Zapier immediately.** Don't wait. Don't retry more than once. Switch, deliver, then fix auth.
+3. **gh failure = pause and alert.** Git operations are critical path — alert Eric within 1 minute.
+4. **Log every auth event** to `memory/incidents.jsonl` with `error_category: "auth"`.
+5. **Monitor pre-flight catches expiry BEFORE cron jobs fail.** If pre-flight fails, ALL credential-dependent crons are paused, not silently attempted.
