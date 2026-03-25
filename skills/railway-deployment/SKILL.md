@@ -599,3 +599,179 @@ Then push and manually trigger a redeploy of the celery-worker service.
 | `minio` | Docker image | PDF file storage |
 
 All five services must be running for full functionality.
+
+---
+
+## Section 14: Node.js / Next.js Deployment on Railway
+
+### Architecture: Multi-Process Container
+When deploying a Next.js frontend + Express backend in a single container:
+
+```dockerfile
+FROM node:22-alpine AS frontend-builder
+WORKDIR /app/frontend
+COPY frontend/package*.json ./
+RUN npm ci
+COPY frontend/ .
+RUN npm run build
+
+FROM node:22-alpine AS runner
+WORKDIR /app
+ENV NODE_ENV=production
+
+# Backend
+COPY backend/package*.json ./backend/
+RUN cd backend && npm ci --omit=dev
+COPY backend/ ./backend/
+
+# Frontend (standalone)
+COPY --from=frontend-builder /app/frontend/.next/standalone/. ./frontend/
+COPY --from=frontend-builder /app/frontend/.next/static ./frontend/.next/static
+COPY --from=frontend-builder /app/frontend/public ./frontend/public
+
+EXPOSE 3000 3001
+
+# Backend on fixed port, frontend on Railway's PORT
+CMD ["sh", "-c", "BACKEND_PORT=3001 node /app/backend/server.js & PORT=${PORT:-3000} HOSTNAME=0.0.0.0 node /app/frontend/server.js"]
+```
+
+### Critical: Railway PORT Conflict
+
+**Problem:** Railway injects a `PORT` environment variable. If your backend reads `process.env.PORT`, it will bind to Railway's port instead of its intended port, leaving the frontend with nothing to bind to.
+
+**Fix:** Backend must use a DIFFERENT env var (e.g., `BACKEND_PORT`):
+```javascript
+// backend/server.js
+const PORT = process.env.BACKEND_PORT || 3001;  // NOT process.env.PORT
+```
+
+**Lesson learned (2026-03-24):** This exact bug caused a 502 on the Mission Control Railway deployment. The backend grabbed Railway's PORT, the frontend rewrite to `localhost:3001` hit nothing.
+
+### Next.js Standalone Mode + Rewrites
+
+**Problem:** `next.config.ts` rewrites using `process.env.BACKEND_URL` are evaluated at BUILD time in standalone mode, not runtime. If the env var is empty during Docker build, the rewrite destination is empty.
+
+**Fix:** Hardcode the internal URL since backend always runs in the same container:
+```typescript
+// next.config.ts
+const nextConfig: NextConfig = {
+  output: "standalone",
+  async rewrites() {
+    return [{
+      source: '/api/backend/:path*',
+      destination: 'http://localhost:3001/:path*',  // hardcoded, not env var
+    }];
+  },
+};
+```
+
+### Docker Credential Helper Failure on PowerSpec
+
+**Problem:** Building Docker images on PowerSpec via SSH fails with:
+```
+error getting credentials - err: exit status 1, out: "A specified logon session does not exist"
+```
+
+**Root cause:** Docker Desktop's `credsStore: "desktop"` credential helper requires an interactive Windows session. SSH sessions don't have one.
+
+**Fix:** Route through WSL with an empty Docker config:
+```bash
+ssh ericf@100.67.128.123 "powershell -Command \"wsl bash -c 'mkdir -p /tmp/dc && echo {} > /tmp/dc/config.json && cd /mnt/c/Users/ericf/projects/PROJECT && DOCKER_CONFIG=/tmp/dc docker build -t IMAGE:latest .' 2>&1\""
+```
+
+### Line Ending Issues (Windows ↔ Unix)
+
+**Problem:** Shell entrypoint scripts created on Mac/Unix get `\r\n` line endings when transferred through Windows/Git, causing:
+```
+/usr/local/bin/docker-entrypoint.sh: not found
+```
+
+**Fix:** Don't use separate entrypoint files. Inline the CMD in the Dockerfile:
+```dockerfile
+CMD ["sh", "-c", "BACKEND_PORT=3001 node /app/backend/server.js & PORT=${PORT:-3000} HOSTNAME=0.0.0.0 node /app/frontend/server.js"]
+```
+
+### Railway Variables for Node.js Apps
+
+| Variable | Value | Notes |
+|----------|-------|-------|
+| `PORT` | Railway sets this automatically | Frontend binds here |
+| `NODE_ENV` | `production` | Enables optimizations |
+| `BACKEND_URL` | Not needed if hardcoded in next.config.ts | See above |
+
+### Verification After Deploy
+```bash
+# Frontend serves HTML
+curl -fsS https://YOUR-APP.up.railway.app/ | head -c 100
+
+# Backend health (via Next.js rewrite)
+curl -fsS https://YOUR-APP.up.railway.app/api/backend/health
+
+# Task data
+curl -fsS https://YOUR-APP.up.railway.app/api/backend/tasks | head -c 200
+```
+
+---
+
+## Section 15: PowerSpec SSH → PowerShell Quoting Rules
+
+Running PowerShell commands via SSH from Mac requires careful quoting. The `$_` variable and curly braces are especially problematic.
+
+### Write-then-execute pattern (RECOMMENDED)
+Instead of inline PowerShell, write a script file and execute it:
+```bash
+# Write the script
+ssh ericf@100.67.128.123 "powershell -Command \"Set-Content -Path C:\\Users\\ericf\\run.ps1 -Value 'Your-PS-Commands-Here'\""
+
+# Execute it
+ssh ericf@100.67.128.123 "powershell -File C:\\Users\\ericf\\run.ps1"
+```
+
+### Simple commands work inline
+```bash
+ssh ericf@100.67.128.123 "hostname"
+ssh ericf@100.67.128.123 "docker images"
+ssh ericf@100.67.128.123 "nvidia-smi"
+ssh ericf@100.67.128.123 "powershell -Command \"Get-Content C:\\path\\to\\file\""
+```
+
+### Commands with `$_` or `{}` WILL FAIL inline
+```bash
+# THIS FAILS — $_ gets eaten by bash
+ssh ericf@100.67.128.123 "powershell -Command \"Get-Process | Where-Object {\$_.ProcessName -like '*docker*'}\""
+
+# USE THIS INSTEAD — write to file first, then execute
+```
+
+### WSL for Linux tools on PowerSpec
+```bash
+ssh ericf@100.67.128.123 "powershell -Command \"wsl bash -c 'linux-command-here' 2>&1\""
+```
+
+---
+
+## Section 16: Railway Deployment via GitHub Integration (No CLI)
+
+Railway CLI requires interactive browser auth which doesn't work via SSH or automation. The recommended approach is GitHub integration:
+
+1. Go to **railway.app** → **New Project** → **Deploy from GitHub**
+2. Select the repo (e.g., `ericfbrown1-boop/JarvisMissionControl`)
+3. Railway auto-detects the Dockerfile and deploys
+4. Set env vars in the **Variables** tab
+5. Generate a domain in **Settings** → **Networking** → **Public Networking**
+6. Every `git push` to main triggers auto-redeploy
+
+### Finding the Railway URL
+- Click on your **service** (the box in the project dashboard)
+- Click **Settings** tab
+- Scroll to **Networking** → **Public Networking**
+- The domain is `xxxx-xxxx-production.up.railway.app`
+- If no domain exists, click **"Generate Domain"**
+
+### Railway CLI Auth (if needed)
+```bash
+railway login --browserless
+# Opens a URL — visit in browser and confirm the pairing code
+# Then: railway init, railway up
+```
+**Note:** This requires an interactive terminal. It will NOT work in SSH sessions or automated scripts.
