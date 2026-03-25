@@ -1,0 +1,22 @@
+{
+  "timestamp": "2026-03-25T02:28:00Z",
+  "macbook": {
+    "cpu_pct": 18.92,
+    "cpu_user_pct": 5.35,
+    "cpu_sys_pct": 13.57,
+    "ram_free_pages": 167685,
+    "disk_used_pct": 5,
+    "disk_free_gb": 292
+  },
+  "powerspec": {
+    "gpu_util_pct": 1,
+    "vram_used_mb": 2361,
+    "vram_total_mb": 16303,
+    "reachable": true,
+    "hostname": "EFBPowerSpec"
+  },
+  "pm2": {
+    "backend": {"status": "online", "uptime_h": 5, "restarts": 3, "mem_mb": 56.3},
+    "frontend": {"status": "online", "uptime_h": 5, "restarts": 2, "mem_mb": 50.6}
+  }
+}

@@ -120,7 +120,7 @@ Every Monday, the External Auditor must:
 5. Do NOT apply changes until Eric approves — this is a review gate, not auto-update
 6. After Eric approves, implement changes, commit to GitHub, and update the lessons table in Monitor SKILL.md
 
-## → Conductor Agent — Completion Gate
+## → Conductor Agent (agentId: conductor) — Completion Gate
 **The 100% Rule:** No task is complete unless committed to GitHub.
 
 **Status mapping:** queued=0% | running=1-99% (milestones only, NEVER time-based) | completed=100% (after git push) | failed=blocked

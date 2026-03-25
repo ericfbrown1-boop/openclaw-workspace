@@ -1,0 +1,1 @@
+{"timestamp":"2026-03-25T05:37:00Z","macbook":{"cpu_pct":17,"ram_used_mb":23552,"disk_used_pct":5},"powerspec":{"gpu_util_pct":"n/a","vram_used_mb":"n/a","vram_total_mb":16303,"reachable":true,"connection":"derp-only"},"sweep":"7b0a5283","step":"5-resource-snapshot"}

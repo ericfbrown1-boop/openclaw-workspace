@@ -1,0 +1,1 @@
+{"timestamp":"2026-03-24T18:47:11Z","macbook":{"cpu_pct":19,"ram_used_mb":10663,"disk_used_pct":32},"powerspec":{"gpu_util_pct":null,"vram_used_mb":null,"vram_total_mb":null,"reachable":true,"note":"nvidia-smi unavailable on Windows host"}}

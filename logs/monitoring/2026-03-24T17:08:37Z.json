@@ -1,0 +1,17 @@
+{
+  "timestamp": "2026-03-24T17:08:37Z",
+  "macbook": {
+    "cpu_pct": 17,
+    "ram_used_mb": 23552,
+    "ram_total_mb": 24576,
+    "disk_used_pct": 5
+  },
+  "powerspec": {
+    "gpu_util_pct": 0,
+    "vram_used_mb": null,
+    "vram_total_mb": null,
+    "reachable": true,
+    "connection_type": "DERP-only",
+    "note": "nvidia-smi unavailable via SSH"
+  }
+}

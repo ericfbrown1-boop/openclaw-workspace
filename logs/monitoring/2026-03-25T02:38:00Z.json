@@ -1,0 +1,14 @@
+{
+  "timestamp": "2026-03-25T02:38:00Z",
+  "macbook": {
+    "cpu_pct": 13,
+    "ram_used_mb": 22528,
+    "ram_free_mb": 887
+  },
+  "powerspec": {
+    "gpu_util_pct": 1,
+    "vram_used_mb": 2361,
+    "vram_total_mb": 16303,
+    "reachable": true
+  }
+}

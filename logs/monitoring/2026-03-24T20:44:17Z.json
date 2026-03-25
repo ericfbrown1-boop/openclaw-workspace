@@ -1,0 +1,1 @@
+{"timestamp":"2026-03-24T20:44:17Z","macbook":{"cpu_idle_pct":87.26,"ram_used_mb":22528,"ram_free_mb":957},"powerspec":{"gpu_util_pct":0,"vram_used_mb":2364,"vram_total_mb":16303,"reachable":true},"app":{"frontend":"up","backend":"up","pm2_restarts_backend":3,"pm2_restarts_frontend":2},"disk_free_gb":292}
