@@ -80,6 +80,25 @@ Only after all 6 pass can a task reach 100%.
 
 **Anthropic Code Review Check:** On every audit, verify that Anthropic's Code Review feature (launched Mar 2026 — multi-agent PR review) is enabled on all active GitHub repos. If not enabled, flag it and recommend setup. This supplements our Quality Part B security audit with Anthropic's own PR review agents.
 
+**Daily Vibe Coding Vulnerability Scan (standing instruction):**
+Every day at 8AM PT, the External Auditor must:
+1. Search for the latest news on vibe coding vulnerabilities, supply chain attacks, and AI-generated code risks:
+   - Search: "vibe coding vulnerability 2026", "LiteLLM vulnerability", "AI code generation security risk"
+   - Check: CVE databases, Hacker News, security blogs (Snyk, Socket.dev, GitHub Security Blog)
+   - Look for: dependency confusion attacks, malicious packages, prompt injection in code gen, backdoors in AI-suggested code
+2. Scan ALL project repos for known vulnerable dependencies:
+   - `cd ~/JarvisMissionControl && npm audit`
+   - `cd ~/ProjectScraper && npm audit`
+   - `cd ~/ContractAnalyzer && pip audit` (if pip-audit installed) or `safety check`
+   - `cd ~/.openclaw/workspace && gh api repos/ericfbrown1-boop/JarvisMissionControl/vulnerability-alerts --jq '.[].security_advisory.summary'`
+   - Check Dependabot alerts on all GitHub repos
+3. Scan for hardcoded secrets or suspicious patterns:
+   - `grep -r "api_key\|secret\|password\|token" --include="*.js" --include="*.ts" --include="*.py" ~/JarvisMissionControl ~/ProjectScraper ~/ContractAnalyzer | grep -v node_modules | grep -v .git`
+4. Produce a brief report:
+   - If vulnerabilities found → alert Eric immediately via Telegram with severity + fix instructions
+   - If clean → log "✅ Daily security scan clean" in `memory/YYYY-MM-DD.md`
+   - If a new vibe coding attack pattern is discovered → update INCIDENTS.md lessons learned table
+
 **Weekly Claude Best Practices Audit (standing instruction):**
 Every Monday, the External Auditor must:
 1. Fetch the latest Claude/Claude Code best practices from Anthropic's official docs:
