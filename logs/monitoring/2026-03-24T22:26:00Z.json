@@ -1,1 +1,0 @@
-{"timestamp":"2026-03-24T22:26:00Z","macbook":{"cpu_pct":16.10,"ram_used_mb":23242},"powerspec":{"gpu_util_pct":"unavailable","vram_used_mb":"unavailable","vram_total_mb":16303,"reachable":true,"note":"SSH OK but nvidia-smi not on PATH (Windows path issue)"}}

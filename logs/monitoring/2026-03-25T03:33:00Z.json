@@ -1,1 +1,0 @@
-{"timestamp":"2026-03-25T03:33:00Z","macbook":{"cpu_pct":10.5,"ram_used_mb":2535,"disk_free_gb":303},"powerspec":{"gpu_util_pct":null,"vram_used_mb":null,"vram_total_mb":null,"reachable":true,"note":"SSH connected, nvidia-smi path not found (Windows PATH issue)"},"app":{"frontend_3000":"up","backend_3001":"up","pm2_backend":"online_6h","pm2_frontend":"online_6h"}}

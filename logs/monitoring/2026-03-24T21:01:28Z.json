@@ -1,1 +1,0 @@
-{"timestamp":"2026-03-24T21:01:28Z","macbook":{"cpu_pct":12.57,"ram_used_mb":23552,"ram_free_mb":846},"powerspec":{"gpu_util_pct":0,"vram_used_mb":2364,"vram_total_mb":16303,"reachable":true},"pm2":{"backend":"online","frontend":"online","backend_restarts":3,"frontend_restarts":2}}
