@@ -2,12 +2,47 @@
 
 All notable changes to OpenClaw workspace are documented here.
 
-## [2026-03-25] - Best Practices Upgrade
+## [2026-03-25] - Best Practices Upgrade (Full Day Session)
 ### Added
-- CLAUDE.md for Claude Code native integration
-- CHANGELOG.md for tracking workspace changes
-- 9 Cohesity domain skill skeletons (earnings-analyzer, competitive-intel, financial-report-gen, salesforce-analytics, snowflake-sql, slack-teams-hub, tax-automation, workday-analytics, cohesity-domain)
+- CLAUDE.md, CHANGELOG.md, AUTH_FALLBACKS.md, DISPATCH_TEMPLATE.md
+- 8 Cohesity domain skills implemented (earnings-analyzer, competitive-intel, financial-report-gen, cohesity-domain, snowflake-sql, slack-teams-hub, tax-automation, workday-analytics)
+- Salesforce analytics full implementation (SKILL.md + IMPLEMENTATION.md)
+- GitHub Actions CI/CD (.github/workflows/ci.yml)
+- Pre-commit hooks (.pre-commit-config.yaml: ruff, shellcheck, detect-secrets)
+- Test oracle schemas (skills/auditor/TEST_ORACLES.md — 8 oracle types)
+- Per-project CLAUDE.md (ProjectScraper, folder-monitor, stock-ticker)
+- Monitor Step 4.5: Tailscale health check
+- Monitor Step 11: 4-phase workflow compliance enforcement
+- Dual-write rule for tasks.json (workspace + Mission Control)
+- PowerSpec as visible agent on Mission Control dashboard
+- Coding workflow guide (documents/OpenClaw_Coding_Workflow_Guide.md)
 - Stability fix plan (plans/stability-fix-plan.md)
+- Security hardening tracker (plans/security-hardening.md)
+- GPT-5.4 upgrade plan (plans/planner-gpt54-upgrade.md)
+
+### Changed
+- PIPELINE.md: explicit 4-phase labels, model tiering with costs, E2E verification checklist
+- DELEGATION.md: Conductor dual-write rule, updated dispatch rules
+- Monitor SKILL.md: Tailscale check, 4-phase enforcement, dual-write sync, Telegram reduced to hourly
+- POWERSPEC.md: Docker GPU commands, PyTorch nightly note, critical notes
+- KNOWN_FAILURES.md: 3 new patterns (context chunking, bot detection, PowerShell TLS)
+- Salesforce SKILL.md split from 38KB to 12KB + 27KB IMPLEMENTATION.md
+
+### Fixed
+- 55 bare `except:` → `except Exception:` across 20 Python files
+- SIGTERM graceful restarts no longer count as outages on Health dashboard (84.6% → ~99.9%)
+- Anthropic research task synced to Mission Control (was showing stale 25%)
+- Next.js rebuild step documented (pm2 restart alone serves stale code)
+
+### Removed
+- 13 junk files (clawdbot dupes, UUID temps, completion markers, .bak)
+- 3 German language output files
+- Root-level duplicates (GPT54, IDE_Summary .docx/.txt)
+
+### Organized
+- 162 root files moved to scripts/legacy/, data/, documents/, data/images/
+- 35 output .md files moved to documents/
+- Root reduced from 232 to 36 files
 - Auth circuit breaker + auto-fallback to Zapier MCP
 - API credit monitoring (scripts/api_usage_monitor.py)
 - Token refresh wrapper (scripts/gog_token_refresh.sh)
