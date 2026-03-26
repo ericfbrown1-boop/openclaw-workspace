@@ -138,6 +138,16 @@ If a primary model is unavailable (rate limit, outage, cooldown):
 2. **GPT-5.4 Pro** → Opus 4.6 → Sonnet 4.6
 3. **Sonnet 4.6** → Grok 4 Fast → Haiku 4.5
 
+## Test Oracle Schemas
+
+Every task type has a formal verification schema in `skills/auditor/TEST_ORACLES.md`. Agents MUST:
+1. **Planner**: Include the relevant oracle in PLAN.md `successCriteria`
+2. **Coder/Researcher**: Self-check against oracle BEFORE writing HANDOFF.md
+3. **Tester**: Validate oracle checks programmatically
+4. **Monitor**: Verify completed tasks satisfy their oracle (Step 11: 4-Phase Compliance)
+
+Available oracles: `task_completion`, `code_task`, `research_task`, `report_task`, `error_diagnosis`, `monitoring_sweep`, `earnings_analysis`, `competitive_intel`.
+
 ## E2E Verification Checklist
 
 Before marking any pipeline run complete, verify:

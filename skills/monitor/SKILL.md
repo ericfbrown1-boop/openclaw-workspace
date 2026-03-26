@@ -152,7 +152,28 @@ Save to `logs/monitoring/<ISO8601>.json`:
 - Queued tasks >4h with available resources → alert that work should start
 - **Context-switch detection:** If an agent started a new task without completing the current one → flag it
 
-### 11. Status Report — SIZE BOUNDED (max 500 chars to Telegram)
+### 11. 4-Phase Workflow Compliance (MANDATORY)
+
+Every running task must follow: **Understand → Plan → Implement → Verify** (see PIPELINE.md).
+
+**Check for each running task:**
+1. **Phase tracking:** Does `tasks.json` include a `phase` field? If missing → add it.
+2. **Phase skipping:** Did an agent jump from Understand straight to Implement (skipping Plan)? → Flag as incident, pause task, notify Eric.
+3. **Verify phase exists:** Is there a verification step defined? If task has no `successCriteria` in tasks.json → flag as incomplete dispatch.
+4. **Verify actually ran:** Did the task reach Phase 4 (Verify) before being marked 100%? If `status === "completed"` but no test/review evidence → reject completion, send back to Verify.
+
+**Phase compliance rules:**
+- Code tasks: Must have PLAN.md before Coder starts. Must have test results before 100%.
+- Research tasks: Must have search strategy before executing. Must cross-check sources before delivering.
+- Report tasks: Must have outline before writing. Must verify deliverable sent before 100%.
+- Error diagnosis: Must understand context before proposing fix. Must verify fix works before closing.
+
+**Enforcement actions:**
+- Missing phase → log to `memory/incidents.jsonl` with `error_category: "phase_skip"`
+- Repeated phase skips (>2 in same task) → escalate to Eric
+- Agent that consistently skips phases → flag in Librarian's next review
+
+### 12. Status Report — SIZE BOUNDED (max 500 chars to Telegram)
 
 **Healthy sweep:** `✅ All green [HH:MM]` (< 30 chars)
 **Degraded sweep:** One line per failing check, max 5 lines:
