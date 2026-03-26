@@ -4651,3 +4651,69 @@ Session store (main): /Users/ericbrown/.openclaw/agents/main/sessions/sessions.j
 [2026-03-25 16:50:18] ✅ Disk usage: 5%
 [2026-03-25 16:50:18] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
 [2026-03-25 16:50:18] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 20:35:43] ─── Self-heal check starting ───
+[2026-03-25 20:35:43] ✅ Gateway process running
+[2026-03-25 20:35:44] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 20:35:44] ✅ Google OAuth healthy
+[2026-03-25 20:35:44] ✅ No excessive LLM timeouts
+[2026-03-25 20:35:44] ✅ Tailscale running
+[2026-03-25 20:35:44] ✅ Disk usage: 5%
+[2026-03-25 20:35:45] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-25 20:35:45] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 20:45:45] ─── Self-heal check starting ───
+[2026-03-25 20:45:45] ✅ Gateway process running
+[2026-03-25 20:45:45] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 20:45:46] ✅ Google OAuth healthy
+[2026-03-25 20:45:46] ✅ No excessive LLM timeouts
+[2026-03-25 20:45:46] ✅ Tailscale running
+[2026-03-25 20:45:46] ✅ Disk usage: 5%
+[2026-03-25 20:45:46] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-25 20:45:46] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 20:55:46] ─── Self-heal check starting ───
+[2026-03-25 20:55:46] ✅ Gateway process running
+[2026-03-25 20:55:46] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 20:55:47] ✅ Google OAuth healthy
+[2026-03-25 20:55:47] ✅ No excessive LLM timeouts
+[2026-03-25 20:55:47] ✅ Tailscale running
+[2026-03-25 20:55:47] ✅ Disk usage: 5%
+[2026-03-25 20:55:47] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-25 20:55:47] 🔧 Running periodic openclaw doctor --fix
+│
+◇  Plugins ──────╮
+│                │
+│  Loaded: 6     │
+│  Disabled: 74  │
+│  Errors: 0     │
+│                │
+├────────────────╯
+Telegram: ok (@EFB_Jarvis_bot) (974ms)
+Agents: main (default), researcher, planner, coder, quality, monitor, auditor, conductor
+Heartbeat interval: 30m (main)
+Session store (main): /Users/ericbrown/.openclaw/agents/main/sessions/sessions.json (22 entries)
+- agent:main:telegram:direct:5387843769 (231m ago)
+- agent:main:main (474m ago)
+- agent:main:cron:da942e7a-3360-40ca-84af-9b2fdcd4b158 (886m ago)
+- agent:main:cron:da942e7a-3360-40ca-84af-9b2fdcd4b158:run:6c2372ef-fd93-4d05-8a0d-80cb0806be52 (886m ago)
+- agent:main:cron:c79c8317-5cf7-4e01-b170-a849094a6265 (896m ago)
+│
+└  Doctor complete.
+
+[2026-03-25 20:55:51] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 21:05:51] ─── Self-heal check starting ───
+[2026-03-25 21:05:51] ✅ Gateway process running
+[2026-03-25 21:05:51] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 21:05:52] ✅ Google OAuth healthy
+[2026-03-25 21:05:52] ✅ No excessive LLM timeouts
+[2026-03-25 21:05:52] ✅ Tailscale running
+[2026-03-25 21:05:52] ✅ Disk usage: 5%
+[2026-03-25 21:05:52] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-25 21:05:52] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 21:15:53] ─── Self-heal check starting ───
+[2026-03-25 21:15:53] ✅ Gateway process running
+[2026-03-25 21:15:53] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 21:15:53] ✅ Google OAuth healthy
+[2026-03-25 21:15:54] ✅ No excessive LLM timeouts
+[2026-03-25 21:15:54] ✅ Tailscale running
+[2026-03-25 21:15:54] ✅ Disk usage: 5%
+[2026-03-25 21:15:54] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-25 21:15:54] ─── Self-heal check complete (0 issues found) ───
