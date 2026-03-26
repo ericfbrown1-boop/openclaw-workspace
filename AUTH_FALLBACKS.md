@@ -12,6 +12,18 @@
 | Dropbox | Auto-refresh | `dropbox-cli.py` handles it | Eric refreshes at dropbox.com/developers | Save files locally; upload later |
 | Anthropic API | API key | N/A | Rotate at console.anthropic.com | Model fallback chain handles it |
 
+## Model Fallback Chain
+
+When an LLM provider is unavailable (rate limit, outage, API key issue):
+
+| Primary | Fallback 1 | Fallback 2 | Notes |
+|---------|-----------|-----------|-------|
+| Claude Opus 4.6 | GPT-5.4 Pro | Claude Sonnet 4.6 | GPT-5.4 has 1M context (5x Opus) at lower cost |
+| GPT-5.4 Pro | Claude Opus 4.6 | Claude Sonnet 4.6 | Cross-provider resilience |
+| Claude Sonnet 4.6 | Grok 4 Fast | Claude Haiku 4.5 | Cheapest tier for simple tasks |
+
+Managed by `auth-profiles.json` cooldown/error tracking. Self-heal script clears cooldowns automatically.
+
 ## Rules
 1. **Railway CLI is BANNED.** All Railway deployment is GitHub-push → auto-deploy → curl verify. No `railway login`, no `railway up`, no `railway init`. Section 16 of railway SKILL.md is the only workflow.
 2. **gog failure = switch to Zapier immediately.** Don't wait. Don't retry more than once. Switch, deliver, then fix auth.

@@ -87,3 +87,24 @@ _Updated by Jarvis. Agents: consult this file when encountering errors before at
 **Solution:** Check `memory/cron-state.json` for last successful run before executing. If same cron ID completed within the past 4 hours, skip with HEARTBEAT_OK.
 **Frequency:** Mar 13, 2026 — briefing ran 7 times
 **Added:** 2026-03-17
+
+## 🟡 Context Window Exceeded on Batch URL Processing
+**Pattern:** Passing multiple URLs (e.g., 17 Rubrik pages) to an agent in a single prompt overflows the context window. Agent truncates or fails silently.
+**Solution:** Process URLs one at a time. Chunk large payloads into individual requests. Write intermediate results to file between chunks so a fresh session can resume.
+**Frequency:** ProjectScraper first crawl, Mar 5, 2026
+**Added:** 2026-03-25
+**Reference:** references/Morning_Session_Recap_EricBrown.docx
+
+## 🟡 Web Scraping: Bot Detection Triggers
+**Pattern:** Rapid sequential HTTP requests to competitor sites (Rubrik, Commvault) trigger bot detection, returning 403/captcha instead of content.
+**Solution:** Add 3-second delay between requests. Rotate user-agent strings. Use headless Playwright (not raw HTTP) for JavaScript-rendered pages. Avoid hitting the same domain more than once per 5 seconds.
+**Frequency:** ProjectScraper Rubrik crawl, Mar 5, 2026
+**Added:** 2026-03-25
+**Reference:** references/Morning_Session_Recap_EricBrown.docx
+
+## 🟡 PowerShell 5.x vs 7.x TLS Incompatibility
+**Pattern:** PowerShell 5.x (default on Windows) fails TLS handshakes with modern endpoints. Remote Coder and Scheduled Tasks silently fail when using PS 5.x.
+**Solution:** Always use PowerShell 7 (`pwsh`). Set Scheduled Tasks to use `pwsh.exe`, not `powershell.exe`. Verify with `$PSVersionTable.PSVersion`. PS 5.x → 7.x upgrade: `winget install Microsoft.PowerShell`.
+**Frequency:** Remote Coder setup, Mar 4-5, 2026
+**Added:** 2026-03-25
+**Reference:** references/Remote_Session_Recap_EricBrown.docx

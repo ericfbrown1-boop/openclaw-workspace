@@ -85,15 +85,32 @@ Agents read `alert_level` from the state file:
 
 ## Model Tiering Strategy
 
-| Agent | Model | Rationale |
-|-------|-------|-----------|
-| Jarvis (main) | Opus 4.6 | Orchestration needs best reasoning |
-| Planner | Opus 4.6 | Architecture needs depth |
-| Coder | Sonnet 4.6 | Code tasks well-defined; saves ~40-60% |
-| Tester | Sonnet 4.6 | Test execution is deterministic |
-| Quality | Sonnet 4.6 | Checklist-driven |
-| Conductor | Sonnet 4.6 | Infrastructure tasks well-defined |
-| External Auditor | Sonnet 4.6 | Packaging is straightforward |
-| Librarian | Sonnet 4.6 | Analysis can use cheaper model |
-| Monitor | Sonnet 4.6 | Simple monitoring tasks |
-| Researcher | Sonnet 4.6 | Web search + synthesis |
+| Agent | Model | Context | Cost (in/out per M) | Rationale |
+|-------|-------|---------|---------------------|-----------|
+| Jarvis (main) | Opus 4.6 | 200K | $15 / $75 | Orchestration needs best reasoning |
+| Planner | Opus 4.6 | 200K | $15 / $75 | Architecture needs depth |
+| Planner (cross-review) | GPT-5.4 Pro | 1M | $2.50 / $15 | 1M context for full codebase analysis; 33% fewer hallucinations; speed perspective |
+| Coder | Sonnet 4.6 | 200K | $3 / $15 | Code tasks well-defined; saves ~40-60% |
+| Tester | Sonnet 4.6 | 200K | $3 / $15 | Test execution is deterministic |
+| Quality | Sonnet 4.6 | 200K | $3 / $15 | Checklist-driven |
+| Conductor | Sonnet 4.6 | 200K | $3 / $15 | Infrastructure tasks well-defined |
+| External Auditor | Sonnet 4.6 | 200K | $3 / $15 | Packaging is straightforward |
+| Librarian | Sonnet 4.6 | 200K | $3 / $15 | Analysis can use cheaper model |
+| Monitor | Sonnet 4.6 | 200K | $3 / $15 | Simple monitoring tasks |
+| Researcher | Sonnet 4.6 | 200K | $3 / $15 | Web search + synthesis |
+
+### Model Fallback Chain
+If a primary model is unavailable (rate limit, outage, cooldown):
+1. **Opus 4.6** → GPT-5.4 Pro → Sonnet 4.6
+2. **GPT-5.4 Pro** → Opus 4.6 → Sonnet 4.6
+3. **Sonnet 4.6** → Grok 4 Fast → Haiku 4.5
+
+## E2E Verification Checklist
+
+Before marking any pipeline run complete, verify:
+1. **Agent health:** Each agent responds to a test prompt
+2. **Delegation:** Keyword triggers route to correct agent (test each trigger)
+3. **Pipeline flow:** Task flows Planner → Coder → Tester → Quality → Auditor → Conductor without stalling
+4. **Completion gate:** tasks.json shows commit SHA and/or email ID
+5. **Cron jobs:** All scheduled jobs show `lastStatus: "ok"` in `memory/cron-state.json`
+6. **Fallbacks:** Simulate auth failure → verify fallback path activates

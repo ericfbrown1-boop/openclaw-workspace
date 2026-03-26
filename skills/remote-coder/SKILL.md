@@ -108,6 +108,22 @@ Plans without this table are INCOMPLETE.
 - If GPU util <5% while tasks are queued → alert Conductor
 - If PowerSpec offline while tasks are queued → alert Eric
 
+## Mobile Access (iPhone via Tailscale)
+
+Access Remote Coder from iPhone:
+1. Install Tailscale on iPhone → join tailnet
+2. Navigate to `https://100.67.128.123:8443` in Safari
+3. **Certificate issue:** Self-signed cert requires iOS profile installation:
+   - Export cert from PowerSpec
+   - AirDrop or email to iPhone
+   - Settings → General → VPN & Device Management → Install profile
+4. Use PowerShell 7 for all commands (PS 5.x fails TLS handshakes)
+
+**Known issues:**
+- TLS cert must be re-installed if regenerated on PowerSpec
+- Always use `pwsh` (PS 7), not `powershell` (PS 5.x)
+- Tailscale must be connected on both devices
+
 ## Escalation
 - PowerSpec offline >5 min with active queue → CRITICAL → Telegram alert to Eric
 - PowerSpec idle while tasks stalled → Conductor must offload immediately

@@ -8,6 +8,8 @@
 **OS:** Windows 11 25H2 (WSL2 + Docker available)
 **CPU:** 32 vCPUs | **RAM:** 128 GB | **GPU:** NVIDIA RTX 5080 (16GB VRAM, CUDA 13.1)
 **Docker:** Docker Desktop with NVIDIA Container Toolkit
+**PyTorch:** Nightly build required (cu128) — stable releases do NOT support Blackwell sm_120 architecture
+**CUDA Toolkit:** 12.8.0 (cudnn-devel)
 
 ## Pre-Task Check (MANDATORY)
 ```bash
@@ -64,3 +66,24 @@ ALL builds + Docker work → PowerSpec. Record which host ran each command in HA
 
 ## Monitor Rule
 Check PowerSpec utilization every 5 minutes. GPU util <5% while tasks queued → alert Conductor. Offline while tasks queued → alert Eric.
+
+## Docker GPU Passthrough Commands
+```bash
+# Build GPU-enabled container
+ssh ericf@100.67.128.123 "docker build -t myapp -f Dockerfile.gpu ."
+
+# Run with GPU access
+ssh ericf@100.67.128.123 "docker run --gpus all -v /home/ericf/data:/data myapp"
+
+# Jupyter with GPU
+ssh ericf@100.67.128.123 "docker run --gpus all -it -p 8888:8888 mydev jupyter notebook --ip=0.0.0.0 --no-browser --allow-root"
+
+# Verify GPU inside container
+ssh ericf@100.67.128.123 "docker run --gpus all nvidia/cuda:12.8.0-base-ubuntu22.04 nvidia-smi"
+```
+
+## Critical Notes
+- **PyTorch nightly is required** for RTX 5080 (Blackwell sm_120). Stable PyTorch (cu124) will NOT work.
+- **Docker Desktop must be running** before any WSL2 or Dev Container work.
+- **SSH keys inside containers** don't persist across rebuilds — regenerate if container is rebuilt.
+- **Always use PowerShell 7** (`pwsh`) on Windows, not PowerShell 5.x (TLS failures).
