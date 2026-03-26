@@ -1,21 +1,54 @@
 # PIPELINE.md — Code Pipeline, Completion Gates & Dashboard Rules
 
-## Complete Code Pipeline
+## 4-Phase Workflow (MANDATORY for ALL task types)
+
+Every task — code, research, audit, monitoring — follows these 4 phases:
 
 ```
-Eric request → Planner (if new project)
+Phase 1: UNDERSTAND → Phase 2: PLAN → Phase 3: IMPLEMENT → Phase 4: VERIFY
+```
+
+| Phase | What Happens | Who | Gate to Next Phase |
+|-------|-------------|-----|-------------------|
+| **1. UNDERSTAND** | Read codebase, gather requirements, identify constraints. "Explore First" rule. | Planner + Researcher | PROJECT_CONTEXT.md exists |
+| **2. PLAN** | Design approach, decompose tasks, identify risks, set verification criteria. | Planner (+ GPT-5.4 cross-review) | PLAN.md approved by Jarvis |
+| **3. IMPLEMENT** | Execute the plan. Write code, send reports, run analysis. Verify at each CHECKPOINT. | Coder / Researcher / Conductor | HANDOFF.md + git push |
+| **4. VERIFY** | Test, review, audit, deploy. Multi-gate: Tester → Quality → Auditor → Conductor. | Tester + Quality + Auditor + Conductor | Completion gate passes (SHA or email ID in tasks.json) |
+
+**Apply to ALL task types:**
+- **Code tasks:** Understand codebase → Plan architecture → Implement code → Verify (tests + deploy)
+- **Research tasks:** Understand question → Plan search strategy → Implement research → Verify findings (cross-check sources)
+- **Error diagnosis:** Understand error context → Plan investigation → Implement fix → Verify fix works
+- **Monitoring tasks:** Understand alert condition → Plan check → Implement sweep → Verify system healthy
+- **Report tasks:** Understand requirements → Plan outline → Implement writing → Verify deliverable sent
+
+## Complete Code Pipeline (Detailed)
+
+```
+Phase 1: UNDERSTAND
+  → Planner reads existing codebase ("Explore First" rule)
+  → Researcher gathers requirements if needed
+  → Output: PROJECT_CONTEXT.md
+
+Phase 2: PLAN
+  → Planner creates PLAN.md (architecture, tasks, risks, compute allocation)
+  → GPT-5.4 cross-review for edge cases
   → Jarvis merges review + confirms environment ready
-  → Final PLAN.md + PROJECT_CONTEXT.md
-  → Coder (implementation)
-    → Writes CHECKPOINT.md at each phase
-    → Writes HANDOFF.md on completion
+  → Output: Final PLAN.md
+
+Phase 3: IMPLEMENT
+  → Coder implements (writes CHECKPOINT.md at each phase)
+  → Coder verifies at each checkpoint (tests, Docker build, health check)
+  → Output: HANDOFF.md + git push
+
+Phase 4: VERIFY
   → Tester (import verification + test suite)
-    → If FAIL: returns to Coder
+    → If FAIL: returns to Coder (Phase 3)
     → If PASS: HANDOFF.md for Quality
   → Quality (Security Audit + Code Review)
-    → If CRITICAL: BFG cleanup, loop back
+    → If CRITICAL: BFG cleanup, loop back to Phase 3
     → If CLEAN: proceed
-  → External Auditor (6-step QA gate + optional Grok review)
+  → External Auditor (6-step QA gate)
   → Conductor (Docker build + deploy + smoke tests)
   → Librarian (post-audit review, suggests improvements)
   → Code shipped ✅

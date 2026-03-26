@@ -1,0 +1,145 @@
+name: OpenClaw Workspace CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-and-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check for secrets in code
+        run: |
+          echo "Scanning for hardcoded secrets..."
+          FOUND=0
+          # Check tracked files for common secret patterns (excluding .docx, .xlsx, images)
+          for pattern in "sk-[a-zA-Z0-9]{20,}" "ghp_[a-zA-Z0-9]{36}" "gho_[a-zA-Z0-9]{36}" "AKIA[A-Z0-9]{16}"; do
+            MATCHES=$(git grep -l -E "$pattern" -- '*.py' '*.sh' '*.js' '*.ts' '*.json' '*.md' '*.yml' '*.yaml' '*.txt' '*.env' 2>/dev/null || true)
+            if [ -n "$MATCHES" ]; then
+              echo "::warning::Potential secret pattern found: $pattern"
+              echo "$MATCHES"
+              FOUND=1
+            fi
+          done
+          if [ $FOUND -eq 1 ]; then
+            echo "::warning::Review the above files for hardcoded secrets"
+          else
+            echo "No hardcoded secrets detected"
+          fi
+
+      - name: Validate JSON files
+        run: |
+          echo "Validating JSON files..."
+          ERRORS=0
+          for f in $(find . -name '*.json' -not -path './node_modules/*' -not -path './.git/*'); do
+            if ! python3 -m json.tool "$f" > /dev/null 2>&1; then
+              echo "::error::Invalid JSON: $f"
+              ERRORS=$((ERRORS + 1))
+            fi
+          done
+          if [ $ERRORS -gt 0 ]; then
+            echo "::error::$ERRORS JSON files failed validation"
+            exit 1
+          fi
+          echo "All JSON files valid"
+
+      - name: Validate YAML files
+        run: |
+          pip install pyyaml
+          python3 -c "
+          import yaml, glob, sys
+          errors = 0
+          for f in glob.glob('**/*.yml', recursive=True) + glob.glob('**/*.yaml', recursive=True):
+            if '.git/' in f: continue
+            try:
+              yaml.safe_load(open(f))
+            except yaml.YAMLError as e:
+              print(f'::error::Invalid YAML: {f}: {e}')
+              errors += 1
+          if errors:
+            print(f'{errors} YAML files failed validation')
+            sys.exit(1)
+          print('All YAML files valid')
+          "
+
+      - name: Check markdown links (internal)
+        run: |
+          echo "Checking for broken internal references..."
+          BROKEN=0
+          # Check .md files for references to other .md files that don't exist
+          for f in $(find . -name '*.md' -not -path './node_modules/*' -not -path './.git/*'); do
+            # Extract markdown links like [text](file.md) or [text](path/file.md)
+            REFS=$(grep -oE '\]\([^)]+\.md\)' "$f" 2>/dev/null | sed 's/\](\(.*\))/\1/' | grep -v 'http' || true)
+            DIR=$(dirname "$f")
+            for ref in $REFS; do
+              if [ ! -f "$DIR/$ref" ] && [ ! -f "$ref" ]; then
+                echo "::warning::Broken link in $f -> $ref"
+                BROKEN=$((BROKEN + 1))
+              fi
+            done
+          done
+          echo "Found $BROKEN broken internal links"
+
+      - name: Check AGENTS.md size
+        run: |
+          SIZE=$(wc -c < AGENTS.md)
+          KB=$((SIZE / 1024))
+          echo "AGENTS.md size: ${KB}KB"
+          if [ $KB -gt 5 ]; then
+            echo "::warning::AGENTS.md is ${KB}KB (limit: 5KB). Risk of bootstrap truncation."
+          else
+            echo "AGENTS.md is within size limit"
+          fi
+
+      - name: Validate skill files
+        run: |
+          echo "Checking all skills have SKILL.md..."
+          MISSING=0
+          for dir in skills/*/; do
+            if [ ! -f "${dir}SKILL.md" ]; then
+              echo "::error::Missing SKILL.md in $dir"
+              MISSING=$((MISSING + 1))
+            fi
+          done
+          if [ $MISSING -gt 0 ]; then
+            exit 1
+          fi
+          TOTAL=$(ls -d skills/*/ | wc -l)
+          echo "All $TOTAL skills have SKILL.md"
+
+  python-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Lint Python files
+        run: |
+          pip install ruff
+          echo "Linting Python files..."
+          ruff check --select E,F,W --ignore E501 scripts/*.py 2>/dev/null || true
+          echo "Python lint complete"
+
+  shell-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Lint shell scripts
+        run: |
+          echo "Checking shell scripts..."
+          for f in scripts/*.sh; do
+            if ! bash -n "$f" 2>/dev/null; then
+              echo "::error::Syntax error in $f"
+            else
+              echo "OK: $f"
+            fi
+          done
