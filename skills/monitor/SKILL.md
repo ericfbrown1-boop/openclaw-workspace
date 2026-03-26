@@ -156,6 +156,29 @@ ssh ericf@100.67.128.123 "hostname && nvidia-smi --query-gpu=utilization.gpu,mem
 - GPU util <5% + queued tasks → alert Conductor to offload
 - Running task with >15min remaining → keep PowerSpec online
 
+### 4.5. Tailscale Health Check
+```bash
+tailscale status --json | python3 -c "
+import sys, json
+d = json.load(sys.stdin)
+state = d.get('BackendState', 'unknown')
+self_online = d.get('Self', {}).get('Online', False)
+peers = d.get('Peer', {})
+online_peers = sum(1 for p in peers.values() if p.get('Online'))
+total_peers = len(peers)
+key_expiry = d.get('Self', {}).get('KeyExpiry', '')
+print(f'State: {state} | Online: {self_online} | Peers: {online_peers}/{total_peers} | KeyExpiry: {key_expiry}')
+"
+```
+**Checks:**
+- `BackendState` must be `Running` — if not → alert Eric: "Open Tailscale app from menu bar"
+- `Self.Online` must be `True` — if false → Tailscale connected but not routing traffic
+- `remote-coder-main` must be in peers AND online — if offline → PowerSpec unreachable, escalate
+- `KeyExpiry` within 7 days → warn Eric: "Tailscale key expires soon, re-authenticate"
+- CLI path: if `which tailscale` = `/opt/homebrew/bin/tailscale` → warn: "Homebrew CLI conflicts with App Store app — run `brew uninstall tailscale`"
+
+**If Tailscale is down:** All PowerSpec operations fail silently. This check catches it BEFORE Step 4 PowerSpec ping fails.
+
 ### 5. Resource Snapshot
 Save to `logs/monitoring/<ISO8601>.json`:
 ```json
@@ -217,14 +240,32 @@ Every running task must follow: **Understand → Plan → Implement → Verify**
 - NEVER exceed 500 chars in a Telegram message
 - If detail needed → write full report to `memory/monitor/sweep-YYYY-MM-DDTHH.md` and link it
 - If message would exceed limit → truncate to summary + file link
-- Healthy sweeps: report every 2 hours (not every 5 min)
-- Failures: report IMMEDIATELY
+- **Maximum notification frequency: ONCE PER HOUR for non-critical messages**
+- Before sending any non-critical Telegram message, check `memory/cron-state.json` → `last_telegram_sent`. If <60 minutes ago, SKIP (write to log only).
+- **Failures/critical alerts: send IMMEDIATELY** (bypass the hourly limit)
 
-**Proactive push triggers:**
-- Task milestone change (25→50→75→100): `📊 [TaskName]: 50%`
-- Every 2h if ANY task running: brief summary
-- Any failure or stall: immediately
-- Eric should NEVER need to ask "status?" — Monitor tells him first
+**Notification tiers:**
+| Tier | When to Send | Frequency |
+|------|-------------|-----------|
+| CRITICAL | Auth failure, PowerSpec offline with queued tasks, dashboard mismatch | Immediately (no delay) |
+| HOURLY | Healthy sweep summary, task milestone batches, system status | Once per hour max |
+| SILENT | Routine healthy sweeps with no changes | Log only, no Telegram |
+
+**Hourly report includes (batched):**
+- System health summary (one line)
+- Task milestone changes since last report: `📊 [TaskName]: 25% → 75%`
+- Any warnings (non-critical) accumulated since last message
+- Tailscale/PowerSpec status if changed
+
+**After sending, update:**
+```bash
+python3 -c "
+import json, time
+with open('memory/cron-state.json') as f: d = json.load(f)
+d['last_telegram_sent'] = int(time.time())
+with open('memory/cron-state.json', 'w') as f: json.dump(d, f)
+"
+```
 
 ### 12. Dispatch Verification Check
 - For every running task in tasks.json, verify a `verificationCmd` field exists
