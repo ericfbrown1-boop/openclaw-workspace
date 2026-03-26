@@ -1,4 +1,5 @@
 # DELEGATION.md — Agent Routing Rules
+> **L1:** Which agent handles which task. 9 agents with trigger keywords, handoff gates, and completion rules. Includes Conductor dual-write and global dispatch template.
 
 ## → Planner Agent (agentId: planner)
 Trigger: "plan", "design", "architect", "new project", "build a", "start a", "create a system"

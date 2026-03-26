@@ -1,3 +1,11 @@
+---
+name: remote-coder
+description: >
+  PowerSpec-First execution policy. Routes Docker builds, test suites, GPU tasks,
+  and >15min work to PowerSpec (RTX 5080, 32 vCPU, 128GB RAM) via SSH/Tailscale.
+  MacBook reserved for local services, gateway, quick git ops.
+---
+
 # Remote Coder Skill — PowerSpec-First Execution
 
 ## Purpose

@@ -1,4 +1,5 @@
 # DISPATCH_TEMPLATE.md — Mandatory Fields for Every Agent Dispatch
+> **L1:** Every agent dispatch must include: task, agent, host, objective, files to read, existing patterns, verification command, success/failure criteria, complexity level.
 
 **Every task dispatch from Jarvis to ANY subagent MUST include these fields. Dispatches missing `verification_command` are INVALID.**
 

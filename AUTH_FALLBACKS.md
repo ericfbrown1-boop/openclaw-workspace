@@ -1,4 +1,5 @@
 # AUTH_FALLBACKS.md — Credential Expiry Handling
+> **L1:** What to do when auth breaks. gog→Zapier MCP, gh→pause+alert, Railway CLI banned (git push only), Dropbox auto-refresh. Model fallback chain: Opus→GPT-5.4→Sonnet.
 
 **No agent may stall because of expired credentials. Every auth has an automated fallback.**
 

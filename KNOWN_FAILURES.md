@@ -1,4 +1,5 @@
 # KNOWN_FAILURES.md — Agent Failure Patterns & Solutions
+> **L1:** 16 documented failure patterns with proven fixes. Covers: import errors, subagent timeouts, OAuth expiry, Docker issues, Railway config, auth cascades, cron storms, bot detection, PowerShell TLS.
 
 This file documents known failure patterns agents encounter, with proven solutions.
 All agents should consult this before attempting workarounds.

@@ -1,4 +1,5 @@
 # PIPELINE.md — Code Pipeline, Completion Gates & Dashboard Rules
+> **L1:** 4-phase workflow (Understand→Plan→Implement→Verify), task complexity gate, model tiering with costs, API budget gate, dual-write dashboard rule, test oracle references, E2E verification checklist.
 
 ## 4-Phase Workflow (MANDATORY for ALL task types)
 

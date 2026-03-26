@@ -1,4 +1,5 @@
 # POWERSPEC.md — Mandatory PowerSpec-First Execution Policy
+> **L1:** What runs where. PowerSpec (RTX 5080, 32 vCPU, 128GB) gets Docker, tests, GPU, >15min tasks. MacBook gets gateway, pm2, email. SSH via Tailscale. Pre-task ping mandatory.
 
 ## ⚠️ PowerSpec is the PRIMARY compute resource. Not optional.
 

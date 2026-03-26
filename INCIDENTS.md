@@ -1,4 +1,5 @@
 # INCIDENTS.md — Recursive Self-Improvement Protocol (MANDATORY)
+> **L1:** Every failure triggers 5-Whys RCA → immediate fix → update SKILL.md/companion file → add monitoring check. Schema for incidents.jsonl. Lessons learned table.
 
 **Every failure triggers this loop. Every project completion triggers this loop. This is not optional.**
 

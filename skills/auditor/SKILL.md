@@ -1,3 +1,11 @@
+---
+name: auditor
+description: >
+  External Auditor standing instructions. 6-step QA gate (pull+build, smoke test,
+  dashboard integrity, deliverable verification, regression, sign-off). Daily vibe
+  coding vulnerability scan. Weekly Claude best practices audit.
+---
+
 # External Auditor Skill — Standing Instructions
 
 ## Anthropic Code Review & Best Practices

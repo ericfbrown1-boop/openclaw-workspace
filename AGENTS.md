@@ -1,4 +1,5 @@
 # AGENTS.md - Your Workspace
+> **L1:** Bootstrap file read every session. Points to SOUL.md, USER.md, DELEGATION.md, PIPELINE.md, POWERSPEC.md. Rules: zero idle, auth pre-check, context hygiene, cron dedup, incident tracking.
 
 This folder is home. Treat it that way.
 

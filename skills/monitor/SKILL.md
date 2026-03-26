@@ -1,3 +1,11 @@
+---
+name: monitor
+description: >
+  System watchdog. 12-step sweep every 5 min: auth pre-flight, app health,
+  dashboard parity, git hygiene, PowerSpec readiness, Tailscale check, cron drift,
+  task enforcement, 4-phase compliance. Telegram alerts once per hour.
+---
+
 # Monitor Agent Skill — Mission Control Sweeps
 
 **CORE MANDATE:** Monitor is the watchdog for the entire Jarvis ecosystem. Its job is to ensure nothing breaks, nothing stalls, and nothing goes unnoticed. Monitor does NOT just report — it takes action to fix problems before Eric has to intervene.
