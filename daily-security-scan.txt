@@ -1,0 +1,32 @@
+═══════════════════════════════════════════════════
+  DAILY SECURITY SCAN — 2026-03-26 05:50 AM PT
+═══════════════════════════════════════════════════
+
+── SECURITY AUDIT (deep) ─────────────────────────
+Result: 0 critical · 2 warnings · 1 info
+
+WARNINGS:
+1. gateway.trusted_proxies_missing — Reverse proxy headers not trusted.
+   Impact: Low (gateway bound to loopback; only matters if exposed via reverse proxy).
+2. gateway.nodes.deny_commands_ineffective — Some denyCommands entries use
+   unknown command names (camera.snap, camera.clip, screen.record, etc.).
+   Impact: Low (commands don't exist, so nothing to block).
+
+INFO:
+- Attack surface: 0 open groups, 1 allowlist group
+- Elevated tools: enabled
+- Webhooks/hooks: disabled
+- Browser control: enabled
+- Trust model: personal assistant (single trusted operator)
+
+── UPDATE STATUS ──────────────────────────────────
+Channel: stable
+Version: up to date (npm latest 2026.3.24)
+Install method: pnpm
+
+── SUMMARY FOR DAILY BRIEF ───────────────────────
+✅ No critical issues. System healthy.
+✅ OpenClaw up to date (stable channel, 2026.3.24).
+⚠️ 2 low-priority warnings (proxy headers, stale denyCommands entries) —
+   both are pre-existing config notes, no action required.
+═══════════════════════════════════════════════════

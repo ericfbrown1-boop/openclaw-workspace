@@ -23067,3 +23067,643 @@ No active fallbacks to clear
 [2026-03-25 21:15:54] ✅ Disk usage: 5%
 [2026-03-25 21:15:54] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
 [2026-03-25 21:15:54] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 21:25:54] ─── Self-heal check starting ───
+[2026-03-25 21:25:54] ✅ Gateway process running
+[2026-03-25 21:25:54] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 21:25:55] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-25 21:25:55] ✅ No excessive LLM timeouts
+[2026-03-25 21:25:55] ✅ Tailscale running
+[2026-03-25 21:25:55] ✅ Disk usage: 5%
+[2026-03-25 21:25:55] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-25 21:25:55] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 21:35:55] ─── Self-heal check starting ───
+[2026-03-25 21:35:55] ✅ Gateway process running
+[2026-03-25 21:35:55] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 21:35:56] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-25 21:35:56] ✅ No excessive LLM timeouts
+[2026-03-25 21:35:56] ✅ Tailscale running
+[2026-03-25 21:35:56] ✅ Disk usage: 5%
+[2026-03-25 21:35:56] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-25 21:35:56] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 21:45:56] ─── Self-heal check starting ───
+[2026-03-25 21:45:56] ✅ Gateway process running
+[2026-03-25 21:45:56] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 21:45:57] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-25 21:45:57] ✅ No excessive LLM timeouts
+[2026-03-25 21:45:57] ✅ Tailscale running
+[2026-03-25 21:45:57] ✅ Disk usage: 5%
+[2026-03-25 21:45:57] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-25 21:45:57] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 21:55:58] ─── Self-heal check starting ───
+[2026-03-25 21:55:58] ✅ Gateway process running
+[2026-03-25 21:55:58] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 21:55:58] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-25 21:55:58] ✅ No excessive LLM timeouts
+[2026-03-25 21:55:58] ✅ Tailscale running
+[2026-03-25 21:55:58] ✅ Disk usage: 5%
+[2026-03-25 21:55:59] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-25 21:55:59] 🔧 Running periodic openclaw doctor --fix
+[2026-03-25 21:56:04] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 22:06:04] ─── Self-heal check starting ───
+[2026-03-25 22:06:04] ✅ Gateway process running
+[2026-03-25 22:06:04] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 22:06:05] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-25 22:06:05] ✅ No excessive LLM timeouts
+[2026-03-25 22:06:05] ✅ Tailscale running
+[2026-03-25 22:06:05] ✅ Disk usage: 5%
+[2026-03-25 22:06:05] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-25 22:06:05] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 22:16:05] ─── Self-heal check starting ───
+[2026-03-25 22:16:05] ✅ Gateway process running
+[2026-03-25 22:16:05] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 22:16:06] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-25 22:16:06] ✅ No excessive LLM timeouts
+[2026-03-25 22:16:06] ✅ Tailscale running
+[2026-03-25 22:16:06] ✅ Disk usage: 5%
+[2026-03-25 22:16:06] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-25 22:16:06] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 22:26:07] ─── Self-heal check starting ───
+[2026-03-25 22:26:07] ✅ Gateway process running
+[2026-03-25 22:26:07] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 22:26:07] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-25 22:26:08] ✅ No excessive LLM timeouts
+[2026-03-25 22:26:08] ✅ Tailscale running
+[2026-03-25 22:26:08] ✅ Disk usage: 5%
+[2026-03-25 22:26:08] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-25 22:26:08] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 22:36:08] ─── Self-heal check starting ───
+[2026-03-25 22:36:08] ✅ Gateway process running
+[2026-03-25 22:36:08] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 22:36:09] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-25 22:36:09] ✅ No excessive LLM timeouts
+[2026-03-25 22:36:09] ✅ Tailscale running
+[2026-03-25 22:36:09] ✅ Disk usage: 5%
+[2026-03-25 22:36:09] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-25 22:36:09] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 22:46:09] ─── Self-heal check starting ───
+[2026-03-25 22:46:09] ✅ Gateway process running
+[2026-03-25 22:46:09] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 22:46:10] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-25 22:46:10] ✅ No excessive LLM timeouts
+[2026-03-25 22:46:10] ✅ Tailscale running
+[2026-03-25 22:46:10] ✅ Disk usage: 5%
+[2026-03-25 22:46:10] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-25 22:46:10] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 22:56:10] ─── Self-heal check starting ───
+[2026-03-25 22:56:10] ✅ Gateway process running
+[2026-03-25 22:56:10] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 22:56:11] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-25 22:56:11] ✅ No excessive LLM timeouts
+[2026-03-25 22:56:11] ✅ Tailscale running
+[2026-03-25 22:56:11] ✅ Disk usage: 5%
+[2026-03-25 22:56:11] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-25 22:56:11] 🔧 Running periodic openclaw doctor --fix
+[2026-03-25 22:56:15] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 23:06:15] ─── Self-heal check starting ───
+[2026-03-25 23:06:15] ✅ Gateway process running
+[2026-03-25 23:06:15] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 23:06:15] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-25 23:06:16] ✅ No excessive LLM timeouts
+[2026-03-25 23:06:16] ✅ Tailscale running
+[2026-03-25 23:06:16] ✅ Disk usage: 5%
+[2026-03-25 23:06:16] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-25 23:06:16] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 23:16:16] ─── Self-heal check starting ───
+[2026-03-25 23:16:16] ✅ Gateway process running
+[2026-03-25 23:16:16] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 23:16:17] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-25 23:16:17] ⚠️ Detected 3 LLM timeouts in the last 5 minutes — clearing cooldowns
+No cooldowns to clear
+[2026-03-25 23:16:17] ✅ Tailscale running
+[2026-03-25 23:16:17] ✅ Disk usage: 5%
+[2026-03-25 23:16:17] 🔄 Restarting gateway to clear issues...
+[2026-03-25 23:16:35] ✅ Gateway restarted successfully
+[2026-03-25 23:16:35] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-25 23:16:35] ─── Self-heal check complete (1 issues found) ───
+[2026-03-25 23:26:35] ─── Self-heal check starting ───
+[2026-03-25 23:26:35] ✅ Gateway process running
+[2026-03-25 23:26:35] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 23:26:36] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-25 23:26:36] ✅ No excessive LLM timeouts
+[2026-03-25 23:26:36] ✅ Tailscale running
+[2026-03-25 23:26:36] ✅ Disk usage: 5%
+[2026-03-25 23:26:36] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-25 23:26:36] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 23:36:37] ─── Self-heal check starting ───
+[2026-03-25 23:36:37] ✅ Gateway process running
+[2026-03-25 23:36:37] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 23:36:37] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-25 23:36:37] ✅ No excessive LLM timeouts
+[2026-03-25 23:36:38] ✅ Tailscale running
+[2026-03-25 23:36:38] ✅ Disk usage: 5%
+[2026-03-25 23:36:38] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-25 23:36:38] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 23:46:38] ─── Self-heal check starting ───
+[2026-03-25 23:46:38] ✅ Gateway process running
+[2026-03-25 23:46:38] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 23:46:39] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-25 23:46:39] ✅ No excessive LLM timeouts
+[2026-03-25 23:46:39] ✅ Tailscale running
+[2026-03-25 23:46:39] ✅ Disk usage: 5%
+[2026-03-25 23:46:39] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-25 23:46:39] ─── Self-heal check complete (0 issues found) ───
+[2026-03-25 23:56:39] ─── Self-heal check starting ───
+[2026-03-25 23:56:39] ✅ Gateway process running
+[2026-03-25 23:56:39] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-25 23:56:40] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-25 23:56:40] ✅ No excessive LLM timeouts
+[2026-03-25 23:56:40] ✅ Tailscale running
+[2026-03-25 23:56:40] ✅ Disk usage: 5%
+[2026-03-25 23:56:40] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-25 23:56:40] 🔧 Running periodic openclaw doctor --fix
+[2026-03-25 23:56:43] ─── Self-heal check complete (0 issues found) ───
+[2026-03-26 00:06:43] ─── Self-heal check starting ───
+[2026-03-26 00:06:43] ✅ Gateway process running
+[2026-03-26 00:06:43] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-26 00:06:44] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-26 00:06:44] ✅ No excessive LLM timeouts
+[2026-03-26 00:06:44] ✅ Tailscale running
+[2026-03-26 00:06:44] ✅ Disk usage: 5%
+[2026-03-26 00:06:44] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-26 00:06:44] ─── Self-heal check complete (0 issues found) ───
+[2026-03-26 00:16:45] ─── Self-heal check starting ───
+[2026-03-26 00:16:45] ✅ Gateway process running
+[2026-03-26 00:16:45] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-26 00:16:45] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-26 00:16:46] ✅ No excessive LLM timeouts
+[2026-03-26 00:16:46] ✅ Tailscale running
+[2026-03-26 00:16:46] ✅ Disk usage: 5%
+[2026-03-26 00:16:46] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-26 00:16:46] ─── Self-heal check complete (0 issues found) ───
+[2026-03-26 00:26:46] ─── Self-heal check starting ───
+[2026-03-26 00:26:46] ✅ Gateway process running
+[2026-03-26 00:26:46] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-26 00:26:47] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-26 00:26:47] ✅ No excessive LLM timeouts
+[2026-03-26 00:26:47] ✅ Tailscale running
+[2026-03-26 00:26:47] ✅ Disk usage: 5%
+[2026-03-26 00:26:47] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-26 00:26:47] ─── Self-heal check complete (0 issues found) ───
+[2026-03-26 00:36:47] ─── Self-heal check starting ───
+[2026-03-26 00:36:47] ✅ Gateway process running
+[2026-03-26 00:36:47] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-26 00:36:48] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-26 00:36:48] ✅ No excessive LLM timeouts
+[2026-03-26 00:36:48] ✅ Tailscale running
+[2026-03-26 00:36:48] ✅ Disk usage: 5%
+[2026-03-26 00:36:48] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-26 00:36:48] ─── Self-heal check complete (0 issues found) ───
+[2026-03-26 00:46:48] ─── Self-heal check starting ───
+[2026-03-26 00:46:48] ✅ Gateway process running
+[2026-03-26 00:46:49] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-26 00:46:49] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-26 00:46:49] ✅ No excessive LLM timeouts
+[2026-03-26 00:46:49] ✅ Tailscale running
+[2026-03-26 00:46:49] ✅ Disk usage: 5%
+[2026-03-26 00:46:49] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-26 00:46:50] ─── Self-heal check complete (0 issues found) ───
+[2026-03-26 00:56:50] ─── Self-heal check starting ───
+[2026-03-26 00:56:50] ✅ Gateway process running
+[2026-03-26 00:56:50] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-26 00:56:50] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-26 00:56:51] ✅ No excessive LLM timeouts
+[2026-03-26 00:56:51] ✅ Tailscale running
+[2026-03-26 00:56:51] ✅ Disk usage: 5%
+[2026-03-26 00:56:51] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-26 00:56:51] 🔧 Running periodic openclaw doctor --fix
+[2026-03-26 00:56:54] ─── Self-heal check complete (0 issues found) ───
+[2026-03-26 01:06:54] Log rotated (was     5004 lines)
+[2026-03-26 01:06:54] ─── Self-heal check starting ───
+[2026-03-26 01:06:54] ✅ Gateway process running
+[2026-03-26 01:06:54] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-26 01:06:55] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-26 01:06:55] ✅ No excessive LLM timeouts
+[2026-03-26 01:06:55] ✅ Tailscale running
+[2026-03-26 01:06:55] ✅ Disk usage: 5%
+[2026-03-26 01:06:55] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-26 01:06:55] ─── Self-heal check complete (0 issues found) ───
+[2026-03-26 01:16:55] ─── Self-heal check starting ───
+[2026-03-26 01:16:56] ✅ Gateway process running
+[2026-03-26 01:16:56] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-26 01:16:56] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-26 01:16:56] ✅ No excessive LLM timeouts
+[2026-03-26 01:16:56] ✅ Tailscale running
+[2026-03-26 01:16:56] ✅ Disk usage: 5%
+[2026-03-26 01:16:57] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-26 01:16:57] ─── Self-heal check complete (0 issues found) ───
+[2026-03-26 01:26:57] ─── Self-heal check starting ───
+[2026-03-26 01:26:57] ✅ Gateway process running
+[2026-03-26 01:26:57] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-26 01:26:58] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-26 01:26:58] ✅ No excessive LLM timeouts
+[2026-03-26 01:26:58] ✅ Tailscale running
+[2026-03-26 01:26:58] ✅ Disk usage: 5%
+[2026-03-26 01:26:58] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-26 01:26:58] ─── Self-heal check complete (0 issues found) ───
+[2026-03-26 01:36:58] ─── Self-heal check starting ───
+[2026-03-26 01:36:58] ✅ Gateway process running
+[2026-03-26 01:36:58] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-26 01:36:59] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-26 01:36:59] ✅ No excessive LLM timeouts
+[2026-03-26 01:36:59] ✅ Tailscale running
+[2026-03-26 01:36:59] ✅ Disk usage: 5%
+[2026-03-26 01:36:59] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-26 01:36:59] ─── Self-heal check complete (0 issues found) ───
+[2026-03-26 01:46:59] ─── Self-heal check starting ───
+[2026-03-26 01:46:59] ✅ Gateway process running
+[2026-03-26 01:46:59] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-26 01:47:00] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-26 01:47:00] ✅ No excessive LLM timeouts
+[2026-03-26 01:47:00] ✅ Tailscale running
+[2026-03-26 01:47:00] ✅ Disk usage: 5%
+[2026-03-26 01:47:00] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-26 01:47:00] ─── Self-heal check complete (0 issues found) ───
+[2026-03-26 01:57:00] ─── Self-heal check starting ───
+[2026-03-26 01:57:00] ✅ Gateway process running
+[2026-03-26 01:57:00] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-26 01:57:01] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-26 01:57:01] ✅ No excessive LLM timeouts
+[2026-03-26 01:57:01] ✅ Tailscale running
+[2026-03-26 01:57:01] ✅ Disk usage: 5%
+[2026-03-26 01:57:01] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-26 01:57:01] 🔧 Running periodic openclaw doctor --fix
+[2026-03-26 01:57:05] ─── Self-heal check complete (0 issues found) ───
+[2026-03-26 02:07:05] ─── Self-heal check starting ───
+[2026-03-26 02:07:05] ✅ Gateway process running
+[2026-03-26 02:07:05] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-26 02:07:06] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-26 02:07:06] ✅ No excessive LLM timeouts
+[2026-03-26 02:07:06] ✅ Tailscale running
+[2026-03-26 02:07:06] ✅ Disk usage: 5%
+[2026-03-26 02:07:06] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-26 02:07:06] ─── Self-heal check complete (0 issues found) ───
+[2026-03-26 02:17:06] ─── Self-heal check starting ───
+[2026-03-26 02:17:06] ✅ Gateway process running
+[2026-03-26 02:17:06] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-26 02:17:07] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-26 02:17:07] ✅ No excessive LLM timeouts
+[2026-03-26 02:17:07] ✅ Tailscale running
+[2026-03-26 02:17:07] ✅ Disk usage: 5%
+[2026-03-26 02:17:07] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-26 02:17:07] ─── Self-heal check complete (0 issues found) ───
+[2026-03-26 02:27:08] ─── Self-heal check starting ───
+[2026-03-26 02:27:08] ✅ Gateway process running
+[2026-03-26 02:27:08] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-26 02:27:08] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-26 02:27:08] ✅ No excessive LLM timeouts
+[2026-03-26 02:27:09] ✅ Tailscale running
+[2026-03-26 02:27:09] ✅ Disk usage: 5%
+[2026-03-26 02:27:09] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-26 02:27:09] ─── Self-heal check complete (0 issues found) ───
+[2026-03-26 02:37:09] ─── Self-heal check starting ───
+[2026-03-26 02:37:09] ✅ Gateway process running
+[2026-03-26 02:37:09] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-26 02:37:10] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-26 02:37:10] ✅ No excessive LLM timeouts
+[2026-03-26 02:37:10] ✅ Tailscale running
+[2026-03-26 02:37:10] ✅ Disk usage: 5%
+[2026-03-26 02:37:10] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-26 02:37:10] ─── Self-heal check complete (0 issues found) ───
+[2026-03-26 02:47:10] ─── Self-heal check starting ───
+[2026-03-26 02:47:10] ✅ Gateway process running
+[2026-03-26 02:47:10] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-26 02:47:11] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-26 02:47:11] ✅ No excessive LLM timeouts
+[2026-03-26 02:47:11] ✅ Tailscale running
+[2026-03-26 02:47:11] ✅ Disk usage: 5%
+[2026-03-26 02:47:11] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-26 02:47:11] ─── Self-heal check complete (0 issues found) ───
+[2026-03-26 02:57:11] ─── Self-heal check starting ───
+[2026-03-26 02:57:11] ✅ Gateway process running
+[2026-03-26 02:57:11] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-26 02:57:12] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-26 02:57:12] ✅ No excessive LLM timeouts
+[2026-03-26 02:57:12] ✅ Tailscale running
+[2026-03-26 02:57:12] ✅ Disk usage: 5%
+[2026-03-26 02:57:12] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-26 02:57:12] 🔧 Running periodic openclaw doctor --fix
+[2026-03-26 02:57:16] ─── Self-heal check complete (0 issues found) ───
+[2026-03-26 03:07:16] ─── Self-heal check starting ───
+[2026-03-26 03:07:16] ✅ Gateway process running
+[2026-03-26 03:07:16] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-26 03:07:17] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-26 03:07:17] ✅ No excessive LLM timeouts
+[2026-03-26 03:07:17] ✅ Tailscale running
+[2026-03-26 03:07:17] ✅ Disk usage: 5%
+[2026-03-26 03:07:17] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-26 03:07:17] ─── Self-heal check complete (0 issues found) ───
+[2026-03-26 03:17:17] ─── Self-heal check starting ───
+[2026-03-26 03:17:18] ✅ Gateway process running
+[2026-03-26 03:17:18] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-26 03:17:18] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-26 03:17:18] ✅ No excessive LLM timeouts
+[2026-03-26 03:17:18] ✅ Tailscale running
+[2026-03-26 03:17:19] ✅ Disk usage: 5%
+[2026-03-26 03:17:19] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-26 03:17:19] ─── Self-heal check complete (0 issues found) ───
+[2026-03-26 03:27:19] ─── Self-heal check starting ───
+[2026-03-26 03:27:19] ✅ Gateway process running
+[2026-03-26 03:27:19] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-26 03:27:20] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-26 03:27:20] ✅ No excessive LLM timeouts
+[2026-03-26 03:27:20] ✅ Tailscale running
+[2026-03-26 03:27:20] ✅ Disk usage: 5%
+[2026-03-26 03:27:20] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-26 03:27:20] ─── Self-heal check complete (0 issues found) ───
+[2026-03-26 03:37:20] ─── Self-heal check starting ───
+[2026-03-26 03:37:20] ✅ Gateway process running
+[2026-03-26 03:37:20] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-26 03:37:21] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-26 03:37:21] ✅ No excessive LLM timeouts
+[2026-03-26 03:37:21] ✅ Tailscale running
+[2026-03-26 03:37:21] ✅ Disk usage: 5%
+[2026-03-26 03:37:21] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-26 03:37:21] ─── Self-heal check complete (0 issues found) ───
+[2026-03-26 03:47:21] ─── Self-heal check starting ───
+[2026-03-26 03:47:21] ✅ Gateway process running
+[2026-03-26 03:47:21] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-26 03:47:22] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-26 03:47:22] ✅ No excessive LLM timeouts
+[2026-03-26 03:47:22] ✅ Tailscale running
+[2026-03-26 03:47:22] ✅ Disk usage: 5%
+[2026-03-26 03:47:22] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-26 03:47:22] ─── Self-heal check complete (0 issues found) ───
+[2026-03-26 03:57:22] ─── Self-heal check starting ───
+[2026-03-26 03:57:22] ✅ Gateway process running
+[2026-03-26 03:57:22] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-26 03:57:23] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-26 03:57:23] ✅ No excessive LLM timeouts
+[2026-03-26 03:57:23] ✅ Tailscale running
+[2026-03-26 03:57:23] ✅ Disk usage: 5%
+[2026-03-26 03:57:23] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-26 03:57:23] 🔧 Running periodic openclaw doctor --fix
+[2026-03-26 03:57:27] ─── Self-heal check complete (0 issues found) ───
+[2026-03-26 04:07:27] ─── Self-heal check starting ───
+[2026-03-26 04:07:27] ✅ Gateway process running
+[2026-03-26 04:07:27] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-26 04:07:28] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-26 04:07:28] ✅ No excessive LLM timeouts
+[2026-03-26 04:07:28] ✅ Tailscale running
+[2026-03-26 04:07:28] ✅ Disk usage: 5%
+[2026-03-26 04:07:28] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-26 04:07:28] ─── Self-heal check complete (0 issues found) ───
+[2026-03-26 04:17:28] ─── Self-heal check starting ───
+[2026-03-26 04:17:28] ✅ Gateway process running
+[2026-03-26 04:17:28] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-26 04:17:29] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-26 04:17:29] ✅ No excessive LLM timeouts
+[2026-03-26 04:17:29] ✅ Tailscale running
+[2026-03-26 04:17:29] ✅ Disk usage: 5%
+[2026-03-26 04:17:29] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-26 04:17:29] ─── Self-heal check complete (0 issues found) ───
+[2026-03-26 04:27:29] ─── Self-heal check starting ───
+[2026-03-26 04:27:29] ✅ Gateway process running
+[2026-03-26 04:27:29] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-26 04:27:30] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-26 04:27:30] ✅ No excessive LLM timeouts
+[2026-03-26 04:27:30] ✅ Tailscale running
+[2026-03-26 04:27:30] ✅ Disk usage: 5%
+[2026-03-26 04:27:30] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-26 04:27:30] ─── Self-heal check complete (0 issues found) ───
+[2026-03-26 04:37:30] ─── Self-heal check starting ───
+[2026-03-26 04:37:31] ✅ Gateway process running
+[2026-03-26 04:37:31] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-26 04:37:31] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-26 04:37:31] ✅ No excessive LLM timeouts
+[2026-03-26 04:37:31] ✅ Tailscale running
+[2026-03-26 04:37:31] ✅ Disk usage: 5%
+[2026-03-26 04:37:32] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-26 04:37:32] ─── Self-heal check complete (0 issues found) ───
+[2026-03-26 04:47:32] ─── Self-heal check starting ───
+[2026-03-26 04:47:32] ✅ Gateway process running
+[2026-03-26 04:47:32] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-26 04:47:33] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-26 04:47:33] ✅ No excessive LLM timeouts
+[2026-03-26 04:47:33] ✅ Tailscale running
+[2026-03-26 04:47:33] ✅ Disk usage: 5%
+[2026-03-26 04:47:33] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-26 04:47:33] ─── Self-heal check complete (0 issues found) ───
+[2026-03-26 04:57:33] ─── Self-heal check starting ───
+[2026-03-26 04:57:33] ✅ Gateway process running
+[2026-03-26 04:57:33] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-26 04:57:34] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-26 04:57:34] ✅ No excessive LLM timeouts
+[2026-03-26 04:57:34] ✅ Tailscale running
+[2026-03-26 04:57:34] ✅ Disk usage: 5%
+[2026-03-26 04:57:34] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-26 04:57:34] 🔧 Running periodic openclaw doctor --fix
+[2026-03-26 04:57:38] ─── Self-heal check complete (0 issues found) ───
+[2026-03-26 05:07:38] ─── Self-heal check starting ───
+[2026-03-26 05:07:38] ✅ Gateway process running
+[2026-03-26 05:07:38] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-26 05:07:39] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-26 05:07:39] ✅ No excessive LLM timeouts
+[2026-03-26 05:07:39] ✅ Tailscale running
+[2026-03-26 05:07:39] ✅ Disk usage: 5%
+[2026-03-26 05:07:39] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-26 05:07:39] ─── Self-heal check complete (0 issues found) ───
+[2026-03-26 05:17:39] ─── Self-heal check starting ───
+[2026-03-26 05:17:39] ✅ Gateway process running
+[2026-03-26 05:17:39] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-26 05:17:40] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-26 05:17:40] ✅ No excessive LLM timeouts
+[2026-03-26 05:17:40] ✅ Tailscale running
+[2026-03-26 05:17:40] ✅ Disk usage: 5%
+[2026-03-26 05:17:40] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-26 05:17:40] ─── Self-heal check complete (0 issues found) ───
+[2026-03-26 05:27:40] ─── Self-heal check starting ───
+[2026-03-26 05:27:40] ✅ Gateway process running
+[2026-03-26 05:27:40] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-26 05:27:41] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-26 05:27:41] ✅ No excessive LLM timeouts
+[2026-03-26 05:27:41] ✅ Tailscale running
+[2026-03-26 05:27:41] ✅ Disk usage: 5%
+[2026-03-26 05:27:41] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-26 05:27:41] ─── Self-heal check complete (0 issues found) ───
+[2026-03-26 05:37:41] ─── Self-heal check starting ───
+[2026-03-26 05:37:41] ✅ Gateway process running
+[2026-03-26 05:37:41] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-26 05:37:42] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-26 05:37:42] ✅ No excessive LLM timeouts
+[2026-03-26 05:37:42] ✅ Tailscale running
+[2026-03-26 05:37:42] ✅ Disk usage: 5%
+[2026-03-26 05:37:42] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-26 05:37:42] ─── Self-heal check complete (0 issues found) ───
+[2026-03-26 05:47:42] ─── Self-heal check starting ───
+[2026-03-26 05:47:42] ✅ Gateway process running
+[2026-03-26 05:47:42] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-26 05:47:43] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-26 05:47:43] ✅ No excessive LLM timeouts
+[2026-03-26 05:47:43] ✅ Tailscale running
+[2026-03-26 05:47:43] ✅ Disk usage: 5%
+[2026-03-26 05:47:43] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-26 05:47:43] ─── Self-heal check complete (0 issues found) ───
+[2026-03-26 05:57:43] ─── Self-heal check starting ───
+[2026-03-26 05:57:43] ✅ Gateway process running
+[2026-03-26 05:57:44] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-26 05:57:44] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-26 05:57:44] ✅ No excessive LLM timeouts
+[2026-03-26 05:57:44] ✅ Tailscale running
+[2026-03-26 05:57:44] ✅ Disk usage: 5%
+[2026-03-26 05:57:44] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-26 05:57:45] 🔧 Running periodic openclaw doctor --fix
+[2026-03-26 05:57:47] ─── Self-heal check complete (0 issues found) ───
+[2026-03-26 06:07:47] ─── Self-heal check starting ───
+[2026-03-26 06:07:47] ✅ Gateway process running
+[2026-03-26 06:07:48] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-26 06:07:48] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-26 06:07:48] ✅ No excessive LLM timeouts
+[2026-03-26 06:07:48] ✅ Tailscale running
+[2026-03-26 06:07:48] ✅ Disk usage: 5%
+[2026-03-26 06:07:49] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-26 06:07:49] ─── Self-heal check complete (0 issues found) ───
+[2026-03-26 06:17:49] ─── Self-heal check starting ───
+[2026-03-26 06:17:49] ✅ Gateway process running
+[2026-03-26 06:17:49] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-26 06:17:49] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-26 06:17:50] ✅ No excessive LLM timeouts
+[2026-03-26 06:17:50] ✅ Tailscale running
+[2026-03-26 06:17:50] ✅ Disk usage: 5%
+[2026-03-26 06:17:50] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-26 06:17:50] ─── Self-heal check complete (0 issues found) ───
+[2026-03-26 06:27:50] ─── Self-heal check starting ───
+[2026-03-26 06:27:50] ✅ Gateway process running
+[2026-03-26 06:27:50] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-26 06:27:51] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-26 06:27:51] ✅ No excessive LLM timeouts
+[2026-03-26 06:27:51] ✅ Tailscale running
+[2026-03-26 06:27:51] ✅ Disk usage: 5%
+[2026-03-26 06:27:51] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-26 06:27:51] ─── Self-heal check complete (0 issues found) ───
+[2026-03-26 06:37:51] ─── Self-heal check starting ───
+[2026-03-26 06:37:51] ✅ Gateway process running
+[2026-03-26 06:37:51] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-26 06:37:52] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-26 06:37:52] ✅ No excessive LLM timeouts
+[2026-03-26 06:37:52] ✅ Tailscale running
+[2026-03-26 06:37:52] ✅ Disk usage: 5%
+[2026-03-26 06:37:52] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-26 06:37:52] ─── Self-heal check complete (0 issues found) ───
+[2026-03-26 06:47:52] ─── Self-heal check starting ───
+[2026-03-26 06:47:52] ✅ Gateway process running
+[2026-03-26 06:47:52] ✅ Gateway RPC healthy (HTTP 200)
+[2026-03-26 06:47:53] ✅ Google OAuth healthy
+Circuit breaker confirmed: auth_healthy=true
+No active fallbacks to clear
+[2026-03-26 06:47:53] ✅ No excessive LLM timeouts
+[2026-03-26 06:47:53] ✅ Tailscale running
+[2026-03-26 06:47:53] ✅ Disk usage: 5%
+[2026-03-26 06:47:53] 📊 API Usage: $0.00/$100.00 (0.0%) | Today: $0.0000 | Projected: $0.00/mo | Alert: none
+[2026-03-26 06:47:53] ─── Self-heal check complete (0 issues found) ───

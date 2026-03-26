@@ -1,5 +1,5 @@
 # Clawdbot Data Doc Snapshot
-# Last checked: 2026-03-24 00:00 PT
+# Last checked: 2026-03-26 00:00 PT
 
 Key instructions from doc (summary):
 - Name: Jarvis; Eric will address me that way
@@ -16,4 +16,4 @@ Key instructions from doc (summary):
 - Financial analysis workflow: act as expert sell-side analyst, emphasize ARR & GAAP revenue YoY vs prior 4 quarters, compare guidance midpoint vs history, analyze cash flow/operating/non-GAAP gross margins, identify product/use-case drivers, summarize valuation multiples; use Opus 4.6/Grok 4.20 Beta for depth and deliver a Word doc via email to both personal & work addresses
 - Tax prep requests: leverage all relevant skills for document gathering and analysis
 
-Changes since the 2026-03-21 read: None observed; wording and task list remain the same.
+Changes since the 2026-03-25 read: None. Document content is unchanged.

@@ -1,13 +1,13 @@
 {
   "auth_healthy": true,
-  "auth_checked_at": "2026-03-26T04:15:53.969397+00:00",
+  "auth_checked_at": "2026-03-26T13:47:53.476458+00:00",
   "auth_failure_reason": null,
   "cron_jobs": {
     "c79c8317-5cf7-4e01-b170-a849094a6265": {
-      "last_success": "2026-03-25T13:01:00Z",
-      "last_run": "2026-03-25T13:01:00Z",
+      "last_success": "2026-03-26T13:02:21.443491+00:00",
+      "last_run": "2026-03-26T13:02:21.443491+00:00",
       "run_count_today": 1,
-      "last_run_date": "2026-03-25"
+      "last_run_date": "2026-03-26"
     },
     "fe280cdf-d077-43e7-a902-889b44b6629e": {
       "last_success": "2026-03-23T12:00:36Z",
@@ -33,10 +33,10 @@
       "run_count_today": 1
     },
     "a8469499-5052-4865-9252-dd34b195bacd": {
-      "last_success": "2026-03-25T12:47:27.560830Z",
-      "last_run": "2026-03-25T12:47:27.560830Z",
+      "last_success": "2026-03-26T12:47:07.167421+00:00",
+      "last_run": "2026-03-26T12:47:07.167421+00:00",
       "run_count_today": 1,
-      "last_run_date": "2026-03-25"
+      "last_run_date": "2026-03-26"
     },
     "120565a6-6241-4158-9632-a94d07d120a7": {
       "last_success": "2026-03-23T13:38:32Z",

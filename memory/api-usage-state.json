@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-26T04:15:54.090289+00:00",
+  "updated_at": "2026-03-26T13:47:53.594568+00:00",
   "monthly_limit_usd": 100.0,
   "monthly_cost_usd": 0.0,
   "monthly_pct": 0.0,
@@ -18,7 +18,7 @@
   },
   "profile_stats": {
     "anthropic:default": {
-      "last_used": 1774483502401,
+      "last_used": 1774532714223,
       "error_count": 0,
       "failure_counts": {}
     },
