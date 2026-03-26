@@ -46,12 +46,42 @@
 - Heavy content belongs in companion files: DELEGATION.md, PIPELINE.md, POWERSPEC.md, INCIDENTS.md.
 - **Root cause lesson:** On 2026-03-23, AGENTS.md grew to 37KB and 52% was truncated during bootstrap, meaning agents only read half the rules. This caused multiple failures because agents didn't see completion gates, PowerSpec policy, or deliverable verification rules.
 
-### Dashboard Is Always Current
-- `tasks.json` must reflect real-time state of ALL projects at ALL times.
+### Dashboard Is Always Current (DUAL WRITE — MANDATORY)
+- **TWO tasks.json files must stay in sync:**
+  1. `~/.openclaw/workspace/tasks.json` — OpenClaw agents read/write here
+  2. `~/JarvisMissionControl/backend/data/tasks.json` — Mission Control dashboard reads here
+- **On EVERY task update** (status change, progress change, completion), write to BOTH files.
+- **Monitor enforcement:** Every sweep, compare both files. If they differ, sync Mission Control from workspace (workspace is source of truth).
 - New tasks must appear on the Task Board the moment they're requested.
 - Progress updates must happen at every milestone (25→50→75→100).
 - No task hits 100% without proof (commit SHA for code, Gmail ID for reports).
 - Monitor verifies every 5 minutes; stale entries (>2h no update while running) trigger investigation + action.
+
+**Sync command (run by Monitor if files differ):**
+```bash
+python3 -c "
+import json, shutil
+ws = json.load(open('$HOME/.openclaw/workspace/tasks.json'))
+mc_path = '$HOME/JarvisMissionControl/backend/data/tasks.json'
+mc = json.load(open(mc_path))
+# Merge: workspace tasks into MC array format
+ws_tasks = ws.get('tasks', {})
+mc_ids = {t['id'] for t in mc}
+for tid, tdata in ws_tasks.items():
+    if tid not in mc_ids:
+        mc.append({'id': tid, **tdata})
+    else:
+        for t in mc:
+            if t['id'] == tid:
+                t.update(tdata)
+                break
+with open(mc_path, 'w') as f:
+    json.dump(mc, f, indent=2)
+print(f'Synced {len(ws_tasks)} workspace tasks to Mission Control')
+"
+```
+
+**Root cause lesson:** On 2026-03-25, the Anthropic research task showed 25% on the dashboard despite being 100% complete because only the workspace tasks.json was updated, not the Mission Control copy.
 
 ### Context-Switching Prevention
 - Monitor tracks which tasks are actively being worked on vs. abandoned.

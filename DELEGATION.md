@@ -87,9 +87,15 @@ See `skills/auditor/SKILL.md` for standing instructions (Code Review check, dail
 
 **Progress milestones:** Code written=25% | Tests pass=50% | Quality review=75% | Git push=100%
 
-**Conductor must update tasks.json** with: `completedCommit`, `completedAt`, `deliverablePath`, `deliverableEmailTs`.
+**DUAL WRITE (MANDATORY):** On EVERY task update, Conductor writes to BOTH:
+1. `~/.openclaw/workspace/tasks.json` — OpenClaw source of truth
+2. `~/JarvisMissionControl/backend/data/tasks.json` — Dashboard display
 
-**Deliverable Scan Gate:** Code tasks need git push + SHA. Report tasks need email + Gmail ID. Both need proof in tasks.json.
+Fields to update: `completedCommit`, `completedAt`, `deliverablePath`, `deliverableEmailTs`, `status`, `progress`.
+
+**If Mission Control tasks.json uses array format**, find the task by `id` and update in place. If the task doesn't exist in the array, append it as a new entry with all required fields (`id`, `title`, `status`, `owner`, `priority`, `summary`, `progress`, `agentChain`, `updates`).
+
+**Deliverable Scan Gate:** Code tasks need git push + SHA. Report tasks need email + Gmail ID. Both need proof in BOTH tasks.json files.
 
 **Auto-Wake PowerSpec:** If any queued task has >15min remaining and PowerSpec is offline → 3 wake retries → alert Eric.
 

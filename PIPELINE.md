@@ -86,11 +86,13 @@ Before spawning ANY subagent, classify the task:
 
 **Verification criteria:** Every task dispatch must include success criteria that the agent can verify programmatically (e.g., "tests pass", "curl /health returns 200", "lint clean"). Tasks without verification criteria are incomplete.
 
-## Dashboard-as-Source-of-Truth Rule
+## Dashboard-as-Source-of-Truth Rule (DUAL WRITE)
 
-Mission Control (`tasks.json`) must reflect real-time state of ALL projects at ALL times.
+**Two tasks.json files must stay in sync:**
+1. `~/.openclaw/workspace/tasks.json` — OpenClaw agents read/write (source of truth)
+2. `~/JarvisMissionControl/backend/data/tasks.json` — Mission Control dashboard reads
 
-**Every agent** must update `tasks.json` when:
+**Every agent** must update **BOTH** `tasks.json` files when:
 - Task starts → `status: "running"` + `progress: 25`
 - Milestone hit → increment `progress` (25 → 50 → 75)
 - Task completes → `status: "completed"` + `progress: 100` (only after gate passes)
