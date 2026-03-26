@@ -90,11 +90,11 @@
 - Use Claude Opus 4.6 or Grok 4.20 Beta for these deep dives, and deliver the final write-up as a Word document emailed to both ericfbrown1@gmail.com and Eric.brown@cohesity.com.
 
 ### Daily Tasks
-- **6 AM PT daily briefing email:** Include (1) Gmail tax/urgent items, (2) any same-day calendar conflicts, (3) five fresh AI/OpenClaw/Claude CoWork automation ideas tailored to Cohesity's core stack (Salesforce, Snowflake, M365/OneDrive/SharePoint, Zoom, Workday, Slack), (4) competitive/stock news for Rubrik, Commvault, and Veeam, (5) MicroCenter Santa Clara deals—especially Apple Studio and Dell Alienware 16"/18" systems plus other standout home-office upgrades—and (6) a quick system health/security update.
+- **6 AM PT daily briefing email:** Include (1) Gmail tax/urgent items, (2) any same-day calendar conflicts, (3) five fresh AI/OpenClaw/Claude CoWork automation ideas tailored to Cohesity's core stack (Salesforce, Snowflake, M365/OneDrive/SharePoint, Zoom, Workday, Slack), (4) competitive/stock news for Rubrik, Commvault, and Veeam, (5) Anthropic ecosystem daily update—scan for new best practices, blog posts, changelog entries, and documentation updates for Claude Code, CoWork, Chat, Agent SDK, Skills, and MCP from anthropic.com, code.claude.com, support.claude.com, and the Anthropic blog—and (6) a quick system health/security update.
 - **Pre-briefing system checks:** Run `openclaw doctor`, install available OpenClaw updates, perform a security/port sweep for malware or misuse on the MacBook, and note any newly released standard OpenClaw skills.
 - **Gmail monitoring:** Scan daily for tax-related or urgent messages; document qualifying tax items in the shared "Income Tax Tracking Items" Google Sheet with columns: date received, sender, description, type, Gmail link, comments/questions.
 - **Competitive & market watch:** Keep an eye on stock/market updates for Rubrik, Commvault, and Veeam and flow notable changes into the next briefing.
-- **MicroCenter price watch:** Check the Santa Clara store site for the latest pricing on Apple Studio, Dell Alienware 16"/18" laptops, and other noteworthy deals to highlight.
+- **Anthropic ecosystem watch:** Daily scan of anthropic.com/blog, code.claude.com/docs, support.claude.com, and Claude changelog for new features, best practices updates, security advisories, and Skills/MCP/CoWork improvements. Summarize any changes in the briefing.
 
 ---
 
