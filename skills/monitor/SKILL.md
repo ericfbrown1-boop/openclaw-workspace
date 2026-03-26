@@ -309,10 +309,11 @@ with open('memory/cron-state.json', 'w') as f: json.dump(d, f)
 ## Root Cause Analysis (on every failure)
 1. Log to `memory/incidents.jsonl` with full schema (see `INCIDENTS.md`)
 2. Run 5-Whys (3 times minimum)
-3. Implement fix immediately
-4. Update relevant SKILL.md or companion file
-5. Add monitoring check for recurrence
-6. Same error >2 times → escalate with structural fix
+3. **BEFORE building any fix: search trusted sources** (official docs, Stack Overflow, GitHub issues) for the exact error + permanent solution. A 10-minute search beats a 10-hour workaround.
+4. If a permanent root cause fix exists → apply it FIRST, then add monitoring
+5. If no permanent fix exists → implement the best available workaround + document why
+6. Update relevant SKILL.md or companion file with the finding
+7. Same error >2 times → the previous fix was a workaround, not a root cause fix. Research deeper.
 
 ## Key Lessons Learned (embedded in standing instructions)
 | Incident | Root Cause | Prevention in This Skill |

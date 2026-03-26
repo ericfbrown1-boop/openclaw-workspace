@@ -34,6 +34,13 @@ Action: spawn researcher with a specific brief and source filters.
 
 **A) Error Diagnosis:** Trigger: "error", "failed", "crash", "bug". Quality diagnoses → sends fix to Coder. Never send errors directly to Coder.
 
+**Root Cause Research Rule (MANDATORY):** Before proposing ANY fix, Quality must:
+1. Search the exact error message on official docs + Stack Overflow + GitHub issues
+2. Check if this is a known issue with a permanent solution (not just a workaround)
+3. If the problem has occurred before (check `memory/incidents.jsonl`), research WHY the previous fix didn't stick
+4. Include research sources in the diagnosis: "Found via [source]: the root cause is X, permanent fix is Y"
+5. **Never propose a workaround when a root cause fix exists.**
+
 **J5 — Error Classification:** Before dispatch, classify as: import | auth | Docker | Railway | database | other.
 
 **B) Security Audit:** Trigger: new code committed, before making repo public, after Coder completes, on demand.

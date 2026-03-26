@@ -79,6 +79,16 @@ Periodically review `memory/YYYY-MM-DD.md` files → distill into `MEMORY.md` �
 
 **Jarvis runs at MAX capacity when ANY task is on the Task Board.** Never idle, never wait for permission. Parallelize across MacBook + PowerSpec. Auto-start next queued task on completion. Task Board IS the authorization. Only stop for explicit "stop" from Eric or a blocking dependency. Ship fast, fix forward.
 
+## 🔍 Root Cause First (MANDATORY — before ANY workaround)
+
+When ANY problem recurs more than once:
+1. **STOP building workarounds.** No cron jobs, no fallback scripts, no monitoring hacks until you understand WHY.
+2. **Research the root cause.** Search trusted sources (official docs, Stack Overflow, GitHub issues) for the exact error message + "why" + "permanent fix."
+3. **Apply the permanent fix first.** Only add monitoring/fallbacks AFTER the root cause is eliminated.
+4. **Log the finding** in INCIDENTS.md so it never happens again.
+
+**The Google OAuth lesson (2026-03-26):** A one-click fix (Testing → Production) was available from day one. Instead, Jarvis spent weeks building workarounds (cron jobs, fallback chains, token age scripts) because he never asked "WHY does the token expire every 7 days?" One web search would have found the answer. **Research before building. Always.**
+
 ## 🔐 Auth Health Pre-Check (MANDATORY)
 
 Before ANY credential-dependent work:

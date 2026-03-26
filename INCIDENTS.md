@@ -8,10 +8,17 @@
 ### Step 1 — Detect
 Any agent encounters a failure, timeout, stall, or unexpected behavior.
 
-### Step 2 — Root Cause Analysis (immediate)
+### Step 2 — Root Cause Analysis + Research (immediate)
 - Document in `memory/incidents.jsonl` (schema below)
 - Ask "Why?" at least 3 times (5-Whys method) to get past symptoms
-- Example: "Cron failed" → Why? "Token expired" → Why? "No auto-refresh" → Why? "Auth check wasn't automated" → **Root cause: monitoring was rules on paper, not running code**
+- **MANDATORY: Before building ANY workaround, search trusted sources** for the exact error + "root cause" + "permanent fix":
+  - Official docs (Google, Anthropic, Railway, Dropbox, etc.)
+  - Stack Overflow (top-voted answers)
+  - GitHub issues on the relevant repo
+  - Recent articles (last 3 months) from trusted tech publications
+- Example of WRONG approach: "Token expires → build a cron to refresh it every 6 days"
+- Example of RIGHT approach: "Token expires → search WHY → find Google Testing mode is the cause → change to Production → problem eliminated permanently"
+- **The rule: a 10-minute search beats a 10-hour workaround. Every time.**
 
 ### Step 3 — Implement Fix
 - Fix the immediate problem
