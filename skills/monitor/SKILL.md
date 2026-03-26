@@ -101,7 +101,25 @@ print(f'Synced {len(ws_tasks)} workspace tasks to Mission Control')
 - gog CLI configured for `ericfbrown1@gmail.com`
 - gh CLI authenticated
 
-## Sweep Checklist (every 5 minutes)
+## Sweep Checklist (every 5 minutes — but Telegram ONLY once per hour)
+
+### TELEGRAM THROTTLE (CHECK BEFORE EVERY SWEEP)
+Before sending ANY Telegram message in this sweep, run:
+```bash
+python3 -c "
+import json, time
+d = json.load(open('memory/cron-state.json'))
+last = d.get('last_telegram_sent', 0)
+elapsed = int(time.time()) - last
+if elapsed < 3600:
+    print(f'SKIP_TELEGRAM (last sent {elapsed}s ago, next in {3600-elapsed}s)')
+else:
+    print('SEND_TELEGRAM_OK')
+"
+```
+- If `SKIP_TELEGRAM`: do NOT send any Telegram message this sweep. Log findings to file only.
+- If `SEND_TELEGRAM_OK`: send ONE combined hourly summary after all checks complete.
+- **EXCEPTION:** Critical alerts (auth failure, PowerSpec offline with queued tasks) ALWAYS send immediately regardless of throttle.
 
 ### 0. Auth Pre-Flight (MANDATORY — runs first)
 ```bash
