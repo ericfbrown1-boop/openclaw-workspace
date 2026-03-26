@@ -1,4 +1,17 @@
 ---
+
+## ⚠️ KEY FINDING (2026-03-26): 7-Day Token Expiry Root Cause
+
+**Root cause:** Google Cloud OAuth consent screen was in "Testing" mode. Google policy: Testing + External user type = refresh tokens expire after exactly 7 days.
+
+**Permanent fix applied:** Changed to "In Production" at https://console.cloud.google.com/auth/audience (project: EFB Calendar Clawdbot, ID 672907822296). Then re-issued token via `gog auth add --force-consent`.
+
+**Result:** Tokens now NEVER expire (only if unused 6 months or password change).
+
+**For any new Google Cloud project:** ALWAYS set Publishing Status to "In Production" immediately. Do NOT leave in "Testing" mode or tokens will expire weekly.
+
+---
+
 name: google-oauth-reauth
 description: >
   Diagnose and fix Google OAuth token expiration for the gog CLI. Use this skill

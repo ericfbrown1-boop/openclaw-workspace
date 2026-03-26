@@ -7,7 +7,9 @@
 
 | Credential | Expiry | Auto-Renew | Manual Renew | Fallback When Down |
 |-----------|--------|------------|--------------|-------------------|
-| gog (Google OAuth) | ~7 days | `gog auth add --force-consent` (needs browser) | Eric runs in Terminal | Switch to Zapier MCP (`mcporter call zapier.gmail_send_email`) for email; skip calendar/drive tasks |
+| gog (Google OAuth) | **NEVER** (fixed 2026-03-26) | `gog auth add --force-consent` (needs browser) | Eric runs in Terminal | Switch to Zapier MCP (`mcporter call zapier.gmail_send_email`) for email; skip calendar/drive tasks |
+
+> **PERMANENT FIX APPLIED:** Google Cloud project `672907822296` (EFB Calendar Clawdbot) changed from Testing → **In Production** on 2026-03-26. Refresh tokens now never expire (only if unused 6 months or password change). The 7-day expiry was caused by Google's Testing mode policy, NOT a gog bug.
 | gh (GitHub) | Token-based | `gh auth refresh` | Eric runs `gh auth login` | Alert Eric; pause git-dependent tasks only |
 | Railway | Project token | N/A (GitHub-push deploys) | Eric logs in once at railway.app | **NEVER use `railway` CLI.** Deploy via `git push` only. |
 | Dropbox | Auto-refresh | `dropbox-cli.py` handles it | Eric refreshes at dropbox.com/developers | Save files locally; upload later |
