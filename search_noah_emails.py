@@ -42,14 +42,14 @@ def get_email_body(msg):
                     if payload:
                         body = payload.decode('utf-8', errors='ignore')
                         break
-                except:
+                except Exception:
                     pass
     else:
         try:
             payload = msg.get_payload(decode=True)
             if payload:
                 body = payload.decode('utf-8', errors='ignore')
-        except:
+        except Exception:
             pass
     return body
 
@@ -81,7 +81,7 @@ def main():
                 if status == "OK" and messages[0]:
                     email_ids = messages[0].split()
                     all_email_ids.update(email_ids)
-            except:
+            except Exception:
                 pass
         
         if not all_email_ids:
@@ -113,7 +113,7 @@ def main():
                     date_tuple = email.utils.parsedate_to_datetime(date_str)
                     date_formatted = date_tuple.strftime("%Y-%m-%d %H:%M")
                     date_obj = date_tuple
-                except:
+                except Exception:
                     date_formatted = date_str
                     date_obj = None
                 

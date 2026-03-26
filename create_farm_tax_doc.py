@@ -39,7 +39,7 @@ def create_tax_document():
             parser = SimpleHTMLParser()
             parser.feed(email['body'])
             text = parser.get_text()
-            flight_details = text
+            _ = text  # flight_details extracted but unused
             break
     
     # Parse flight route info

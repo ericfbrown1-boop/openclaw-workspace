@@ -39,7 +39,7 @@ def clean_amount(amount_str):
     cleaned = re.sub(r'[^\d.]', '', amount_str)
     try:
         return float(cleaned)
-    except:
+    except Exception:
         return 0.0
 
 def parse_united_booking(email_data):
@@ -58,18 +58,18 @@ def parse_united_booking(email_data):
     confirmation = conf_match.group(1) if conf_match else None
     
     # Extract flight details
-    flights = []
+    _flights = []
     
     # Look for city pairs and dates
     # Common patterns: SFO to ORD, ORD to TVC, etc.
-    flight_patterns = [
+    _flight_patterns = [
         r'([A-Z]{3})\s+to\s+([A-Z]{3})',
         r'Depart[ing]*\s+([A-Z]{3})',
         r'Arriv[ing]*\s+([A-Z]{3})',
     ]
     
     # Look for dates
-    date_patterns = [
+    _date_patterns = [
         r'((?:Mon|Tue|Wed|Thu|Fri|Sat|Sun)[a-z]*,?\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s+\d{1,2},?\s+\d{4})',
         r'(\d{1,2}/\d{1,2}/\d{4})',
     ]

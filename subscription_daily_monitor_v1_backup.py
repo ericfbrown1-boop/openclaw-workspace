@@ -21,7 +21,7 @@ def load_sheet_id():
     try:
         with open(SHEET_ID_FILE, 'r') as f:
             return f.read().strip()
-    except:
+    except Exception:
         return None
 
 def extract_amount_from_email(email_id):
@@ -79,7 +79,7 @@ def check_new_subscriptions():
                     email_id = thread['id']
                     if email_id not in new_emails:
                         new_emails[email_id] = thread
-        except:
+        except Exception:
             continue
     
     if not new_emails:
@@ -124,7 +124,7 @@ def append_to_sheet(sheet_id, new_charges):
         data = json.loads(result)
         current_rows = len(data.get('values', []))
         next_row = current_rows + 1
-    except:
+    except Exception:
         next_row = 2  # Fallback: assume headers in row 1
     
     # Append each charge

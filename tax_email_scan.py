@@ -65,14 +65,14 @@ def get_email_body(msg):
                     if payload:
                         body = payload.decode('utf-8', errors='ignore')
                         break
-                except:
+                except Exception:
                     pass
     else:
         try:
             payload = msg.get_payload(decode=True)
             if payload:
                 body = payload.decode('utf-8', errors='ignore')
-        except:
+        except Exception:
             pass
     return re.sub(r'\s+', ' ', body).strip()[:500]
 
@@ -132,7 +132,7 @@ def main():
                             # Normalize to PT-ish (just use as-is, show local date)
                             date_formatted = date_tuple.strftime("%Y-%m-%d")
                             date_display = date_tuple.strftime("%m/%d/%Y")
-                        except:
+                        except Exception:
                             date_formatted = date_str
                             date_display = date_str
                         

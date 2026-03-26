@@ -4,10 +4,10 @@ from datetime import datetime
 
 try:
     from docx import Document
-    from docx.shared import Pt, RGBColor, Inches
+    from docx.shared import Pt, RGBColor, Inches  # noqa: F401
     from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
-    from docx.oxml.ns import qn
-    from docx.oxml import OxmlElement
+    from docx.oxml.ns import qn  # noqa: F401
+    from docx.oxml import OxmlElement  # noqa: F401
 except ImportError:
     print("Installing python-docx...")
     import subprocess
@@ -40,7 +40,7 @@ def create_redlined_memo():
     """Create a redlined version of the NARR memo with editorial suggestions"""
     
     # Read original document
-    original_doc = Document("NARR memo Feb 2026.docx")
+    _original_doc = Document("NARR memo Feb 2026.docx")
     
     # Create new document for redlined version
     doc = Document()

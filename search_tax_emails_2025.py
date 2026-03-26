@@ -46,7 +46,7 @@ def decode_subject(subject):
         if isinstance(decoded[0], bytes):
             return decoded[0].decode(decoded[1] or 'utf-8', errors='ignore')
         return str(decoded[0])
-    except:
+    except Exception:
         return str(subject)
 
 def get_email_body(msg):
@@ -63,7 +63,7 @@ def get_email_body(msg):
             payload = msg.get_payload(decode=True)
             if payload:
                 body = payload.decode('utf-8', errors='ignore')
-    except:
+    except Exception:
         pass
     return body[:500]  # First 500 chars
 
@@ -122,7 +122,7 @@ def search_tax_emails(mail):
     print("Searching [Gmail]/All Mail...")
     try:
         mail.select('"[Gmail]/All Mail"', readonly=True)
-    except:
+    except Exception:
         print("Trying INBOX instead...")
         mail.select('INBOX', readonly=True)
     
@@ -165,7 +165,7 @@ def search_tax_emails(mail):
                         try:
                             date_tuple = email.utils.parsedate_to_datetime(date_str)
                             date_received = date_tuple.strftime("%Y-%m-%d")
-                        except:
+                        except Exception:
                             date_received = date_str
                         
                         # Get body snippet
@@ -253,7 +253,7 @@ def main():
             mail.close()
             mail.logout()
             print("\n✓ Disconnected")
-        except:
+        except Exception:
             pass
 
 if __name__ == "__main__":

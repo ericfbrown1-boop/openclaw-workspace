@@ -9,8 +9,8 @@ import os
 from datetime import datetime
 
 try:
-    from google.oauth2.credentials import Credentials
-    from google.oauth2 import service_account
+    from google.oauth2.credentials import Credentials  # noqa: F401
+    from google.oauth2 import service_account  # noqa: F401
     from googleapiclient.discovery import build
     from googleapiclient.errors import HttpError
 except ImportError:

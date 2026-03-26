@@ -157,7 +157,7 @@ def scan_subscriptions():
         
         try:
             date = datetime.strptime(date_str, '%Y-%m-%d %H:%M')
-        except:
+        except Exception:
             date = datetime.now()
         
         vendor_emails[vendor].append({

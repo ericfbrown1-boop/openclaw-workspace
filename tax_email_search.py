@@ -67,12 +67,12 @@ def get_email_body(msg):
             if content_type == "text/plain":
                 try:
                     body += part.get_payload(decode=True).decode('utf-8', errors='ignore')
-                except:
+                except Exception:
                     pass
     else:
         try:
             body = msg.get_payload(decode=True).decode('utf-8', errors='ignore')
-        except:
+        except Exception:
             pass
     return body
 
@@ -113,7 +113,7 @@ def search_emails_by_keyword(mail, keyword, start_date="01-Jan-2025", end_date="
                             try:
                                 date_tuple = email.utils.parsedate_to_datetime(date_str)
                                 date_received = date_tuple.strftime("%Y-%m-%d")
-                            except:
+                            except Exception:
                                 date_received = date_str
                             
                             # Get body snippet

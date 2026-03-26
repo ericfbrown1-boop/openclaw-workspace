@@ -74,7 +74,7 @@ def analyze_subscriptions():
     print("🔍 Scanning Gmail for recurring subscriptions...")
     
     # Load search results
-    subscriptions = []
+    _subscriptions = []
     
     # Search for common subscription patterns
     search_queries = [
@@ -118,7 +118,7 @@ def analyze_subscriptions():
         # Parse date
         try:
             date = datetime.strptime(date_str, '%Y-%m-%d %H:%M')
-        except:
+        except Exception:
             date = datetime.now()
         
         vendor_emails[vendor].append({

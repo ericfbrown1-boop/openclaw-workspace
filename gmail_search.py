@@ -77,7 +77,7 @@ def download_attachment(mail, msg_ids):
         # Check for attachments
         if msg.is_multipart():
             for part in msg.walk():
-                content_disposition = str(part.get("Content-Disposition", ""))
+                _content_disposition = str(part.get("Content-Disposition", ""))
                 filename = part.get_filename()
                 
                 if filename:

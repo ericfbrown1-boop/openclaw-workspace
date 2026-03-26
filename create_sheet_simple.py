@@ -11,7 +11,7 @@ import sys
 # Check if gspread is installed
 try:
     import gspread
-    from google.oauth2.service_account import Credentials
+    from google.oauth2.service_account import Credentials  # noqa: F401
 except ImportError:
     print("Installing required library...")
     os.system("pip3 install --quiet gspread google-auth")

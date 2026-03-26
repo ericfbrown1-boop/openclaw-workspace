@@ -151,7 +151,7 @@ prev = {}
 if STATE_FILE.exists():
     try:
         prev = json.loads(STATE_FILE.read_text())
-    except:
+    except Exception:
         pass
 
 curr = {}

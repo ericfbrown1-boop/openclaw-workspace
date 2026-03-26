@@ -94,21 +94,21 @@ def main():
                             if payload:
                                 body = payload.decode('utf-8', errors='ignore')[:500]
                                 break
-                        except:
+                        except Exception:
                             pass
             else:
                 try:
                     payload = msg.get_payload(decode=True)
                     if payload:
                         body = payload.decode('utf-8', errors='ignore')[:500]
-                except:
+                except Exception:
                     pass
             
             if is_tax_related(subject, from_addr, body):
                 try:
                     date_parsed = email.utils.parsedate_to_datetime(date_str)
                     date_formatted = date_parsed.strftime("%Y-%m-%d")
-                except:
+                except Exception:
                     date_formatted = date_str
                 
                 # Extract just the sender name/email

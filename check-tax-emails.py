@@ -51,14 +51,14 @@ def get_email_body(msg):
                     if payload:
                         body = payload.decode('utf-8', errors='ignore')
                         break
-                except:
+                except Exception:
                     pass
     else:
         try:
             payload = msg.get_payload(decode=True)
             if payload:
                 body = payload.decode('utf-8', errors='ignore')
-        except:
+        except Exception:
             pass
     return clean_text(body)
 
@@ -120,7 +120,7 @@ def main():
                 try:
                     date_tuple = email.utils.parsedate_to_datetime(date_str)
                     date_formatted = date_tuple.strftime("%Y-%m-%d")
-                except:
+                except Exception:
                     date_formatted = date_str
                 
                 # Get body

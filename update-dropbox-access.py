@@ -131,7 +131,7 @@ def main():
     try:
         print("\n🌐 Opening browser automatically...")
         webbrowser.open(auth_url)
-    except:
+    except Exception:
         print("\n⚠️  Couldn't open browser automatically - use the URL above")
     
     # Step 2: Get authorization code from user

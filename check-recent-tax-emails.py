@@ -82,7 +82,7 @@ def main():
                 try:
                     date_tuple = email.utils.parsedate_to_datetime(date_str)
                     date_formatted = date_tuple.strftime("%Y-%m-%d")
-                except:
+                except Exception:
                     date_formatted = ""
                 
                 # Get body preview for keyword matching
@@ -95,14 +95,14 @@ def main():
                                 if payload:
                                     body_preview = payload.decode('utf-8', errors='ignore')[:500]
                                     break
-                            except:
+                            except Exception:
                                 pass
                 else:
                     try:
                         payload = msg.get_payload(decode=True)
                         if payload:
                             body_preview = payload.decode('utf-8', errors='ignore')[:500]
-                    except:
+                    except Exception:
                         pass
                 
                 # Check if tax-related

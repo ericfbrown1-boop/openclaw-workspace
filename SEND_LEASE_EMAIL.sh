@@ -1,4 +1,5 @@
 #!/bin/bash
+# shellcheck disable=SC1037
 #
 # Quick script to send the lease email via Mail.app
 # Run this with: bash SEND_LEASE_EMAIL.sh

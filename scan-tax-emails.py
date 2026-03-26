@@ -42,14 +42,14 @@ def get_email_body(msg):
                     if payload:
                         body = payload.decode('utf-8', errors='ignore')
                         break
-                except:
+                except Exception:
                     pass
     else:
         try:
             payload = msg.get_payload(decode=True)
             if payload:
                 body = payload.decode('utf-8', errors='ignore')
-        except:
+        except Exception:
             pass
     return re.sub(r'\s+', ' ', body).strip()[:300]
 
@@ -71,14 +71,14 @@ def main():
             if status == "OK" and messages[0]:
                 for eid in messages[0].split():
                     all_ids.add(eid)
-        except:
+        except Exception:
             # Fallback to standard IMAP search
             try:
                 status, messages = mail.search(None, f'(SINCE {since_date} SUBJECT "{term}")')
                 if status == "OK" and messages[0]:
                     for eid in messages[0].split():
                         all_ids.add(eid)
-            except:
+            except Exception:
                 pass
     
     print(f"Found {len(all_ids)} potential tax-related emails", file=__import__('sys').stderr)
@@ -113,7 +113,7 @@ def main():
                 if date_obj < cutoff:
                     continue
                 date_formatted = date_obj.strftime("%Y-%m-%d")
-            except:
+            except Exception:
                 date_formatted = date_str[:10]
             
             # Deduplicate by subject+sender

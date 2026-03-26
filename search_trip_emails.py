@@ -38,7 +38,7 @@ def get_email_body(msg):
                         body_plain = payload.decode('utf-8', errors='ignore')
                     elif content_type == "text/html":
                         body_html = payload.decode('utf-8', errors='ignore')
-            except:
+            except Exception:
                 pass
     else:
         try:
@@ -48,7 +48,7 @@ def get_email_body(msg):
                     body_plain = payload.decode('utf-8', errors='ignore')
                 else:
                     body_html = payload.decode('utf-8', errors='ignore')
-        except:
+        except Exception:
             pass
     
     # Prefer plain text, fall back to HTML
@@ -130,7 +130,7 @@ def main():
                 try:
                     date_tuple = email.utils.parsedate_to_datetime(date_str)
                     date_formatted = date_tuple.strftime("%Y-%m-%d %H:%M")
-                except:
+                except Exception:
                     date_formatted = date_str
                 
                 # Get full body

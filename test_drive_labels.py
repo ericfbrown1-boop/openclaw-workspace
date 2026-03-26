@@ -130,10 +130,10 @@ def main():
     print("✅ Access token obtained\n")
     
     # List available labels
-    labels = list_available_labels(token)
+    _labels = list_available_labels(token)
     
     # Get labels on the Tanium Benefits folder
-    file_labels = get_file_labels(token, FOLDER_ID)
+    _file_labels = get_file_labels(token, FOLDER_ID)
     
     print("\n" + "=" * 60)
     print("✅ Drive Labels API test complete!")
@@ -142,7 +142,7 @@ def main():
 
 if __name__ == '__main__':
     try:
-        import requests
+        import requests  # noqa: F401
     except ImportError:
         print("❌ Error: 'requests' library not found")
         print("   Install with: pip3 install requests")
