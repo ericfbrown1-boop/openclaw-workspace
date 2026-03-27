@@ -160,3 +160,41 @@ Before marking any pipeline run complete, verify:
 4. **Completion gate:** tasks.json shows commit SHA and/or email ID
 5. **Cron jobs:** All scheduled jobs show `lastStatus: "ok"` in `memory/cron-state.json`
 6. **Fallbacks:** Simulate auth failure → verify fallback path activates
+
+## Pre-Commit Quality Gate (MANDATORY)
+
+**No code may be committed without passing ALL of these checks first.** This is a standing process change (2026-03-27).
+
+### Checklist (run in order):
+
+```
+1. SYNTAX CHECK    node --check <file>  (for every new/modified .js/.ts file)
+2. TEST SUITE      npm test  (or equivalent — must pass, zero failures)
+3. LINT            eslint / ruff / shellcheck if configured (warnings OK, errors block)
+4. SECRET SCAN     grep -r "sk-ant\|sk-proj\|ghp_\|API_KEY=" <new files>  (must be clean)
+5. DRY RUN         Execute the primary code path once (e.g. --help, --dry-run, or a single-page test)
+6. DIFF REVIEW     git diff --staged  — read what you're committing, verify no debug code or temp files
+```
+
+### Enforcement:
+
+| Check | Blocks Commit? | Who Runs It |
+|-------|---------------|-------------|
+| Syntax check | ✅ Yes | Coder / Jarvis |
+| Test suite | ✅ Yes | Coder / Quality |
+| Lint | ⚠️ Errors only | Coder |
+| Secret scan | ✅ Yes | Quality / pre-commit hook |
+| Dry run | ✅ Yes | Coder |
+| Diff review | ✅ Yes | Jarvis (before `git commit`) |
+
+### Quick Command:
+
+```bash
+# Run all checks in one shot (Node.js projects)
+for f in $(git diff --cached --name-only --diff-filter=ACM | grep '\.js$'); do node --check "$f" || exit 1; done \
+  && npm test \
+  && ! grep -r 'sk-ant\|sk-proj\|ghp_\|API_KEY=' $(git diff --cached --name-only) \
+  && echo "✅ Quality gate passed — safe to commit"
+```
+
+**Origin:** Eric directive 2026-03-27 — "Make sure you apply Quality Agent before committing code"
