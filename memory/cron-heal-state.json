@@ -1,1 +1,15 @@
-{"lastHealAt":0,"healed":[]}
+{
+  "lastHealAt": 1774713471412,
+  "healed": [
+    {
+      "id": "9a50971c-3068-4279-b1b9-0a781ca5ac06",
+      "name": "Monitor Sweep (3h)",
+      "at": 1774713469951
+    },
+    {
+      "id": "fe280cdf-d077-43e7-a902-889b44b6629e",
+      "name": "Daily OpenClaw Doctor Fix - 5:00 AM PT",
+      "at": 1774713471412
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 ---
 name: ai-legal-assistant
-description: "AI-powered contract review and legal document analysis. Review contracts, flag risks, generate NDAs, check compliance, negotiate terms, and produce PDF reports. Use when: user asks to review a contract, analyze legal risks, generate an NDA, check website compliance, compare contracts, or translate legalese. NOT for: actual legal advice (always disclaim)."
+description: "AI-powered contract review and legal document analysis. Use when: user says legal review, contract review, review this contract, analyze this agreement, check for risks, generate NDA, check compliance, compare contracts, or translate legalese. Triggers on: legal review, detailed legal review, review contract, contract analysis, contract risks, NDA, compliance check. NOT for: actual legal advice (always disclaim)."
 ---
 
 # AI Legal Assistant
