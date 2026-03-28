@@ -74,3 +74,14 @@ Any agent encounters a failure, timeout, stall, or unexpected behavior.
 4. Was PowerSpec fully utilized? → If not, why?
 
 **Priorities:** Stability > Security > Efficiency > Automation
+
+## Lessons Learned (2026-03-27): FinancialReportApp Silent Failures
+
+| Incident | Root Cause | Prevention |
+|----------|-----------|------------|
+| Reports emailed with "done" status but empty content | No output quality validation — checked status, not content | Output Quality Gate: open deliverable, verify >100 chars real analysis, <3 placeholders |
+| Anthropic API key truncated inside Docker container | `.env` inline comment (`# Required...`) treated as value by Docker Compose | .env file rules: NO inline comments ever; validate env var length on container startup |
+| Synthesis data nested under wrong key | `company_data["synthesis"] = {...}` instead of `company_data.update(synthesis)` | Integration test that reads output .docx and asserts content quality |
+| JSON parser returned tagger schema for synthesis output | Shared `_parse_llm_response()` with tagger-shaped fallback dict | Separate parsers per schema; use Anthropic structured outputs (`output_format`) |
+| 90+ minutes of symptom-by-symptom debugging | No upfront RCA — fixed each bug reactively | Research first, understand the failure class, then fix all related issues at once |
+| "Works on Mac, breaks in Docker" pattern | No environment parity testing; dev on Mac, deploy on Windows Docker | E2E smoke test inside container; env validation on startup; test parsers with known input |

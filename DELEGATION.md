@@ -130,3 +130,51 @@ See `skills/monitor/SKILL.md` for the full 11-step sweep checklist.
 Trigger: AFTER External Auditor completes; post-deployment review.
 
 **Incident-Driven Learning:** Weekly scan `memory/incidents.jsonl` for patterns (>2 same category). Propose AGENTS.md/SKILL.md updates. Track in `memory/skill-suggestions.md`.
+
+## Subagent Timeout Policy (Standing Change 2026-03-27)
+
+**Match timeout to task complexity. Never use a short timeout for complex work.**
+
+| Complexity | Timeout | Examples |
+|-----------|---------|----------|
+| SIMPLE | 120s (2 min) | Single file edit, quick fix |
+| MODERATE | 600s (10 min) | Multi-file change, one concern |
+| COMPLEX | 1800s (30 min) | Full-stack app, multi-service build |
+| HEAVY | 3600s (60 min) | Large codebase refactor, full project build |
+
+**Rule:** For any task with >10 files to create, use minimum 1800s timeout.
+**Origin:** First Coder agent for FinancialReportApp timed out at 600s after building 14/40 files. Eric directive: "That should definitely not happen."
+
+## 🔴 Silent Failure Prevention Rules (Standing Change 2026-03-27)
+**Origin:** FinancialReportApp RCA — reports appeared "done" with zero content because failures were silently swallowed.
+
+### Applies to ALL Agents:
+
+**1. Output Quality Validation (MANDATORY)**
+Every agent that produces a deliverable (report, email, analysis, dashboard update) must validate the OUTPUT CONTENT, not just the pipeline status.
+- "Status: done" ≠ "Content: verified"
+- Check that the deliverable contains meaningful data, not just defaults/placeholders
+- Example: a .docx report must have >100 chars in its executive summary and must NOT contain >3 instances of "not available"
+
+**2. No Silent Fallbacks**
+When any component falls back to a default value (empty string, placeholder text, error dict), it MUST:
+- Log a WARNING with the field name and reason
+- If >3 fields fall back in a single pipeline run, FAIL the pipeline (don't produce a garbage deliverable)
+- Never mark a task "done" when its content is placeholder text
+
+**3. Environment Validation on Container Startup**
+Any Docker-deployed app must validate required env vars on startup:
+- Check key format (e.g., API keys must match expected prefix + minimum length)
+- Check key connectivity (e.g., test API call returns 200)
+- Fail FAST on startup, not silently during execution
+
+**4. Separate Parsers for Separate Schemas**
+Never share a JSON parser between components that expect different output shapes (e.g., tagger vs synthesis). Each schema gets its own parser with its own fallback that matches the expected shape. Alternatively, use structured output features (Anthropic `output_format`, OpenAI JSON mode) to guarantee schema compliance.
+
+**5. Integration Test Before Deploy**
+Before declaring any Docker app "working," run an E2E test that:
+- Submits a real request through the full pipeline
+- Waits for completion
+- Opens/reads the output artifact
+- Asserts the output contains real content (not defaults)
+This is the ONLY valid proof that the app works. Status codes and log messages are necessary but NOT sufficient.

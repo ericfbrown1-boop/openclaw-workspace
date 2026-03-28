@@ -203,3 +203,40 @@ The generator expects a dict from earnings-analyzer:
 - **gog gmail send**: Primary email delivery
 - **Zapier MCP gmail**: Fallback email delivery
 - **Google Sheets**: Optional parallel update for tracking
+
+## 🔴 Known Failure Modes (RCA 2026-03-27)
+
+### Failure 1: Docker .env Inline Comments
+**Problem:** Docker Compose treats `#` as comment delimiter mid-line. `KEY=value # comment` becomes `KEY=value ` (truncated).
+**Prevention:** Never use inline comments in `.env`. Validate key length on startup.
+**Docker Compose issues:** #9025, #9327, #9509
+
+### Failure 2: Synthesis Data Nested Wrong
+**Problem:** `generate_report_docx()` wrapped Claude's synthesis dict under `company_data["synthesis"]` but `generate_report()` reads `company_data["executive_summary"]` at top level.
+**Prevention:** Always `company_data.update(synthesis)` — merge at top level, don't nest. Add assertion: `assert "executive_summary" in company_data`.
+
+### Failure 3: Shared JSON Parser Wrong Fallback
+**Problem:** `_parse_llm_response()` falls back to tagger-shaped dict (`type`, `title`, `summary`) when parsing synthesis. The real JSON is trapped in `_rawResponse`.
+**Prevention:** Use Anthropic structured outputs (`output_format` with Pydantic). If free-text parsing required, each schema needs its own parser with correct fallback shape. Always recover from `_rawResponse` before giving up.
+
+### Failure 4: No Output Quality Check
+**Problem:** Pipeline reports "done" with a valid .docx file — but every section says "not available."
+**Prevention:** After generating .docx, verify: `executive_summary > 100 chars`, `"not available".count() < 3`.
+
+## Mandatory Checks for This Skill
+
+Before marking any financial report as "done":
+1. Open the .docx programmatically
+2. Extract text from executive summary paragraph
+3. Assert length > 100 characters
+4. Assert "not available" count < 3 across entire document
+5. Verify at least 2 tables have data rows (not just headers)
+6. If ANY check fails → mark report as "incomplete" and log error
+
+## Docker Deployment Checklist for This App
+
+1. `.env` file: NO inline comments, NO trailing whitespace
+2. Container startup: validate ANTHROPIC_API_KEY prefix (`sk-ant-`) and length (>80)
+3. Container startup: test Anthropic API connectivity (POST to /v1/messages with tiny prompt)
+4. After deploy: submit a test report, wait for "done", open .docx, verify real content
+5. gog CLI installed in container with valid OAuth token volume-mounted

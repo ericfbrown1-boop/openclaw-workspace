@@ -198,3 +198,116 @@ for f in $(git diff --cached --name-only --diff-filter=ACM | grep '\.js$'); do n
 ```
 
 **Origin:** Eric directive 2026-03-27 — "Make sure you apply Quality Agent before committing code"
+
+## Docker Containerization Checklist (Standing Rule 2026-03-27)
+
+**When moving standalone MacBook code into Docker/Railway:**
+
+Before writing the Dockerfile, audit the standalone code for:
+1. **CLI tools** — what binaries does it shell out to? (gog, gh, curl, etc.) → install in Dockerfile
+2. **Auth tokens** — where are credentials stored? (Keychain, env, config files) → export and inject into container
+3. **API keys** — what env vars does it read? → map to docker-compose environment or Railway vars
+4. **Python packages** — what's imported? → requirements.txt must match
+5. **System libraries** — any C extensions? (libpq, poppler, tesseract) → apt-get install
+6. **File paths** — any hardcoded Mac paths? → containerize to /app/data/
+7. **Network** — does it call localhost services? → use Docker service names
+
+**Verify INSIDE the container** with `docker exec` before declaring it works.
+
+**8. .env file** — NO inline comments (Docker Compose truncates at `#`). NO trailing whitespace. Validate on startup.
+**9. Output quality** — after deploy, run E2E test: submit real request → wait → open output → verify real content (not defaults)
+**10. Parser schemas** — if the app parses LLM JSON, each output schema has its own parser with correct fallback shape
+
+**Origin:** Financial Report App — standalone used gog CLI + Keychain OAuth + Anthropic env var, none of which existed in the initial Docker image. Eric directive: "check what was done in the application and what's installed to see if you have the same compatibility inside the Docker container."
+
+## 🔴 Output Quality Gate (Standing Change 2026-03-27)
+**Origin:** FinancialReportApp — 3 reports emailed with "done" status but zero content. RCA: `memory/rca-financial-report-app.md`
+
+### The Problem Class: "Silent Success"
+A pipeline can complete every step (crawl ✅, API call ✅, save file ✅, send email ✅) while producing garbage output. This happens when:
+1. An API key is truncated by env file parsing (Docker Compose `#` comment issue)
+2. A data structure is nested wrong (dict inside dict instead of merged)
+3. A JSON parser silently falls back to a default schema
+4. Error handlers catch exceptions and return empty defaults instead of failing
+
+### Prevention Rules (ALL agents, ALL pipelines):
+
+**Rule 1: Validate Output Content, Not Just Status**
+After EVERY deliverable is generated, open it and check:
+```python
+# For .docx reports:
+doc = Document(output_path)
+text = " ".join(p.text for p in doc.paragraphs)
+assert len(text) > 500, "Report suspiciously short"
+assert text.count("not available") < 3, "Report contains too many placeholder defaults"
+assert text.count("not found") < 3, "Report contains too many missing-data markers"
+```
+
+**Rule 2: Fail Loud, Not Silent**
+Every fallback/default MUST log WARNING. >3 defaults in one run = pipeline FAILURE.
+```python
+# BAD: silently return default
+return data.get("executive_summary", "Analysis not available.")
+
+# GOOD: log and count
+value = data.get("executive_summary")
+if not value:
+    logger.warning("MISSING FIELD: executive_summary — using default")
+    missing_count += 1
+if missing_count > 3:
+    raise ValueError(f"Too many missing fields ({missing_count}) — synthesis likely failed")
+```
+
+**Rule 3: Env Validation on Startup**
+Every containerized app must validate env vars BEFORE processing requests:
+```python
+def validate_env():
+    key = os.environ.get("ANTHROPIC_API_KEY", "")
+    if not key.startswith("sk-ant-") or len(key) < 80:
+        raise RuntimeError(f"ANTHROPIC_API_KEY invalid (length={len(key)}, prefix={key[:7]})")
+    # Test connectivity
+    resp = httpx.post("https://api.anthropic.com/v1/messages", ...)
+    if resp.status_code == 401:
+        raise RuntimeError("ANTHROPIC_API_KEY fails authentication")
+```
+
+**Rule 4: Use Structured Outputs When Available**
+For Claude API calls that need JSON, use `output_format` with Pydantic models instead of free-text JSON parsing:
+```python
+from pydantic import BaseModel
+from anthropic import Anthropic
+
+class FinancialSynthesis(BaseModel):
+    executive_summary: str
+    quarterly_results: dict
+    guidance: str
+    # ... all required fields
+
+response = client.messages.parse(
+    model="claude-sonnet-4-6",
+    messages=[...],
+    output_format=FinancialSynthesis,
+)
+# Guaranteed to match schema or raise an error — no silent fallbacks
+```
+
+**Rule 5: E2E Smoke Test Before Deploy**
+No Docker app ships without an automated E2E test that:
+1. Submits a real request
+2. Waits for completion
+3. Downloads the output artifact
+4. Asserts content quality (not just existence)
+
+### Docker .env File Rules (Permanent)
+- **NEVER** use inline comments in `.env` files (`KEY=value # comment` → KEY gets truncated)
+- **NEVER** use quotes around values unless they contain spaces
+- Keep `.env` files as `KEY=value` only, one per line
+- Validate env vars on container startup (prefix, length, connectivity)
+- This is a well-documented Docker Compose issue: docker/compose#9025, #9327, #9509
+
+### LLM Response Parsing Rules (Permanent)
+- **Prefer structured outputs** (Anthropic `output_format`, OpenAI JSON mode) over free-text parsing
+- If free-text parsing is required, each schema gets its OWN parser with schema-appropriate fallbacks
+- Never share a parser between components expecting different JSON shapes
+- When a parser fails, preserve the raw response for debugging (`_rawResponse`)
+- Add recovery logic that re-parses `_rawResponse` before giving up

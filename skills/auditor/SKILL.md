@@ -51,3 +51,32 @@ Every Monday, the External Auditor must:
 4. Send the report to Eric via Telegram for review + approval
 5. Do NOT apply changes until Eric approves — this is a review gate, not auto-update
 6. After Eric approves, implement changes, commit to GitHub, and update the lessons table in Monitor SKILL.md
+
+## 🔴 Silent Failure Audit (Standing Addition 2026-03-27)
+**Origin:** FinancialReportApp RCA — 3 reports shipped with "done" status but empty content.
+
+**On EVERY audit, add this 7th step to the QA gate:**
+
+### Step 7: Output Quality Verification
+For any pipeline that produces a deliverable (report, email, dashboard):
+1. **Open the actual output file** — don't trust status codes alone
+2. **Verify content is real** — not placeholder text, not "not available," not empty sections
+3. **Check for silent parser failures** — look for `_parseError`, fallback dicts, truncated values in logs
+4. **Verify env vars inside containers** — `docker exec <container> env | grep KEY` to confirm values match expected length/format
+5. **Test the parser separately** — give it known-good input and verify output shape matches what downstream consumers expect
+
+**Auto-fail triggers:**
+- Deliverable contains >3 instances of "not available" or "not found"
+- .docx report executive summary is <100 characters
+- API key env var inside container is <80 characters
+- JSON parser returns a dict with `_parseError: True` and nobody caught it
+- Status endpoint says "done" but output is defaults
+
+**Log format for this step:**
+```
+Step 7 — Output Quality: ✅ PASS / ❌ FAIL
+  - Content length: XXX chars
+  - Placeholder count: N
+  - Env vars verified: KEY1 ✅ (108 chars), KEY2 ✅ (95 chars)
+  - Parser health: No _parseError in logs
+```

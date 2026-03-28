@@ -32,7 +32,7 @@ verify_before_handoff:
   - tests_pass: "pytest / npm test / project test command exits 0"
   - docker_builds: "docker build -t <name> . completes without error"
   - health_check: "curl -fsS http://localhost:<port>/health returns HTTP 200"
-  - no_secrets: "detect-secrets scan <files> finds no new secrets"
+  - no_secrets: "detect-secrets scan <files> finds no new secrets"  # pragma: allowlist secret
   - git_pushed: "git push origin <branch> succeeds"
 verify_after_deploy:
   - smoke_test: "curl -fsS https://<deployed-url>/health returns HTTP 200"
@@ -124,3 +124,40 @@ verify_before_delivery:
 4. **Quality**: Confirms all oracle checks passed during review
 5. **Monitor**: Verifies tasks marked 100% actually satisfy their oracle
 6. **External Auditor**: Uses oracle as the acceptance checklist for sign-off
+
+## Oracle: Docker-Deployed App (NEW 2026-03-27)
+**Origin:** FinancialReportApp RCA — silent failures in env vars, parsers, and output content.
+
+```yaml
+name: docker_deployed_app
+verify_on_deploy:
+  - env_vars_valid: "docker exec <container> env | grep KEY → each key matches expected prefix and length (>80 chars for API keys)"
+  - no_inline_comments: ".env file has NO inline comments (# on same line as value)"
+  - startup_validation: "Container validates env vars on startup and fails fast if invalid"
+  - api_connectivity: "Container can reach external APIs (Anthropic, Google, etc.) — test with actual API call, not just DNS"
+  - parser_schemas_separate: "Each data schema has its own parser; no shared parser with wrong fallback shapes"
+verify_output_quality:
+  - content_not_defaults: "Deliverable contains <3 instances of 'not available', 'not found', or placeholder text"
+  - content_sufficient: "Main content section (e.g., executive_summary) is >100 characters of real analysis"
+  - structured_output_used: "LLM calls use output_format/JSON mode when available, not free-text parsing"
+  - silent_fallback_counted: "Pipeline logs WARNING for every fallback to default; >3 defaults = pipeline FAIL"
+  - e2e_smoke_test: "Full pipeline executed with real input, output artifact opened and content verified"
+verify_data_flow:
+  - synthesis_keys_present: "All expected fields (executive_summary, quarterly_results, guidance, etc.) exist at top level of merged dict"
+  - no_nested_wrapping: "Data from LLM is merged at top level, not nested under a wrapper key like 'synthesis' or 'data'"
+  - parse_error_recovered: "If _parseError occurs, _rawResponse is re-parsed before using fallback"
+```
+
+## Oracle: LLM Pipeline (NEW 2026-03-27)
+**Origin:** FinancialReportApp RCA — parser silently swallowed synthesis output.
+
+```yaml
+name: llm_pipeline
+verify_before_handoff:
+  - schema_validated: "LLM output matches expected Pydantic model or JSON schema"
+  - no_parse_errors: "No _parseError flags in final output dict"
+  - required_fields_present: "All fields consumed by downstream components exist and are non-empty"
+  - raw_response_preserved: "On parse failure, raw LLM text is logged/stored for debugging"
+  - fallback_shape_correct: "Parser fallback returns dict shaped like the expected output (not a different schema)"
+  - cost_logged: "Token usage and estimated cost logged for every LLM call"
+```
