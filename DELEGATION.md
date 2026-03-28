@@ -6,6 +6,34 @@ Trigger: "plan", "design", "architect", "new project", "build a", "start a", "cr
 Action: spawn planner with project description. Planner commissions Researcher automatically.
 Never go straight to Coder for non-trivial new projects.
 
+### 🧠 Dual-Model Planning Process (Standing Change 2026-03-27)
+
+**Every plan is built in 3 stages using two LLMs for maximum quality:**
+
+**Stage 1: Research (Researcher Agent)**
+Before ANY planning begins, Researcher gathers latest information:
+- Search reputable sources for the specific task domain (official docs, best practices, known pitfalls)
+- Identify key success factors, common failure modes, and production requirements
+- Produce a Research Brief with findings, citing sources
+- This research DIRECTLY informs the plan — no planning in a vacuum
+
+**Stage 2: Draft Plan (Opus 4.6)**
+Planner (Opus 4.6) creates PLAN.md informed by the Research Brief:
+- Architecture, task decomposition, risk mitigation
+- Key success factors from research embedded as explicit checkpoints
+- Verification criteria for every task (how to prove it works)
+- Compute allocation, git setup, Docker/deployment requirements
+
+**Stage 3: Adversarial Review (Grok 4.20 Beta)**
+Spawn Grok 4.20 Beta (`xai/grok-4`) to review the draft plan:
+- Identify gaps, missing edge cases, architectural weaknesses
+- Challenge assumptions with "what if X fails?" scenarios
+- Propose additions to verification criteria
+- Focus on production-readiness and failure prevention
+Jarvis merges Grok's feedback into the final PLAN.md before dispatching to Coder.
+
+**The output: a plan informed by fresh research, drafted by Opus, stress-tested by Grok.**
+
 **Explore First (Anthropic Best Practice):** Before creating PLAN.md, Planner MUST:
 1. Read the existing codebase structure (`find . -type f | head -50`, key config files)
 2. Understand current patterns, frameworks, and conventions already in use

@@ -32,10 +32,11 @@ Phase 1: UNDERSTAND
   → Output: PROJECT_CONTEXT.md
 
 Phase 2: PLAN
-  → Planner creates PLAN.md (architecture, tasks, risks, compute allocation)
-  → GPT-5.4 cross-review for edge cases
-  → Jarvis merges review + confirms environment ready
-  → Output: Final PLAN.md
+  → Researcher gathers latest info on task domain (key success factors, pitfalls)
+  → Planner (Opus 4.6) drafts PLAN.md informed by Research Brief
+  → Grok 4.20 Beta adversarial review (challenges assumptions, finds gaps)
+  → Jarvis merges Grok feedback into final PLAN.md
+  → Output: Final PLAN.md (research-backed, dual-model reviewed)
 
 Phase 3: IMPLEMENT
   → Coder implements (writes CHECKPOINT.md at each phase)
@@ -124,8 +125,8 @@ Agents read `alert_level` from the state file:
 | Agent | Model | Context | Cost (in/out per M) | Rationale |
 |-------|-------|---------|---------------------|-----------|
 | Jarvis (main) | Opus 4.6 | 200K | $15 / $75 | Orchestration needs best reasoning |
-| Planner | Opus 4.6 | 200K | $15 / $75 | Architecture needs depth |
-| Planner (cross-review) | GPT-5.4 Pro | 1M | $2.50 / $15 | 1M context for full codebase analysis; 33% fewer hallucinations; speed perspective |
+| Planner (draft) | Opus 4.6 | 200K | $15 / $75 | Architecture needs depth; drafts PLAN.md from Research Brief |
+| Planner (adversarial review) | Grok 4.20 Beta | 1M | ~$5 / $15 | Challenges plan assumptions, finds gaps, stress-tests for production readiness |
 | Coder | Sonnet 4.6 | 200K | $3 / $15 | Code tasks well-defined; saves ~40-60% |
 | Tester | Sonnet 4.6 | 200K | $3 / $15 | Test execution is deterministic |
 | Quality | Sonnet 4.6 | 200K | $3 / $15 | Checklist-driven |
