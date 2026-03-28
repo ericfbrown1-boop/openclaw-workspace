@@ -1,5 +1,39 @@
 {
   "tasks": {
+    "financial-report-app-refactor": {
+      "id": "financial-report-app-refactor",
+      "title": "FinancialReportApp \u2014 Full Pipeline Refactor",
+      "status": "completed",
+      "progress": 100,
+      "owner": "jarvis",
+      "priority": "high",
+      "summary": "14 bugs fixed, structured outputs, quality gates, retry logic, 33 tests, SHA256 integrity, crawler HTML extraction. E2E verified: 5 companies, 0 'not available'.",
+      "completedAt": "2026-03-28T06:20:39.592120",
+      "completedCommit": "971af16",
+      "deliverablePath": "~/FinancialReportApp/"
+    },
+    "sdlc-correctness-first": {
+      "id": "sdlc-correctness-first",
+      "title": "SDLC: Correctness-First Principle + 5 Standing Rules",
+      "status": "completed",
+      "progress": 100,
+      "owner": "jarvis",
+      "priority": "high",
+      "summary": "5 standing rules: Correctness-First, Output Parity, RCA Core, Autonomous Execution, Dual-Model Planning. Updated PIPELINE.md, DELEGATION.md, INCIDENTS.md, auditor SKILL, financial-report-gen SKILL.",
+      "completedAt": "2026-03-28T06:20:39.592120",
+      "completedCommit": "b3ea9c7"
+    },
+    "claude-code-auto-mode": {
+      "id": "claude-code-auto-mode",
+      "title": "Claude Code: Auto Mode Default",
+      "status": "completed",
+      "progress": 100,
+      "owner": "jarvis",
+      "priority": "medium",
+      "summary": "Updated Coder Agent and Planner Agent to use --permission-mode auto for all Claude Code tasks. Replaces bypassPermissions.",
+      "completedAt": "2026-03-28T06:20:39.592120",
+      "completedCommit": "b3ea9c7"
+    },
     "research-anthropic-best-practices": {
       "status": "completed",
       "progress": 100,

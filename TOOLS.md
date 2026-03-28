@@ -106,3 +106,9 @@ Add whatever helps you do your job. This is your cheat sheet.
 3. Connectivity test from Mac: `tailscale ping remote-coder-main` then `ssh ericf@100.67.128.123 hostname` (returns `EFBPowerSpec`).
 4. If SSH breaks, re-open `C:/ProgramData/ssh/sshd_config`, confirm settings, and run `Restart-Service sshd`.
 5. Optional convenience: add `Host remote-coder-main` block to `~/.ssh/config` pointing to this host/key.
+
+### Network Topology (discovered 2026-03-28)
+- **PowerSpec LAN IP:** 192.168.88.158 (Ethernet 2) — different subnet from MacBook (192.168.3.x)
+- **No LAN fallback:** If Tailscale is down on PowerSpec, SSH is unreachable from MacBook (no same-subnet path)
+- **If Tailscale drops:** Alert Eric immediately — only fix is physically opening Tailscale app on the PC
+- **WSL bridge:** 172.28.144.1 (internal only, not routable from Mac)
