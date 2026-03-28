@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [main]
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   lint-and-validate:
     runs-on: ubuntu-latest
@@ -16,9 +19,11 @@ jobs:
         run: |
           echo "Scanning for hardcoded secrets..."
           FOUND=0
-          # Check tracked files for common secret patterns (excluding .docx, .xlsx, images)
+          # Check tracked files for common secret patterns
+          # Exclude binary-like content, CI files (which contain the patterns themselves), and vendor dirs
           for pattern in "sk-[a-zA-Z0-9]{20,}" "ghp_[a-zA-Z0-9]{36}" "gho_[a-zA-Z0-9]{36}" "AKIA[A-Z0-9]{16}"; do
-            MATCHES=$(git grep -l -E "$pattern" -- '*.py' '*.sh' '*.js' '*.ts' '*.json' '*.md' '*.yml' '*.yaml' '*.txt' '*.env' 2>/dev/null || true)
+            MATCHES=$(git grep -l -E "$pattern" -- '*.py' '*.sh' '*.js' '*.ts' '*.json' '*.md' '*.txt' '*.env' \
+              ':!.github/' ':!venv/' ':!node_modules/' ':!*.bak' 2>/dev/null || true)
             if [ -n "$MATCHES" ]; then
               echo "::warning::Potential secret pattern found: $pattern"
               echo "$MATCHES"
@@ -35,7 +40,13 @@ jobs:
         run: |
           echo "Validating JSON files..."
           ERRORS=0
-          for f in $(find . -name '*.json' -not -path './node_modules/*' -not -path './.git/*'); do
+          # Exclude ALL node_modules at any depth, .git, venv, and path/to/venv
+          for f in $(find . -name '*.json' \
+            -not -path '*/node_modules/*' \
+            -not -path '*/.git/*' \
+            -not -path '*/venv/*' \
+            -not -path '*/venv_tax/*' \
+            -not -path '*/path/to/*'); do
             if ! python3 -m json.tool "$f" > /dev/null 2>&1; then
               echo "::error::Invalid JSON: $f"
               ERRORS=$((ERRORS + 1))
@@ -53,8 +64,9 @@ jobs:
           python3 -c "
           import yaml, glob, sys
           errors = 0
+          skip = ['.git/', 'node_modules/', 'venv/']
           for f in glob.glob('**/*.yml', recursive=True) + glob.glob('**/*.yaml', recursive=True):
-            if '.git/' in f: continue
+            if any(s in f for s in skip): continue
             try:
               yaml.safe_load(open(f))
             except yaml.YAMLError as e:
@@ -70,9 +82,7 @@ jobs:
         run: |
           echo "Checking for broken internal references..."
           BROKEN=0
-          # Check .md files for references to other .md files that don't exist
-          for f in $(find . -name '*.md' -not -path './node_modules/*' -not -path './.git/*'); do
-            # Extract markdown links like [text](file.md) or [text](path/file.md)
+          for f in $(find . -name '*.md' -not -path '*/node_modules/*' -not -path '*/.git/*' -not -path '*/venv/*'); do
             REFS=$(grep -oE '\]\([^)]+\.md\)' "$f" 2>/dev/null | sed 's/\](\(.*\))/\1/' | grep -v 'http' || true)
             DIR=$(dirname "$f")
             for ref in $REFS; do

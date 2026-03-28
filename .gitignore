@@ -2,3 +2,21 @@ node_modules/
 *.bak
 *.bak.*
 .dropbox_auth.json
+venv/
+venv_tax/
+
+# Secrets — never commit credentials
+data/Tokens.txt
+*.secret
+*.key
+.env
+.env.*
+
+# Python
+__pycache__/
+*.pyc
+path/to/venv/
+
+# OS
+.DS_Store
+Thumbs.db
