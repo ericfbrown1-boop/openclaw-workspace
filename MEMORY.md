@@ -101,3 +101,32 @@
 - Updated Researcher, Planner, and Coder AGENTS.md files
 - Every project: Dockerfile + docker-compose.yml + .env.example + railway.json + CI workflow
 - No local file paths, all config via env vars, bind to $PORT, stateless processes
+
+## FinancialReportApp — Production-Grade (2026-03-28)
+- Full pipeline working: crawl IR site → Claude structured outputs → .docx → email
+- Lives at: `~/FinancialReportApp/` | GitHub: `ericfbrown1-boop/FinancialReportApp`
+- Deployed on PowerSpec Docker: frontend :3001, API :8001, Postgres :5433, Redis :6380
+- Frontend login: admin / Ajax
+- **Structured outputs**: Anthropic `output_config/json_schema` — no more manual JSON parsing
+  - Anthropic limitations: no min/max on numbers, no minItems>1 on arrays
+- **Quality gates**: 3 gates in generate_report_docx(), all BLOCKING (raise ValueError)
+  - Gate 1: >3 of 6 required fields missing → reject
+  - Gate 2: all 6 fields missing → reject immediately
+  - Gate 3: .docx verification — >7 "not available" or <1500 chars → delete and reject
+- **Retry**: exponential backoff on 429/5xx/timeout (3 attempts, 2^n delay)
+- **Crawler**: 3-strategy IR discovery — HTML link extraction (best for ASP.NET sites), Firecrawl map, pattern probing
+- **Output parity**: SHA256 hash verified — download === email attachment
+- **Test suite**: 33 tests in api/tests/ (pytest)
+- **Env validation**: validate_environment() checks API key prefix+length, DB, Redis, Firecrawl on startup
+- **Timing metrics**: TIMING prefix in logs for crawl/tag/synthesize/generate phases
+
+## Dual-Model Planning Process (2026-03-28)
+- All plans: Research → Opus 4.6 draft → Grok 4.20 Beta adversarial review
+- Replaces GPT-5.4 cross-review
+- DELEGATION.md + PIPELINE.md updated
+
+## Standing Rules Added (2026-03-28)
+- **Autonomous Execution**: Run nonstop, minimize Eric interruptions. Only pause for: money, external comms, genuine ambiguity, security.
+- **Correctness-First**: Output correctness > completeness > visible failures > root causes > speed
+- **Output Parity**: All delivery channels (email, download, API) serve identical content, SHA256-verified
+- **RCA Core**: Root cause analysis is step 1 of debugging, not post-mortem

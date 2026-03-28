@@ -78,3 +78,39 @@ def validate_env():
 - [ ] Add content quality gate before marking report "done"
 - [ ] Add E2E smoke test: submit report → verify .docx has real content
 - [ ] Remove all inline comments from .env and .env.example
+
+
+## Post-Fix Verification (2026-03-28 05:47 AM)
+
+### E2E Results After All Fixes
+| Company | Pages | Chars | "Not Available" | Time | Status |
+|---------|-------|-------|-----------------|------|--------|
+| RingCentral | 1 | ~13K | 0 | 181s | ✅ |
+| Commvault | 5 | ~14K | 0 | 140s | ✅ |
+| CrowdStrike | 3 | 17,924 | 0 | ~120s | ✅ |
+| ServiceNow | 1 | 17,855 | 0 | 113s | ✅ |
+| Rubrik v1 | 2 | 15,971 | 0 | 111s | ✅ |
+| Rubrik v2 (HTML extraction) | 16 | 16,854 | 0 | 199s | ✅ |
+
+### Bugs Fixed (Final Count: 14)
+1. .env inline comment truncating API key
+2. Synthesis dict nested instead of merged at top level
+3. _rawResponse truncated to 500 chars
+4. Recovery regex double-escaped
+5. Claude malformed JSON (trailing commas) — json-repair added
+6. Structured outputs not used — migrated to output_config/json_schema
+7. Quality gates logged but didn't block — now raise ValueError
+8. No retry on Anthropic API calls — added exponential backoff
+9. Empty table rows passed through — now filtered
+10. Silent placeholder page on 0 crawl — now raises ValueError
+11. Content quality not validated post-structured-output — added checks
+12. Attachment not verified before email — added size check
+13. Download ≠ email (MIME type + no hash) — SHA256 integrity + explicit MIME
+14. Celery retried quality failures — ValueError now fails immediately
+
+### Standing Rules Created (5)
+1. Correctness-First (PIPELINE.md) — output correctness > everything else
+2. Output Parity (PIPELINE.md, DELEGATION.md) — all channels serve identical content
+3. RCA Core (INCIDENTS.md) — research before building, RCA is step 1 of debugging
+4. Autonomous Execution (AGENTS.md) — run nonstop, minimize interruptions
+5. Dual-Model Planning (DELEGATION.md, PIPELINE.md) — Opus drafts, Grok reviews

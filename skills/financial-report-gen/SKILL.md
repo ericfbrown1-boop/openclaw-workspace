@@ -204,24 +204,28 @@ The generator expects a dict from earnings-analyzer:
 - **Zapier MCP gmail**: Fallback email delivery
 - **Google Sheets**: Optional parallel update for tracking
 
-## 🔴 Known Failure Modes (RCA 2026-03-27)
+## 🔴 Known Failure Modes (Updated 2026-03-28)
 
-### Failure 1: Docker .env Inline Comments
-**Problem:** Docker Compose treats `#` as comment delimiter mid-line. `KEY=value # comment` becomes `KEY=value ` (truncated).
-**Prevention:** Never use inline comments in `.env`. Validate key length on startup.
-**Docker Compose issues:** #9025, #9327, #9509
+| # | Failure | Root Cause | Prevention |
+|---|---------|-----------|------------|
+| 1 | Reports "done" but empty | No output content validation | Gate 3: open .docx, verify chars + placeholders |
+| 2 | API key truncated in Docker | `.env` inline `#` comment | No inline comments; validate key length ≥80 on startup |
+| 3 | Synthesis nested wrong | `data["synthesis"]=x` vs `data.update(x)` | Unit test verifies report sections have synthesis content |
+| 4 | JSON parser wrong schema | Shared parser tagger/synthesis | Structured outputs (`output_config`) — guaranteed valid JSON |
+| 5 | Claude malformed JSON | Free-text prompt | Structured outputs; fallback with json_repair |
+| 6 | Only 1-2 IR pages crawled | URL probing misses ASP.NET | Parse IR homepage HTML for navigation links |
+| 7 | Anthropic rate limited | No retry | `_call_with_retry()` — 3 attempts, exponential backoff |
+| 8 | Gate logs but doesn't block | `except Exception` swallows ValueError | `except ValueError: raise` before generic catch |
+| 9 | Download ≠ email attachment | Multiple gen paths or caching | SHA256 hash on generate, verify on download, no-cache headers |
+| 10 | Empty table rows | LLM returns `rows: [["",""]]` | `_add_table` filters all-empty rows |
+| 11 | Celery retries quality failures | ValueError caught by generic retry | Separate `except ValueError` — fail immediately, no retry |
+| 12 | Default creds in production | No env validation | Warn in dev, block in production |
 
-### Failure 2: Synthesis Data Nested Wrong
-**Problem:** `generate_report_docx()` wrapped Claude's synthesis dict under `company_data["synthesis"]` but `generate_report()` reads `company_data["executive_summary"]` at top level.
-**Prevention:** Always `company_data.update(synthesis)` — merge at top level, don't nest. Add assertion: `assert "executive_summary" in company_data`.
+### Anthropic Structured Output Limitations
+- `minimum`/`maximum` on numbers → NOT supported, enforce in app code
+- `minItems` > 1 on arrays → NOT supported (only 0 or 1), enforce in app code
+- `minLength`/`pattern` on strings → NOT supported, validate post-response
 
-### Failure 3: Shared JSON Parser Wrong Fallback
-**Problem:** `_parse_llm_response()` falls back to tagger-shaped dict (`type`, `title`, `summary`) when parsing synthesis. The real JSON is trapped in `_rawResponse`.
-**Prevention:** Use Anthropic structured outputs (`output_format` with Pydantic). If free-text parsing required, each schema needs its own parser with correct fallback shape. Always recover from `_rawResponse` before giving up.
-
-### Failure 4: No Output Quality Check
-**Problem:** Pipeline reports "done" with a valid .docx file — but every section says "not available."
-**Prevention:** After generating .docx, verify: `executive_summary > 100 chars`, `"not available".count() < 3`.
 
 ## Mandatory Checks for This Skill
 
