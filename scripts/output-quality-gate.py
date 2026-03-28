@@ -39,20 +39,32 @@ def validate_docx(path: str) -> tuple[bool, list[str]]:
         errors.append(f"Report too short: {char_count} chars (minimum 500)")
 
     # Gate 2: Placeholder detection
-    placeholders = ["not available", "not found", "no data", "N/A", "placeholder", "TODO", "TBD"]
+    placeholders = [
+        "not available",
+        "not found",
+        "no data",
+        "N/A",
+        "placeholder",
+        "TODO",
+        "TBD",
+    ]
     for ph in placeholders:
         count = text.lower().count(ph.lower())
         if count > 3:
             errors.append(f"Too many '{ph}' occurrences: {count} (max 3)")
 
     # Gate 3: Section headers present (basic structure check)
-    headings = [p.text for p in doc.paragraphs if p.style and "Heading" in str(p.style.name)]
+    headings = [
+        p.text for p in doc.paragraphs if p.style and "Heading" in str(p.style.name)
+    ]
     if len(headings) < 2:
         errors.append(f"Report has only {len(headings)} headings (expected at least 2)")
 
     if errors:
         return False, errors
-    return True, [f"PASS: {char_count} chars, {len(headings)} sections, placeholders OK"]
+    return True, [
+        f"PASS: {char_count} chars, {len(headings)} sections, placeholders OK"
+    ]
 
 
 def validate_url(url: str) -> tuple[bool, list[str]]:
@@ -60,6 +72,7 @@ def validate_url(url: str) -> tuple[bool, list[str]]:
     errors = []
     try:
         import urllib.request
+
         req = urllib.request.Request(url, headers={"User-Agent": "quality-gate/1.0"})
         with urllib.request.urlopen(req, timeout=30) as resp:
             status = resp.status
@@ -146,19 +159,27 @@ def main():
 
     if args.docx:
         passed, msgs = validate_docx(args.docx)
-        results.append({"type": "docx", "path": args.docx, "passed": passed, "messages": msgs})
+        results.append(
+            {"type": "docx", "path": args.docx, "passed": passed, "messages": msgs}
+        )
 
     if args.url:
         passed, msgs = validate_url(args.url)
-        results.append({"type": "url", "url": args.url, "passed": passed, "messages": msgs})
+        results.append(
+            {"type": "url", "url": args.url, "passed": passed, "messages": msgs}
+        )
 
     if args.email:
         passed, msgs = validate_email(args.email)
-        results.append({"type": "email", "msg_id": args.email, "passed": passed, "messages": msgs})
+        results.append(
+            {"type": "email", "msg_id": args.email, "passed": passed, "messages": msgs}
+        )
 
     if args.file:
         passed, msgs = validate_file(args.file)
-        results.append({"type": "file", "path": args.file, "passed": passed, "messages": msgs})
+        results.append(
+            {"type": "file", "path": args.file, "passed": passed, "messages": msgs}
+        )
 
     all_passed = all(r["passed"] for r in results)
 
@@ -167,7 +188,9 @@ def main():
     else:
         for r in results:
             status = "PASS" if r["passed"] else "FAIL"
-            print(f"[{status}] {r['type']}: {r.get('path') or r.get('url') or r.get('msg_id')}")
+            print(
+                f"[{status}] {r['type']}: {r.get('path') or r.get('url') or r.get('msg_id')}"
+            )
             for msg in r["messages"]:
                 print(f"  {msg}")
 
