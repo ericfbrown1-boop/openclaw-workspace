@@ -39,6 +39,17 @@
       "progress": 100,
       "deliverableEmailTs": "2026-03-25T16:53:11.885073",
       "completedAt": "2026-03-25T16:53:11.885080"
+    },
+    "remediation-step-03": {
+      "id": "remediation-step-03",
+      "title": "Deploy JarvisMissionControl to Railway",
+      "status": "completed",
+      "progress": 100,
+      "owner": "coder",
+      "priority": "high",
+      "summary": "JarvisMissionControl deployed to Railway (acceptable-inspiration project). Public URL: jarvismissioncontrol-production.up.railway.app. Auto-deploys from main branch. Gateway features offline (local-only gateway).",
+      "completedAt": "2026-03-28T16:55:00.000Z",
+      "deliverableUrl": "https://jarvismissioncontrol-production.up.railway.app"
     }
   }
 }
