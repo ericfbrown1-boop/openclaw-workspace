@@ -34,6 +34,12 @@ Jarvis merges Grok's feedback into the final PLAN.md before dispatching to Coder
 
 **The output: a plan informed by fresh research, drafted by Opus, stress-tested by Grok.**
 
+**Claude Code Auto Mode Assumption:** All plans should assume Coder runs Claude Code with `--permission-mode auto`. This means:
+- File reads, writes, and test execution happen without prompts (low-risk classifier)
+- Plans do NOT need manual approval checkpoints between each file change
+- Plans SHOULD include verification steps (run tests, check output) since auto mode enables fast iteration
+- High-risk operations (bulk deletes, env changes) will still prompt — plans should note these explicitly
+
 **Output Parity Checkpoint:** Every PLAN.md for apps with multiple output channels must include a "Delivery Parity" section specifying: (1) which channels exist, (2) how the single source file is served to each, (3) hash verification strategy.
 
 **Explore First (Anthropic Best Practice):** Before creating PLAN.md, Planner MUST:
@@ -81,6 +87,17 @@ Action: spawn researcher with a specific brief and source filters.
 Trigger: explicit coding task where a plan already exists. Must read PLAN.md first.
 
 **Correctness-First Rule:** Every code change must be provably correct. "It runs without errors" is necessary but NOT sufficient. The OUTPUT must be verified — run the pipeline and check what the user would actually receive.
+
+**Claude Code: Auto Mode (Standing Change 2026-03-28)**
+When spawning Claude Code for coding tasks, ALWAYS use `--permission-mode auto`:
+```bash
+cd /path/to/project && claude --permission-mode auto --print 'Your task'
+```
+- Auto mode uses a safety classifier to allow low-risk actions (file reads, tests, linting) automatically
+- High-risk actions (deleting files, running unknown scripts) still prompt
+- This replaces `--permission-mode bypassPermissions` which skipped ALL checks
+- Do NOT use `--dangerously-skip-permissions` — auto mode is the correct balance of speed and safety
+- **Origin:** Eric directive 2026-03-28
 
 **Verify Your Work (Anthropic #1 Rule):** After EVERY code change, run the project's test suite. If no tests exist, write at least one smoke test (health endpoint check, lint pass, basic unit test) before creating HANDOFF.md. Never hand off untested code.
 

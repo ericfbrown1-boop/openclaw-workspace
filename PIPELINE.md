@@ -146,7 +146,7 @@ Agents read `alert_level` from the state file:
 | Jarvis (main) | Opus 4.6 | 200K | $15 / $75 | Orchestration needs best reasoning |
 | Planner (draft) | Opus 4.6 | 200K | $15 / $75 | Architecture needs depth; drafts PLAN.md from Research Brief |
 | Planner (adversarial review) | Grok 4.20 Beta | 1M | ~$5 / $15 | Challenges plan assumptions, finds gaps, stress-tests for production readiness |
-| Coder | Sonnet 4.6 | 200K | $3 / $15 | Code tasks well-defined; saves ~40-60% |
+| Coder | Sonnet 4.6 | 200K | $3 / $15 | Code tasks well-defined; Claude Code runs in auto mode (`--permission-mode auto`) |
 | Tester | Sonnet 4.6 | 200K | $3 / $15 | Test execution is deterministic |
 | Quality | Sonnet 4.6 | 200K | $3 / $15 | Checklist-driven |
 | Conductor | Sonnet 4.6 | 200K | $3 / $15 | Infrastructure tasks well-defined |
