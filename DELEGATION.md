@@ -34,6 +34,8 @@ Jarvis merges Grok's feedback into the final PLAN.md before dispatching to Coder
 
 **The output: a plan informed by fresh research, drafted by Opus, stress-tested by Grok.**
 
+**Output Parity Checkpoint:** Every PLAN.md for apps with multiple output channels must include a "Delivery Parity" section specifying: (1) which channels exist, (2) how the single source file is served to each, (3) hash verification strategy.
+
 **Explore First (Anthropic Best Practice):** Before creating PLAN.md, Planner MUST:
 1. Read the existing codebase structure (`find . -type f | head -50`, key config files)
 2. Understand current patterns, frameworks, and conventions already in use
@@ -81,6 +83,8 @@ Trigger: explicit coding task where a plan already exists. Must read PLAN.md fir
 **Correctness-First Rule:** Every code change must be provably correct. "It runs without errors" is necessary but NOT sufficient. The OUTPUT must be verified — run the pipeline and check what the user would actually receive.
 
 **Verify Your Work (Anthropic #1 Rule):** After EVERY code change, run the project's test suite. If no tests exist, write at least one smoke test (health endpoint check, lint pass, basic unit test) before creating HANDOFF.md. Never hand off untested code.
+
+**Output Parity Rule:** When code delivers output through multiple channels (email + download, API + UI, etc.), ALL channels must serve the exact same content. Generate once, hash it, serve from one source, verify integrity on every delivery. See PIPELINE.md "Output Parity Rule" for implementation pattern.
 
 **Git-Before-HANDOFF:** `git add . && git commit && git push` before creating HANDOFF.md. Record commit SHA. If no repo exists → `git init` + `gh repo create` first.
 

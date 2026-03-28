@@ -318,6 +318,32 @@ No Docker app ships without an automated E2E test that:
 3. Downloads the output artifact
 4. Asserts content quality (not just existence)
 
+### Output Parity Rule (Standing Change 2026-03-28)
+
+**When an app delivers output through multiple channels (email, download, preview, API), ALL channels MUST serve the exact same content.**
+
+This means:
+1. **Generate once, serve many.** One file is generated and stored. Every channel reads from the same file path.
+2. **Hash verification.** After generating the output file, compute SHA256 and store it. On download, recompute and verify the hash matches — reject if it doesn't.
+3. **No re-generation.** Never re-render or re-generate on download. The download endpoint serves the file as-is.
+4. **No caching surprises.** Set `Cache-Control: no-cache, no-store` and `ETag` on download responses to prevent stale cached versions.
+5. **Audit trail.** Log the hash at generation time and verify it at download time. If they diverge, log an INTEGRITY VIOLATION.
+
+**Implementation pattern:**
+```python
+# At generation time:
+hash = sha256(file_bytes).hexdigest()
+db.store(file_hash=hash)
+
+# At download time:
+current_hash = sha256(read_file()).hexdigest()
+assert current_hash == db.file_hash, "INTEGRITY VIOLATION"
+response.headers["ETag"] = hash
+response.headers["Cache-Control"] = "no-cache, no-store"
+```
+
+**Origin:** Eric directive 2026-03-28 — emailed report had full content, browser download had different/stale content.
+
 ### Docker .env File Rules (Permanent)
 - **NEVER** use inline comments in `.env` files (`KEY=value # comment` → KEY gets truncated)
 - **NEVER** use quotes around values unless they contain spaces
