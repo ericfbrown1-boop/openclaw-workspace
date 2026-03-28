@@ -60,6 +60,8 @@ Action: spawn researcher with a specific brief and source filters.
 
 **UI Link Audit Rule:** Click every nav link and interactive element during QA. Dead links = auto-fail.
 
+**Correctness-First Rule:** Quality Agent's primary job is verifying OUTPUT CORRECTNESS, not just code correctness. A pipeline with no errors that produces empty output has FAILED Quality review.
+
 **A) Error Diagnosis:** Trigger: "error", "failed", "crash", "bug". Quality diagnoses → sends fix to Coder. Never send errors directly to Coder.
 
 **Root Cause Research Rule (MANDATORY):** Before proposing ANY fix, Quality must:
@@ -75,6 +77,8 @@ Action: spawn researcher with a specific brief and source filters.
 
 ## → Coder Agent (agentId: coder)
 Trigger: explicit coding task where a plan already exists. Must read PLAN.md first.
+
+**Correctness-First Rule:** Every code change must be provably correct. "It runs without errors" is necessary but NOT sufficient. The OUTPUT must be verified — run the pipeline and check what the user would actually receive.
 
 **Verify Your Work (Anthropic #1 Rule):** After EVERY code change, run the project's test suite. If no tests exist, write at least one smoke test (health endpoint check, lint pass, basic unit test) before creating HANDOFF.md. Never hand off untested code.
 

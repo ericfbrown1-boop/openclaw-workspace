@@ -1,6 +1,25 @@
 # PIPELINE.md — Code Pipeline, Completion Gates & Dashboard Rules
 > **L1:** 4-phase workflow (Understand→Plan→Implement→Verify), task complexity gate, model tiering with costs, API budget gate, dual-write dashboard rule, test oracle references, E2E verification checklist.
 
+## 🎯 Guiding Principle: CORRECTNESS OF OUTPUT (Standing Change 2026-03-28)
+
+**Output correctness is the north star for the entire SDLC.** Every decision — planning, coding, testing, debugging — optimizes for one thing: the output the user receives must be correct, complete, and verifiable.
+
+This means:
+- **Testing proves output correctness**, not just "no errors." A pipeline that completes without errors but produces empty/wrong output has FAILED.
+- **RCA is the core of all debugging.** When something breaks, don't fix the symptom — find the root cause, fix it permanently, document it so it never recurs.
+- **Quality gates block bad output.** Gates log AND raise — never just log. A bad report must fail, not silently email garbage.
+- **Retry only transient failures.** Rate limits and timeouts retry. Content quality failures do NOT retry — same input produces same bad output.
+- **Silent fallbacks are bugs.** Every fallback to a default/placeholder is a logged WARNING. More than 3 fallbacks = pipeline FAILURE.
+
+| Priority | Principle |
+|----------|-----------|
+| 1 | **Output is correct** (content matches what was requested) |
+| 2 | **Output is complete** (no missing sections, no placeholders) |
+| 3 | **Failures are visible** (never silently succeed with bad output) |
+| 4 | **Root causes are fixed** (not symptoms, not workarounds) |
+| 5 | **Speed** (only after 1-4 are satisfied) |
+
 ## 4-Phase Workflow (MANDATORY for ALL task types)
 
 Every task — code, research, audit, monitoring — follows these 4 phases:

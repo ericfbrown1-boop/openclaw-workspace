@@ -73,7 +73,26 @@ Any agent encounters a failure, timeout, stall, or unexpected behavior.
 3. What knowledge was gained? → Should it become a Skill?
 4. Was PowerSpec fully utilized? → If not, why?
 
-**Priorities:** Stability > Security > Efficiency > Automation
+**Priorities:** Correctness > Stability > Security > Efficiency > Automation
+
+## 🔬 RCA as Core of All Testing & Debugging (Standing Change 2026-03-28)
+
+**Root Cause Analysis is not a post-mortem activity. It is the FIRST step in debugging, not the last.**
+
+When ANY failure occurs:
+1. **STOP** — Do not apply the first fix that comes to mind
+2. **RESEARCH** — Search the exact error message in official docs, Stack Overflow, GitHub issues
+3. **TRACE** — Follow the data flow from input to output. Where does correct data become incorrect?
+4. **VERIFY** — Before applying ANY fix, explain WHY it will work. "This should fix it" is not acceptable. "This fixes it because X was causing Y which led to Z" is.
+5. **TEST THE OUTPUT** — After fixing, verify the OUTPUT is correct, not just that the error is gone
+6. **DOCUMENT** — Add to incidents.jsonl so future sessions don't repeat the investigation
+
+**Every failure must trace to an output correctness gap:**
+- "The report was empty" → WHY was it empty? → synthesis dict nested wrong → test that output content is non-empty
+- "The API key was truncated" → WHY was it truncated? → .env inline comment → validate key length on startup
+- "The parser returned defaults" → WHY did it return defaults? → shared parser with wrong schema → separate parsers per schema
+
+**The anti-pattern we're eliminating:** Fix symptom → ship → same class of bug recurs → fix next symptom → ship → repeat forever. This wastes 10x more time than finding the root cause once.
 
 ## Lessons Learned (2026-03-27): FinancialReportApp Silent Failures
 
