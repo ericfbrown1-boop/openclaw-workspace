@@ -205,7 +205,17 @@ Fields to update: `completedCommit`, `completedAt`, `deliverablePath`, `delivera
 
 **Auto-Wake PowerSpec:** If any queued task has >15min remaining and PowerSpec is offline → 3 wake retries → alert Eric.
 
-**Hybrid Execution:** Load-balance across MacBook + PowerSpec. Record hosts in HANDOFF.md.
+**Port Conflict Check (Standing Change 2026-03-30):**
+Before ANY `pm2 start` or `pm2 restart` on PowerSpec, run:
+```bash
+docker ps --format "{{.Names}} {{.Ports}}" | grep -E "300[0-1]"
+```
+If a Docker container occupies port 3000 or 3001, stop it first. PowerSpec runs many Docker services simultaneously — port collisions cause silent failures where pm2 reports "online" but traffic goes to Docker instead.
+**Origin:** FinancialReportApp Docker container on :3001 intercepted Mission Control backend traffic, causing dashboard to render wrong content.
+
+**Mission Control Health Probe:**
+After starting Mission Control, verify with: `curl -s http://localhost:3001/health | grep MissionControl`
+The backend health endpoint returns `{"app": "MissionControl"}` — if this doesn't match, a port conflict exists.
 
 ## 📋 Global Dispatch Rule (Anthropic Best Practice)
 When dispatching work to ANY agent, Jarvis must always include:
