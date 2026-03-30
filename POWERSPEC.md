@@ -27,9 +27,13 @@ If unreachable: 3 retries (30s apart) → alert Eric → fall back to MacBook ON
 - ANY codebase >10K lines
 - ANY task estimated >15 minutes
 
+## Services Running on PowerSpec
+- **Mission Control Dashboard:** http://100.67.128.123:3000 (Tailscale-accessible)
+- **Mission Control Backend API:** http://100.67.128.123:3001
+- pm2 manages both frontend (port 3000) and backend (port 3001)
+- All Docker builds, test suites, and GPU workloads
+
 ## MUST Run on MacBook
-- pm2 process management (local services)
-- Mission Control UI serving (localhost:3000/3001)
 - OpenClaw gateway operation
 - Tailscale/network management
 - Quick file edits and git operations (<2 min)
