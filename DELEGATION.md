@@ -42,6 +42,17 @@ Jarvis merges Grok's feedback into the final PLAN.md before dispatching to Coder
 
 **Output Parity Checkpoint:** Every PLAN.md for apps with multiple output channels must include a "Delivery Parity" section specifying: (1) which channels exist, (2) how the single source file is served to each, (3) hash verification strategy.
 
+**Learn First (Librarian Feedback Loop — Standing Change 2026-03-30):**
+Before ANY planning begins, Planner MUST read Librarian memory files to absorb past learnings:
+1. Read `~/.claude/projects/C--Users-ericf/memory/MEMORY.md` — index of all captured learnings
+2. Read ALL `feedback_*.md` files referenced in MEMORY.md — these contain rules from past mistakes and validated approaches
+3. Read ALL `project_*.md` files relevant to the domain being planned — these contain deployment details, architecture decisions, and context
+4. Read ALL `reference_*.md` files that may inform the plan — external system pointers, API patterns
+5. Incorporate relevant learnings directly into PLAN.md as explicit constraints or checkpoints
+6. If a feedback memory says "don't do X" or "always do Y", the plan MUST reflect that
+
+**This creates a recursive learning loop:** Agents do work → Librarian captures learnings → Memory files updated → Next plan reads those learnings → Better execution → Librarian captures new learnings → cycle continues.
+
 **Explore First (Anthropic Best Practice):** Before creating PLAN.md, Planner MUST:
 1. Read the existing codebase structure (`find . -type f | head -50`, key config files)
 2. Understand current patterns, frameworks, and conventions already in use
@@ -105,9 +116,43 @@ cd /path/to/project && claude --permission-mode auto --print 'Your task'
 
 **Git-Before-HANDOFF:** `git add . && git commit && git push` before creating HANDOFF.md. Record commit SHA. If no repo exists → `git init` + `gh repo create` first.
 
+**Learn Before Code (Librarian Feedback Loop — Standing Change 2026-03-30):**
+Before writing ANY code, Coder MUST read Librarian memory files for applicable learnings:
+1. Read `~/.claude/projects/C--Users-ericf/memory/MEMORY.md` — index of all captured learnings
+2. Read ALL `feedback_*.md` files — these are hard-won rules from past bugs, deployment failures, and validated approaches
+3. Read `project_*.md` files for the current project — deployment details, architecture decisions, service configurations
+4. Read `reference_*.md` files relevant to the tech stack — API patterns, external system pointers
+5. Apply feedback learnings as code constraints (e.g., if memory says "add boto3 timeouts" → do it in every S3 client)
+6. If a learning conflicts with PLAN.md, raise it — the learning may indicate the plan missed something
+
+**This creates a recursive loop:** Past coding failures are captured by Librarian → stored in feedback memories → read by Coder on next task → prevents recurrence. Each deployment teaches the system.
+
 **Read Before Write:** Before writing any new code, read at least 3 existing files in the project to understand patterns, conventions, and style. Reference existing patterns in your implementation. Don't invent new conventions when the project already has them.
 
 **Hybrid Build Routing:** >15min builds route to PowerSpec. Record host in HANDOFF.md.
+
+**Version Check Rule (Standing Change 2026-03-29):**
+Before using ANY library API, check the installed version:
+- `cat node_modules/<pkg>/package.json | grep version` (Node.js)
+- `pip show <pkg>` (Python)
+Compare with the examples/docs you're referencing. Breaking changes between major versions cause silent failures.
+**Origin:** Ceregent session — pg-boss v10, Stripe SDK, Next.js 15 all had breaking API changes from their docs/examples.
+
+**Next.js Monorepo Standalone Rules (Standing Change 2026-03-29):**
+When deploying Next.js from a monorepo with `output: "standalone"`:
+1. MUST set `outputFileTracingRoot: path.join(__dirname, "../../")` (path to monorepo root)
+2. MUST add `extensionAlias: { ".js": [".ts", ".tsx", ".js"] }` if workspace packages use ESM .js extensions
+3. MUST wrap `useSearchParams()` in `<Suspense>` (Next.js 15+ requirement)
+4. Database connections MUST be lazy (Proxy pattern) — module-level `new Pool()` crashes during build/SSG
+5. Never hardcode PORT in Dockerfile — let the platform assign it
+**Origin:** Ceregent deploy — 5 separate failures all traced to monorepo standalone misconfiguration.
+
+**Secret Safety Rule (Standing Change 2026-03-29):**
+- NEVER use string fallbacks for secrets: `process.env.SECRET || "default"` is a production vulnerability
+- Instead: throw in production, only fallback in development with NODE_ENV check
+- ALL secret comparisons (API keys, webhook signatures, service tokens) must use `crypto.timingSafeEqual()`
+- After ANY variable rename/refactor, grep for the old name to catch missed references
+**Origin:** Ceregent Quality Agent caught 3 security issues in one audit.
 
 **J3 — Deployment Readiness Gate (4 checks):**
 - (a) `docker build .` succeeds
@@ -180,9 +225,24 @@ See `skills/monitor/SKILL.md` for the full 11-step sweep checklist.
 4. Every failure triggers RCA (see `INCIDENTS.md`)
 
 ## → Librarian Agent (agentId: librarian)
-Trigger: AFTER External Auditor completes; post-deployment review.
+Trigger: AFTER External Auditor completes; post-deployment review; after any Railway/Docker deployment; on user request ("run Librarian").
 
 **Incident-Driven Learning:** Weekly scan `memory/incidents.jsonl` for patterns (>2 same category). Propose AGENTS.md/SKILL.md updates. Track in `memory/skill-suggestions.md`.
+
+**Memory File Output (Standing Change 2026-03-30):**
+Librarian writes learnings to `~/.claude/projects/C--Users-ericf/memory/` using these types:
+- `feedback_*.md` — Rules from mistakes and validated approaches (highest priority for Planner + Coder)
+- `project_*.md` — Deployment details, architecture decisions, service configurations
+- `reference_*.md` — External system pointers, API patterns, tool usage guides
+- `user_*.md` — User preferences and role context
+Each file uses YAML frontmatter (name, description, type) and MEMORY.md is the index.
+
+**Recursive Loop Contract:**
+1. After every deployment or significant coding session, Librarian captures learnings as memory files
+2. Planner reads ALL memory files before creating PLAN.md (see "Learn First" rule)
+3. Coder reads ALL memory files before writing code (see "Learn Before Code" rule)
+4. This means every bug fixed, every deployment pattern discovered, every user preference recorded automatically improves all future work
+5. Librarian should prefer updating existing memory files over creating new ones to avoid bloat
 
 ## Subagent Timeout Policy (Standing Change 2026-03-27)
 
