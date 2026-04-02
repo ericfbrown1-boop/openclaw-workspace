@@ -1,20 +1,22 @@
 # POWERSPEC.md — Mandatory PowerSpec-First Execution Policy
-> **L1:** What runs where. PowerSpec (RTX 5080, 32 vCPU, 128GB) gets Docker, tests, GPU, >15min tasks. MacBook gets gateway, pm2, email. SSH via Tailscale. Pre-task ping mandatory.
+> **L1:** What runs where. PowerSpec (RTX 5080, 24-core i9, 128GB) gets Docker, tests, GPU, >15min tasks. MacBook gets gateway, pm2, email. SSH via Tailscale. Pre-task ping mandatory.
 
 ## ⚠️ PowerSpec is the PRIMARY compute resource. Not optional.
 
-**SSH:** `ssh ericf@100.67.128.123`
-**Tailscale hostname:** remote-coder-main
-**IP:** 100.67.128.123
-**OS:** Windows 11 25H2 (WSL2 + Docker available)
-**CPU:** 32 vCPUs | **RAM:** 128 GB | **GPU:** NVIDIA RTX 5080 (16GB VRAM, CUDA 13.1)
-**Docker:** Docker Desktop with NVIDIA Container Toolkit
+**SSH:** `ssh "Eric Brown@100.81.21.114"`
+**Tailscale hostname:** powerspecpc
+**IP:** 100.81.21.114
+**OS:** Windows 11 Home 25H2 (Build 26200)
+**CPU:** Intel Core i9-14900KF — 24 cores / 32 threads, 3.2 GHz
+**RAM:** 128 GB DDR5
+**GPU:** NVIDIA RTX 5080 (16GB VRAM, Driver 595.97, CUDA 13.2)
+**Docker:** Docker Desktop 29.3.1 with WSL2 backend + NVIDIA GPU passthrough
 **PyTorch:** Nightly build required (cu128) — stable releases do NOT support Blackwell sm_120 architecture
 **CUDA Toolkit:** 12.8.0 (cudnn-devel)
 
 ## Pre-Task Check (MANDATORY)
 ```bash
-tailscale ping remote-coder-main && ssh ericf@100.67.128.123 "hostname && nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader"
+tailscale ping powerspecpc && ssh "Eric Brown@100.81.21.114" "hostname && nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader"
 ```
 If unreachable: 3 retries (30s apart) → alert Eric → fall back to MacBook ONLY with Eric's acknowledgment → log in `memory/incidents.jsonl`.
 
@@ -45,12 +47,17 @@ If unreachable: 3 retries (30s apart) → alert Eric → fall back to MacBook ON
 **Git approach (preferred):**
 ```bash
 # On PowerSpec — pull latest from GitHub
-ssh ericf@100.67.128.123 "powershell -Command \"git -C C:\\Users\\ericf\\projects\\<project> pull origin main\""
+ssh "Eric Brown@100.81.21.114" "powershell -Command \"cd 'C:\\Users\\Eric Brown\\projects\\<project>'; git pull origin main\""
+```
+
+**SCP approach:**
+```bash
+scp localfile "Eric Brown@100.81.21.114:C:/Users/Eric Brown/projects/<project>/"
 ```
 
 **WSL for Linux tools:**
 ```bash
-ssh ericf@100.67.128.123 "powershell -Command \"wsl bash /path/to/script.sh\""
+ssh "Eric Brown@100.81.21.114" "wsl bash /path/to/script.sh"
 ```
 
 ## Planner Rule
@@ -75,20 +82,19 @@ Check PowerSpec utilization every 5 minutes. GPU util <5% while tasks queued →
 ## Docker GPU Passthrough Commands
 ```bash
 # Build GPU-enabled container
-ssh ericf@100.67.128.123 "docker build -t myapp -f Dockerfile.gpu ."
+ssh "Eric Brown@100.81.21.114" "docker build -t myapp -f Dockerfile.gpu ."
 
 # Run with GPU access
-ssh ericf@100.67.128.123 "docker run --gpus all -v /home/ericf/data:/data myapp"
-
-# Jupyter with GPU
-ssh ericf@100.67.128.123 "docker run --gpus all -it -p 8888:8888 mydev jupyter notebook --ip=0.0.0.0 --no-browser --allow-root"
+ssh "Eric Brown@100.81.21.114" "docker run --gpus all -v /home/ericf/data:/data myapp"
 
 # Verify GPU inside container
-ssh ericf@100.67.128.123 "docker run --gpus all nvidia/cuda:12.8.0-base-ubuntu22.04 nvidia-smi"
+ssh "Eric Brown@100.81.21.114" "docker run --gpus all nvidia/cuda:12.8.0-base-ubuntu22.04 nvidia-smi"
 ```
 
 ## Critical Notes
 - **PyTorch nightly is required** for RTX 5080 (Blackwell sm_120). Stable PyTorch (cu124) will NOT work.
 - **Docker Desktop must be running** before any WSL2 or Dev Container work.
-- **SSH keys inside containers** don't persist across rebuilds — regenerate if container is rebuilt.
+- **Docker credential helpers renamed** — SSH sessions can't access Windows Credential Manager. `credsStore` is set to `""` in config.json.
+- **Windows username has a space** — always quote: `"Eric Brown@100.81.21.114"`
+- **Old drive at D:** — previous Windows install with old configs at D:\Users\ericf\
 - **Always use PowerShell 7** (`pwsh`) on Windows, not PowerShell 5.x (TLS failures).

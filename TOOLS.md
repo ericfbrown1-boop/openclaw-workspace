@@ -62,7 +62,7 @@ Add whatever helps you do your job. This is your cheat sheet.
 - **Devices:**
   - erics-macbook-pro: 100.101.203.113 (macOS)
   - iphone172: 100.86.157.19 (iOS)
-  - remote-coder-main: 100.67.128.123 (Windows 11)
+  - powerspecpc: 100.81.21.114 (Windows 11)
 - **Funnel:** Active on MacBook (port 3334 → voice call webhook)
 - **Troubleshooting:** If CLI says "failed to connect" → check `which tailscale` (must be `/usr/local/bin/tailscale`, not `/opt/homebrew/bin/tailscale`)
 
@@ -75,19 +75,26 @@ Add whatever helps you do your job. This is your cheat sheet.
 - **Dropbox account:** Eric's personal (not Jarvis's)
 - **Gmail backup:** Use `mcporter call zapier.gmail_send_email` when gog CLI fails
 
-## Windows Remote Coder PC (remote-coder-main)
-- **Tailscale IP:** 100.67.128.123
-- **Hostname:** remote-coder-main / efbpowerspec
-- **OS:** Windows 11 25H2
-- **CPU:** 32 vCPUs
-- **RAM:** 128 GB
-- **GPU:** NVIDIA RTX 5080 Blackwell (CUDA 13.1)
-- **SSH User:** ericf (key-based login trusted; uses ~/.ssh/id_ed25519)
-- **SSH Command:** `ssh ericf@100.67.128.123` (BatchMode works)
-- **Docker:** Docker Desktop with NVIDIA Container Toolkit (GPU passthrough via WSL2)
-- **Git:** Configured with Eric's GitHub credentials
-- **Tailscale key expiry:** Disabled (permanent access)
-- **Ping test:** `tailscale ping remote-coder-main` (28ms via DERP/SFO)
+## Windows Remote Coder PC (powerspecpc)
+- **Tailscale IP:** 100.81.21.114
+- **Hostname:** powerspecpc (was remote-coder-main before Apr 2026 rebuild)
+- **OS:** Windows 11 Home 25H2 (Build 26200)
+- **CPU:** Intel Core i9-14900KF — 24 cores / 32 threads, 3.2 GHz
+- **RAM:** 128 GB DDR5
+- **GPU:** NVIDIA RTX 5080 16GB (Driver 595.97, CUDA 13.2)
+- **SSH User:** "Eric Brown" (key-based login; uses ~/.ssh/id_ed25519)
+- **SSH Command:** `ssh "Eric Brown@100.81.21.114"` (BatchMode works)
+- **Docker:** Docker Desktop 29.3.1 with WSL2 backend + NVIDIA GPU passthrough
+- **Docker credential fix:** `credsStore` set to `""` and desktop/wincred helpers renamed (SSH can't access Windows Credential Manager)
+- **WSL:** WSL 2.6.3, docker-desktop distribution
+- **Git:** Git 2.53.0, GitHub CLI 2.89.0, authenticated as ericfbrown1-boop
+- **Python:** 3.12.10
+- **Node.js:** v24.14.1
+- **Ping test:** `tailscale ping powerspecpc` (~30ms via DERP/SFO)
+
+### Running Docker Services
+- **FinancialReportApp:** API :8001, Frontend :3001, Postgres :5433, Redis :6380, Celery worker
+- **ContractAnalyzer:** API :8000, Postgres :5432, Redis :6379, MinIO :9000/:9001, Celery worker
 
 ### Use for (heavy workloads):
 - GPU/CUDA workloads (PyTorch, TensorFlow, RAPIDS)
@@ -100,15 +107,14 @@ Add whatever helps you do your job. This is your cheat sheet.
 - Light web apps, simple API servers
 - Quick fixes and small changes
 
-### SSH Notes (updated 2026-03-18)
-1. `sshd_config` already patched (PasswordAuthentication yes, Match block commented).
-2. Windows host trusts the MacBook's default `~/.ssh/id_ed25519` key (stored in `C:/Users/ericf/.ssh/authorized_keys`).
-3. Connectivity test from Mac: `tailscale ping remote-coder-main` then `ssh ericf@100.67.128.123 hostname` (returns `EFBPowerSpec`).
-4. If SSH breaks, re-open `C:/ProgramData/ssh/sshd_config`, confirm settings, and run `Restart-Service sshd`.
-5. Optional convenience: add `Host remote-coder-main` block to `~/.ssh/config` pointing to this host/key.
+### SSH Notes (updated 2026-04-01)
+1. OpenSSH Server installed via `Add-WindowsCapability`.
+2. MacBook key in `C:/ProgramData/ssh/administrators_authorized_keys` and `C:/Users/Eric Brown/.ssh/authorized_keys`.
+3. Test: `tailscale ping powerspecpc` then `ssh "Eric Brown@100.81.21.114" hostname` (returns `PowerSpecPC`).
+4. If SSH breaks: `Restart-Service sshd` on the PC.
+5. **Important:** Windows user has a space ("Eric Brown") — always quote the username.
 
-### Network Topology (discovered 2026-03-28)
-- **PowerSpec LAN IP:** 192.168.88.158 (Ethernet 2) — different subnet from MacBook (192.168.3.x)
-- **No LAN fallback:** If Tailscale is down on PowerSpec, SSH is unreachable from MacBook (no same-subnet path)
+### Network Topology (updated 2026-04-01)
+- **No LAN fallback:** MacBook and PowerSpec on different subnets — Tailscale is the only path
 - **If Tailscale drops:** Alert Eric immediately — only fix is physically opening Tailscale app on the PC
-- **WSL bridge:** 172.28.144.1 (internal only, not routable from Mac)
+- **Old drive (D:):** Previous Windows install accessible — has old project files and configs at D:\Users\ericf\
