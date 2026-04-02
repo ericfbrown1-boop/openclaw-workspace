@@ -130,3 +130,24 @@
 - **Correctness-First**: Output correctness > completeness > visible failures > root causes > speed
 - **Output Parity**: All delivery channels (email, download, API) serve identical content, SHA256-verified
 - **RCA Core**: Root cause analysis is step 1 of debugging, not post-mortem
+
+## PowerSpec Rebuild (2026-04-01)
+- OS crashed connecting Dell 6K monitor — fresh Windows 11 installed on new NVMe
+- Full rebuild completed in ~2 hours via Tailscale + SSH from MacBook
+- **Rebuild guide:** `memory/powerspec-rebuild-guide.md` — comprehensive step-by-step reference
+- **Key lesson:** ASRock Z790-C has NO built-in Windows drivers for LAN or WiFi — must load from old NVMe DriverStore or USB
+- **Driver paths on old drive:** `D:\Windows\System32\DriverStore\FileRepository\e1d.inf_*` (LAN) and `e2xw10x64.inf_*` (WiFi)
+- **New Tailscale:** hostname `powerspecpc`, IP `100.81.21.114` (was `remote-coder-main` / `100.67.128.123`)
+- **New SSH user:** "Eric Brown" with space (was `ericf`) — must quote in commands
+- **Docker credential fix:** Renamed desktop/wincred helpers, set credsStore="" (SSH can't access Windows Credential Manager)
+- **10 containers restored:** FinancialReportApp (5) + ContractAnalyzer (5)
+- **Old drive accessible at D:** — has previous configs, .env files, project files at D:\Users\ericf\
+
+## Dell U5226KW 6K Monitor
+- Model: Dell UltraSharp U5226KW — 52" curved, 6K (6144x2560), 120Hz, 21:9
+- Connection: DisplayPort 1.4 with DSC from RTX 5080 (UGREEN DP 2.1 cable ordered)
+- **CRITICAL:** Previous connection attempt crashed Windows — use cold-plug procedure only
+- Cold-plug: Shut down PC → connect cable → turn on monitor → wait 5s → power on PC
+- Start at 60Hz, then increase to 120Hz once stable
+- Inputs available: 2x HDMI 2.1, 2x DisplayPort 1.4, 1x Thunderbolt 4, 3x USB-C upstream
+- Built-in: KVM switch, 2.5GbE Ethernet, USB hub, 2x9W speakers
