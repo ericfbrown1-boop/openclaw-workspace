@@ -34,27 +34,6 @@ Things like:
 - **Command:** `sag -v hpp4J3VqNfWAUOO0d1Us "your text here"`
 - **For files:** `sag -v hpp4J3VqNfWAUOO0d1Us -o output.mp3 "your text here"`
 
-## Examples
-
-```markdown
-### Cameras
-
-- living-room → Main area, 180° wide angle
-- front-door → Entrance, motion-triggered
-
-### SSH
-
-- home-server → 192.168.1.100, user: admin
-```
-
-## Why Separate?
-
-Skills are shared. Your setup is yours. Keeping them apart means you can update skills without losing your notes, and share skills without leaking your infrastructure.
-
----
-
-Add whatever helps you do your job. This is your cheat sheet.
-
 ## Tailscale Configuration
 - **Installation:** Mac App Store version ONLY (no Homebrew — causes CLI conflicts)
 - **CLI path:** `/usr/local/bin/tailscale`
@@ -78,10 +57,29 @@ Add whatever helps you do your job. This is your cheat sheet.
 ## Windows Remote Coder PC (powerspecpc)
 - **Tailscale IP:** 100.81.21.114
 - **Hostname:** powerspecpc (was remote-coder-main before Apr 2026 rebuild)
+- **System Model:** MicroElectronics G484 (PowerSpec brand)
+- **Motherboard:** ASRock Z790-C
+- **BIOS:** Version 19.01.MC01 (dated 2025-12-04)
 - **OS:** Windows 11 Home 25H2 (Build 26200)
-- **CPU:** Intel Core i9-14900KF — 24 cores / 32 threads, 3.2 GHz
-- **RAM:** 128 GB DDR5
-- **GPU:** NVIDIA RTX 5080 16GB (Driver 595.97, CUDA 13.2)
+- **CPU:** Intel Core i9-14900KF — 24 cores / 32 threads, 3.2 GHz base
+  - L2 Cache: 32 MB, L3 Cache: 36 MB
+  - Family 6 Model 183 Stepping 1
+- **RAM:** 128 GB DDR5 (94.81 GB available at last scan)
+- **GPU:** NVIDIA GeForce RTX 5080 16GB
+  - Driver: 32.0.15.9597 (dated 2026-03-17, CUDA 13.2)
+  - Current resolution: 1920x1200 @ 59Hz (max 75Hz)
+  - PCI Device ID: PCI\VEN_10DE&DEV_2C02&SUBSYS_89D71043&REV_A1\4&341CA995&0&0008
+- **Storage:**
+  - C: Samsung SSD 990 NVMe, 1863 GB, 1608 GB free (new boot drive)
+    - Serial: 0025_385A_51A2_CE22, Firmware: 2B2QKXG7
+  - D: SK Hynix SHPP41-2000GM NVMe, 1863 GB, 1321 GB free (old boot drive)
+    - Serial: ACE4_2E00_5584_22D1_2EE4_AC00_0000_0001, Firmware: 51061A20
+- **Audio:** Realtek ALC897 (v6.0.9844.1) + NVIDIA HD Audio
+- **Network:**
+  - Intel i219V Ethernet: Driver v12.19.2.60, MAC 9C:6B:00:C8:68:BB
+  - MediaTek WiFi (802.11): Driver v3.4.0.1123, MAC F4:28:9D:3F:AB:6D
+  - Bluetooth: MAC F4:28:9D:3F:AB:6E
+  - WireGuard/Tailscale tunnel: wintun v0.14.0.0
 - **SSH User:** "Eric Brown" (key-based login; uses ~/.ssh/id_ed25519)
 - **SSH Command:** `ssh "Eric Brown@100.81.21.114"` (BatchMode works)
 - **Docker:** Docker Desktop 29.3.1 with WSL2 backend + NVIDIA GPU passthrough
@@ -118,3 +116,12 @@ Add whatever helps you do your job. This is your cheat sheet.
 - **No LAN fallback:** MacBook and PowerSpec on different subnets — Tailscale is the only path
 - **If Tailscale drops:** Alert Eric immediately — only fix is physically opening Tailscale app on the PC
 - **Old drive (D:):** Previous Windows install accessible — has old project files and configs at D:\Users\ericf\
+
+## Dell U5226KW 6K Monitor
+- Model: Dell UltraSharp U5226KW — 52" curved, 6K (6144x2560), 120Hz, 21:9
+- Connection: DisplayPort 1.4 with DSC from RTX 5080 (UGREEN DP 2.1 cable ordered)
+- **CRITICAL:** Previous connection attempt crashed Windows — use cold-plug procedure only
+- Cold-plug: Shut down PC → connect cable → turn on monitor → wait 5s → power on PC
+- Start at 60Hz, then increase to 120Hz once stable
+- Inputs available: 2x HDMI 2.1, 2x DisplayPort 1.4, 1x Thunderbolt 4, 3x USB-C upstream
+- Built-in: KVM switch, 2.5GbE Ethernet, USB hub, 2x9W speakers
