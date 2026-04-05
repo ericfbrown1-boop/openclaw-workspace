@@ -57,33 +57,89 @@ Things like:
 ## Windows Remote Coder PC (powerspecpc)
 - **Tailscale IP:** 100.81.21.114
 - **Hostname:** powerspecpc (was remote-coder-main before Apr 2026 rebuild)
-- **System Model:** MicroElectronics G484 (PowerSpec brand)
-- **Motherboard:** ASRock Z790-C
-- **BIOS:** Version 19.01.MC01 (dated 2025-12-04)
+- **System Model:** MicroElectronics G484 (PowerSpec brand from MicroCenter)
 - **OS:** Windows 11 Home 25H2 (Build 26200)
-- **CPU:** Intel Core i9-14900KF — 24 cores / 32 threads, 3.2 GHz base
-  - L2 Cache: 32 MB, L3 Cache: 36 MB
-  - Family 6 Model 183 Stepping 1
-- **RAM:** 128 GB DDR5 (94.81 GB available at last scan)
-- **GPU:** NVIDIA GeForce RTX 5080 16GB
-  - Driver: 32.0.15.9597 (dated 2026-03-17, CUDA 13.2)
-  - Current resolution: 1920x1200 @ 59Hz (max 75Hz)
-  - PCI Device ID: PCI\VEN_10DE&DEV_2C02&SUBSYS_89D71043&REV_A1\4&341CA995&0&0008
-- **Storage:**
-  - C: Samsung SSD 990 NVMe, 1863 GB, 1608 GB free (new boot drive)
-    - Serial: 0025_385A_51A2_CE22, Firmware: 2B2QKXG7
-  - D: SK Hynix SHPP41-2000GM NVMe, 1863 GB, 1321 GB free (old boot drive)
-    - Serial: ACE4_2E00_5584_22D1_2EE4_AC00_0000_0001, Firmware: 51061A20
-- **Audio:** Realtek ALC897 (v6.0.9844.1) + NVIDIA HD Audio
-- **Network:**
-  - Intel i219V Ethernet: Driver v12.19.2.60, MAC 9C:6B:00:C8:68:BB
-  - MediaTek WiFi (802.11): Driver v3.4.0.1123, MAC F4:28:9D:3F:AB:6D
-  - Bluetooth: MAC F4:28:9D:3F:AB:6E
-  - WireGuard/Tailscale tunnel: wintun v0.14.0.0
+
+### Motherboard: ASRock Z790-C (detailed spec from ASRock, updated 2026-04-05)
+- **Chipset:** Intel Z790
+- **BIOS:** 128Mb AMI UEFI, Version 19.01.MC01 (dated 2025-12-04)
+- **Form Factor:** ATX (12.0" x 9.6" / 30.5 cm x 24.4 cm)
+- **CPU Socket:** LGA1700 — supports 14th, 13th & 12th Gen Intel Core
+  - Intel Hybrid Technology, Turbo Boost Max 3.0, TVB, ABT supported
+- **Power Design:** 14+1+1 phase, 50A Dr.MOS for VCore+GT
+  - 1x 24-pin ATX, 2x 8-pin 12V (Hi-Density)
+- **Memory:** 4x DDR5 DIMM slots, dual-channel, max 256 GB
+  - 1DPC 1R: up to 6800+ MHz (OC), 4800 MHz native
+  - 1DPC 2R: up to 6000+ MHz (OC), 4400 MHz native
+  - Supports Intel XMP 3.0
+- **PCIe Slots:**
+  - PCIE1: PCIe 5.0 x16 (from CPU) — **GPU slot**
+  - PCIE4: PCIe 4.0 x16 (chipset, wired x4)
+  - PCIE5: PCIe 3.0 x16 (chipset, wired x1)
+  - PCIE2, PCIE3: PCIe 3.0 x1
+  - M.2 Key-E: for WiFi/BT module (type 2230)
+- **M.2 Storage Slots:**
+  - M2_1 (CPU): PCIe Gen4x4, type 2260/2280
+  - M2_2 (Chipset): PCIe Gen4x4, type 2242/2260/2280
+  - M2_3 (Chipset): PCIe Gen4x4 or SATA3, type 2260/2280
+  - M2_4 (Chipset): PCIe Gen4x4, type 2260/2280
+- **SATA:** 4x SATA3 6.0 Gb/s
+- **RAID:** SATA: 0/1/5/10; M.2 NVMe: 0/1/5 (Intel VMD supported)
+- **USB Ports:**
+  - Rear: 1x USB 3.2 Gen2x2 Type-C (20 Gb/s), 1x USB 3.2 Gen2 Type-A (10 Gb/s), 5x USB 3.2 Gen1 Type-A, 1x USB 2.0
+  - Front headers: 1x USB 3.2 Gen1 Type-C, 2x USB 3.2 Gen1 headers (4 ports), 1x USB 2.0 header (2 ports)
+- **LAN:** Intel I219V Gigabit (10/100/1000)
+- **WiFi:** 802.11ac module (dual-band 2.4/5 GHz, up to 433 Mbps) + Bluetooth
+- **Audio:** Realtek ALC897 (7.1 CH HD Audio)
+- **Rear Panel:** 2x antenna, PS/2, HDMI, USB ports (above), RJ-45, HD audio jacks (line in/front speaker/mic)
+- **Connectors:** Thunderbolt 4 AIC header (5-pin), 1x RGB LED, 3x ARGB, 6x fan headers (CPU + 5 chassis), eDP, SPI TPM
+- **Driver downloads:** https://www.asrock.com/MB/Intel/Z790-C/Download.asp
+
+### CPU: Intel Core i9-14900KF
+- 24 cores / 32 threads, 3.2 GHz base
+- L2 Cache: 32 MB, L3 Cache: 36 MB
+- Family 6 Model 183 Stepping 1, Processor ID: 0xB0671
+- No integrated GPU (KF variant) — discrete GPU required
+
+### GPU: NVIDIA GeForce RTX 5080 16GB
+- Driver: 32.0.15.9597 (dated 2026-03-17), CUDA 13.2
+- Current resolution: 1920x1200 @ 59Hz (max 75Hz)
+- PCI bus 1, device 0, function 0
+- Device ID: PCI\VEN_10DE&DEV_2C02&SUBSYS_89D71043&REV_A1\4&341CA995&0&0008
+- In PCIE1 slot (PCIe 5.0 x16)
+
+### RAM: 128 GB DDR5
+- 94.81 GB available at last scan
+- Virtual memory: 144.89 GB total, page file: C:\pagefile.sys (17 GB)
+
+### Storage
+- **C: (Boot)** Samsung SSD 990 NVMe, 1863 GB, 1608 GB free
+  - Serial: 0025_385A_51A2_CE22, Firmware: 2B2QKXG7
+  - Device: SCSI\DISK&VEN_NVME&PROD_SAMSUNG_SSD_990\5&BF4CBCD&0&000000
+- **D: (Old boot)** SK Hynix SHPP41-2000GM NVMe, 1863 GB, 1321 GB free
+  - Serial: ACE4_2E00_5584_22D1_2EE4_AC00_0000_0001, Firmware: 51061A20
+  - Device: SCSI\DISK&VEN_NVME&PROD_SHPP41-2000GM\5&1B178F10&0&000000
+
+### Audio
+- Realtek ALC897: RTKVHD64.sys v6.0.9844.1
+  - Device: HDAUDIO\FUNC_01&VEN_10EC&DEV_0897&SUBSYS_18493897&REV_1004\4&18FC4C1C&0&0001
+- NVIDIA HD Audio: nvhda64v.sys v1.4.5.7
+- NVIDIA Virtual Audio: nvvad64v.sys v4.65.0.12
+
+### Network
+- **Intel i219V Ethernet:** Driver v12.19.2.60, MAC 9C:6B:00:C8:68:BB, service e1dexpress
+  - Device: PCI\VEN_8086&DEV_0DC8&SUBSYS_0DC81849&REV_11\3&11583659&0&FE
+- **MediaTek WiFi (802.11ac):** Driver v3.4.0.1123, MAC F4:28:9D:3F:AB:6D, service mtkwlex
+  - Device: PCI\VEN_14C3&DEV_0616&SUBSYS_061614C3&REV_00\4&1BD763EC&0&00E0
+- **Bluetooth:** MAC F4:28:9D:3F:AB:6E, service BthPan
+- **WireGuard/Tailscale:** wintun v0.14.0.0
+  - Device: SWD\WINTUN\{37217669-42DA-4657-A55B-0D995D328250}
+
+### Software & Remote Access
 - **SSH User:** "Eric Brown" (key-based login; uses ~/.ssh/id_ed25519)
 - **SSH Command:** `ssh "Eric Brown@100.81.21.114"` (BatchMode works)
 - **Docker:** Docker Desktop 29.3.1 with WSL2 backend + NVIDIA GPU passthrough
-- **Docker credential fix:** `credsStore` set to `""` and desktop/wincred helpers renamed (SSH can't access Windows Credential Manager)
+- **Docker credential fix:** `credsStore` set to `""` and desktop/wincred helpers renamed
 - **WSL:** WSL 2.6.3, docker-desktop distribution
 - **Git:** Git 2.53.0, GitHub CLI 2.89.0, authenticated as ericfbrown1-boop
 - **Python:** 3.12.10
