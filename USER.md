@@ -16,7 +16,11 @@
 - **Farm/vineyard:** 3553 Old Mission Road, Traverse City MI 49686 (tracked for IRS Form F)
   - **Farm vendors:** Agrivine (vineyard labor), Manigold Orchards (cherry/pear tree maintenance), Ginops (farm equipment)
 - **Rental property 1:** 3469 Old Mission Road, Traverse City MI 49686 (managed by Soper Services)
-- **Rental property 2:** 100 Main Street, Los Altos CA 94022
+- **Rental property 2:** 100 1st Street #209, Los Altos CA 94022
+- **Lot (sold 2024):** 3503 Golf Club Drive, Lot #27, Clear Creek Tahoe, Carson City NV 89705
+  - Purchased: Oct 16, 2020 for $795,500 (cash, no loan) + $50,000 social membership fee
+  - Buyers: Eric Brown & Hyun-Ju Park (Brown Park Family Trust)
+  - Closing: Signature Title Company LLC, Zephyr Cove NV
 
 ## Work
 - **Company:** Cohesity
@@ -29,6 +33,7 @@
 - **Boat shopping:** Researching Marlow Explorer CB 58/62/66 and similar 58-66' boats
 - **Future plans:** Cruising in Seattle, Puget Sound, SF Bay, Delta when retired
 - **AI/Technology:** Learning OpenClaw use cases
+- **Home office upgrades:** Interested in Apple Studio, Dell Alienware 16/18" laptops, and other high-end deals at MicroCenter Santa Clara
 
 ## Key Operating Rules
 
@@ -89,12 +94,17 @@
 - Evaluate cash flow, operating, and non-GAAP gross margin trends plus any product/use-case callouts driving performance; summarize valuation (revenue, ARR, non-GAAP operating income multiples).
 - Use Claude Opus 4.6 or Grok 4.20 Beta for these deep dives, and deliver the final write-up as a Word document emailed to both ericfbrown1@gmail.com and Eric.brown@cohesity.com.
 
+### Tax Preparation Workflow
+- When asked to perform tax analysis or document collection/analysis for tax preparation, use all available Skills (Gmail search, Google Sheets, Dropbox, etc.) to gather and organize relevant documents and data.
+
 ### Daily Tasks
-- **6 AM PT daily briefing email:** Include (1) Gmail tax/urgent items, (2) any same-day calendar conflicts, (3) five fresh AI/OpenClaw/Claude CoWork automation ideas tailored to Cohesity's core stack (Salesforce, Snowflake, M365/OneDrive/SharePoint, Zoom, Workday, Slack), (4) competitive/stock news for Rubrik, Commvault, and Veeam, (5) Anthropic ecosystem daily update—scan for new best practices, blog posts, changelog entries, and documentation updates for Claude Code, CoWork, Chat, Agent SDK, Skills, and MCP from anthropic.com, code.claude.com, support.claude.com, and the Anthropic blog—and (6) a quick system health/security update.
+- **6 AM PT daily briefing email:** Include (1) Gmail tax/urgent items, (2) any same-day calendar conflicts, (3) **Top 5 Claude / Claude CoWork / Claude Code use cases for Cohesity** — scan trending posts, videos, blogs, and highly-rated secure GitHub projects each day for the best examples of Claude-powered automation that can improve Eric's efficiency at Cohesity across Salesforce, Snowflake, M365/OneDrive/SharePoint, Zoom, Workday, Slack; include links to sources and repos, (4) competitive/stock news for Rubrik, Commvault, and Veeam, (5) Anthropic ecosystem daily update—scan for new best practices, blog posts, changelog entries, and documentation updates for Claude Code, CoWork, Chat, Agent SDK, Skills, and MCP from anthropic.com, code.claude.com, support.claude.com, and the Anthropic blog—and (6) a quick system health/security update.
+- **Sources for Claude use cases (section 3):** Search Twitter/X, YouTube, Reddit r/ClaudeAI, Hacker News, Product Hunt, GitHub trending, LinkedIn, and tech blogs for the latest Claude/CoWork/Code automation examples, workflows, and repos. Prioritize: (a) CFO/COO productivity wins, (b) enterprise SaaS integrations (Salesforce, Snowflake, Slack, M365), (c) financial analysis automation, (d) secure/tested GitHub repos with >50 stars, (e) novel CoWork scheduled tasks and plugin patterns.
 - **Pre-briefing system checks:** Run `openclaw doctor`, install available OpenClaw updates, perform a security/port sweep for malware or misuse on the MacBook, and note any newly released standard OpenClaw skills.
 - **Gmail monitoring:** Scan daily for tax-related or urgent messages; document qualifying tax items in the shared "Income Tax Tracking Items" Google Sheet with columns: date received, sender, description, type, Gmail link, comments/questions.
 - **Competitive & market watch:** Keep an eye on stock/market updates for Rubrik, Commvault, and Veeam and flow notable changes into the next briefing.
 - **Anthropic ecosystem watch:** Daily scan of anthropic.com/blog, code.claude.com/docs, support.claude.com, and Claude changelog for new features, best practices updates, security advisories, and Skills/MCP/CoWork improvements. Summarize any changes in the briefing.
+- **MicroCenter price check:** Check MicroCenter Santa Clara for best prices on Apple Studio, Dell Alienware 16/18" laptops, and any other notable home office upgrade deals. Include standout deals in the daily briefing.
 
 ---
 
