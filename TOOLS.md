@@ -45,11 +45,21 @@ Things like:
 - **Funnel:** Active on MacBook (port 3334 → voice call webhook)
 - **Troubleshooting:** If CLI says "failed to connect" → check `which tailscale` (must be `/usr/local/bin/tailscale`, not `/opt/homebrew/bin/tailscale`)
 
+
+## Dropbox (Primary: Native MCP)
+- **MCP Server:** https://mcp.dropbox.com/mcp (native Dropbox Connector)
+- **Priority:** ALWAYS use native Dropbox MCP first — it supports full read/write/share
+- **Capabilities:** list_folder, get_file_metadata, create_file, create_folder, create_shared_link, get_file_content
+- **Account:** Eric personal Dropbox (ericfbrown1@gmail.com)
+- **Reports folder:** /Jarvis/reports/ (create if missing)
+- **Fallback:** Only use Zapier MCP Dropbox if native MCP fails or is unavailable (see Zapier MCP section below)
+- **Tested:** 2026-04-09 — native MCP confirmed working, Zapier MCP erroring
+
 ## Zapier MCP (20 tools via mcporter)
 - **Config:** `~/.openclaw/workspace/config/mcporter.json`
 - **Gmail:** send_email, find_email, create_draft, create_draft_reply, get_attachment_by_filename
 - **Google Sheets:** lookup_rows, find_worksheet, create_row, create_multiple_rows, create_spreadsheet, create_worksheet, create_column, conditional_formatting
-- **Dropbox:** find_file, find_folder, find_file_content_search, create_shared_link
+- **Dropbox (FALLBACK ONLY):** find_file, find_folder, find_file_content_search, create_shared_link — use only if native Dropbox MCP unavailable
 - **All params must be strings** — use `--args '{...}'` for JSON
 - **Dropbox account:** Eric's personal (not Jarvis's)
 - **Gmail backup:** Use `mcporter call zapier.gmail_send_email` when gog CLI fails

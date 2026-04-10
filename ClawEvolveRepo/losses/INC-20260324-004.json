@@ -1,0 +1,11 @@
+{
+  "id": "INC-20260324-004",
+  "description": "Weekly competitor analysis (8c2533e1) failed: Telegram message too long (400 Bad Request)",
+  "category": "cron",
+  "agent": "monitor",
+  "project": "mission-control",
+  "source": "incidents.jsonl",
+  "recorded_at": "20260407T215545Z",
+  "status": "loss",
+  "reason": "Need to add explicit char limit enforcement in payload or post-processing"
+}

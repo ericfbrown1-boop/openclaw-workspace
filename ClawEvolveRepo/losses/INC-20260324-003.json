@@ -1,0 +1,11 @@
+{
+  "id": "INC-20260324-003",
+  "description": "Monitor Sweep (7b0a5283) showing 2 consecutive timeouts - sweep taking >2min",
+  "category": "cron",
+  "agent": "monitor",
+  "project": "mission-control",
+  "source": "incidents.jsonl",
+  "recorded_at": "20260407T215545Z",
+  "status": "loss",
+  "reason": "Consider reducing sweep scope or increasing timeout in cron job payload"
+}

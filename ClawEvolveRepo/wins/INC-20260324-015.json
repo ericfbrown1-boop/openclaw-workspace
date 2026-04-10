@@ -1,0 +1,11 @@
+{
+  "id": "INC-20260324-015",
+  "description": "RESOLVED: fe280cdf (Doctor Fix, 15 errors) and e48616bc (Smoke Test, 8 errors) had Telegram delivery failures \u2014 missing ",
+  "category": "cron",
+  "agent": "monitor",
+  "project": "mission-control",
+  "source": "incidents.jsonl",
+  "fix": "Updated both jobs agentId to 'monitor'. Delivery config already had correct channel:telegram and to:5387843769. Fix should clear consecutive errors on next run at 5:00 AM and 5:30 AM tomorrow.",
+  "recorded_at": "20260407T215545Z",
+  "status": "win"
+}

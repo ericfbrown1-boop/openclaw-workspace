@@ -1,0 +1,11 @@
+{
+  "id": "INC-20260324-007",
+  "description": "Prometheus/Grafana/OtelCollector still not deployed. Persistent. Health page shows 'Gateway Down' for metrics.",
+  "category": "observability",
+  "agent": "monitor",
+  "project": "mission-control",
+  "source": "incidents.jsonl",
+  "recorded_at": "20260407T215545Z",
+  "status": "loss",
+  "reason": "Conductor should prioritize remediation-step-03 to unblock steps 04-07 and observability."
+}

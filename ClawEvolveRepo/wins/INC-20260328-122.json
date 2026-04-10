@@ -1,0 +1,11 @@
+{
+  "id": "INC-20260328-122",
+  "description": "Telegram outbound delivery task stalled at 40% \u2014 was actually resolved, just not marked complete",
+  "category": "stall",
+  "agent": "jarvis",
+  "project": "openclaw-gateway",
+  "source": "incidents.jsonl",
+  "fix": "Marked task complete with RCA summary. Verified heal script running clean (last 5 runs: no failures to heal). Verified Telegram status OK via openclaw status --deep.",
+  "recorded_at": "20260407T215545Z",
+  "status": "win"
+}

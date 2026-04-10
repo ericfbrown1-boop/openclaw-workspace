@@ -1,16 +1,37 @@
 {
   "tasks": {
+    "build-hybrid-crawler-v3": {
+      "id": "build-hybrid-crawler-v3",
+      "title": "Build Hybrid Crawler v3: ProjectScraper + Firecrawl Rescue",
+      "status": "completed",
+      "progress": 100,
+      "owner": "coder",
+      "priority": "high",
+      "summary": "Completed — integrated into FinancialReportApp. 3-strategy crawler: HTML link extraction, Firecrawl map, URL pattern probing. 16 pages for Rubrik (was 2).",
+      "completedAt": "2026-03-28T06:22:29.099970",
+      "completedCommit": "4acd623"
+    },
+    "build-financial-report-app": {
+      "id": "build-financial-report-app",
+      "title": "Build Financial Report App (Railway) — ProjectScraper v3 + Financial Report",
+      "status": "completed",
+      "progress": 100,
+      "owner": "planner",
+      "priority": "critical",
+      "summary": "Completed — deployed on PowerSpec Docker (not Railway). Frontend :3001, API :8001, Postgres, Redis. 14 bugs fixed, structured outputs, 33 tests, SHA256 integrity.",
+      "completedAt": "2026-03-28T06:22:29.099970",
+      "completedCommit": "971af16"
+    },
     "financial-report-app-refactor": {
       "id": "financial-report-app-refactor",
-      "title": "FinancialReportApp \u2014 Full Pipeline Refactor",
+      "title": "FinancialReportApp — Full Pipeline Refactor",
       "status": "completed",
       "progress": 100,
       "owner": "jarvis",
       "priority": "high",
-      "summary": "14 bugs fixed, structured outputs, quality gates, retry logic, 33 tests, SHA256 integrity, crawler HTML extraction. E2E verified: 5 companies, 0 'not available'.",
+      "summary": "14 bugs fixed across 8 files. Structured outputs (Anthropic output_config), 3 blocking quality gates, retry w/ exponential backoff, env validation, crawler HTML extraction (8x more pages), SHA256 output parity, 33 unit tests. E2E verified: CrowdStrike, Commvault, ServiceNow, Rubrik — all 0 'not available'.",
       "completedAt": "2026-03-28T06:20:39.592120",
-      "completedCommit": "971af16",
-      "deliverablePath": "~/FinancialReportApp/"
+      "completedCommit": "971af16"
     },
     "sdlc-correctness-first": {
       "id": "sdlc-correctness-first",
@@ -19,7 +40,7 @@
       "progress": 100,
       "owner": "jarvis",
       "priority": "high",
-      "summary": "5 standing rules: Correctness-First, Output Parity, RCA Core, Autonomous Execution, Dual-Model Planning. Updated PIPELINE.md, DELEGATION.md, INCIDENTS.md, auditor SKILL, financial-report-gen SKILL.",
+      "summary": "Embedded 5 standing rules across all agent docs: Correctness-First, Output Parity, RCA Core, Autonomous Execution, Dual-Model Planning. Updated PIPELINE.md, DELEGATION.md, INCIDENTS.md, auditor SKILL, financial-report-gen SKILL.",
       "completedAt": "2026-03-28T06:20:39.592120",
       "completedCommit": "b3ea9c7"
     },
@@ -30,15 +51,9 @@
       "progress": 100,
       "owner": "jarvis",
       "priority": "medium",
-      "summary": "Updated Coder Agent and Planner Agent to use --permission-mode auto for all Claude Code tasks. Replaces bypassPermissions.",
+      "summary": "Claude Code uses --permission-mode auto for all coding tasks. Coder + Planner agents updated. Replaces bypassPermissions.",
       "completedAt": "2026-03-28T06:20:39.592120",
       "completedCommit": "b3ea9c7"
-    },
-    "research-anthropic-best-practices": {
-      "status": "completed",
-      "progress": 100,
-      "deliverableEmailTs": "2026-03-25T16:53:11.885073",
-      "completedAt": "2026-03-25T16:53:11.885080"
     },
     "remediation-step-03": {
       "id": "remediation-step-03",
@@ -47,9 +62,80 @@
       "progress": 100,
       "owner": "coder",
       "priority": "high",
-      "summary": "JarvisMissionControl deployed to Railway (acceptable-inspiration project). Public URL: jarvismissioncontrol-production.up.railway.app. Auto-deploys from main branch. Gateway features offline (local-only gateway).",
-      "completedAt": "2026-03-28T16:55:00.000Z",
-      "deliverableUrl": "https://jarvismissioncontrol-production.up.railway.app"
+      "summary": "JarvisMissionControl deployed to Railway (acceptable-inspiration project). Public URL: jarvismissioncontrol-production.up.railway.app. Auto-deploys from main branch.",
+      "completedAt": "2026-03-28T16:55:00.000Z"
+    },
+    "powerspec-tailscale-selfheal": {
+      "id": "powerspec-tailscale-selfheal",
+      "title": "PowerSpec Tailscale Self-Heal Watchdog",
+      "status": "completed",
+      "progress": 100,
+      "owner": "jarvis",
+      "priority": "high",
+      "summary": "Windows scheduled task on PowerSpec that monitors Tailscale every 60s and auto-restarts if down. v4 running stable (110+ checks). Needs: final RCA doc, stress test (kill Tailscale, verify auto-restart), git repo + README.",
+      "completedAt": "2026-03-28T17:57:13.889Z",
+      "completedCommit": "n/a (PowerSpec local, not git-tracked)"
+    },
+    "telegram-outbound-selfheal": {
+      "id": "telegram-outbound-selfheal",
+      "title": "Fix Recurring Telegram Outbound Delivery Failures",
+      "status": "completed",
+      "progress": 100,
+      "owner": "jarvis",
+      "priority": "high",
+      "summary": "Resolved. Root cause: gateway restarts left Telegram handler disconnected during subagent announce. Fix: cron-delivery-heal.sh + gateway stability. No outbound failures since 3/27 10:25 PM.",
+      "completedAt": "2026-03-28T15:08:14.897270"
+    },
+    "financialreportapp-railway-deploy": {
+      "id": "financialreportapp-railway-deploy",
+      "title": "Deploy FinancialReportApp to Railway",
+      "status": "completed",
+      "progress": 100,
+      "owner": "coder",
+      "priority": "medium",
+      "summary": "Cancelled — pivoted to PowerSpec Docker deployment instead of Railway.",
+      "completedAt": "2026-03-28T15:08:14.897270"
+    },
+    "mission-control-live-tracking": {
+      "id": "mission-control-live-tracking",
+      "title": "Mission Control: Auto-Track Active Work",
+      "status": "completed",
+      "progress": 100,
+      "owner": "jarvis",
+      "priority": "critical",
+      "summary": "Added full CRUD API to MC backend: POST/PUT/DELETE /tasks, workspace sync on every write, auto-archive completed tasks >24h, duplicate protection. All 8 test cases pass.",
+      "completedAt": "2026-03-28T17:49:09.170Z",
+      "completedCommit": "e9337ba"
+    },
+    "ci-workflow-maintenance": {
+      "id": "ci-workflow-maintenance",
+      "title": "GitHub CI Workflow Fixes (openclaw-workspace)",
+      "status": "completed",
+      "progress": 100,
+      "owner": "jarvis",
+      "priority": "medium",
+      "summary": "Fixed JSON validation (nested node_modules), removed tracked secrets (data/Tokens.txt), cleaned venv from git, added Node.js 24 env flag. All 3 CI jobs green.",
+      "completedAt": "2026-03-28T06:02:00-07:00",
+      "completedCommit": "6b156bb"
+    },
+    "powerspec-rebuild-apr2026": {
+      "id": "powerspec-rebuild-apr2026",
+      "title": "PowerSpec PC Full Rebuild (Windows 11 + All Services)",
+      "status": "completed",
+      "progress": 100,
+      "owner": "jarvis",
+      "priority": "critical",
+      "summary": "Full PowerSpec rebuild complete. Fresh Windows 11 → SSH, Git, Python, Node, Docker, WSL2, GPU passthrough all working. FinancialReportApp (5 containers) and ContractAnalyzer (5 containers) restored. Tailscale watchdog re-registered. Config files updated.",
+      "completedAt": "2026-04-02T06:12:27.156Z"
+    },
+    "dell-6k-monitor-setup": {
+      "id": "dell-6k-monitor-setup",
+      "title": "Dell U5226KW 6K Monitor — Safe Connection to PowerSpec",
+      "status": "queued",
+      "progress": 0,
+      "owner": "jarvis",
+      "priority": "high",
+      "summary": "Connect Dell UltraSharp 52\" 6K monitor (6144x2560 @ 120Hz) to RTX 5080 via DisplayPort 2.1. Last attempt crashed the OS. UGREEN DP 2.1 cable ordered. Cold-plug procedure documented."
     }
   }
 }

@@ -1,0 +1,11 @@
+{
+  "id": "INC-20260324-016",
+  "description": "RESOLVED: Docker 29.2.1 confirmed available on PowerSpec (Windows). Prior incident log was incorrect \u2014 Docker Desktop IS",
+  "category": "stall",
+  "agent": "monitor",
+  "project": "mission-control",
+  "source": "incidents.jsonl",
+  "recorded_at": "20260407T215545Z",
+  "status": "loss",
+  "reason": "Add automated Coder spawn trigger when running task stalls >2h. Conductor should re-queue Coder auto"
+}

@@ -1,0 +1,233 @@
+WORKDAY, INC. (NASDAQ: WDAY)
+SELL-SIDE FINANCIAL ANALYSIS — FISCAL YEAR 2026
+Prepared by Jarvis | March 27, 2026
+Source: Hybrid Crawler v3 + Claude Opus 4.6 Analysis | investor.workday.com
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EXECUTIVE SUMMARY
+
+Workday delivered solid FY26 results, reporting $9.55B in total revenue (+13.1% YoY)
+and $8.83B in subscription revenue (+14.5% YoY), meeting guidance while expanding
+non-GAAP operating margin by 370 bps to 29.6%. The company is executing a deliberate
+AI pivot, positioning itself as "the enterprise AI platform for managing people, money,
+and agents" — a message underscored by the Q4 acquisition of Sana and the March 2026
+launch of "Sana from Workday." Stock trades at $124.21 (as of March 27, 2026), implying
+~1.3x NTM revenue. With 41 sell-side analysts covering the name, sentiment is broadly
+constructive on the AI opportunity but watchful of deceleration from 13% revenue growth.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. FINANCIAL HIGHLIGHTS
+
+FISCAL YEAR 2026 (ended January 31, 2026)
+──────────────────────────────────────────
+Total Revenue:                 $9.552B       +13.1% YoY
+Subscription Revenue:          $8.833B       +14.5% YoY
+Professional Services Revenue: $0.719B       (implied)
+GAAP Operating Income:         $0.721B       7.5% margin  (+260 bps YoY)
+Non-GAAP Operating Income:     $2.824B       29.6% margin (+370 bps YoY)
+GAAP Diluted EPS:              $2.59         +33% YoY
+Non-GAAP Diluted EPS:          $9.23         +26% YoY
+Operating Cash Flow:           $2.939B       +19.4% YoY
+Free Cash Flow:                $2.777B       +26.7% YoY
+Cash & Marketable Securities:  $5.443B       (as of Jan 31, 2026)
+Share Repurchases:             ~12.8M shares  $2.9B
+
+FISCAL Q4 FY26 (quarter ended January 31, 2026)
+────────────────────────────────────────────────
+Total Revenue:                 $2.532B       +14.5% YoY
+Subscription Revenue:          $2.360B       +15.7% YoY
+GAAP Operating Income:         $0.174B       6.9% margin  (+350 bps YoY)
+Non-GAAP Operating Income:     $0.774B       30.6% margin (+420 bps YoY)
+GAAP Diluted EPS:              $0.55         +57% YoY
+Non-GAAP Diluted EPS:          $2.47         +29% YoY
+
+BACKLOG (as of January 31, 2026)
+─────────────────────────────────
+12-Month Subscription Backlog:  $8.833B      +15.8% YoY
+Total Subscription Backlog:     $28.101B     +12.2% YoY
+Note: Includes impact of Paradox and Sana acquisitions (Q3/Q4 FY26)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+2. REVENUE TREND (Last 5 Quarters vs. Guidance)
+
+Quarter     | Revenue    | Growth YoY | Sub Revenue | Sub Growth
+------------|------------|------------|-------------|------------
+Q4 FY25     | $2.210B    | —          | $2.040B     | —
+Q1 FY26     | $2.225B    | ~13%est    | $2.040B     | ~13%est
+Q2 FY26     | $2.297B    | ~13%est    | $2.113B     | ~14%est
+Q3 FY26     | $2.498B    | ~13%est    | $2.320B     | ~14%est
+Q4 FY26     | $2.532B    | +14.5%     | $2.360B     | +15.7%
+FY26 Full   | $9.552B    | +13.1%     | $8.833B     | +14.5%
+
+FY27 GUIDANCE (as stated by CFO Zane Rowe)
+────────────────────────────────────────────
+Subscription Revenue:    ~$9.925B–$9.950B   +12%–13% YoY growth (midpoint ~$9.94B)
+Non-GAAP Operating Margin: ~approx. stated (full figure in earnings PDF)
+
+Implied YoY: Revenue growth decelerating slightly from 13.1% → ~12–13% in FY27.
+At midpoint $9.94B subscription revenue implied growth = ~12.6% YoY.
+This is consistent with the prior 4-5 quarter trend — modest deceleration.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+3. MARGIN & PROFITABILITY ANALYSIS
+
+Non-GAAP Operating Margin Trend:
+  FY25:       25.9%
+  FY26:       29.6%   (+370 bps)
+  FY27 Guide: ~30%+   (expected continued expansion)
+
+Free Cash Flow Margin:
+  FY26 FCF:   $2.777B  ÷  $9.552B revenue  = 29.1% FCF margin  (very strong)
+
+GAAP vs. Non-GAAP Gap:
+  FY26 GAAP op income:     $721M (7.5%)
+  FY26 Non-GAAP op income: $2.824B (29.6%)
+  Gap = ~$2.1B driven by restructuring ($303M), stock-based compensation, and amortization
+  Note: $303M restructuring in FY26 (vs $84M in FY25) — elevated but declining
+
+Capital Return: $2.9B in buybacks in FY26, funded from $5.4B cash balance. Signals
+management confidence; also partially offsets SBC dilution.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+4. AI STRATEGY — "SANA FROM WORKDAY" LAUNCH (March 2026)
+
+This is the most important strategic development in the quarter and warrants
+detailed treatment given its implications for competitive positioning.
+
+What is Sana?
+  Workday acquired Sana (AI startup) in Q4 FY26. On March 27, 2026, they launched
+  "Sana from Workday" — described as "superintelligence for work."
+
+Three-tier product structure:
+  1. Sana for Workday — new conversational AI interface replacing traditional Workday UI
+  2. Sana Self-Service Agent — 300+ skills for HR and finance self-service tasks
+  3. Sana Enterprise — connects Workday with third-party apps:
+     Gmail, Salesforce, SharePoint, Box, Confluence, Jira, Slack, Zoom, Notion, Miro, Linear
+
+Positioning:
+  "AI only works in the enterprise when it's connected to trusted, deterministic systems,
+   and that hybrid architecture is exactly what Workday is building. Sana is what brings
+   it all together." — Aneel Bhusri, CEO
+
+Early Traction (customer quote):
+  "Within 40 days, Sana became our default AI interface at work — we reached 90% adoption
+   and retired 400 ChatGPT licenses." — Joona Honka, Head of AI & Analytics, Berner
+
+Monetization:
+  Available to ALL existing Workday customers via Workday Flex Credits (no new license
+  required). This is an attach/retention play first, upsell later. Similar to Salesforce's
+  initial Agentforce positioning — land wide, monetize on consumption.
+
+Analyst implication:
+  Sana could materially compress Workday's reliance on traditional subscription
+  growth and accelerate consumption-based revenue. However, the "no extra cost"
+  initial availability may weigh on near-term ASP expansion.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+5. LEADERSHIP & GOVERNANCE
+
+CEO Transition:
+  Aneel Bhusri (co-founder) returned as CEO in FY26 — described as a return to roots
+  with explicit AI focus: "AI gives us the chance to do it all again."
+  Zane Rowe remains CFO. Gerrit Kazmaier is President, Product & Technology.
+
+Board: 11 members, classified structure (staggered 3-year terms)
+  Key members: Aneel Bhusri (chair), Mark Hawkins (vice chair, lead independent)
+  4 committees: Audit, Compensation, Nominating & Governance, Investment
+
+Corporate milestones:
+  • Named one of 2026 World's Most Ethical Companies (6th consecutive year, Ethisphere)
+  • ~$1B CAD planned investment in Canada over 5 years
+  • Annual Stockholder Meeting: June 16, 2026 (virtual), record date April 17, 2026
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+6. CUSTOMER & MARKET POSITION
+
+Scale:
+  • 11,500+ organizations worldwide
+  • 65%+ of the Fortune 500 are customers
+  • Products: HCM, Financial Management, Supply Chain, Recruiting, Agentic AI
+
+New wins (recent):
+  • Fairview Health Services (HR, Finance, Supply Chain on one platform)
+  • Insperity (HR automation via Workday + Insperity HRScale)
+  • Retail/hospitality momentum noted in Q4
+
+Analyst coverage: 41 sell-side analysts (Barclays, Goldman, JPMorgan, Morgan Stanley,
+UBS, Wells Fargo, Deutsche Bank, Evercore, KeyBanc, RBC, TD Cowen, and more)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+7. VALUATION
+
+Stock Price (March 27, 2026):    $124.21
+Market Cap (est.):               ~$32.5B  (at ~262M diluted shares)
+FY26 Revenue:                    $9.552B
+FY27E Subscription Rev Guide:    ~$9.94B  (midpoint)
+FY27E Total Rev (est.):          ~$10.65B (adding ~$700M services)
+
+EV/NTM Revenue multiple:         ~3.1x    (at $124.21 stock price)
+EV/NTM FCF:                      ~11.7x   (at $2.8B+ FCF run rate)
+P/E Non-GAAP (FY26 $9.23 EPS):  ~13.5x
+
+Context:
+  At ~3x NTM revenue, WDAY is trading at a material discount to high-growth SaaS
+  peers (ServiceNow ~10x, Salesforce ~5x). This reflects the growth deceleration
+  from ~20%+ in 2022-23 to ~13% today. The Sana/AI narrative is the key re-rating
+  catalyst — if it drives re-acceleration to 15%+, the multiple should expand.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+8. KEY RISKS & WATCH ITEMS
+
+1. Growth deceleration: Revenue growth has slowed from ~20%+ (FY22-23) to ~13% (FY26).
+   FY27 guidance implies further modest deceleration (12-13%). Bull case requires AI
+   monetization to reverse this trend by FY28.
+
+2. Sana monetization timing: Initial "free with Flex Credits" packaging is smart for
+   adoption but delays revenue recognition. Watch FY27 for consumption-based pricing signals.
+
+3. Restructuring charges: $303M in FY26 (vs $84M in FY25) — elevated. Should normalize
+   in FY27, providing ~$200M+ tailwind to GAAP earnings.
+
+4. Competition: ServiceNow, SAP SuccessFactors, Oracle HCM, Microsoft Dynamics are
+   all investing heavily in AI agents. Sana's differentiation is the trusted Workday
+   data layer — this is the key moat claim to monitor.
+
+5. Macro exposure: Large enterprise HR/Finance software is resilient but not immune.
+   Any slowdown in Fortune 500 hiring or IT spend could pressure net new ACV.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+9. SUMMARY SCORECARD
+
+Metric                      | FY26 Actual  | Assessment
+----------------------------|--------------|---------------------------
+Revenue Growth              | +13.1%       | Solid, but decelerating
+Subscription Growth         | +14.5%       | Healthy backlog coverage
+Non-GAAP Op Margin          | 29.6%        | ✅ Expanding well (+370 bps)
+Free Cash Flow Margin       | 29.1%        | ✅ Best-in-class
+EPS (Non-GAAP) Growth       | +26%         | ✅ Strong
+Backlog Coverage (12-mo)    | $8.83B/$9.55B| ~92% covered entering FY27
+AI Strategy                 | Sana launch  | ✅ Early but credible
+Valuation (EV/NTM Rev)      | ~3.1x        | Reasonable for 13% grower
+Key Risk                    | Deceleration | Watch FY27 sub rev growth
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+DATA SOURCES
+• investor.workday.com Q4 FY26 earnings press release (Feb 24, 2026)
+• investor.workday.com SEC filings index, quarterly results archive
+• investor.workday.com Sana from Workday product announcement (Mar 2026)
+• newsroom.workday.com board of directors, analyst coverage, governance
+• Crawled: March 27, 2026 | Tool: Hybrid Crawler v3 (ProjectScraper + Firecrawl)
+• Analysis: Claude Opus 4.6 LLM tagging + sell-side synthesis
+
+Sent by Jarvis - AI assistant to Eric Brown

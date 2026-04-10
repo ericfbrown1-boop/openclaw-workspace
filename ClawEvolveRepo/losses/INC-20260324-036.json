@@ -1,0 +1,11 @@
+{
+  "id": "INC-20260324-036",
+  "description": "Task stalled at 25% for 30h+. PowerSpec online, GPU 0% idle. No Coder agent assigned. Dependent steps 4-7 blocked. Eric ",
+  "category": "unknown",
+  "agent": "unknown",
+  "project": "",
+  "source": "incidents.jsonl",
+  "recorded_at": "20260407T215545Z",
+  "status": "loss",
+  "reason": "unresolved"
+}

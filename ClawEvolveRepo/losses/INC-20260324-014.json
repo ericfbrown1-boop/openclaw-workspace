@@ -1,0 +1,11 @@
+{
+  "id": "INC-20260324-014",
+  "description": "remediation-step-03 (Containerize & Deploy Railway) stuck at 25% \u2014 Docker command not found on PowerSpec (Windows machin",
+  "category": "stall",
+  "agent": "monitor",
+  "project": "mission-control",
+  "source": "incidents.jsonl",
+  "recorded_at": "20260407T215545Z",
+  "status": "loss",
+  "reason": "Add Docker availability check to PowerSpec readiness step. Coder must verify toolchain before starti"
+}

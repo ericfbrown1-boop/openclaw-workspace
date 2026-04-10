@@ -1,0 +1,31 @@
+{
+  "id": "AC-20260407-001",
+  "category": "cron",
+  "occurrence_count": 7,
+  "description": "Add agentId=monitor and validated chatId to cron job delivery config",
+  "target_file": "skills/monitor/SKILL.md",
+  "change_type": "append_pattern",
+  "change": "Add to Step 6 (Cron Drift): Verify agentId=monitor for all monitor-run cron jobs; check chatId matches telegram:5387843769",
+  "metric": "cron_delivery_error_rate",
+  "test_cmd": "openclaw cron list | grep -c 'error'",
+  "expected_improvement": "Eliminate repeated Telegram delivery failures (was 8-15 consecutive errors)",
+  "confidence": 0.92,
+  "example_incidents": [
+    "2 cron jobs (Doctor Fix + Smoke Test) had broken delivery config missing chatId.",
+    "Monitor Sweep (7b0a5283) showing 2 consecutive timeouts - sweep taking >2min",
+    "Weekly competitor analysis (8c2533e1) failed: Telegram message too long (400 Bad"
+  ],
+  "dry_run": true,
+  "proposed_at": "2026-04-07T21:55:49.064578Z",
+  "outcome": {
+    "verdict": "WIN",
+    "confidence": 0.92,
+    "metric": "cron_delivery_error_rate",
+    "projected_before": "8-15 consecutive Telegram delivery errors per job; recurring across Doctor Fix + Smoke Test jobs",
+    "projected_after": "Eliminate repeated Telegram delivery failures (was 8-15 consecutive errors)",
+    "safety_checks_passed": true,
+    "protected_files_untouched": true,
+    "dry_run": true
+  },
+  "recorded_at": "2026-04-07T21:55:49.068126Z"
+}

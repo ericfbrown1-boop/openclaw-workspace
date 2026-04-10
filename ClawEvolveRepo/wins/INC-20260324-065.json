@@ -1,0 +1,11 @@
+{
+  "id": "INC-20260324-065",
+  "description": "",
+  "category": "unknown",
+  "agent": "unknown",
+  "project": "",
+  "source": "incidents.jsonl",
+  "fix": "Confirmed delivery.mode=none. Errors should clear on next run.",
+  "recorded_at": "20260407T215545Z",
+  "status": "win"
+}

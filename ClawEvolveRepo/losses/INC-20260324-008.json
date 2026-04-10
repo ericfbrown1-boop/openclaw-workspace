@@ -1,0 +1,11 @@
+{
+  "id": "INC-20260324-008",
+  "description": "remediation-step-03 (Containerize & Deploy Railway) stalled >25h at 25% progress \u2014 started 2026-03-23T12:00Z with no upd",
+  "category": "stall",
+  "agent": "monitor",
+  "project": "mission-control",
+  "source": "incidents.jsonl",
+  "recorded_at": "20260407T215545Z",
+  "status": "loss",
+  "reason": "Conductor should poll running task ETAs every hour and reassign stalled work automatically. Task API"
+}

@@ -1,0 +1,11 @@
+{
+  "id": "INC-20260324-010",
+  "description": "remediation-step-03 (Containerize & Deploy Railway) still stalled at 25% \u2014 now >25h with no progress. Steps 04-07 remain",
+  "category": "stall",
+  "agent": "monitor",
+  "project": "mission-control",
+  "source": "incidents.jsonl",
+  "recorded_at": "20260407T215545Z",
+  "status": "loss",
+  "reason": "Add task-stall auto-escalation to Conductor with auto-spawn of Coder when running task >2h no progre"
+}

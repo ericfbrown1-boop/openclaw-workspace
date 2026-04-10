@@ -1,0 +1,11 @@
+{
+  "id": "INC-20260324-011",
+  "description": "fe280cdf (Doctor Fix) 15 consecutive delivery errors, e48616bc (Smoke Test) 8 consecutive delivery errors. Both agentId=",
+  "category": "cron",
+  "agent": "monitor",
+  "project": "mission-control",
+  "source": "incidents.jsonl",
+  "recorded_at": "20260407T215545Z",
+  "status": "loss",
+  "reason": "Eric to test manually: openclaw cron run fe280cdf and confirm delivery. If platform issue, report to"
+}

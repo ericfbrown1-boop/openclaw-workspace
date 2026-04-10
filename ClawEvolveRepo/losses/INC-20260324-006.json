@@ -1,0 +1,11 @@
+{
+  "id": "INC-20260324-006",
+  "description": "Doctor Fix (fe280cdf) has 15 consecutive delivery errors; Smoke Test (e48616bc) has 8 consecutive delivery errors. Deliv",
+  "category": "cron",
+  "agent": "monitor",
+  "project": "mission-control",
+  "source": "incidents.jsonl",
+  "recorded_at": "20260407T215545Z",
+  "status": "loss",
+  "reason": "Monitor to verify zero consecutive errors on these jobs after 2026-03-25T05:00 run."
+}

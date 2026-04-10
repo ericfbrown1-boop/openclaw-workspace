@@ -1,0 +1,139 @@
+Jarvis Daily Briefing — Sunday, March 29, 2026
+
+Good morning, Eric. Here's your Sunday briefing.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. GMAIL — URGENT & TAX ITEMS (Last 24h)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+• American Express — "Your Card may not have been present for a purchase" — Worth reviewing for potential fraud. Check if you recognize the transaction.
+• John Muir Health — New wait list opening (medical, time-sensitive)
+• Railway — Build failed for "exciting-truth" project (2 messages in thread)
+• Docker — Invoice paid + subscription confirmed + Google linked to Docker account (3 emails, FYI)
+• X (Twitter) — New login from ChromeDesktop on Windows — This was likely the PowerSpec setup yesterday, but verify it was you.
+
+No new tax-related items detected in the last 24 hours.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2. CALENDAR — TODAY (Sunday, March 29)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+No events scheduled today. Clear Sunday.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+3. AI/OPENCLAW AUTOMATION IDEAS FOR COHESITY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Snowflake → Slack Deal Velocity Alerts: Build a Claude agent that queries Snowflake pipeline data daily, computes deal velocity changes (stage-to-stage time), and posts anomaly alerts to Slack channels when deals stall or accelerate beyond 1σ. Actionable for sales leadership without logging into Salesforce.
+
+2. Zoom Call Summary → Salesforce Activity Logger: Use Claude to auto-transcribe Zoom recordings, extract action items and next steps, then create Salesforce activity records and update opportunity notes via the Salesforce API. Eliminates the "I forgot to log my call" problem.
+
+3. Workday Headcount Forecast vs. Snowflake Revenue Model: Connect Workday headcount/hiring pipeline data with Snowflake revenue forecasts to auto-generate revenue-per-employee efficiency dashboards. Claude can flag departments where hiring is outpacing revenue contribution.
+
+4. M365/SharePoint Contract Analyzer Pipeline: Deploy the Contract Analyzer skill against SharePoint document libraries — auto-scan new vendor/customer contracts uploaded to designated folders, score risk, extract key terms, and post summaries to a Slack channel for legal review. No manual uploads needed.
+
+5. Slack Sentiment + Salesforce CSAT Correlation Engine: Use Claude to analyze internal Slack channels (support escalations, customer mentions) and correlate sentiment trends with Salesforce CSAT/NPS scores. Surface early churn signals before they hit the renewal pipeline.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+4. COMPETITIVE & STOCK NEWS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+RUBRIK (RBRK) — Under Pressure
+• Stock hit 52-week low, trading around $48. Down ~42% from highs.
+• CFO Kiran Choudary sold 122,613 shares ($5.9M) on March 24 at $48.20 — insider selling at the low is a rough look.
+• Bright spot: Announced Microsoft Defender integration at RSAC 2026 (identity threat recovery), stock popped ~5% on the news but gave it back.
+• Analyst consensus price target: $89.10 (significant upside implied, but market clearly skeptical).
+
+COMMVAULT (CVLT) — Also at 52-Week Low
+• Stock hit new 12-month low of $76.79 on Friday (March 27), last traded $77.49.
+• Loop Capital initiated coverage with Buy rating and $125 price target (March 24).
+• Consensus "Moderate Buy" with average PT of $141.38 — massive gap to current price.
+• Simply Wall St narrative fair value: $139.50 vs. $81.16 close — market pricing in significant risk.
+• Both RBRK and CVLT at 52-week lows simultaneously suggests macro/sector headwinds, not just company-specific issues. Worth watching if this is a buying opportunity or structural shift.
+
+VEEAM — Private but Active
+• RSAC 2026 keynote: Positioning data protection + data security convergence as their strategic thesis.
+• New joint solution with Nutanix: "Easy button" for rehydrating ESXi backups directly to Nutanix AHV — targeting VMware migration wave.
+• Rick Vanover (Tech Field Day): Veeam now clearing $2B+ revenue, 6,000 employees. They've grown well beyond virtual backup.
+• Key takeaway for Cohesity: Veeam is doubling down on security convergence and hypervisor migration plays — direct competitive overlap with Cohesity's data security positioning.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+5. MICRO CENTER SANTA CLARA DEALS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+• Apple Studio Display 27" 5K — Currently OUT OF STOCK at Santa Clara. Available at Denver, Miami, Marietta locations if interested.
+• Alienware 18 Area-51 (AA18250) — $3,199.99 (was $4,399.99, save $1,200). 23 in stock at Santa Clara. Open box from $2,879.96. Liquid Teal color.
+• Alienware AW3225QF 31.6" 4K 240Hz Curved Gaming Monitor — In stock at Santa Clara. QD-OLED, G-Sync, HDR True Black 400.
+• Micro Center coupon: 5% off sitewide available via CouponCabin.
+• Dell end-of-month sale: Up to $700 off across their lineup (XPS, Alienware).
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+6. ANTHROPIC ECOSYSTEM UPDATE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔴 BIG NEWS: "Claude Mythos" Model Leaked
+• Fortune reported (March 26) that Anthropic is developing "Mythos" — a new model tier ABOVE Opus with "meaningful advances in reasoning, coding, and cybersecurity."
+• SiliconANGLE confirms it will be a fourth product tier, pricier and more capable than Opus.
+• This is a "step change" in capabilities per leaked internal documents. No release date yet.
+
+Claude Code v2.1.86 (Latest):
+• New --bare flag for scripted -p calls (skips hooks, LSP, plugin sync)
+• Channel-based permission relays
+• X-Claude-Code-Session-Id header for proxy session aggregation
+• Fixed: --resume failures, file operations outside project root, memory growth in long sessions
+• Fixed: VS Code "Not responding" during long operations, Max plan defaulting to Sonnet after OAuth refresh
+• Performance: Reduced startup stalls with many MCP connectors, reduced token overhead for @ file mentions
+• Skills listing now alphabetically sorted, descriptions capped at 250 chars
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+7. OPENCLAW SYSTEM HEALTH & SECURITY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Version: OpenClaw 2026.3.28 (f9b1079) — ✅ UP TO DATE (npm latest: 2026.3.28)
+
+Security Audit: 0 critical · 2 warnings · 1 info
+  ⚠️ WARN: gateway.trusted_proxies_missing — Reverse proxy headers not trusted. Low risk since Control UI is local-only.
+  ⚠️ WARN: gateway.nodes.deny_commands_ineffective — Some denyCommands entries use incorrect names (camera.snap, camera.clip, screen.record, etc.). Should be updated to exact command IDs.
+  ℹ️ INFO: Attack surface summary — groups: 0 open / 1 allowlist, tools.elevated enabled, browser control enabled, trust model: personal assistant.
+
+Doctor Output (5:00 AM run):
+  • Telegram: OK (@EFB_Jarvis_bot, 974ms)
+  • Agents: 8 registered (main, researcher, planner, coder, quality, monitor, auditor, conductor)
+  • Skills: 40 eligible, 27 missing requirements
+  • Plugins: 6 loaded, 74 disabled, 0 errors
+  • Sessions: 77 entries
+  • 1 warning: Telegram still in first-time setup mode (pairing mode for new DMs, groups need explicit allowlist)
+  • 1 stale session lock found (pid 89407, alive, 6s old — not concerning)
+  • 9 LaunchAgents running: batteryguard, caffeinate, gatewaywatchdog, heartbeat, logrotation, selfheal, sessionmonitor, tailscale.monitor, weeklysecurity
+  • Cleanup hint: Old ai.openclaw.gateway plist can be removed
+
+Self-Heal Watchdog: No dedicated log file found at logs/selfheal.log. The selfheal LaunchAgent is running (confirmed by doctor). Gateway logs show normal operation.
+
+GitHub Dependabot (ContractAnalyzer):
+  ⚠️ 3 open alerts:
+  1. PyJWT — accepts unknown 'crit' header extensions
+  2. Pillow — out-of-bounds write when loading PSD images
+  3. Python-Multipart — arbitrary file write via non-default configuration
+  → Recommend: Run `pip install --upgrade PyJWT Pillow python-multipart` and redeploy.
+
+Recommendations:
+  • Fix the 2 denyCommands warnings (update to correct command IDs)
+  • Patch the 3 Dependabot vulnerabilities on ContractAnalyzer
+  • Consider moving Telegram out of first-time setup mode if you want to receive DMs from new contacts
+  • Clean up old ai.openclaw.gateway plist per doctor suggestion
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+8. API BUDGET STATUS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+API Budget: $0.00 spent / $100.00 limit (0% used, 3 days remaining in cycle)
+Alert Level: ✅ None
+All 3 providers healthy: Anthropic, OpenAI, xAI — zero errors.
+
+Note: The $0 reading likely reflects a tracker reset or the usage monitor not capturing passthrough costs. Actual Anthropic API spend should be verified against the billing dashboard.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Have a good Sunday, Eric. The competitive landscape is interesting — both Rubrik and Commvault at 52-week lows while Veeam pushes past $2B. The Anthropic Mythos leak is worth tracking for future Cohesity AI integration opportunities.
+
+Sent by Jarvis — AI assistant to Eric Brown

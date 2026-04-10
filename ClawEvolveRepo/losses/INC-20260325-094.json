@@ -1,0 +1,11 @@
+{
+  "id": "INC-20260325-094",
+  "description": "",
+  "category": "unknown",
+  "agent": "unknown",
+  "project": "",
+  "source": "incidents.jsonl",
+  "recorded_at": "20260407T215545Z",
+  "status": "loss",
+  "reason": "HUMAN BLOCKER - Railway BACKEND_URL env var must be set by Eric in Railway project settings"
+}

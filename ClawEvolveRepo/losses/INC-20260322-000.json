@@ -1,0 +1,11 @@
+{
+  "id": "INC-20260322-000",
+  "description": "check-unread-emails.py failed to log into Gmail via IMAP due to invalid app password",
+  "category": "auth",
+  "agent": "jarvis",
+  "project": "Weekly Tax Email Scan",
+  "source": "incidents.jsonl",
+  "recorded_at": "20260407T215545Z",
+  "status": "loss",
+  "reason": "unresolved"
+}

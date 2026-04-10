@@ -1,0 +1,31 @@
+{
+  "id": "AC-20260407-002",
+  "category": "stall",
+  "occurrence_count": 6,
+  "description": "Add Conductor auto-spawn trigger for tasks stalled >2h",
+  "target_file": "skills/monitor/SKILL.md",
+  "change_type": "append_pattern",
+  "change": "Add to Step 10 (Task Progress Enforcement): If running task stalled >2h, auto-spawn Coder subagent to resume. Log to incidents.jsonl with stall_respawn event.",
+  "metric": "stalled_task_escalation_count",
+  "test_cmd": "python3 -c \"import json; data=[json.loads(l) for l in open('memory/incidents.jsonl') if l.strip()]; stalls=[d for d in data if d.get('error_category')=='stall' and not d.get('resolved')]; print(f'Unresolved stalls: {len(stalls)}')\"",
+  "expected_improvement": "Eliminate manual escalation for stalled tasks (was 4+ escalations per incident)",
+  "confidence": 0.85,
+  "example_incidents": [
+    "remediation-step-03 (Containerize & Deploy Railway) stalled >25h at 25% progress",
+    "remediation-step-03 (Containerize & Deploy Railway) still stalled at 25% \u2014 now >",
+    "remediation-step-03 (Containerize & Deploy Railway) stuck at 25% \u2014 Docker comman"
+  ],
+  "dry_run": true,
+  "proposed_at": "2026-04-07T21:55:49.068318Z",
+  "outcome": {
+    "verdict": "WIN",
+    "confidence": 0.85,
+    "metric": "stalled_task_escalation_count",
+    "projected_before": "Tasks stalled 25+ hours; 4+ manual escalations per incident; GPU idle 0% while work queued",
+    "projected_after": "Eliminate manual escalation for stalled tasks (was 4+ escalations per incident)",
+    "safety_checks_passed": true,
+    "protected_files_untouched": true,
+    "dry_run": true
+  },
+  "recorded_at": "2026-04-07T21:55:49.071631Z"
+}

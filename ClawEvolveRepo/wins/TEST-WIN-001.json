@@ -1,0 +1,8 @@
+{
+  "id": "TEST-WIN-001",
+  "description": "Test win: Tailscale retry fixed SSH",
+  "metric": "ping_success",
+  "improvement": "+10%",
+  "recorded_at": "20260407T215545Z",
+  "status": "win"
+}

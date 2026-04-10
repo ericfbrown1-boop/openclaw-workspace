@@ -1,0 +1,11 @@
+{
+  "id": "INC-20260324-009",
+  "description": "fe280cdf (Doctor Fix) and e48616bc (Smoke Test) have 15 and 8 consecutive Telegram delivery errors respectively. Config ",
+  "category": "cron",
+  "agent": "monitor",
+  "project": "mission-control",
+  "source": "incidents.jsonl",
+  "recorded_at": "20260407T215545Z",
+  "status": "loss",
+  "reason": "Add delivery config validation test in smoke test. Monitor should verify consecutive errors drop to "
+}

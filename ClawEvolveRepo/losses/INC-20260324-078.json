@@ -1,0 +1,11 @@
+{
+  "id": "INC-20260324-078",
+  "description": "",
+  "category": "unknown",
+  "agent": "unknown",
+  "project": "",
+  "source": "incidents.jsonl",
+  "recorded_at": "20260407T215545Z",
+  "status": "loss",
+  "reason": "delivery object had mode:none but channel/to still set"
+}

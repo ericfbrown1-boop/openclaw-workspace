@@ -1,5 +1,5 @@
 {
-  "lastHealAt": 1774713471412,
+  "lastHealAt": 1774726080546,
   "healed": [
     {
       "id": "9a50971c-3068-4279-b1b9-0a781ca5ac06",
@@ -10,6 +10,26 @@
       "id": "fe280cdf-d077-43e7-a902-889b44b6629e",
       "name": "Daily OpenClaw Doctor Fix - 5:00 AM PT",
       "at": 1774713471412
+    },
+    {
+      "id": "31dd7636-36c0-455b-abb5-a243f224fefa",
+      "name": "Dropbox Token Keepalive (3h)",
+      "at": 1774718870027
+    },
+    {
+      "id": "9a50971c-3068-4279-b1b9-0a781ca5ac06",
+      "name": "Monitor Sweep (3h)",
+      "at": 1774722470107
+    },
+    {
+      "id": "fe280cdf-d077-43e7-a902-889b44b6629e",
+      "name": "Daily OpenClaw Doctor Fix - 5:00 AM PT",
+      "at": 1774722471578
+    },
+    {
+      "id": "31dd7636-36c0-455b-abb5-a243f224fefa",
+      "name": "Dropbox Token Keepalive (3h)",
+      "at": 1774726080546
     }
   ]
 }

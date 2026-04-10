@@ -1,0 +1,11 @@
+{
+  "id": "INC-20260328-119",
+  "description": "Reports marked done with empty content \u2014 14 bugs across 8 files",
+  "category": "deliverable",
+  "agent": "jarvis",
+  "project": "FinancialReportApp",
+  "source": "incidents.jsonl",
+  "fix": "Structured outputs, 3 blocking quality gates, retry with backoff, env validation, crawler HTML parsing, SHA256 integrity, 33 unit tests",
+  "recorded_at": "20260407T215545Z",
+  "status": "win"
+}

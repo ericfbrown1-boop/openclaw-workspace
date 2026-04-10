@@ -1,0 +1,11 @@
+{
+  "id": "INC-20260324-019",
+  "description": "Railway containerization task stalled at 25% for 28h+. PowerSpec online, GPU idle. Coder agent not executing. Escalated ",
+  "category": "unknown",
+  "agent": "unknown",
+  "project": "",
+  "source": "incidents.jsonl",
+  "recorded_at": "20260407T215545Z",
+  "status": "loss",
+  "reason": "unresolved"
+}

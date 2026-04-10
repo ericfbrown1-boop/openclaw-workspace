@@ -1,0 +1,11 @@
+{
+  "id": "INC-20260324-013",
+  "description": "Weekly competitor analysis (8c2533e1) failed with Telegram message too long (1 consecutive error, last Mon).",
+  "category": "cron",
+  "agent": "monitor",
+  "project": "mission-control",
+  "source": "incidents.jsonl",
+  "recorded_at": "20260407T215545Z",
+  "status": "loss",
+  "reason": "Researcher agent must check char count before sending. Prompt already updated."
+}

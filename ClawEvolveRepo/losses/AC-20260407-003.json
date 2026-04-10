@@ -1,0 +1,31 @@
+{
+  "id": "AC-20260407-003",
+  "category": "observability",
+  "occurrence_count": 3,
+  "description": "Deploy lightweight health-check endpoint as substitute for full observability stack",
+  "target_file": "JarvisMissionControl/backend/app.js",
+  "change_type": "add_endpoint",
+  "change": "Add /metrics endpoint returning JSON with gateway uptime, task counts, error counts \u2014 replaces Prometheus/Grafana dependency",
+  "metric": "health_page_errors",
+  "test_cmd": "curl -fsS http://localhost:3001/metrics | jq .status",
+  "expected_improvement": "Mission Control health page shows real metrics instead of 'Gateway Down'",
+  "confidence": 0.78,
+  "example_incidents": [
+    "Prometheus/Grafana/OtelCollector not running. Observability pipeline absent.",
+    "Prometheus/Grafana/OtelCollector still not running. Observability pipeline absen",
+    "Prometheus/Grafana/OtelCollector still not deployed. Persistent. Health page sho"
+  ],
+  "dry_run": true,
+  "proposed_at": "2026-04-07T21:55:49.071786Z",
+  "outcome": {
+    "verdict": "NEEDS_REVIEW",
+    "confidence": 0.78,
+    "metric": "health_page_errors",
+    "projected_before": "Mission Control health page shows 'Gateway Down' for metrics; Prometheus/Grafana never deployed",
+    "projected_after": "Mission Control health page shows real metrics instead of 'Gateway Down'",
+    "safety_checks_passed": true,
+    "protected_files_untouched": true,
+    "dry_run": true
+  },
+  "recorded_at": "2026-04-07T21:55:49.074793Z"
+}

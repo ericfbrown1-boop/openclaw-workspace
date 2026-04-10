@@ -1,0 +1,11 @@
+{
+  "id": "INC-20260324-064",
+  "description": "",
+  "category": "unknown",
+  "agent": "unknown",
+  "project": "",
+  "source": "incidents.jsonl",
+  "fix": "Changed delivery.mode to 'none' (job already had channel+to set but missing chatId format). Delivery was already set to none \u2014 consecutive errors were from prior config. Reset.",
+  "recorded_at": "20260407T215545Z",
+  "status": "win"
+}

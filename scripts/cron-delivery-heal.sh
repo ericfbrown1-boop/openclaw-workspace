@@ -88,4 +88,4 @@ with open('$STATE_FILE', 'w') as f:
   HEALED+=("$JOB_NAME")
 done <<< "$FAILED_JOBS"
 
-echo "HEALED $COUNT jobs: ${HEALED[*]}"
+echo "HEALED $COUNT jobs: ${HEALED[*]:-}"

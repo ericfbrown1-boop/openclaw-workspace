@@ -1,0 +1,11 @@
+{
+  "id": "INC-20260324-027",
+  "description": "Task stalled at 25% for 29h+. startedAt=2026-03-23T12:00Z. Coder agent never completed Docker/Railway config. GPU idle o",
+  "category": "unknown",
+  "agent": "unknown",
+  "project": "",
+  "source": "incidents.jsonl",
+  "recorded_at": "20260407T215545Z",
+  "status": "loss",
+  "reason": "No agent took ownership after task was queued to Coder on 2026-03-23."
+}

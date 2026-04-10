@@ -1,0 +1,11 @@
+{
+  "id": "INC-20260324-040",
+  "description": "Sweep completed. Issues: (1) remediation-step-03 at 50% with Railway browser auth blocker, (2) fe280cdf 15x/e48616bc 8x ",
+  "category": "unknown",
+  "agent": "unknown",
+  "project": "",
+  "source": "incidents.jsonl",
+  "recorded_at": "20260407T215545Z",
+  "status": "loss",
+  "reason": "unresolved"
+}

@@ -1,0 +1,11 @@
+{
+  "id": "INC-20260328-118",
+  "description": "Reports generated with empty content \u2014 3 silent failures in pipeline (env truncation, nested dict, parser fallback)",
+  "category": "other",
+  "agent": "jarvis",
+  "project": "FinancialReportApp",
+  "source": "incidents.jsonl",
+  "fix": "Fixed .env comments, merge synthesis at top level, recover from _rawResponse on parse error",
+  "recorded_at": "20260407T215545Z",
+  "status": "win"
+}

@@ -1,0 +1,11 @@
+{
+  "id": "INC-20260324-001",
+  "description": "2 cron jobs (Doctor Fix + Smoke Test) had broken delivery config missing chatId. Fixed delivery to telegram:5387843769.",
+  "category": "cron",
+  "agent": "monitor",
+  "project": "mission-control",
+  "source": "incidents.jsonl",
+  "recorded_at": "20260407T215545Z",
+  "status": "loss",
+  "reason": "unresolved"
+}

@@ -1,0 +1,7 @@
+{
+  "id": "TEST-LOSS-001",
+  "description": "Test loss: rm -rf workaround",
+  "recorded_at": "20260407T215545Z",
+  "status": "loss",
+  "reason": "unsafe operation"
+}

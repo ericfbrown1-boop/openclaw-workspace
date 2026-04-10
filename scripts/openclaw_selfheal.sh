@@ -34,6 +34,28 @@ log "─── Self-heal check starting ───"
 
 ISSUES_FOUND=0
 RESTART_NEEDED=0
+# ── Restart Cooldown (2 hour minimum between restarts) ────────────────
+RESTART_COOLDOWN_FILE="$LOG_DIR/last_restart_ts"
+RESTART_COOLDOWN_SECS=7200  # 2 hours
+
+can_restart() {
+    if [ ! -f "$RESTART_COOLDOWN_FILE" ]; then
+        return 0  # No previous restart recorded
+    fi
+    local last_ts=$(cat "$RESTART_COOLDOWN_FILE" 2>/dev/null || echo 0)
+    local now_ts=$(date +%s)
+    local diff=$((now_ts - last_ts))
+    if [ "$diff" -lt "$RESTART_COOLDOWN_SECS" ]; then
+        log "⏸️ Restart suppressed — last restart was ${diff}s ago (cooldown: ${RESTART_COOLDOWN_SECS}s)"
+        return 1
+    fi
+    return 0
+}
+
+record_restart() {
+    date +%s > "$RESTART_COOLDOWN_FILE"
+}
+
 
 # ── 1. Gateway Process Check ─────────────────────────────────────────
 if pgrep -f "openclaw.*gateway" > /dev/null 2>&1; then
@@ -183,7 +205,7 @@ if [[ -f "$ERR_LOG" ]]; then
 from datetime import datetime, timedelta
 import os, re
 path = os.environ.get('ERR_LOG')
-cutoff = datetime.now().astimezone() - timedelta(minutes=5)
+cutoff = datetime.now().astimezone() - timedelta(minutes=10)
 pattern = re.compile(r"(LLM request timed out|FailoverError|model fallback decision)")
 count = 0
 if path and os.path.exists(path):
@@ -202,9 +224,9 @@ if path and os.path.exists(path):
 print(count)
 PYEOF
 )
-    if [[ ${RECENT_TIMEOUTS:-0} -gt 2 ]]; then
+    if [[ ${RECENT_TIMEOUTS:-0} -gt 5 ]]; then
         log "⚠️ Detected $RECENT_TIMEOUTS LLM timeouts in the last 5 minutes — clearing cooldowns"
-        
+
         # Clear auth profile cooldowns by resetting errorCount
         python3 << 'PYEOF'
 import json, os
@@ -267,22 +289,31 @@ fi
 
 # ── 7. Gateway Restart if Needed ─────────────────────────────────────
 if [[ $RESTART_NEEDED -eq 1 ]]; then
-    log "🔄 Restarting gateway to clear issues..."
-    openclaw gateway restart 2>&1 | tail -5 >> "$LOG_FILE"
-    sleep 15
-    
-    # Verify restart worked
-    HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" \
-        -H "Authorization: Bearer $GATEWAY_TOKEN" \
-        "http://127.0.0.1:$GATEWAY_PORT/health" 2>/dev/null || echo "000")
-    
-    if [[ "$HTTP_CODE" == "200" ]]; then
-        log "✅ Gateway restarted successfully"
+    if can_restart; then
+        record_restart
+        log "🔄 Restarting gateway to clear issues..."
+        openclaw gateway restart 2>&1 | tail -5 >> "$LOG_FILE"
+        sleep 15
+
+        # Verify restart worked
+        HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" \
+            -H "Authorization: Bearer $GATEWAY_TOKEN" \
+            "http://127.0.0.1:$GATEWAY_PORT/health" 2>/dev/null || echo "000")
+
+        if [[ "$HTTP_CODE" == "200" ]]; then
+            log "✅ Gateway restarted successfully"
+            # Re-register Telegram outbound (OpenClaw issue #54745 workaround)
+            sleep 5
+            openclaw status --deep 2>&1 | grep -i telegram >> "$LOG_FILE"
+            log "📡 Telegram outbound probe sent"
+        else
+            log "❌ Gateway restart failed — running doctor --fix"
+            openclaw doctor --fix 2>&1 | tail -10 >> "$LOG_FILE"
+            openclaw gateway start 2>&1 | tail -3 >> "$LOG_FILE"
+            sleep 10
+        fi
     else
-        log "❌ Gateway restart failed — running doctor --fix"
-        openclaw doctor --fix 2>&1 | tail -10 >> "$LOG_FILE"
-        openclaw gateway start 2>&1 | tail -3 >> "$LOG_FILE"
-        sleep 10
+        log "⏸️ Restart needed but suppressed by cooldown — issues will be retried next cycle"
     fi
 fi
 

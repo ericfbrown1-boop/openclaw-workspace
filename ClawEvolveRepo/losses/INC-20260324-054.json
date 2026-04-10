@@ -1,0 +1,11 @@
+{
+  "id": "INC-20260324-054",
+  "description": "",
+  "category": "unknown",
+  "agent": "unknown",
+  "project": "",
+  "source": "incidents.jsonl",
+  "recorded_at": "20260407T215545Z",
+  "status": "loss",
+  "reason": "Rules appended without size check over time"
+}
