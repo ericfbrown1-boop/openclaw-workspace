@@ -1,0 +1,16 @@
+{
+  "id": "INC-20260409-126",
+  "type": "win",
+  "date": "2026-04-09",
+  "title": "Exec preflight broke all cron jobs silently — fixed by switching to absolute paths",
+  "project": "openclaw-cron",
+  "severity": "critical",
+  "symptom": "Subscription monitor, tax email scanner, and Dropbox keepalive cron jobs all appeared healthy (status: ok) but never executed their core commands. No errors surfaced to user.",
+  "root_cause": "OpenClaw exec security preflight (introduced in a recent update) began rejecting shell commands that use 'cd && python3 ...' chaining patterns. All cron job payloads were written with 'cd ~/.openclaw/workspace && python3 scripts/...' which the preflight silently blocked.",
+  "fix": "Updated all affected cron job payloads to use full absolute paths: 'python3 /Users/ericbrown/.openclaw/workspace/scripts/legacy/script.py'. No cd chaining, no shell operators.",
+  "affected_jobs": ["da942e7a (Subscription Monitor)", "a8469499 (Tax Email Scan)"],
+  "lesson": "NEVER use 'cd && command' patterns in cron payloads. Always use full absolute paths. OpenClaw exec preflight rejects complex shell invocations. After any OpenClaw update, audit all cron job commands for preflight compatibility.",
+  "prevention": "Quarterly cron audit: run 'openclaw logs | grep error' to catch silent preflight rejections. Write cron commands with absolute paths from day one.",
+  "resolved": true,
+  "resolution_date": "2026-04-09"
+}

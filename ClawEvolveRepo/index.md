@@ -1,7 +1,7 @@
 # ClawEvolveRepo — Knowledge Index
-_Last updated: 2026-04-07 21:55 UTC_
+_Last updated: 2026-04-10 13:16 UTC_
 
-**Total Wins:** 7 | **Total Losses:** 121
+**Total Wins:** 12 | **Total Losses:** 122
 
 ## Recent Wins
 - ✅ `INC-20260324-015` — RESOLVED: fe280cdf (Doctor Fix, 15 errors) and e48616bc (Smoke Test, 8 errors) h
@@ -10,6 +10,9 @@ _Last updated: 2026-04-07 21:55 UTC_
 - ✅ `INC-20260328-118` — Reports generated with empty content — 3 silent failures in pipeline (env trunca
 - ✅ `INC-20260328-119` — Reports marked done with empty content — 14 bugs across 8 files
 - ✅ `INC-20260328-122` — Telegram outbound delivery task stalled at 40% — was actually resolved, just not
+- ✅ `INC-20260409-126` — 
+- ✅ `INC-20260409-127` — 
+- ✅ `INC-20260409-128` — 
 - ✅ `TEST-WIN-001` — Test win: Tailscale retry fixed SSH
 
 ## Recent Losses (Do Not Retry)

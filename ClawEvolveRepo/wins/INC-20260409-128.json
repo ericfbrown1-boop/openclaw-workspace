@@ -1,0 +1,15 @@
+{
+  "id": "INC-20260409-128",
+  "type": "win",
+  "date": "2026-04-09",
+  "title": "Email attachment phantom-success bug identified — gog gmail send --attach silently drops missing files",
+  "project": "gog-gmail",
+  "severity": "high",
+  "symptom": "gog gmail send --attach returned a message_id (appeared successful) but email arrived with no attachment. User confirmed no file received. File had also been generated ephemerally and did not survive session.",
+  "root_cause": "Two compounding issues: (1) gog gmail send --attach does not validate file existence before reporting success — it returns a message_id even if the attachment path is invalid or missing. (2) The .pptx file was generated in a session without durable commit to disk — file existed transiently and was cleaned up before send.",
+  "fix": "Regenerated file using full generation script, verified with ls + file size check before send. Used gog with correct absolute path. Email delivered successfully.",
+  "lesson": "NEVER trust gog gmail send --attach return code alone. Always verify: (1) file exists at path, (2) file size > 0 bytes, (3) follow up with gog gmail search to confirm email landed. Also: all generated deliverable files must be saved to a durable path immediately (~/Documents/ or Dropbox) not temp/session paths.",
+  "prevention": "Add 3-step delivery verification to all file-send workflows: pre-check file, send, post-check inbox. Back up all generated files to Dropbox /Jarvis Reports/ as a separate step before email send.",
+  "resolved": true,
+  "resolution_date": "2026-04-10"
+}

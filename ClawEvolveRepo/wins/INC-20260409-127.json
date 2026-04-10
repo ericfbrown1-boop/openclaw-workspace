@@ -1,0 +1,15 @@
+{
+  "id": "INC-20260409-127",
+  "type": "win",
+  "date": "2026-04-09",
+  "title": "Dropbox token refresh architecture rewritten as self-contained — eliminated fragile subprocess dependency",
+  "project": "dropbox-cli",
+  "severity": "high",
+  "symptom": "Dropbox uploads and reads failed silently. API calls returned errors but reported success in some paths. Token was expired with no auto-refresh.",
+  "root_cause": "dropbox-cli.py depended on a separate dropbox-auth.py script via subprocess call for token refresh. When files were reorganized into scripts/legacy/, the auto-refresh path broke. The 4-hour access token expired and was never renewed.",
+  "fix": "Rewrote dropbox-cli.py to be fully self-contained. Token refresh is now a single inline HTTP call to Dropbox OAuth endpoint (~200ms). All credentials read from .dropbox_auth.json (chmod 600). No external script dependencies.",
+  "lesson": "Token refresh logic must live in the same file as the API calls. Never depend on external scripts for auth — they can move, be deleted, or fail silently. Refresh token is permanent; access token is 4-hour. Always verify file exists AND has non-zero size before upload/send.",
+  "prevention": "For any CLI tool that uses short-lived tokens: inline the refresh logic. Test by forcing token expiry and confirming transparent refresh. Add 'dropbox-cli.py status' to smoke test suite.",
+  "resolved": true,
+  "resolution_date": "2026-04-09"
+}
