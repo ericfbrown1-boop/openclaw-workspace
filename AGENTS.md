@@ -172,3 +172,34 @@ python3 ~/openclaw-workspace/scripts/jarvis_pipeline.py list                    
 **External knowledge hook:** Researcher and Planner also auto-inject user-provided context from an optional hook — drop a `scripts/external_context_hook.py` with `fetch_context(task, stage) -> str` and the orchestrator imports it at runtime. Intended for Obsidian vaults, karpathy/autoresearch-style depth-bounded exploration, or any per-task knowledge backend. Fail-safe: any error → logged to `logs/jarvis-pipeline-hooks.log`, pipeline continues with empty context. Template at `scripts/external_context_hook.py.example`. Alternative shell-command path via `JARVIS_EXTERNAL_CONTEXT_CMD` env var for non-Python backends. Task opt-out: `task["externalContext"]["enabled"] = false` skips the hook for trivial tasks.
 
 See `KNOWN_FAILURES.md` "Jarvis one-turn CLI limit" for the root cause. See the plan file at `~/.claude/plans/replicated-squishing-mccarthy.md` for the design.
+
+## 📎 File Delivery Protocol (Standing Rule — 2026-04-10)
+
+**MANDATORY for ALL file attachment sends (PPTX, DOCX, PDF, any binary).**
+
+### Always use the reusable script:
+```bash
+python3 ~/.openclaw/workspace/scripts/send_file_email.py \
+  --file ~/Documents/filename.ext \
+  --to ericfbrown1@gmail.com \
+  --cc Eric.brown@cohesity.com \
+  --subject "Subject" \
+  --body "Body text"
+```
+The script enforces all 3 steps automatically. **Never call `gog gmail send --attach` directly for file delivery.**
+
+### The 3 steps (enforced by the script):
+1. **Pre-flight:** `ls -la $FILE && [ -s $FILE ]` — abort if file missing or zero bytes
+2. **Send:** `gog gmail send --attach $FILE` (with SMTP fallback if gog fails)
+3. **Confirm:** `gog gmail search "subject:X newer_than:10m"` — verify email landed
+
+### File write rules (no exceptions):
+- **Always write generated files to `~/Documents/<filename>`** — never `/tmp/`, never relative paths
+- **Verify after save:** `os.path.exists(path) and os.path.getsize(path) > 5000`
+- **Backup to Dropbox** before email: `python3 ~/.openclaw/workspace/dropbox-cli.py upload <file> "/Jarvis Reports/<filename>"`
+
+### Why this exists (INC-20260409-128):
+`gog gmail send --attach` returns a valid message_id even when the attachment file is missing — it silently sends the email body-only. The Gmail API has no attachment validation. The only protection is external pre-flight validation before calling gog.
+
+**Origin:** Eric directive 2026-04-10 after two confirmed incidents of phantom attachment sends.
+
