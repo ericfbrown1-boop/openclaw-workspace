@@ -1,32 +1,27 @@
-═══════════════════════════════════════════════════════
-  DAILY SECURITY SCAN — 2026-04-09 05:57 AM PT
-═══════════════════════════════════════════════════════
+═══════════════════════════════════════════════════
+  DAILY SECURITY SCAN — 2026-04-10 05:50 AM PT
+═══════════════════════════════════════════════════
 
-── SECURITY AUDIT (deep) ──────────────────────────────
-Result: 0 critical · 3 warnings · 1 info
+── SECURITY AUDIT (deep) ────────────────────────
+Result: 0 critical · 2 warnings · 1 info
 
-WARNINGS:
-1. No auth rate limiting — gateway.bind is not loopback
-   but no rateLimit configured. Brute-force not mitigated.
-2. Exec security=full enabled for 8 agent roles —
-   prefer allowlist with ask prompts for tighter control.
-3. Some gateway.nodes.denyCommands entries use unknown
-   command names (camera.snap, camera.clip, screen.record,
-   calendar.add, contacts.add, reminders.add).
+⚠️  WARN: tools.exec.security_full_configured
+   Full exec trust enabled for 8 agents (main, researcher, planner, coder, quality, monitor, auditor, conductor).
+   Recommendation: Prefer "allowlist" mode; reserve "full" for break-glass agents.
 
-INFO:
-- Trust model: personal assistant (single operator)
-- Browser control: enabled
-- Elevated exec: enabled
-- Webhooks: disabled, internal hooks: enabled
+⚠️  WARN: gateway.nodes.deny_commands_ineffective
+   Some denyCommands entries use unknown/mismatched command names (camera.snap, camera.clip, screen.record, etc.).
+   Recommendation: Use exact command IDs from allowCommands.
 
-── UPDATE STATUS ───────────────────────────────────────
-OpenClaw: up to date (stable channel, npm latest 2026.4.9)
-Install method: pnpm
+ℹ️  INFO: Attack surface summary
+   Groups: open=0, allowlist=1 | Elevated: enabled | Webhooks: disabled
+   Browser control: enabled | Trust model: personal assistant (single operator)
 
-── SUMMARY ─────────────────────────────────────────────
-✅ No critical issues. System is current.
-⚠️  3 known warnings (unchanged from prior scans):
-   auth rate limiting, exec security=full, stale denyCommands.
-   None are actively exploited; all are hardening recommendations.
-═══════════════════════════════════════════════════════
+── UPDATE STATUS ─────────────────────────────────
+Channel: stable | Install: pnpm | Status: ✅ Up to date (latest: 2026.4.9)
+
+── SUMMARY FOR DAILY BRIEF ──────────────────────
+• No critical security issues.
+• 2 standing warnings (exec full-trust policy, denyCommands naming) — unchanged, low urgency.
+• OpenClaw is up to date on stable channel.
+• No new skills released.

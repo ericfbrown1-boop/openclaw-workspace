@@ -148,3 +148,8 @@ Restarted LaunchAgent: gui/501/ai.openclaw.gateway
 Restarted LaunchAgent: gui/501/ai.openclaw.gateway
 [2026-04-09 05:53:48] Gateway process missing — starting
 Gateway LaunchAgent was installed but not loaded; re-bootstrapped launchd service.
+[2026-04-10 21:35:51] Gateway process missing — starting
+Gateway service not loaded.
+Start with: openclaw gateway install
+Start with: openclaw gateway
+Start with: launchctl bootstrap gui/$UID ~/Library/LaunchAgents/ai.openclaw.gateway.plist

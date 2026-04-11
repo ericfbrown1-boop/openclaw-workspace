@@ -72,4 +72,31 @@
 
 ### 📝 Agent Configuration Changes
 
-No changes detected since last check. ✅
+**🆕 Newly tracked:**
+- `monitor/skills/afrexai-contract-analyzer/SKILL.md`
+- `monitor/skills/ai-legal-assistant/SKILL.md`
+- `monitor/skills/auditor/SKILL.md`
+- `monitor/skills/autoClaw/SKILL.md`
+- `monitor/skills/blogwatcher/SKILL.md`
+- `monitor/skills/blucli/SKILL.md`
+- `monitor/skills/cohesity-domain/SKILL.md`
+- `monitor/skills/competitive-intel/SKILL.md`
+- `monitor/skills/earnings-analyzer/SKILL.md`
+- `monitor/skills/financial-report-gen/SKILL.md`
+- `monitor/skills/firecrawl/SKILL.md`
+- `monitor/skills/gog/SKILL.md`
+- `monitor/skills/google-oauth-reauth/SKILL.md`
+- `monitor/skills/librarian/SKILL.md`
+- `monitor/skills/linkedin-carousel/SKILL.md`
+- `monitor/skills/monitor/SKILL.md`
+- `monitor/skills/peekaboo/SKILL.md`
+- `monitor/skills/project-dynamo/SKILL.md`
+- `monitor/skills/ragflow-search/SKILL.md`
+- `monitor/skills/railway-deployment/SKILL.md`
+- `monitor/skills/remote-coder/SKILL.md`
+- `monitor/skills/salesforce-analytics/SKILL.md`
+- `monitor/skills/slack-teams-hub/SKILL.md`
+- `monitor/skills/snowflake-sql/SKILL.md`
+- `monitor/skills/tailscale-troubleshooting/SKILL.md`
+- `monitor/skills/tax-automation/SKILL.md`
+- `monitor/skills/workday-analytics/SKILL.md`
