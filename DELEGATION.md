@@ -205,7 +205,9 @@ Trigger: AFTER Coder completes; BEFORE Quality audit.
 **Hybrid Test Distribution:** >15min test suites split across MacBook + PowerSpec.
 
 ## → External Auditor Agent (agentId: auditor)
-Trigger: AFTER Quality security audit passes. FINAL step in code pipeline. Also runs as the adversarial reviewer in the planning phase (Stage 3 of the Dual-Model Planning Process).
+Trigger: AFTER Quality security audit passes. FINAL step in code pipeline. Also spawnable on-demand by Jarvis for system audits, config reviews, and skill health checks.
+
+**Spawn allowlist:** auditor is now included in main agent allowAgents (updated 2026-04-10). Can be spawned via sessions_spawn with agentId: auditor.
 
 **Pipeline:** Coder → Quality → External Auditor → Done
 
