@@ -14,6 +14,10 @@ OBJECTIVE: <what the agent must produce>
 OUTPUT_FORMAT: <file path, email, tasks.json update, etc.>
 FILES_TO_READ_FIRST: <list of files agent must read before starting>
 EXISTING_PATTERNS: <reference files showing the style/pattern to follow>
+DIAGRAMS: <list diagrams in PLAN.md, or "N/A — SIMPLE task (no plan required)">
+  Example: System Architecture (graph TD), Process Flow (flowchart LR), ER Diagram (erDiagram)
+  Rule: MODERATE or COMPLEX tasks MUST reference a PLAN.md with ≥2 Mermaid diagrams.
+        Jarvis rejects Coder dispatches where PLAN.md has no diagrams.
 
 VERIFICATION_COMMAND: <exact command that proves the task is done>
   Example: curl -fsS http://localhost:3000/terminal -w "%{http_code}" | grep 200
@@ -33,4 +37,5 @@ TASK_COMPLEXITY: <SIMPLE | MODERATE | COMPLEX>
 - Jarvis must fill ALL fields before spawning. No exceptions.
 - If `verification_command` is empty, the dispatch is rejected.
 - Monitor checks every running task in tasks.json for a `verificationCmd` field. Missing = incident.
+- MODERATE/COMPLEX tasks: verify PLAN.md exists AND has ≥2 Mermaid diagrams before dispatching to Coder.
 - SIMPLE tasks do NOT spawn subagents — Jarvis does them directly.

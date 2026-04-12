@@ -67,6 +67,31 @@ When a plan is produced via `~/openclaw-workspace/scripts/jarvis_pipeline.py`, t
 
 **PowerSpec Pre-Check:** Before finalizing any plan with >15min tasks, run `tailscale ping remote-coder-main`.
 
+### 📊 Diagram-First Planning (Standing Change 2026-04-12 — MANDATORY)
+
+**Every PLAN.md MUST begin with visual architecture diagrams BEFORE any prose, task decomposition, or ADRs.** This is non-negotiable.
+
+**Minimum required diagrams (all in Mermaid syntax):**
+1. **System Architecture** — `graph TD` or `C4Context` showing all components and connections
+2. **Process/Data Flow** — `flowchart` or `sequenceDiagram` showing the primary workflow
+
+**Additional diagrams (required when applicable):**
+- `erDiagram` — for any project with a database or data model
+- `graph` deployment topology — for multi-service / Docker / Railway projects
+- `stateDiagram-v2` — for workflows with complex state transitions
+- `sequenceDiagram` — for multi-service API interactions
+
+**Diagram standards:**
+- Label ALL arrows (what data/action flows between components)
+- Show failure paths, not just the happy path
+- Include all external systems (APIs, DBs, third-party services)
+- Use node styling for visual clarity
+
+**Gate:** A PLAN.md without the minimum 2 diagrams is INVALID and must not proceed to Phase 3 (Implement). The Grok 4.20 Beta adversarial review MUST check diagram completeness.
+
+**Origin:** Eric directive 2026-04-12 — "Make this diagram-based approach a mandatory part of your Planning Agent and planning phase for ALL projects."
+
+
 ## → Researcher Agent (agentId: researcher)
 Trigger: research requests NOT related to a new project plan (financial analysis, market news, competitive intelligence).
 Action: spawn researcher with a specific brief and source filters.
