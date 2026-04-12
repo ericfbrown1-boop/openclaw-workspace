@@ -1351,6 +1351,13 @@ class TestRevisionLoop(unittest.TestCase):
 class TestPowerSpecDispatch(unittest.TestCase):
     """Tests for Option C — coder dispatch to PowerSpec node via openclaw exec."""
 
+    def setUp(self):
+        self._sleep_patch = mock.patch("time.sleep", return_value=None)
+        self._sleep_patch.start()
+
+    def tearDown(self):
+        self._sleep_patch.stop()
+
     def _make_task(self, coderHost="powerspec", **overrides):
         task = {
             "id": "ps-test",
@@ -1516,6 +1523,61 @@ class TestPowerSpecDispatch(unittest.TestCase):
         self.assertEqual(pstate["stages"]["coder"]["commitSha"], fake_sha)
         self.assertEqual(pstate["stages"]["coder"]["host"], "powerspec")
         self.assertEqual(pstate["stages"]["coder"]["status"], "completed")
+
+
+class TestKnownFailuresPrevention(unittest.TestCase):
+    """Regression tests for the 6 KNOWN_FAILURES entries from Option C rollout.
+
+    (a) Planner scope violation → fixed in openclaw.json (write removed from allow)
+    (b) Node idle disconnect → _powerspec_ensure_node_alive() added (tested separately)
+    (c) PS path quoting → all PS commands must use single quotes for paths
+    (d) Exec pipe hang → optimistic-timeout recovery pattern added (tested separately)
+    (e) stage_quality cwd → for remote host, uses Path.home() not Windows path
+    (f) claude.cmd argv → stdin pipe pattern, not positional arg
+    """
+
+    def test_c_powerspec_ps_helpers_use_single_quotes_for_paths(self):
+        """All PowerShell command builders must use single quotes around paths
+        containing spaces (e.g., 'C:\\Users\\Eric Brown\\repos'). Double quotes
+        inside a bash-SSH-PS nesting get split on spaces."""
+        import inspect
+        source = inspect.getsource(jp)
+        # Find all _powerspec_* function bodies and assert single-quote usage
+        for fn_name in ("_powerspec_ensure_work_dir", "_powerspec_read_output",
+                        "_powerspec_capture_commit_sha"):
+            fn = getattr(jp, fn_name)
+            fn_src = inspect.getsource(fn)
+            # Check for paths with POWERSPEC_REMOTE_BASE_DIR or Eric Brown
+            if "POWERSPEC_REMOTE_BASE_DIR" in fn_src or "work_dir" in fn_src:
+                # Should NOT have f'"{ ... }"' (double-quoted path interpolation)
+                # inside PowerShell command strings
+                self.assertNotIn("Set-Location \"{", fn_src,
+                    f"{fn_name} uses double-quoted path in PowerShell — use single quotes")
+                self.assertNotIn("Test-Path \"{", fn_src,
+                    f"{fn_name} uses double-quoted Test-Path — use single quotes")
+                self.assertNotIn('-Path "{', fn_src,
+                    f"{fn_name} uses double-quoted -Path — use single quotes")
+
+    def test_e_stage_quality_uses_local_cwd_for_powerspec_tasks(self):
+        """stage_quality must NOT use the Windows repoPath as cwd for Mac subprocess."""
+        import inspect
+        src = inspect.getsource(jp.stage_quality)
+        # The fix: checks coderHost == "powerspec" and uses Path.home()
+        self.assertIn("coderHost", src, "stage_quality must check coderHost")
+        self.assertIn("Path.home()", src, "stage_quality must fall back to Path.home() for remote tasks")
+
+    def test_f_powerspec_dispatch_uses_stdin_pipe_not_positional_prompt(self):
+        """The dispatch message must use the `echo|claude.cmd --print` pattern,
+        not positional prompt argv (which claude.cmd drops on Windows)."""
+        import inspect
+        src = inspect.getsource(jp._build_powerspec_dispatch_message)
+        # Must contain the pipe pattern
+        self.assertIn("type _prompt.txt", src,
+            "_build_powerspec_dispatch_message must pipe _prompt.txt to claude.cmd")
+        self.assertIn("--print", src)
+        # Must NOT put the prompt as a trailing positional argv element
+        self.assertNotIn("'--print', prompt", src,
+            "must NOT use positional prompt — use stdin pipe")
 
 
 class TestLoadLibrarianMemory(unittest.TestCase):

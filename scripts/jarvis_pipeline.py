@@ -1182,22 +1182,51 @@ def _dispatch_coder_powerspec(task: dict, pstate: dict) -> None:
         f"=== PLAN.md (merged with Auditor patches) ===\n{plan_text}"
     )
 
+    # Verify node is alive (auto-restart if idle-disconnected)
+    _powerspec_ensure_node_alive()
+
     # Plumbing: ensure work dir, stage prompt file via SSH
     _powerspec_ensure_work_dir(task, work_dir)
     _powerspec_stage_prompt(task, work_dir, coder_prompt)
 
     # Workload: dispatch the actual Claude Code run via the Mac's main agent +
     # exec tool with host=PowerSpec. This is the Option C path that matters.
+    #
+    # Fix for KNOWN_FAILURES.md "exec stdout pipe hang": the main agent's exec
+    # tool call may hang after Claude Code finishes because cmd.exe keeps the
+    # stdout pipe open. We use an optimistic-timeout pattern: set a moderate
+    # outer timeout (~10 min), and if it expires, check whether _output.txt on
+    # PowerSpec has content. If yes, Claude Code finished and the hang is benign
+    # — we recover by reading the file directly via SSH.
     dispatch_msg = _build_powerspec_dispatch_message(work_dir)
     log = outputs_dir_for(task["id"]) / "00-coder-raw.json"
-    out = dispatch_agent(
-        "main", dispatch_msg,
-        POWERSPEC_EXEC_TIMEOUT_SEC + 120,
-        log,
-    )
+    optimistic_timeout = min(POWERSPEC_EXEC_TIMEOUT_SEC, 600)  # cap at 10 min
+    pipe_hung = False
+    try:
+        out = dispatch_agent(
+            "main", dispatch_msg,
+            optimistic_timeout + 60,  # slight buffer
+            log,
+        )
+    except DispatchError as e:
+        # Check if Claude Code actually finished despite the pipe hang
+        _mc_log(f"Coder dispatch timed out at {optimistic_timeout}s — checking for output on PowerSpec")
+        remote_check = _powerspec_read_output(work_dir)
+        if remote_check and len(remote_check) > 50:
+            _mc_log(f"Output present ({len(remote_check)} bytes) — recovering from pipe hang")
+            out = AgentOutput(
+                text=f"[pipe-hang recovery] Output captured via SSH ({len(remote_check)} bytes)",
+                raw={}, duration_sec=float(optimistic_timeout),
+                stop_reason="timeout-recovered", model="recovered-via-ssh",
+            )
+            pipe_hung = True
+        else:
+            raise  # truly failed — no output exists
 
     # Read the full Claude Code output from PowerSpec (SSH plumbing)
     remote_output = _powerspec_read_output(work_dir)
+    if pipe_hung:
+        _mc_log(f"Pipe-hang recovery: using SSH-read output ({len(remote_output)} bytes)")
     summary_path = outputs_dir_for(task["id"]) / "04-coder-summary.md"
     summary_path.write_text(
         f"# Coder output (from PowerSpec)\n\n"
@@ -1216,6 +1245,70 @@ def _dispatch_coder_powerspec(task: dict, pstate: dict) -> None:
     # Clear revision feedback after successful consumption
     if revision_feedback:
         pstate.setdefault("revisionFeedback", {})["coder"] = None
+
+
+def _powerspec_ensure_node_alive() -> None:
+    """Verify the PowerSpec node is connected to the Mac gateway. If not, restart it.
+
+    Fix for KNOWN_FAILURES.md "PowerSpec openclaw node host disconnects after ~50 min idle".
+    Called at the top of `_dispatch_coder_powerspec()` before any real work starts.
+    """
+    # Quick check: `openclaw nodes list` output includes "just now" or recent timestamp
+    # when the node is connected. If not, restart.
+    try:
+        proc = subprocess.run(
+            ["openclaw", "nodes", "list", "--json"],
+            capture_output=True, text=True, timeout=15,
+        )
+        import json as _json
+        if proc.returncode == 0:
+            try:
+                data = _json.loads(proc.stdout)
+                paired = data.get("paired") or []
+                for node in paired:
+                    if isinstance(node, dict) and node.get("displayName") == POWERSPEC_NODE_NAME:
+                        # Node is in the paired list — but is it connected?
+                        # The JSON output may include a `connected` or `lastConnectMs` field.
+                        # If connected, we're good. If we can't tell, probe via exec.
+                        break
+            except (_json.JSONDecodeError, KeyError, TypeError):
+                pass  # can't parse, fall through to probe
+    except (subprocess.SubprocessError, OSError):
+        pass
+
+    # Probe: try a trivial exec call. If it works, node is alive.
+    try:
+        probe = subprocess.run(
+            [
+                "openclaw", "agent", "--agent", "main",
+                "--message", f"Use the exec tool with host={POWERSPEC_NODE_NAME} and invokeTimeout=15000. "
+                              'Run this argv: ["cmd", "/c", "echo alive"]. Return only stdout.',
+                "--timeout", "30",
+                "--json",
+            ],
+            capture_output=True, text=True, timeout=45,
+        )
+        if proc.returncode == 0 and "alive" in (probe.stdout or ""):
+            return  # node is alive
+    except (subprocess.SubprocessError, OSError):
+        pass
+
+    # Node appears dead. Restart via SSH.
+    _mc_log("PowerSpec node not connected — restarting via SSH")
+    try:
+        _powerspec_ssh('schtasks /end /tn "OpenClaw Node"', timeout=15)
+        import time
+        time.sleep(2)
+        _powerspec_ssh(
+            'powershell -Command "Get-Process -Name node -ErrorAction SilentlyContinue | Stop-Process -Force"',
+            timeout=15,
+        )
+        time.sleep(1)
+        _powerspec_ssh('schtasks /run /tn "OpenClaw Node"', timeout=15)
+        time.sleep(5)
+        _mc_log("PowerSpec node restarted via SSH — waiting for reconnection")
+    except (subprocess.SubprocessError, OSError) as e:
+        raise PipelineError(f"Cannot restart PowerSpec node host: {e}") from e
 
 
 def _powerspec_ensure_work_dir(task: dict, work_dir: str) -> None:

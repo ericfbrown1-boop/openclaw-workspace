@@ -117,24 +117,17 @@ _Updated by Jarvis. Agents: consult this file when encountering errors before at
 **How to recognize:** You dispatch to main, reply text says "dispatching to X next", no subsequent subagent run appears in `~/.openclaw/subagents/runs.json` or `pipeline-outputs/<task-id>/`, and nothing new lands on disk within 60s of main's turn ending.
 **Added:** 2026-04-11
 
-## 🟠 Planner writes unauthorized helper scripts + edits tasks.json
+## 🟠 Planner writes unauthorized helper scripts + edits tasks.json — FIXED 2026-04-11
 **Pattern:** When given a complex task description with specific verification requirements, Planner uses its `write` tool to pre-create helper scripts (e.g., `verify_powerspec_smoke.sh`) in `~/openclaw-workspace/scripts/` AND modifies `~/openclaw-workspace/tasks.json` to point the task's `verificationCmd` at the script. This violates Planner's scope — Planner's job is to emit PLAN.md only.
 **Root cause:** Planner's system prompt encourages "be proactive" and "reduce Coder's burden". With `write` tool allowed (per openclaw.json), Planner interprets complex verification needs as "I should build the verification harness myself". No explicit scope boundary.
-**Solution:**
-- Remove `write` from Planner's tools allowlist in `~/.openclaw/openclaw.json` — Planner should only use `sessions_send`, `read`, `web_search`, `web_fetch`. The PLAN.md write happens via the orchestrator now (it reads `out.text` and saves to the target repo).
-- OR add explicit rule to `workspace-planner/RULES.md`: "NEVER modify tasks.json or any file outside the target repo's PLAN.md. If you think a helper script is needed, describe it in the plan — do NOT create it yourself."
-**Verification after fix:** run a pipeline against a complex task and assert that `git status ~/openclaw-workspace` is clean after Planner completes.
+**Fix applied:** (1) Removed `write` from Planner's tools allowlist in `~/.openclaw/openclaw.json` — moved to `deny` list. (2) Added explicit `## Scope Boundary` rule to `workspace-planner/RULES.md`: "NEVER modify any file outside the target project's PLAN.md and PROJECT_CONTEXT.md."
 **Frequency:** Observed 2026-04-11 during Option C smoke test.
 **Added:** 2026-04-11
 
-## 🟡 PowerSpec openclaw node host disconnects after ~50 min idle
+## 🟡 PowerSpec openclaw node host disconnects after ~50 min idle — FIXED 2026-04-11
 **Pattern:** `openclaw nodes list` on the Mac shows PowerSpec as paired, but `exec` tool calls to `host=PowerSpec` return "node not connected". The node host scheduled task is still "Ready" but the websocket to the Mac gateway has dropped.
 **Root cause:** The node host establishes an outbound WebSocket to the Mac gateway on startup, but the connection has no heartbeat / keepalive. Idle periods >50 min cause the gateway side to drop the connection; the node doesn't reconnect automatically.
-**Workaround:**
-```bash
-ssh -o 'User="Eric Brown"' 100.81.21.114 "schtasks /end /tn \"OpenClaw Node\" && powershell -Command \"Get-Process -Name node -ErrorAction SilentlyContinue | Stop-Process -Force\" && schtasks /run /tn \"OpenClaw Node\""
-```
-**Permanent fix (TODO):** Add `_powerspec_ensure_node_alive()` helper to `jarvis_pipeline.py` that runs a trivial exec probe before `_dispatch_coder_powerspec`, and if it fails, auto-restarts the scheduled task via SSH. Alternative: add a launchd-style keepalive loop on the PowerSpec side.
+**Fix applied:** `_powerspec_ensure_node_alive()` in `jarvis_pipeline.py` — called at the top of every PowerSpec dispatch. Probes via `openclaw nodes list --json` + exec tool; if probe fails, auto-restarts the Scheduled Task via SSH (schtasks /end → kill node.exe → schtasks /run → wait 5s). No manual restart needed.
 **Frequency:** Observed 2026-04-11 — first Option C smoke run hit this ~50 min after pairing.
 **Added:** 2026-04-11
 
@@ -153,25 +146,15 @@ ssh powerspec "powershell -Command \"Set-Location 'C:\\Users\\Eric Brown\\repos'
 **Frequency:** 3 separate incidents this session. Add a unit test that asserts jarvis_pipeline.py's PowerShell command builders use single quotes.
 **Added:** 2026-04-11
 
-## 🟡 openclaw agent exec tool: stdout pipe hangs after remote process completes
+## 🟡 openclaw agent exec tool: stdout pipe hangs after remote process completes — FIXED 2026-04-11
 **Pattern:** When `openclaw agent --agent main` issues an `exec` tool call with `host=<nodeId>` that pipes output through `cmd /c "... > _output.txt"`, the main agent's turn waits for the pipe to close even after the actual process (Claude Code on PowerSpec) has exited and written the output file. Orchestrator sees `stage_coder` as "running" for minutes past actual completion.
-**Reproduction:** Observed 2026-04-11 — Claude Code finished in ~8 min, produced `hello.py` and committed, but the orchestrator's outer dispatch_agent call waited ~15 min before returning. The workaround was TaskStop + manual state patch + `--resume`.
 **Root cause (hypothesized):** `cmd /c` with stdout redirect (`>`) keeps the parent pipe file handle open until cmd.exe itself fully exits. If Claude Code's child process or a bg task inherited the handle, the pipe stays open.
-**Workaround for orchestrator:** Poll `_output.txt` size every 30s during coder stage. If size stops growing for 60s AND a known completion marker ("CODER_RUN_COMPLETE") appears in the file, abort the outer exec call and read the output directly via SSH. See `_dispatch_coder_powerspec` for where to add this.
-**Permanent fix:** use `2>&1 | more` or similar to force pipe flush, OR invoke `claude.cmd` via `start /B /WAIT` which manages pipes differently.
+**Fix applied:** Optimistic-timeout recovery pattern in `_dispatch_coder_powerspec()`: the outer `dispatch_agent` call is capped at 10 min (configurable). On timeout, the orchestrator checks `_output.txt` on PowerSpec via SSH. If content is present (>50 bytes), it treats the dispatch as successful and recovers the output via SSH read instead of waiting for the hung pipe. Logged as "pipe-hang recovery" in MC and jarvis-pipeline-mc.log.
 **Added:** 2026-04-11
 
-## 🟡 stage_quality cwd for remote-host tasks
+## 🟡 stage_quality cwd for remote-host tasks — FIXED 2026-04-11
 **Pattern:** For tasks with `execution.coderHost = "powerspec"`, `task.repoPath` is a Windows path like `C:\Users\Eric Brown\repos\<task-id>`. `stage_quality` called `subprocess.run(cmd, cwd=repo, ...)` — which tried to use a Windows path as a cwd on macOS, raising `FileNotFoundError`.
-**Fix (applied 2026-04-11 in jarvis_pipeline.py):**
-```python
-if exe.get("coderHost") == "powerspec":
-    repo = str(Path.home())  # cwd must be macOS-local; the cmd itself SSHes
-else:
-    repo = task.get("repoPath") or str(Path.home())
-    if not Path(repo).exists():
-        repo = str(Path.home())
-```
+**Fix applied:** `stage_quality` detects `coderHost == "powerspec"` and sets `cwd = str(Path.home())` instead. Unit test `test_e_stage_quality_uses_local_cwd_for_powerspec_tasks` asserts this.
 **Rule:** For remote-host tasks, `verificationCmd` must SSH to the remote itself — the orchestrator's cwd just has to be a valid macOS dir.
 **Added:** 2026-04-11
 
