@@ -7,7 +7,7 @@
   Financial earnings analysis (Rubrik, Commvault, Veeam), competitive intelligence, market research, fact-checking, delivers Word doc reports
 
 **📐 Planner** (planner) — Architecture & project planning
-  Designs new projects, creates PLAN.md files, defines tech stacks, writes architecture docs. Uses GPT 5.4 + cross-review loop
+  Designs new projects, creates PLAN.md files, defines tech stacks, writes architecture docs. Drafts with Opus 4.6, stress-tested by Grok 4.20 Beta adversarial review
 
 **💻 Coder** (coder) — Code implementation
   Writes code from PLAN.md specs, builds scripts, generates reports, creates Dockerfiles. Reads PLAN.md before writing any code
@@ -35,7 +35,7 @@
 - **Contract Analysis** — "Run Contract Analyzer on [files]" — AI-powered legal contract review with 17-section report, risk flags, entity attribution (Cohesity/Arctera)
 
 **💻 Code & Deployment**
-- **Build a Project** — "Build [description]" — Full pipeline: Planner → GPT review → Coder → Tester → Quality audit → Conductor deploys to Railway
+- **Build a Project** — "Build [description]" — Full pipeline: Researcher → Planner (Opus) → Grok 4.20 Beta adversarial review → Coder → Quality (Grok 4.20 Beta) → Auditor → Conductor deploys to Railway
 - **Railway Deployment** — "Deploy [project] to Railway" — Docker build, Railway config, Celery workers, MinIO, smoke tests
 - **Security Audit** — "Run security audit on [repo]" — Secret scanning, git history check, dependency vulnerabilities, BFG cleanup
 - **Code Review** — "Review [repo/PR]" — Quality + External Auditor pipeline, optional Grok cross-review via repomix

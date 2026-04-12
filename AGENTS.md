@@ -138,3 +138,37 @@ See `PIPELINE.md` → "API Budget Cost Gate" for full rules.
 ## 📊 Incident Tracking
 
 All failures → `memory/incidents.jsonl`. See `INCIDENTS.md` for full schema and the mandatory RCA loop.
+
+## 🔗 Pipeline Execution (Standing Change 2026-04-11)
+
+**Full multi-agent pipelines run via `~/openclaw-workspace/scripts/jarvis_pipeline.py`, not main's in-turn orchestration.**
+
+**Why:** `openclaw agent --agent main` runs ONE CLI turn per invocation. Main's reply text can narrate "dispatching to X next" but the `sessions_spawn` tool call doesn't execute before the turn ends (upstream limitation in `acp-cli-DsBOatVe.js`). Full Research→Plan→Audit→Code→Quality chains must be driven from outside.
+
+**How to run a full pipeline:**
+```bash
+python3 ~/openclaw-workspace/scripts/jarvis_pipeline.py run <task-id>          # fresh run
+python3 ~/openclaw-workspace/scripts/jarvis_pipeline.py run <task-id> --resume  # resume from last completed stage
+python3 ~/openclaw-workspace/scripts/jarvis_pipeline.py status <task-id>        # show current state
+python3 ~/openclaw-workspace/scripts/jarvis_pipeline.py list                    # all active pipelines
+```
+
+**When main gets a full-pipeline task in a direct dispatch:** shell out to the orchestrator via the Bash tool in a single call. Do NOT attempt to spawn subagents from within main's turn — it will not work and will look like it worked. The orchestrator handles stage state, resumability, Quality gate enforcement, and Conductor dual-write.
+
+**State:** `~/openclaw-workspace/memory/pipeline-state.json` (dict of pipelines keyed by task id; ISO8601 timestamps; `.lock` adjacent file for concurrency).
+
+**Outputs:** `~/openclaw-workspace/pipeline-outputs/<task-id>/NN-stage.md` for each stage's raw assistant text.
+
+**Auto-revision:** `jarvis_pipeline.py run <task> --max-revision-loops N` (default 2) enables:
+- Auditor REJECTED → Planner re-drafts with feedback injected, then Auditor re-reviews
+- Quality LLM REJECTED (cmd passed) → Coder re-implements with feedback, then Quality re-reviews
+- Deterministic `verificationCmd` failure does NOT retry — halts immediately
+- Revisions exhausted → pipeline fails, incident logged, Conductor skipped
+
+**Librarian auto-injection:** Planner, Auditor, and Coder all receive the full Librarian memory (`~/.claude/projects/*/memory/*.md`) prepended to their prompts by the orchestrator. See DELEGATION.md "Learn First" / "Learn Before Review" / "Learn Before Code" rules.
+
+**Weekly pattern scan:** `com.openclaw.librarian.weekly.plist` (launchd, Sundays 06:00) runs `scripts/librarian_weekly.py` to scan `memory/incidents.jsonl` for recurring patterns and write a `type: feedback` memory file that auto-feeds back into the next pipeline run.
+
+**External knowledge hook:** Researcher and Planner also auto-inject user-provided context from an optional hook — drop a `scripts/external_context_hook.py` with `fetch_context(task, stage) -> str` and the orchestrator imports it at runtime. Intended for Obsidian vaults, karpathy/autoresearch-style depth-bounded exploration, or any per-task knowledge backend. Fail-safe: any error → logged to `logs/jarvis-pipeline-hooks.log`, pipeline continues with empty context. Template at `scripts/external_context_hook.py.example`. Alternative shell-command path via `JARVIS_EXTERNAL_CONTEXT_CMD` env var for non-Python backends. Task opt-out: `task["externalContext"]["enabled"] = false` skips the hook for trivial tasks.
+
+See `KNOWN_FAILURES.md` "Jarvis one-turn CLI limit" for the root cause. See the plan file at `~/.claude/plans/replicated-squishing-mccarthy.md` for the design.

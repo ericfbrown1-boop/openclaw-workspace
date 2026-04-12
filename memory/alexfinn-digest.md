@@ -13,7 +13,7 @@
 - **Tool-calling LoRA** — Training local models to be better at function/tool calling
 - **Auto-research / self-improvement** — Karpathy-style: model experiments on itself every 5 min, keeps improvements
 - **Hardware: Mac Studio 512GB × 3 + DGX Spark** — Recommends Mac Studio as best value for local AI
-- **GPT 5.4 vs Opus 4.6** — Speed advantage of 5.4 "more than makes up" for slight quality edge of Opus
+- **GPT 5.4 vs Opus 4.6** — Speed advantage of 5.4 "more than makes up" for slight quality edge of Opus [HISTORICAL OBSERVATION from 2026-03-11; we trialed GPT 5.4 as Planner reviewer 2026-03-11→2026-03-27 and moved to Grok 4.20 Beta on 2026-03-27 — see DELEGATION.md standing change]
 - **Security: Don't use ClawHub skills** — Build your own based on reading others' skills (backdoor risk)
 - **Productizing "Henry"** — Building a commercial product, not an OpenClaw wrapper, launching V1 in ~1 month
 - **Nvidia Nemoron 3 Super** — 120B param MoE (12B active), 1M context, open source, Blackwell-optimized

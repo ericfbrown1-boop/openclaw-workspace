@@ -7,29 +7,29 @@
       "progress": 100,
       "owner": "coder",
       "priority": "high",
-      "summary": "Completed — integrated into FinancialReportApp. 3-strategy crawler: HTML link extraction, Firecrawl map, URL pattern probing. 16 pages for Rubrik (was 2).",
+      "summary": "Completed \u2014 integrated into FinancialReportApp. 3-strategy crawler: HTML link extraction, Firecrawl map, URL pattern probing. 16 pages for Rubrik (was 2).",
       "completedAt": "2026-03-28T06:22:29.099970",
       "completedCommit": "4acd623"
     },
     "build-financial-report-app": {
       "id": "build-financial-report-app",
-      "title": "Build Financial Report App (Railway) — ProjectScraper v3 + Financial Report",
+      "title": "Build Financial Report App (Railway) \u2014 ProjectScraper v3 + Financial Report",
       "status": "completed",
       "progress": 100,
       "owner": "planner",
       "priority": "critical",
-      "summary": "Completed — deployed on PowerSpec Docker (not Railway). Frontend :3001, API :8001, Postgres, Redis. 14 bugs fixed, structured outputs, 33 tests, SHA256 integrity.",
+      "summary": "Completed \u2014 deployed on PowerSpec Docker (not Railway). Frontend :3001, API :8001, Postgres, Redis. 14 bugs fixed, structured outputs, 33 tests, SHA256 integrity.",
       "completedAt": "2026-03-28T06:22:29.099970",
       "completedCommit": "971af16"
     },
     "financial-report-app-refactor": {
       "id": "financial-report-app-refactor",
-      "title": "FinancialReportApp — Full Pipeline Refactor",
+      "title": "FinancialReportApp \u2014 Full Pipeline Refactor",
       "status": "completed",
       "progress": 100,
       "owner": "jarvis",
       "priority": "high",
-      "summary": "14 bugs fixed across 8 files. Structured outputs (Anthropic output_config), 3 blocking quality gates, retry w/ exponential backoff, env validation, crawler HTML extraction (8x more pages), SHA256 output parity, 33 unit tests. E2E verified: CrowdStrike, Commvault, ServiceNow, Rubrik — all 0 'not available'.",
+      "summary": "14 bugs fixed across 8 files. Structured outputs (Anthropic output_config), 3 blocking quality gates, retry w/ exponential backoff, env validation, crawler HTML extraction (8x more pages), SHA256 output parity, 33 unit tests. E2E verified: CrowdStrike, Commvault, ServiceNow, Rubrik \u2014 all 0 'not available'.",
       "completedAt": "2026-03-28T06:20:39.592120",
       "completedCommit": "971af16"
     },
@@ -93,7 +93,7 @@
       "progress": 100,
       "owner": "coder",
       "priority": "medium",
-      "summary": "Cancelled — pivoted to PowerSpec Docker deployment instead of Railway.",
+      "summary": "Cancelled \u2014 pivoted to PowerSpec Docker deployment instead of Railway.",
       "completedAt": "2026-03-28T15:08:14.897270"
     },
     "mission-control-live-tracking": {
@@ -125,17 +125,139 @@
       "progress": 100,
       "owner": "jarvis",
       "priority": "critical",
-      "summary": "Full PowerSpec rebuild complete. Fresh Windows 11 → SSH, Git, Python, Node, Docker, WSL2, GPU passthrough all working. FinancialReportApp (5 containers) and ContractAnalyzer (5 containers) restored. Tailscale watchdog re-registered. Config files updated.",
+      "summary": "Full PowerSpec rebuild complete. Fresh Windows 11 \u2192 SSH, Git, Python, Node, Docker, WSL2, GPU passthrough all working. FinancialReportApp (5 containers) and ContractAnalyzer (5 containers) restored. Tailscale watchdog re-registered. Config files updated.",
       "completedAt": "2026-04-02T06:12:27.156Z"
     },
     "dell-6k-monitor-setup": {
       "id": "dell-6k-monitor-setup",
-      "title": "Dell U5226KW 6K Monitor — Safe Connection to PowerSpec",
-      "status": "queued",
-      "progress": 0,
+      "title": "Dell U5226KW 6K Monitor \u2014 Safe Connection to PowerSpec",
+      "status": "completed",
+      "progress": 100,
       "owner": "jarvis",
       "priority": "high",
-      "summary": "Connect Dell UltraSharp 52\" 6K monitor (6144x2560 @ 120Hz) to RTX 5080 via DisplayPort 2.1. Last attempt crashed the OS. UGREEN DP 2.1 cable ordered. Cold-plug procedure documented."
+      "summary": "Connect Dell UltraSharp 52\" 6K monitor (6144x2560 @ 120Hz) to RTX 5080 via DisplayPort 2.1. Last attempt crashed the OS. UGREEN DP 2.1 cable ordered. Cold-plug procedure documented.",
+      "completedAt": "2026-04-11T13:08:13"
+    },
+    "powerspec-cli-status-cron": {
+      "id": "powerspec-cli-status-cron",
+      "title": "powerspec-rebuild: add `status` + `--version` commands, wire daily QC launchd job",
+      "status": "completed",
+      "progress": 100,
+      "owner": "jarvis",
+      "priority": "medium",
+      "agent": "main",
+      "agentChain": [
+        "researcher",
+        "planner",
+        "auditor",
+        "coder",
+        "quality",
+        "monitor",
+        "conductor"
+      ],
+      "etaMinutes": 25,
+      "createdAt": "2026-04-11T13:14:05",
+      "startedAt": "2026-04-11T13:14:05",
+      "verificationCmd": "uv run pytest -q && powerspec --version && powerspec status",
+      "summary": "Full 8-agent pipeline test. Adds `powerspec status` (last QC run, pass/fail, PowerSpec reachability), `powerspec --version`, and a launchd plist running `powerspec qc` daily at 06:00 local.",
+      "lastUpdate": "Pipeline test complete. Coder missed --version (fixed manually). All gates pass.",
+      "completedAt": "2026-04-11T13:51:08",
+      "commits": [
+        "f91b922",
+        "fb3649d"
+      ],
+      "testCount": 93
+    },
+    "readme-tagline": {
+      "id": "readme-tagline",
+      "title": "Add tagline to powerspec-rebuild README",
+      "status": "completed",
+      "progress": 100,
+      "owner": "jarvis",
+      "priority": "low",
+      "summary": "Minimal full-pipeline smoke test \u2014 add a single blockquote tagline to README.md immediately after the H1, mentioning PowerSpec G484.",
+      "objective": "Append a single-line markdown blockquote tagline to /Users/ericbrown/powerspec-rebuild/README.md immediately after the existing H1 '# powerspec-rebuild'. The tagline must start with '> ' and contain the phrase 'PowerSpec G484'. Do not remove, reorder, or rewrite any existing content. Preserve the existing test suite (93 tests). Commit with a clear message referencing task readme-tagline.",
+      "repoPath": "/Users/ericbrown/powerspec-rebuild",
+      "verificationCmd": "cd /Users/ericbrown/powerspec-rebuild && uv run pytest -q && grep -qE '^>.*PowerSpec G484' README.md",
+      "success_criteria": "README.md has a new line starting with '> ' that contains 'PowerSpec G484'; all 93 existing tests still pass; single commit on master references task readme-tagline",
+      "failure_criteria": "Any existing test broken, README.md missing the blockquote, H1 removed or changed, multiple commits made, commit message does not reference readme-tagline",
+      "createdAt": "2026-04-11T22:45:55Z",
+      "completedAt": "2026-04-11T23:55:26Z",
+      "completedCommit": "50ba7a448b9b896b2622f2f9a089a5a016c1f478",
+      "lastUpdate": "Kept as-is after steps 5/6/7 verification; includes Coder over-engineering that Quality REJECTED"
+    },
+    "mc-integration-test": {
+      "id": "mc-integration-test",
+      "title": "MC integration test \u2014 update the LICENSE year",
+      "status": "completed",
+      "progress": 100,
+      "owner": "jarvis",
+      "priority": "low",
+      "summary": "Minimal task to verify Mission Control reflects live pipeline progress per stage",
+      "objective": "Append a one-line MIT-style copyright notice to the bottom of /Users/ericbrown/powerspec-rebuild/README.md mentioning 2026 and Eric Brown. Do not modify the existing H1 or tagline. Single commit referencing task mc-integration-test.",
+      "repoPath": "/Users/ericbrown/powerspec-rebuild",
+      "verificationCmd": "cd /Users/ericbrown/powerspec-rebuild && uv run pytest -q && grep -qE '2026.*Eric Brown|Eric Brown.*2026' README.md",
+      "success_criteria": "README contains a line mentioning '2026' and 'Eric Brown'; existing tests still pass; H1 and tagline unchanged",
+      "failure_criteria": "any test broken, H1 changed, tagline removed",
+      "etaMinutes": 10,
+      "createdAt": "2026-04-12T00:53:38Z",
+      "completedAt": "2026-04-12T01:02:38Z",
+      "completedCommit": "9bbc8d7abf0f95e9a1a93a7d04932417eef682a4",
+      "lastUpdate": "jarvis-pipeline completed"
+    },
+    "obsidian-second-brain-plan": {
+      "id": "obsidian-second-brain-plan",
+      "title": "Plan: Obsidian second-brain + karpathy/autoresearch integration for Jarvis",
+      "status": "completed",
+      "progress": 100,
+      "owner": "jarvis",
+      "priority": "high",
+      "summary": "Create a Word doc plan for integrating Obsidian as a second brain for Jarvis on the MacBook Pro, including AutoResearch integration (karpathy/autoresearch). Upload to Dropbox/Jarvis Reports/. Resolve the karpathy/autoresearch discrepancy honestly.",
+      "objective": "Produce a detailed implementation plan (Word format, .docx) for integrating Obsidian as Jarvis's \"second brain\" on the MacBook Pro, with an AutoResearch component. Save to ~/openclaw-workspace/outputs/obsidian-second-brain-plan.docx AND upload to Dropbox at /Jarvis Reports/obsidian-second-brain-plan.docx via `python3 ~/openclaw-workspace/dropbox-cli.py upload <local> \"/Jarvis Reports/obsidian-second-brain-plan.docx\"`.\n\n=== USER'S REQUEST (verbatim from Telegram 2026-04-11) ===\nReview the YouTube video \"AI-Obsidian-SecondBrain-2026\" (15-min guide on installing Obsidian, creating vaults, using plugins for knowledge graphs, and AI workflows). Based on that, create a detailed plan to implement Obsidian on the MacBook Pro, integrated with Jarvis \u2014 note syncing, AI-generated content via skills like apple-notes / write tool, second brain features like daily briefings exported to vaults. Include AutoResearch \u2014 download and review the karpathy/autoresearch code from GitHub as part of this project. Plan should be in Word format. Upload to Dropbox/Jarvis Reports/.\n\n=== USER'S VIDEO SUMMARY (authoritative \u2014 do not re-fetch the video) ===\nKey Takeaways: Obsidian uses markdown-based notes for second brain (PKM). Plugins: Dataview for queries, Excalidraw for diagrams, AI integrations (Claude API for auto-tagging). Vaults organize by domain (work vs personal). 15 min runtime, 10k views, 4.8/5 rating, beginner-friendly.\n\n=== GROUND TRUTH: karpathy/autoresearch ACTUAL README (pulled 2026-04-11) ===\nname:\tkarpathy/autoresearch\ndescription:\tAI agents running research on single-GPU nanochat training automatically\n--\n# autoresearch\n\n![teaser](progress.png)\n\n*One day, frontier AI research used to be done by meat computers in between eating, sleeping, having other fun, and synchronizing once in a while using sound wave interconnect in the ritual of \"group meeting\". That era is long gone. Research is now entirely the domain of autonomous swarms of AI agents running across compute cluster megastructures in the skies. The agents claim that we are now in the 10,205th generation of the code base, in any case no one could tell if that's right or wrong as the \"code\" is now a self-modifying binary that has grown beyond human comprehension. This repo is the story of how it all began. -@karpathy, March 2026*.\n\nThe idea: give an AI agent a small but real LLM training setup and let it experiment autonomously overnight. It modifies the code, trains for 5 minutes, checks if the result improved, keeps or discards, and repeats. You wake up in the morning to a log of experiments and (hopefully) a better model. The training code here is a simplified single-GPU implementation of [nanochat](https://github.com/karpathy/nanochat). The core idea is that you're not touching any of the Python files like you normally would as a researcher. Instead, you are programming the `program.md` Markdown files that provide context to the AI agents and set up your autonomous research org. The default `program.md` in this repo is intentionally kept as a bare bones baseline, though it's obvious how one would iterate on it over time to find the \"research org code\" that achieves the fastest research progress, how you'd add more agents to the mix, etc. A bit more context on this project is here in this [tweet](https://x.com/karpathy/status/2029701092347630069) and [this tweet](https://x.com/karpathy/status/2031135152349524125).\n\n## How it works\n\nThe repo is deliberately kept small and only really has three files that matter:\n\n- **`prepare.py`** \u2014 fixed constants, one-time data prep (downloads training data, trains a BPE tokenizer), and runtime utilities (dataloader, evaluation). Not modified.\n- **`train.py`** \u2014 the single file the agent edits. Contains the full GPT model, optimizer (Muon + AdamW), and training loop. Everything is fair game: architecture, hyperparameters, optimizer, batch size, etc. **This file is edited and iterated on by the agent**.\n- **`program.md`** \u2014 baseline instructions for one agent. Point your agent here and let it go. **This file is edited and iterated on by the human**.\n\nBy design, training runs for a **fixed 5-minute time budget** (wall clock, excluding startup/compilation), regardless of the details of your compute. The metric is **val_bpb** (validation bits per byte) \u2014 lower is better, and vocab-size-independent so architectural changes are fairly compared.\n\nIf you are new to neural networks, this [\"Dummy's Guide\"](https://x.com/hooeem/status/2030720614752039185) looks pretty good for a lot more context.\n\n## Quick start\n\n**Requirements:** A single NVIDIA GPU (tested on H100), Python 3.10+, [uv](https://docs.astral.sh/uv/).\n\n```bash\n\n# 1. Install uv project manager (if you don't already have it)\ncurl -LsSf https://astral.sh/uv/install.sh | sh\n\n# 2. Install dependencies\nuv sync\n\n# 3. Download data and train tokenizer (one-time, ~2 min)\nuv run prepare.py\n\n# 4. Manually run a single training experiment (~5 min)\nuv run train.py\n```\n\nIf the above commands all work ok, your setup is working and you can go into autonomous research mode.\n\n## Running the agent\n\nSimply spin up your Claude/Codex or whatever you want in this repo (and disable all permissions), then you can prompt something like:\n\n```\nHi have a look at program.md and let's kick off a new experiment! let's do the setup first.\n```\n\nThe `program.md` file is essentially a super lightweight \"skill\".\n\n## Project structure\n\n```\nprepare.py      \u2014 constants, data prep + runtime utilities (do no\n\n=== IMPORTANT DISCREPANCY TO RESOLVE IN THE PLAN ===\nThe user's task conflates two different concepts:\n  (A) Obsidian as a PKM \"second brain\" (matches the video summary \u2014 valid, well-known concept)\n  (B) karpathy/autoresearch \u2014 which is NOT about knowledge graphs or second-brain PKM. Per the real README above, it's an autonomous ML research framework: an agent that modifies `program.md` files, trains a nanochat model for 5 minutes, checks if results improved, and keeps/discards iteratively. The \"program.md\" file IS the programming model \u2014 not Python code.\n\nThe Planner MUST address this discrepancy EXPLICITLY in the plan. Options to propose:\n  1. Build pure Obsidian second-brain integration WITHOUT karpathy/autoresearch (simplest; matches the video)\n  2. Build Obsidian second-brain integration AND separately adopt karpathy/autoresearch's self-modifying-program.md pattern as a NEW Jarvis capability (autonomous research over Jarvis's own behavior, triggered by daily briefings) \u2014 much more ambitious but potentially more valuable\n  3. Identify a DIFFERENT tool that actually does Obsidian+autoresearch (e.g., some other GitHub project named similarly) and integrate that instead\nThe plan should RECOMMEND one option with rationale, not present all three as equal.\n\n=== CONCRETE INTEGRATION POINTS (existing Jarvis infrastructure to wire Obsidian into) ===\n- External context hook: ~/openclaw-workspace/scripts/external_context_hook.py.example\n  (this is Jarvis's official extension point for injecting knowledge into Researcher + Planner stages \u2014 see DELEGATION.md \"Learn First\" and \"Learn Before Review\" rules)\n- Librarian memory: ~/.claude/projects/*/memory/*.md files auto-injected into Planner/Auditor/Coder\n- Weekly Librarian scanner: ~/openclaw-workspace/scripts/librarian_weekly.py (cron via com.openclaw.librarian.weekly.plist)\n- Daily briefing cron: b51c6178-cf43-490d-9de7-3bdbb9d69575 (6am PT, writes to ~/openclaw-workspace/memory/)\n- Dropbox client: ~/openclaw-workspace/dropbox-cli.py (auth refresh works, /Jarvis Reports/ writable)\n- Mission Control dashboard: http://localhost:3001 (live REST API, dual-write enabled)\n- gog CLI: Google Drive + Docs access for vault-to-cloud sync if needed\n\n=== REQUIRED PLAN SECTIONS (in order, minimum 2000 words total) ===\n1. Executive summary (500 words)\n2. The karpathy/autoresearch discrepancy and recommended resolution\n3. Architecture diagram (ASCII or markdown description \u2014 Coder will render to Word)\n4. Obsidian installation + vault structure\n5. Plugin recommendations with rationale (Dataview, Excalidraw, Templater, AI plugins, etc.)\n6. Integration points with Jarvis (table mapping each Obsidian feature to an existing Jarvis component)\n7. karpathy/autoresearch integration (per the chosen resolution from section 2)\n8. Phased rollout with verification checkpoints at each phase\n9. Risks and mitigations (reference jarvis_launchd_path_bug.md, gog_oauth_scopes.md, and the orchestration-gap memory as relevant)\n10. Success metrics and how to measure them\n11. Appendix: config snippets, plugin install commands, Obsidian vault skeleton",
+      "repoPath": "/Users/ericbrown/openclaw-workspace",
+      "verificationCmd": [
+        "bash",
+        "-c",
+        "test -f /Users/ericbrown/openclaw-workspace/outputs/obsidian-second-brain-plan.docx && python3 -c 'from docx import Document; d = Document(\"/Users/ericbrown/openclaw-workspace/outputs/obsidian-second-brain-plan.docx\"); paras = [p.text for p in d.paragraphs if p.text.strip()]; words = sum(len(p.split()) for p in paras); assert len(paras) >= 30, f\"too few paragraphs: {len(paras)}\"; assert words >= 1500, f\"too few words: {words}\"; assert any(\"autoresearch\" in p.lower() for p in paras), \"no autoresearch mention\"; assert any(\"obsidian\" in p.lower() for p in paras), \"no obsidian mention\"; print(f\"OK: {len(paras)} paragraphs / {words} words\")'"
+      ],
+      "success_criteria": "Word doc exists at ~/openclaw-workspace/outputs/obsidian-second-brain-plan.docx; >= 30 paragraphs; >= 1500 words; mentions both Obsidian and autoresearch; covers all 11 required sections; addresses the karpathy/autoresearch discrepancy honestly; uploaded to Dropbox /Jarvis Reports/",
+      "failure_criteria": "Missing doc, < 30 paragraphs, < 1500 words, no mention of the karpathy/autoresearch discrepancy, generic boilerplate without specific Jarvis integration points, no Dropbox upload, plan references concepts not in the existing Jarvis infrastructure",
+      "etaMinutes": 30,
+      "externalContext": {
+        "enabled": true
+      },
+      "createdAt": "2026-04-12T01:34:31Z",
+      "completedAt": "2026-04-12T01:45:23Z",
+      "completedCommit": "076ecabadb55ec8bd4b35de705de8d96d1570e06",
+      "lastUpdate": "jarvis-pipeline completed"
+    },
+    "powerspec-smoke-1": {
+      "id": "powerspec-smoke-1",
+      "title": "Option C smoke \u2014 trivial Python hello.py on PowerSpec",
+      "status": "completed",
+      "progress": 100,
+      "owner": "jarvis",
+      "priority": "medium",
+      "summary": "Smoke test for Option C \u2014 dispatch Coder to PowerSpec. Creates hello.py that prints 'pong from powerspec', commits, pushes.",
+      "objective": "Create a file hello.py at the working directory root containing exactly: print('pong from powerspec'). Add to git, commit with message 'add hello.py [powerspec-smoke-1]', and push to origin master. Single commit. No other files.",
+      "repoPath": "C:\\Users\\Eric Brown\\repos\\smoke-test-task",
+      "verificationCmd": [
+        "bash",
+        "-c",
+        "ssh -o 'User=\"Eric Brown\"' -o ConnectTimeout=10 100.81.21.114 \"powershell -Command \\\"Test-Path 'C:\\Users\\Eric Brown\\repos\\smoke-test-task\\hello.py'\\\"\" | tr -d '\\r' | grep -q True && echo OK_HELLO_EXISTS"
+      ],
+      "success_criteria": "hello.py exists on PowerSpec Windows PC (100.81.21.114) at C:\\Users\\Eric Brown\\repos\\smoke-test-task with content print('pong from powerspec'); single commit on branch main (not master); commit message contains 'powerspec-smoke-1'; pushed to origin; no other files in commit; verify_powerspec_smoke.sh exits 0 with OK_SHA. NOTE: This is a cross-machine SSH task. repoPath points to MacBook workspace for pipeline cwd; actual work is on the Windows PC via SSH.",
+      "failure_criteria": "missing file, wrong content, wrong branch (orphan master instead of main), no push, extra files in commit",
+      "etaMinutes": 10,
+      "execution": {
+        "coderHost": "powerspec",
+        "remoteWorkDir": "C:\\Users\\Eric Brown\\repos\\smoke-test-task",
+        "remoteGitRepo": "https://github.com/ericfbrown1-boop/powerspec-dispatch-smoke.git"
+      },
+      "createdAt": "2026-04-12T02:25:14Z",
+      "completedAt": "2026-04-12T03:35:40Z",
+      "completedCommit": "c39a32a",
+      "lastUpdate": "jarvis-pipeline completed"
     }
   }
 }

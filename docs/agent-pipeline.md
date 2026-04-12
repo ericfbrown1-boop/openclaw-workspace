@@ -38,8 +38,8 @@ flowchart TD
     end
 
     subgraph Planning["Phase 1: Architecture"]
-        P["📐 Architect — Planner\n(GPT 5.4)\nSystem design, tech stack,\nPLAN.md + PROJECT_CONTEXT.md"]
-        GPT["🧠 GPT 5.4 Cross-Review\nSpeed + fresh perspective\non Planner output"]
+        P["📐 Architect — Planner\n(Opus 4.6)\nSystem design, tech stack,\nPLAN.md + PROJECT_CONTEXT.md"]
+        GPT["🧠 Grok 4.20 Beta Adversarial Review\nFresh perspective, stress tests\nPlanner output"]
         COND_PRE["🚂 Conductor Preflight\n(Sonnet 4.6)\nVerify Docker, Railway,\nenv vars ready"]
     end
 
@@ -52,8 +52,8 @@ flowchart TD
     end
 
     subgraph QualityGate["Phase 4: Quality Gate"]
-        Q_SEC["🔍 Inspector — Quality\n(Sonnet 4.6)\nPart B: Security Audit\nSecrets, deps, Tailscale checks"]
-        Q_CODE["🔍 Inspector — Quality\n(Sonnet 4.6)\nPart C: Code Quality Review\nBest practices, patterns"]
+        Q_SEC["🔍 Inspector — Quality\n(Grok 4.20 Beta)\nPart B: Security Audit\nSecrets, deps, Tailscale checks"]
+        Q_CODE["🔍 Inspector — Quality\n(Grok 4.20 Beta)\nPart C: Code Quality Review\nBest practices, patterns"]
     end
 
     subgraph Audit["Phase 5: External Review"]
@@ -139,9 +139,9 @@ flowchart TD
 |---|-------|----------|-------|------|
 | 1 | **Jarvis** (main) | 🤖 Jarvis | Opus 4.6 | Orchestrator — routes all requests, merges reviews, relays to Eric |
 | 2 | **Researcher** | 🔬 Oracle | Sonnet 4.6 | Web research, financial analysis, competitive intel |
-| 3 | **Planner** | 📐 Architect | GPT 5.4 | System architecture, PLAN.md creation, tech stack decisions |
+| 3 | **Planner** | 📐 Architect | Opus 4.6 (+ Grok 4.20 Beta adversarial review) | System architecture, PLAN.md creation, tech stack decisions |
 | 4 | **Coder** | ⚙️ Scotty | Sonnet 4.6 | Implementation — reads PLAN.md, writes code, checkpoints |
-| 5 | **Quality** | 🔍 Inspector | Sonnet 4.6 | Security audits, code quality, error diagnosis |
+| 5 | **Quality** | 🔍 Inspector | Grok 4.20 Beta | Security audits, code quality, adversarial output-correctness review, error diagnosis |
 | 6 | **Auditor** | 🛡️ External Auditor | Sonnet 4.6 | Final review gate, repomix packaging, Grok review option |
 | 7 | **Conductor** | 🚂 Conductor | Sonnet 4.6 | Infrastructure — Docker builds, Railway deploys, smoke tests |
 | 8 | **Monitor** | 📡 Sentinel | Sonnet 4.6 | Background — stock alerts, price watches, system health |
@@ -151,5 +151,5 @@ flowchart TD
 - **Errors always go to Quality first** — never straight to Coder
 - **New projects always go to Planner first** — never straight to Coder
 - **Every code task gets a Security Audit** (Quality Part B) before shipping
-- **Planner output gets dual-model review** (GPT 5.4 cross-review)
+- **Planner output gets dual-model review** (Grok 4.20 Beta adversarial review; see DELEGATION.md 2026-03-27 standing change)
 - **Jarvis orchestrates everything** — Eric only needs to make the request and approve the Grok review prompt

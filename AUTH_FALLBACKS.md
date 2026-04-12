@@ -1,5 +1,5 @@
 # AUTH_FALLBACKS.md — Credential Expiry Handling
-> **L1:** What to do when auth breaks. gog→Zapier MCP, gh→pause+alert, Railway CLI banned (git push only), Dropbox auto-refresh. Model fallback chain: Opus→GPT-5.4→Sonnet.
+> **L1:** What to do when auth breaks. gog→Zapier MCP, gh→pause+alert, Railway CLI banned (git push only), Dropbox auto-refresh. Model fallback chain: Opus→Grok 4.20 Beta→Sonnet.
 
 **No agent may stall because of expired credentials. Every auth has an automated fallback.**
 
@@ -21,8 +21,8 @@ When an LLM provider is unavailable (rate limit, outage, API key issue):
 
 | Primary | Fallback 1 | Fallback 2 | Notes |
 |---------|-----------|-----------|-------|
-| Claude Opus 4.6 | GPT-5.4 Pro | Claude Sonnet 4.6 | GPT-5.4 has 1M context (5x Opus) at lower cost |
-| GPT-5.4 Pro | Claude Opus 4.6 | Claude Sonnet 4.6 | Cross-provider resilience |
+| Claude Opus 4.6 | Grok 4.20 Beta | Claude Sonnet 4.6 | Grok 4.20 Beta has 2M context at lower cost; cross-provider resilience |
+| Grok 4.20 Beta | Claude Opus 4.6 | Claude Sonnet 4.6 | Cross-provider resilience |
 | Claude Sonnet 4.6 | Grok 4 Fast | Claude Haiku 4.5 | Cheapest tier for simple tasks |
 
 Managed by `auth-profiles.json` cooldown/error tracking. Self-heal script clears cooldowns automatically.

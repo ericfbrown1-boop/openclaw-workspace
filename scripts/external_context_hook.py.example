@@ -1,0 +1,135 @@
+#!/usr/bin/env python3
+"""external_context_hook.py — Jarvis pipeline external context hook (TEMPLATE).
+
+Copy this file to `external_context_hook.py` (drop the `.example` suffix) and
+implement `fetch_context()` to return additional context from your knowledge
+base. The orchestrator (`jarvis_pipeline.py`) calls this hook during the
+Researcher and Planner stages if the file exists. Any error is caught and
+the pipeline continues with empty context — the hook can never break a run.
+
+=== INTERFACE CONTRACT ===
+
+def fetch_context(task: dict, stage: str) -> str:
+    task:  the full task dict from ~/openclaw-workspace/tasks.json
+    stage: "researcher" or "planner"
+
+    returns: a markdown-formatted context string, or "" to skip injection.
+             The orchestrator will inline the returned string into the
+             agent's prompt (wrapped in an === EXTERNAL KNOWLEDGE === block).
+
+The hook can read any field from `task` to decide what to fetch. Common patterns:
+    - task["externalContext"]["sources"] — list of knowledge source IDs
+    - task["externalContext"]["obsidianVault"] — absolute path to a vault
+    - task["externalContext"]["topics"] — list of topic tags to search
+    - task["objective"] or task["title"] — used as the search query
+
+Task-level opt-out: if `task["externalContext"]["enabled"] == False`, the
+orchestrator will skip the hook entirely — you don't need to check that here.
+
+=== OBSIDIAN + AUTORESEARCH INTEGRATION SKETCH ===
+
+This is the intended future backend (per karpathy/autoresearch-style depth-bounded
+knowledge exploration over a local Obsidian vault):
+
+    1. Read `task["externalContext"]` to know the vault path and topics
+    2. Scan the Obsidian vault for files whose YAML frontmatter tags OR
+       titles match the topics or objective keywords
+    3. Run an autoresearch pass (depth N, breadth M) that:
+         - Starts from the matched files
+         - Follows [[wikilinks]] to related notes
+         - Pulls in transcluded sections
+         - Returns a de-duped merged context block
+    4. Format as markdown with a header per source file so the agent can
+       cite which vault note supplied which fact
+    5. Cap total size — the orchestrator also caps at EXTERNAL_CONTEXT_MAX_BYTES
+       (500 KB) but returning smaller is better
+
+Example return value shape:
+
+    ### From ~/vaults/main/Distributed Systems/CAP.md
+    > CAP theorem states that any distributed system can provide at most
+    > two of: Consistency, Availability, Partition tolerance.
+    > (wikilinked: [[PACELC]], [[Consensus]])
+
+    ### From ~/vaults/main/Incidents/2026-04-09 gateway outage.md
+    > Gateway 1006 abnormal closures correlate with LLM timeout storms.
+    > Fix: clear auth-profiles cooldown, restart gateway.
+
+=== SHELL COMMAND ALTERNATIVE ===
+
+If you prefer to implement the hook in a different language, set
+`JARVIS_EXTERNAL_CONTEXT_CMD` to a shell command. The orchestrator will
+pipe `{"task": {...}, "stage": "..."}` to stdin and read stdout on exit 0.
+Use this for Node.js / Go / Rust hook implementations.
+
+=== FAIL-SAFE GUARANTEES ===
+
+- Hook exception → logged to ~/openclaw-workspace/logs/jarvis-pipeline-hooks.log,
+  pipeline continues with empty context
+- Hook timeout (shell path only, 120s default) → same as above
+- Missing hook file / missing fetch_context() function → empty context, no error
+- Return value > 500 KB → truncated with a notice
+
+=== GETTING STARTED ===
+
+To wire in your Obsidian + autoresearch backend:
+    1. Copy this file to `external_context_hook.py` (no .example)
+    2. Replace the stub below with your real implementation
+    3. Run `python3 ~/openclaw-workspace/scripts/jarvis_pipeline.py run <task>`
+       on a test task that has `externalContext: {sources: [...]}` set
+    4. Check ~/openclaw-workspace/logs/jarvis-pipeline-hooks.log for errors
+    5. Check pipeline-state.json — each stage records `externalContextBytes`
+       so you can confirm injection size
+"""
+from __future__ import annotations
+
+
+def fetch_context(task: dict, stage: str) -> str:
+    """STUB — replace with your Obsidian + autoresearch implementation.
+
+    The default stub returns an empty string (no-op). The pipeline will run
+    with Librarian memory only, same as before this hook existed.
+    """
+    # ────────────────────────────────────────────────────────────────────
+    # Example: read a minimal context block from task config
+    # ────────────────────────────────────────────────────────────────────
+    # cfg = task.get("externalContext") or {}
+    # sources = cfg.get("sources") or []
+    # if not sources:
+    #     return ""
+    #
+    # chunks = []
+    # for source in sources:
+    #     if source.startswith("obsidian:"):
+    #         vault = Path(source.removeprefix("obsidian:"))
+    #         chunks.append(_read_obsidian_vault(vault, task, stage))
+    #     elif source.startswith("autoresearch:"):
+    #         depth = int(source.split("=")[1]) if "=" in source else 2
+    #         chunks.append(_run_autoresearch(task, depth, stage))
+    # return "\n\n".join(c for c in chunks if c)
+    # ────────────────────────────────────────────────────────────────────
+
+    return ""
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Subprocess entry point — DO NOT REMOVE.
+#
+# The orchestrator invokes this file as `python3 external_context_hook.py`
+# in an isolated subprocess (security hardening 2026-04-11 post-review C1:
+# sandbox dynamic hook code). It reads {"task": {...}, "stage": "..."} from
+# stdin, calls fetch_context(), and writes the result to stdout. Any import
+# errors or exceptions in your implementation are contained in the subprocess
+# and never crash the parent pipeline.
+# ─────────────────────────────────────────────────────────────────────────────
+if __name__ == "__main__":
+    import json
+    import sys
+    try:
+        payload = json.load(sys.stdin)
+        result = fetch_context(payload.get("task") or {}, payload.get("stage") or "")
+        sys.stdout.write(str(result or ""))
+        sys.exit(0)
+    except Exception as e:  # noqa: BLE001 — subprocess boundary
+        sys.stderr.write(f"external_context_hook subprocess error: {e!r}\n")
+        sys.exit(1)

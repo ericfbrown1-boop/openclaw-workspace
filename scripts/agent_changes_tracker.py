@@ -42,7 +42,7 @@ AGENT_ROLES = {
         "name": "Planner",
         "emoji": "📐",
         "role": "Architecture & project planning",
-        "does": "Designs new projects, creates PLAN.md files, defines tech stacks, writes architecture docs. Uses GPT 5.4 + cross-review loop"
+        "does": "Designs new projects, creates PLAN.md files, defines tech stacks, writes architecture docs. Drafts with Opus 4.6, stress-tested by Grok 4.20 Beta adversarial review"
     },
     "coder": {
         "name": "Coder",

@@ -75,14 +75,13 @@
 - First established: 2026-02-07
 - Memory wiped at some point, reconnected ~2026-02-23
 
-## GPT 5.4 Trial (Started 2026-03-11)
-- Eric approved trial of GPT 5.4 (openai/gpt-5.1-codex) for subagent work
-- Primary use: Cross-review loop for Planner output (dual-model architecture review)
+## GPT 5.4 Trial (HISTORICAL — 2026-03-11 to 2026-03-27, replaced by Grok 4.20 Beta)
+- Eric approved trial of GPT 5.4 (openai/gpt-5.1-codex) for subagent work (2026-03-11 to 2026-03-27)
+- Primary use was: Cross-review loop for Planner output (dual-model architecture review)
 - Inspired by Alex Finn's recommendation (switched from Opus to 5.4 for speed)
-- Jarvis main model stays Opus 4.6 — GPT 5.4 is a reviewer/second opinion
-- Pipeline: Planner drafts → GPT 5.4 reviews → Jarvis decides what to incorporate
-- Trial period: 2 weeks, evaluate by 2026-03-25
-- For routine subagent tasks, can use GPT 5.4 where speed > depth
+- Jarvis main model stayed Opus 4.6 — GPT 5.4 was a reviewer/second opinion
+- Trial ended 2026-03-27 with the "Dual-Model Planning Process" standing change: adversarial review moved from GPT 5.4 to Grok 4.20 Beta (`xai/grok-4.20`). See DELEGATION.md Stage 3.
+- 2026-04-11: Quality Agent also moved to Grok 4.20 Beta for the same reason (adversarial output-correctness judgment is its core skill).
 
 ## Alex Finn YouTube Monitoring (Started 2026-03-11)
 - Eric requested daily monitoring of Alex Finn's YouTube for OpenClaw enhancement ideas

@@ -1,0 +1,104 @@
+{
+  "version": 1,
+  "pipelines": {
+    "powerspec-smoke-1": {
+      "taskId": "powerspec-smoke-1",
+      "startedAt": "2026-04-12T03:07:00Z",
+      "endedAt": "2026-04-12T03:35:40Z",
+      "status": "completed",
+      "currentStage": "conductor",
+      "stages": {
+        "researcher": {
+          "status": "completed",
+          "startedAt": null,
+          "endedAt": null,
+          "outputPath": null,
+          "model": "pre-seeded",
+          "durationSec": null,
+          "stopReason": null,
+          "error": null
+        },
+        "planner": {
+          "status": "completed",
+          "startedAt": null,
+          "endedAt": null,
+          "outputPath": null,
+          "model": "pre-seeded",
+          "durationSec": null,
+          "stopReason": null,
+          "error": null
+        },
+        "auditor": {
+          "status": "completed",
+          "startedAt": null,
+          "endedAt": null,
+          "outputPath": "pipeline-outputs/powerspec-smoke-1/03-plan-merged.md",
+          "model": "pre-seeded",
+          "durationSec": null,
+          "stopReason": null,
+          "error": null,
+          "verdict": "APPROVED"
+        },
+        "coder": {
+          "status": "completed",
+          "startedAt": "2026-04-12T03:04:00Z",
+          "endedAt": "2026-04-12T03:34:33Z",
+          "outputPath": "pipeline-outputs/powerspec-smoke-1/04-coder-summary.md",
+          "model": "claude-sonnet-4-6 (on PowerSpec via openclaw exec)",
+          "durationSec": 550,
+          "stopReason": "stop",
+          "error": null,
+          "host": "powerspec",
+          "commitSha": "c39a32a",
+          "librarianBytes": 28825
+        },
+        "quality": {
+          "status": "completed",
+          "startedAt": "2026-04-12T03:34:52Z",
+          "endedAt": "2026-04-12T03:35:40Z",
+          "outputPath": "pipeline-outputs/powerspec-smoke-1/06-quality-verdict.md",
+          "model": "claude-opus-4-6",
+          "durationSec": 47.306858,
+          "stopReason": "stop",
+          "error": null,
+          "shellMode": "argv",
+          "cmdExit": 0,
+          "verdict": "APPROVED",
+          "feedbackText": "### Verdict \u2014 APPROVED\n### Reasons\n1. **File exists with correct content:** `hello.py` on the Windows PC at `C:\\Users\\Eric Brown\\repos\\smoke-test-task` contains exactly `print('pong from powerspec')` \u2014 verified via SSH `type hello.py`.\n2. **Correct branch:** Work is on `main` (not an orphan `master`), matching the SUCCESS CRITERIA note that the branch should be `main`.\n3. **Single commit:** `git log --oneline` shows exactly one commit: `c39a32a add hello.py [powerspec-smoke-1]`.\n4. **Commit message correct:** Contains `powerspec-smoke-1` as required.\n5. **Pushed to origin:** `git log --oneline origin/main` confirms `c39a32a` is on the remote, matching the local HEAD.\n6. **No extra files:** `git show --stat HEAD` shows only `hello.py | 1 +` \u2014 single file, single insertion.\n7. **Verification passed:** `verify_powerspec_smoke.sh` exited 0 with `OK_HELLO_EXISTS`, consistent with the actual state on disk.\n\nAll SUCCESS CRITERIA met; no FAILURE CRITERIA triggered."
+        },
+        "monitor": {
+          "status": "completed",
+          "startedAt": "2026-04-12T03:35:40Z",
+          "endedAt": "2026-04-12T03:35:40Z",
+          "outputPath": null,
+          "model": null,
+          "durationSec": null,
+          "stopReason": null,
+          "error": null
+        },
+        "conductor": {
+          "status": "completed",
+          "startedAt": "2026-04-12T03:35:40Z",
+          "endedAt": "2026-04-12T03:35:40Z",
+          "outputPath": null,
+          "model": null,
+          "durationSec": null,
+          "stopReason": null,
+          "error": null
+        }
+      },
+      "verificationCmd": "x",
+      "repoPath": "",
+      "errors": [],
+      "maxRevisions": 2,
+      "revisions": {
+        "planner": 0,
+        "coder": 0
+      },
+      "revisionFeedback": {
+        "planner": null,
+        "coder": null
+      }
+    }
+  }
+}

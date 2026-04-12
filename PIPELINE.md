@@ -31,7 +31,7 @@ Phase 1: UNDERSTAND → Phase 2: PLAN → Phase 3: IMPLEMENT → Phase 4: VERIFY
 | Phase | What Happens | Who | Gate to Next Phase |
 |-------|-------------|-----|-------------------|
 | **1. UNDERSTAND** | Read codebase, gather requirements, identify constraints. "Explore First" rule. | Planner + Researcher | PROJECT_CONTEXT.md exists |
-| **2. PLAN** | Design approach, decompose tasks, identify risks, set verification criteria. | Planner (+ GPT-5.4 cross-review) | PLAN.md approved by Jarvis |
+| **2. PLAN** | Design approach, decompose tasks, identify risks, set verification criteria. | Planner (+ Grok 4.20 Beta adversarial review) | PLAN.md approved by Jarvis |
 | **3. IMPLEMENT** | Execute the plan. Write code, send reports, run analysis. Verify at each CHECKPOINT. | Coder / Researcher / Conductor | HANDOFF.md + git push |
 | **4. VERIFY** | Test, review, audit, deploy. Multi-gate: Tester → Quality → Auditor → Conductor. | Tester + Quality + Auditor + Conductor | Completion gate passes (SHA or email ID in tasks.json) |
 
@@ -41,6 +41,33 @@ Phase 1: UNDERSTAND → Phase 2: PLAN → Phase 3: IMPLEMENT → Phase 4: VERIFY
 - **Error diagnosis:** Understand error context → Plan investigation → Implement fix → Verify fix works
 - **Monitoring tasks:** Understand alert condition → Plan check → Implement sweep → Verify system healthy
 - **Report tasks:** Understand requirements → Plan outline → Implement writing → Verify deliverable sent
+
+## Hybrid Build Routing — macbook vs powerspec (Standing Change 2026-04-11)
+
+`jarvis_pipeline.py` supports routing the Coder stage to PowerSpec via the `task.execution.coderHost` field. Use `"powerspec"` when:
+- Build >15 min (frees Mac for interactive work)
+- GPU required (RTX 5080)
+- Windows-specific testing
+- Large file IO (PowerSpec has faster NVMe)
+
+Use `"local"` (default) when:
+- Task is <5 min
+- Depends on Mac-specific paths / tools (homebrew, launchd, Tailscale Serve)
+- PowerSpec node is offline / unreachable
+
+**Task schema extension:**
+```json
+{
+  "id": "...",
+  "execution": {
+    "coderHost": "local" | "powerspec",
+    "remoteWorkDir": "C:\\Users\\Eric Brown\\repos\\<task-id>",
+    "remoteGitRepo": "https://github.com/..."
+  }
+}
+```
+
+The pipeline-state.json records `stages.coder.host` so audit trail shows which machine ran the work. Mission Control agentChain entries carry a `host` field per stage. See DELEGATION.md "Option C" section for full details and setup.
 
 ## Complete Code Pipeline (Detailed)
 
@@ -145,10 +172,11 @@ Agents read `alert_level` from the state file:
 |-------|-------|---------|---------------------|-----------|
 | Jarvis (main) | Opus 4.6 | 200K | $15 / $75 | Orchestration needs best reasoning |
 | Planner (draft) | Opus 4.6 | 200K | $15 / $75 | Architecture needs depth; drafts PLAN.md from Research Brief |
-| Planner (adversarial review) | Grok 4.20 Beta | 1M | ~$5 / $15 | Challenges plan assumptions, finds gaps, stress-tests for production readiness |
-| Coder | Sonnet 4.6 | 200K | $3 / $15 | Code tasks well-defined; Claude Code runs in auto mode (`--permission-mode auto`) |
+| Researcher | Opus 4.6 | 200K | $15 / $75 | Depth + source-weighting for research briefs (updated 2026-04-11) |
+| Planner (adversarial review) | Grok 4.20 Beta | 2M | ~$2 / $6 | Challenges plan assumptions, finds gaps, stress-tests for production readiness |
+| Coder | Opus 4.6 | 200K | $15 / $75 | Correctness-first code synthesis; over-engineering caught by Quality (updated 2026-04-11) |
 | Tester | Sonnet 4.6 | 200K | $3 / $15 | Test execution is deterministic |
-| Quality | Sonnet 4.6 | 200K | $3 / $15 | Checklist-driven |
+| Quality | Grok 4.20 Beta | 2M | ~$2 / $6 | Adversarial output-correctness judgment — same reason Auditor uses Grok. Updated 2026-04-11. |
 | Conductor | Sonnet 4.6 | 200K | $3 / $15 | Infrastructure tasks well-defined |
 | External Auditor | Sonnet 4.6 | 200K | $3 / $15 | Packaging is straightforward |
 | Librarian | Sonnet 4.6 | 200K | $3 / $15 | Analysis can use cheaper model |
@@ -157,9 +185,10 @@ Agents read `alert_level` from the state file:
 
 ### Model Fallback Chain
 If a primary model is unavailable (rate limit, outage, cooldown):
-1. **Opus 4.6** → GPT-5.4 Pro → Sonnet 4.6
-2. **GPT-5.4 Pro** → Opus 4.6 → Sonnet 4.6
-3. **Sonnet 4.6** → Grok 4 Fast → Haiku 4.5
+1. **Opus 4.6** → Grok 4.20 Beta → Sonnet 4.6 (used by main/researcher/planner/coder)
+2. **Grok 4.20 Beta** → Opus 4.6 → Sonnet 4.6 (used by auditor/quality)
+3. **Sonnet 4.6** → Opus 4.6 → Grok 4.20 Beta (used by coder fallback only)
+4. **Sonnet 4.6** → Grok 4.20 Beta (used by monitor/conductor — upgraded 2026-04-11 from grok-4)
 
 ## Test Oracle Schemas
 

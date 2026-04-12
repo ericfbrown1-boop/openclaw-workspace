@@ -42,16 +42,19 @@ Jarvis merges Grok's feedback into the final PLAN.md before dispatching to Coder
 
 **Output Parity Checkpoint:** Every PLAN.md for apps with multiple output channels must include a "Delivery Parity" section specifying: (1) which channels exist, (2) how the single source file is served to each, (3) hash verification strategy.
 
-**Learn First (Librarian Feedback Loop — Standing Change 2026-03-30):**
-Before ANY planning begins, Planner MUST read Librarian memory files to absorb past learnings:
-1. Read `~/.claude/projects/C--Users-ericf/memory/MEMORY.md` — index of all captured learnings
-2. Read ALL `feedback_*.md` files referenced in MEMORY.md — these contain rules from past mistakes and validated approaches
-3. Read ALL `project_*.md` files relevant to the domain being planned — these contain deployment details, architecture decisions, and context
-4. Read ALL `reference_*.md` files that may inform the plan — external system pointers, API patterns
-5. Incorporate relevant learnings directly into PLAN.md as explicit constraints or checkpoints
-6. If a feedback memory says "don't do X" or "always do Y", the plan MUST reflect that
+**Learn First (Librarian Feedback Loop — Standing Change 2026-03-30, auto-injected by orchestrator 2026-04-11):**
 
-**This creates a recursive learning loop:** Agents do work → Librarian captures learnings → Memory files updated → Next plan reads those learnings → Better execution → Librarian captures new learnings → cycle continues.
+When a plan is produced via `~/openclaw-workspace/scripts/jarvis_pipeline.py`, the orchestrator automatically reads every `.md` file under `~/.claude/projects/*/memory/` (excluding `MEMORY.md` index files) and injects them into the Planner's prompt as `=== LIBRARIAN MEMORY — PAST LESSONS ===` **before** the TASK section. Planner MUST:
+
+1. Read the entire memory section before drafting
+2. Reflect every applicable lesson as an explicit constraint, checkpoint, or verification step in PLAN.md
+3. Cite the memory filename next to each checkpoint that was informed by a past lesson
+4. Include a `## Past Lessons Applied` section at the end of PLAN.md listing every memory file consulted and how it shaped the plan (or "not applicable" if it does not apply)
+5. If a feedback memory says "don't do X" or "always do Y", the plan MUST reflect that — Auditor will reject plans that silently ignore memory files
+
+**When dispatched outside the orchestrator** (manual `openclaw agent --agent planner` invocation), Planner should still read the memory files directly from disk, but note that the agent sandbox (`fs.workspaceOnly: true`) may block this — prefer the orchestrator path.
+
+**This creates a recursive learning loop:** Agents do work → Librarian captures learnings → Memory files updated → Orchestrator auto-injects them into the next Planner/Auditor/Coder dispatch → Better execution → Librarian captures new learnings → cycle continues. Fully closed at Planner (proactive), Auditor (adversarial), and Coder (implementation) stages as of 2026-04-11.
 
 **Explore First (Anthropic Best Practice):** Before creating PLAN.md, Planner MUST:
 1. Read the existing codebase structure (`find . -type f | head -50`, key config files)
@@ -71,6 +74,8 @@ Action: spawn researcher with a specific brief and source filters.
 **Research Artifact Rule:** All outputs must be committed to Git before handoff. Offload >15min research to PowerSpec via SSH.
 
 ## → Quality Agent (agentId: quality)
+**Model (Standing Change 2026-04-11):** Quality runs on **Grok 4.20 Beta** (`xai/grok-4.20`), same provider plumbing as the External Auditor. Rationale: Quality's job is adversarial output-correctness judgment — exactly what Grok 4.20 Beta proved excellent at in the 2026-04-11 powerspec-rebuild pipeline test (6 concrete gaps, all applied). Fallback chain: `xai/grok-4.20 → anthropic/claude-opus-4-6 → anthropic/claude-sonnet-4-6`. Fixes the 2026-03-27 INCIDENTS.md lesson "checked status, not content".
+
 **Two workflows — Error Diagnosis AND Security Audit:**
 
 **Q-Status Alignment Rule:** After any coding change touching dashboards/status/progress, Quality must verify ALL user-facing views match `/api/backend/tasks`. Mismatches = block release + log incident.
@@ -116,20 +121,51 @@ cd /path/to/project && claude --permission-mode auto --print 'Your task'
 
 **Git-Before-HANDOFF:** `git add . && git commit && git push` before creating HANDOFF.md. Record commit SHA. If no repo exists → `git init` + `gh repo create` first.
 
-**Learn Before Code (Librarian Feedback Loop — Standing Change 2026-03-30):**
-Before writing ANY code, Coder MUST read Librarian memory files for applicable learnings:
-1. Read `~/.claude/projects/C--Users-ericf/memory/MEMORY.md` — index of all captured learnings
-2. Read ALL `feedback_*.md` files — these are hard-won rules from past bugs, deployment failures, and validated approaches
-3. Read `project_*.md` files for the current project — deployment details, architecture decisions, service configurations
-4. Read `reference_*.md` files relevant to the tech stack — API patterns, external system pointers
-5. Apply feedback learnings as code constraints (e.g., if memory says "add boto3 timeouts" → do it in every S3 client)
-6. If a learning conflicts with PLAN.md, raise it — the learning may indicate the plan missed something
+**Learn Before Code (Librarian Feedback Loop — Standing Change 2026-03-30, auto-injected by orchestrator 2026-04-11):**
 
-**This creates a recursive loop:** Past coding failures are captured by Librarian → stored in feedback memories → read by Coder on next task → prevents recurrence. Each deployment teaches the system.
+When Coder is dispatched via `~/openclaw-workspace/scripts/jarvis_pipeline.py`, the orchestrator automatically reads every `.md` file under `~/.claude/projects/*/memory/` (excluding `MEMORY.md` index files) and injects them into the Coder's prompt as `=== LIBRARIAN MEMORY — PAST LESSONS ===` **before** the merged PLAN.md. Coder MUST:
+
+1. Read the entire memory section before writing code
+2. Apply each relevant lesson as a code-level constraint (e.g., if memory says "launchd plists using /usr/bin/env need EnvironmentVariables.PATH", every plist Coder writes must include it)
+3. If a PLAN.md instruction conflicts with a past lesson, **follow the past lesson** and flag the conflict in the final summary — the plan may be wrong and Auditor missed it
+4. Return a `## Past Lessons Applied` section in the final summary listing every memory file consulted and how it shaped the implementation
+
+**When dispatched outside the orchestrator** (manual `openclaw agent --agent coder`, Claude Code `--print` invocation, or direct shell), Coder should still read memory files directly but is not guaranteed filesystem access. Prefer the orchestrator path for production pipelines.
+
+**This creates a recursive loop:** Past coding failures are captured by Librarian → stored in memory files → orchestrator auto-injects them on next task → prevents recurrence. Each deployment teaches the system. Planner gets the same injection (see "Learn First" rule above) so the loop is closed at both ends: proactive (plan avoids the bug) and enforcement (if the plan misses it, Coder catches the conflict; if Coder misses it, Auditor catches the gap).
 
 **Read Before Write:** Before writing any new code, read at least 3 existing files in the project to understand patterns, conventions, and style. Reference existing patterns in your implementation. Don't invent new conventions when the project already has them.
 
 **Hybrid Build Routing:** >15min builds route to PowerSpec. Record host in HANDOFF.md.
+
+### 🎛️ Option C — PowerSpec dispatch via openclaw nodes (Standing Change 2026-04-11)
+
+Coder can now run on PowerSpec directly via `jarvis_pipeline.py`'s `task.execution.coderHost` field:
+
+```json
+"execution": {
+  "coderHost": "powerspec",
+  "remoteWorkDir": "C:\\Users\\Eric Brown\\repos\\<task-id>",
+  "remoteGitRepo": "https://github.com/ericfbrown1-boop/<repo>.git"
+}
+```
+
+Default is `"local"` (Mac). When `"powerspec"`, the orchestrator:
+
+1. **Plumbing (SSH)**: ensures the remote work dir exists, stages `_prompt.txt` with the full Coder brief + Librarian memory, reads back `_output.txt` + git sha
+2. **Workload (openclaw nodes)**: dispatches via `openclaw agent --agent main` with the `exec` tool routing to `host=PowerSpec`. Main instructs the PowerSpec node host to run `cmd /c type _prompt.txt | claude.cmd --print --dangerously-skip-permissions --model sonnet > _output.txt`
+3. **Mission Control**: every coder-stage agentChain entry gets `host: "powerspec"` so the dashboard reflects which machine did the work
+
+The Coder on PowerSpec HAS ACCESS to Librarian memory (injected via the prompt file) and will honor past lessons — verified 2026-04-11 smoke test where PowerSpec Claude Code ran `/simplify` quality audit before committing, matching the `feedback_quality_audit.md` rule.
+
+**Prerequisites (one-time)**:
+- PowerSpec openclaw paired with Mac gateway (`openclaw nodes approve <requestId>`)
+- PowerSpec node.json gateway set to Mac Tailscale IP (100.101.203.113:18789)
+- PowerSpec `exec-approvals.json` has `defaults.security=full, ask=off, askFallback=full` (or allowlist entries)
+- OpenClaw Node scheduled task on PowerSpec running
+- Mac: `openclaw approvals allowlist add --agent "*" --node PowerSpec "**\\claude.cmd"` (+ git.exe, node.exe, cmd.exe)
+
+See `powerspec_openclaw_nodes_setup.md` memory for the idempotent reproduction script.
 
 **Version Check Rule (Standing Change 2026-03-29):**
 Before using ANY library API, check the installed version:
@@ -169,11 +205,28 @@ Trigger: AFTER Coder completes; BEFORE Quality audit.
 **Hybrid Test Distribution:** >15min test suites split across MacBook + PowerSpec.
 
 ## → External Auditor Agent (agentId: auditor)
-Trigger: AFTER Quality security audit passes. FINAL step in code pipeline.
+Trigger: AFTER Quality security audit passes. FINAL step in code pipeline. Also runs as the adversarial reviewer in the planning phase (Stage 3 of the Dual-Model Planning Process).
 
 **Pipeline:** Coder → Quality → External Auditor → Done
 
-**Best-in-Class QA Gate (6 steps):**
+### 🧠 Learn Before Review Rule (Standing Change 2026-04-11)
+
+**Every adversarial review MUST apply past lessons from the Librarian memory files.**
+
+The orchestrator (`scripts/jarvis_pipeline.py` → `stage_auditor`) automatically loads every `.md` file under `~/.claude/projects/*/memory/` (excluding `MEMORY.md` index files) and injects them into the Auditor's prompt before the PLAN.md to be reviewed. Auditor MUST:
+
+1. Read the entire `=== LIBRARIAN MEMORY — PAST LESSONS ===` section before evaluating the plan.
+2. For every lesson that applies to the plan being reviewed, either:
+   - **Verify** the plan already handles it (note in `### Applied Lessons` section as "confirmed"), OR
+   - **Add a HIGH-severity gap** in `### Gaps` citing the specific memory filename, e.g. `[HIGH] (jarvis_launchd_path_bug.md) — plist missing EnvironmentVariables.PATH`
+3. Every gap that originates from a past lesson must reference the memory filename so Jarvis can trace the learning chain.
+4. Unaddressed lessons are **never** acceptable; they indicate the Planner skipped the "Learn First" step or didn't read the relevant file. Flag the plan for revision.
+
+**Why this matters:** Without this rule, each session re-discovers the same bugs. With it, the system gets measurably smarter over time — every fix writes a memory file, and every subsequent review enforces that fix as a constraint. This closes the recursive learning loop described in AGENTS.md.
+
+**Orchestrator auto-injection:** Auditor runs in a sandboxed workspace (`fs.workspaceOnly: true`) and cannot read memory files directly. The orchestrator reads them on Auditor's behalf and passes them inline in the prompt. Memory size is capped at 250KB (Grok 4.20 Beta has 2M context so this is generous). If the cap is hit, the prompt includes a truncation notice.
+
+### Best-in-Class QA Gate (6 steps)
 1. Pull + Build (verify tree matches GitHub)
 2. Smoke Test as User (every nav item, no placeholders/dead links)
    - Git commit verification + hardware utilization check + deliverable block
@@ -249,10 +302,11 @@ Each file uses YAML frontmatter (name, description, type) and MEMORY.md is the i
 
 **Recursive Loop Contract:**
 1. After every deployment or significant coding session, Librarian captures learnings as memory files
-2. Planner reads ALL memory files before creating PLAN.md (see "Learn First" rule)
-3. Coder reads ALL memory files before writing code (see "Learn Before Code" rule)
-4. This means every bug fixed, every deployment pattern discovered, every user preference recorded automatically improves all future work
-5. Librarian should prefer updating existing memory files over creating new ones to avoid bloat
+2. **Weekly scheduled Librarian sweep** (`com.openclaw.librarian.weekly.plist`, Sundays 06:00) runs `scripts/librarian_weekly.py` which scans `memory/incidents.jsonl` for recurring patterns (≥2 incidents in same category within 7 days) and writes a `type: feedback` report to `~/.claude/projects/-Users-ericbrown-powerspec-rebuild/memory/librarian_weekly_patterns.md`. This file is then auto-injected into Planner/Auditor/Coder on the next pipeline run via `load_librarian_memory()`.
+3. Planner, Auditor, and Coder automatically receive ALL memory files via orchestrator injection (see "Learn First", "Learn Before Review", and "Learn Before Code" rules) — no manual reads required when dispatched via `jarvis_pipeline.py`
+4. The orchestrator also supports auto-revision on rejection: Auditor REJECT → Planner re-drafts with feedback (up to `--max-revision-loops N`, default 2); Quality LLM REJECT → Coder re-implements with feedback. Deterministic verificationCmd failure does NOT retry — it halts.
+5. This means every bug fixed, every deployment pattern discovered, every user preference recorded automatically improves all future work
+6. Librarian should prefer updating existing memory files over creating new ones to avoid bloat
 
 ## Subagent Timeout Policy (Standing Change 2026-03-27)
 

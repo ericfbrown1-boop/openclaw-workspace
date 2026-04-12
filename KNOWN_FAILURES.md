@@ -33,7 +33,7 @@ All agents should consult this before attempting workarounds.
 
 ## 🟡 Planner Missing Edge Cases
 **Pattern:** Plans don't account for error handling, rate limits, auth expiry, null inputs. These surface during coding.
-**Solution:** Planner now uses Edge Case Checklist (see PLAN.md template). GPT 5.4 cross-review specifically checks for edge cases.
+**Solution:** Planner now uses Edge Case Checklist (see PLAN.md template). Grok 4.20 Beta adversarial review specifically checks for edge cases (replaced GPT 5.4 cross-review on 2026-03-27).
 **Frequency:** ~15% of plans
 **Added:** 2026-03-11
 
@@ -102,6 +102,94 @@ _Updated by Jarvis. Agents: consult this file when encountering errors before at
 **Frequency:** ProjectScraper Rubrik crawl, Mar 5, 2026
 **Added:** 2026-03-25
 **Reference:** references/Morning_Session_Recap_EricBrown.docx
+
+## 🟡 runs.json is a failure log, not an audit trail
+**Pattern:** Reading `~/.openclaw/subagents/runs.json` and seeing only `[error]` entries triggers "every subagent spawn has failed" misdiagnosis.
+**Reality:** Successful runs are pruned on completion. The persisted entries are incidents worth keeping — use as a failure watchlist, not a full history. The openclaw gateway cleans up successful child sessions; only ones that errored stay in `runs.json` for forensics.
+**Check instead:** Run outputs in `pipeline-outputs/<task-id>/`, `memory/pipeline-state.json` for recent pipelines, `~/.openclaw/agents/<agent>/sessions/` for per-session logs, and `~/.openclaw/tasks/runs.sqlite` for the full task-run history.
+**Frequency:** Misread 2026-04-11 during full-pipeline smoke test.
+**Added:** 2026-04-11
+
+## 🔴 Jarvis one-turn CLI limit — main narrates but doesn't orchestrate
+**Pattern:** `openclaw agent --agent main --message "..."` runs ONE CLI turn per invocation. Main's reply text narrates "dispatching to Auditor now" but `sessions_spawn` is not actually executed before the turn ends. Full Research→Plan→Audit→Code→Quality chains documented in DELEGATION.md don't actually run from a single dispatch.
+**Root cause:** `/opt/homebrew/lib/node_modules/openclaw/dist/acp-cli-DsBOatVe.js` `handlePayload()` → `finishPrompt()` resolves the turn on `state === "final"` without processing pending tool calls. Upstream package file — patching it would break on next `openclaw update`.
+**Solution:** Use the external orchestrator `~/openclaw-workspace/scripts/jarvis_pipeline.py` which drives each stage via `openclaw agent --agent <id>` sequentially, capturing outputs and feeding them forward. Resumable via `--resume`. Mandatory Quality gate. Dual-writes task status to both tasks.json stores.
+**How to recognize:** You dispatch to main, reply text says "dispatching to X next", no subsequent subagent run appears in `~/.openclaw/subagents/runs.json` or `pipeline-outputs/<task-id>/`, and nothing new lands on disk within 60s of main's turn ending.
+**Added:** 2026-04-11
+
+## 🟠 Planner writes unauthorized helper scripts + edits tasks.json
+**Pattern:** When given a complex task description with specific verification requirements, Planner uses its `write` tool to pre-create helper scripts (e.g., `verify_powerspec_smoke.sh`) in `~/openclaw-workspace/scripts/` AND modifies `~/openclaw-workspace/tasks.json` to point the task's `verificationCmd` at the script. This violates Planner's scope — Planner's job is to emit PLAN.md only.
+**Root cause:** Planner's system prompt encourages "be proactive" and "reduce Coder's burden". With `write` tool allowed (per openclaw.json), Planner interprets complex verification needs as "I should build the verification harness myself". No explicit scope boundary.
+**Solution:**
+- Remove `write` from Planner's tools allowlist in `~/.openclaw/openclaw.json` — Planner should only use `sessions_send`, `read`, `web_search`, `web_fetch`. The PLAN.md write happens via the orchestrator now (it reads `out.text` and saves to the target repo).
+- OR add explicit rule to `workspace-planner/RULES.md`: "NEVER modify tasks.json or any file outside the target repo's PLAN.md. If you think a helper script is needed, describe it in the plan — do NOT create it yourself."
+**Verification after fix:** run a pipeline against a complex task and assert that `git status ~/openclaw-workspace` is clean after Planner completes.
+**Frequency:** Observed 2026-04-11 during Option C smoke test.
+**Added:** 2026-04-11
+
+## 🟡 PowerSpec openclaw node host disconnects after ~50 min idle
+**Pattern:** `openclaw nodes list` on the Mac shows PowerSpec as paired, but `exec` tool calls to `host=PowerSpec` return "node not connected". The node host scheduled task is still "Ready" but the websocket to the Mac gateway has dropped.
+**Root cause:** The node host establishes an outbound WebSocket to the Mac gateway on startup, but the connection has no heartbeat / keepalive. Idle periods >50 min cause the gateway side to drop the connection; the node doesn't reconnect automatically.
+**Workaround:**
+```bash
+ssh -o 'User="Eric Brown"' 100.81.21.114 "schtasks /end /tn \"OpenClaw Node\" && powershell -Command \"Get-Process -Name node -ErrorAction SilentlyContinue | Stop-Process -Force\" && schtasks /run /tn \"OpenClaw Node\""
+```
+**Permanent fix (TODO):** Add `_powerspec_ensure_node_alive()` helper to `jarvis_pipeline.py` that runs a trivial exec probe before `_dispatch_coder_powerspec`, and if it fails, auto-restarts the scheduled task via SSH. Alternative: add a launchd-style keepalive loop on the PowerSpec side.
+**Frequency:** Observed 2026-04-11 — first Option C smoke run hit this ~50 min after pairing.
+**Added:** 2026-04-11
+
+## 🟡 Windows path with space "Eric Brown" — quoting pitfalls (3rd occurrence)
+**Pattern:** Paths containing "Eric Brown" in PowerShell commands, issued from a bash script over SSH, get split on the space because the outer `"..."` in bash conflicts with PowerShell's own `"..."` for path arguments. Error: `New-Item : A positional parameter cannot be found that accepts argument 'Brown\repos'.`
+**Bad:**
+```bash
+ssh powerspec 'powershell -Command "Set-Location \"C:\Users\Eric Brown\repos\""'
+```
+**Good (single-quote inside PS):**
+```bash
+ssh powerspec "powershell -Command \"Set-Location 'C:\\Users\\Eric Brown\\repos'\""
+```
+**Rule of thumb:** In PowerShell, use single quotes `'...'` for paths. They're literal and don't conflict with the outer shell's double quotes.
+**Also relevant for `scp`:** pass user via `-o User="Eric Brown"` (embedded quotes in the -o value), NOT `"Eric Brown@powerspec"` which scp's URL parser chokes on. See `powerspec-rebuild` CLI's SSH handling for the working pattern.
+**Frequency:** 3 separate incidents this session. Add a unit test that asserts jarvis_pipeline.py's PowerShell command builders use single quotes.
+**Added:** 2026-04-11
+
+## 🟡 openclaw agent exec tool: stdout pipe hangs after remote process completes
+**Pattern:** When `openclaw agent --agent main` issues an `exec` tool call with `host=<nodeId>` that pipes output through `cmd /c "... > _output.txt"`, the main agent's turn waits for the pipe to close even after the actual process (Claude Code on PowerSpec) has exited and written the output file. Orchestrator sees `stage_coder` as "running" for minutes past actual completion.
+**Reproduction:** Observed 2026-04-11 — Claude Code finished in ~8 min, produced `hello.py` and committed, but the orchestrator's outer dispatch_agent call waited ~15 min before returning. The workaround was TaskStop + manual state patch + `--resume`.
+**Root cause (hypothesized):** `cmd /c` with stdout redirect (`>`) keeps the parent pipe file handle open until cmd.exe itself fully exits. If Claude Code's child process or a bg task inherited the handle, the pipe stays open.
+**Workaround for orchestrator:** Poll `_output.txt` size every 30s during coder stage. If size stops growing for 60s AND a known completion marker ("CODER_RUN_COMPLETE") appears in the file, abort the outer exec call and read the output directly via SSH. See `_dispatch_coder_powerspec` for where to add this.
+**Permanent fix:** use `2>&1 | more` or similar to force pipe flush, OR invoke `claude.cmd` via `start /B /WAIT` which manages pipes differently.
+**Added:** 2026-04-11
+
+## 🟡 stage_quality cwd for remote-host tasks
+**Pattern:** For tasks with `execution.coderHost = "powerspec"`, `task.repoPath` is a Windows path like `C:\Users\Eric Brown\repos\<task-id>`. `stage_quality` called `subprocess.run(cmd, cwd=repo, ...)` — which tried to use a Windows path as a cwd on macOS, raising `FileNotFoundError`.
+**Fix (applied 2026-04-11 in jarvis_pipeline.py):**
+```python
+if exe.get("coderHost") == "powerspec":
+    repo = str(Path.home())  # cwd must be macOS-local; the cmd itself SSHes
+else:
+    repo = task.get("repoPath") or str(Path.home())
+    if not Path(repo).exists():
+        repo = str(Path.home())
+```
+**Rule:** For remote-host tasks, `verificationCmd` must SSH to the remote itself — the orchestrator's cwd just has to be a valid macOS dir.
+**Added:** 2026-04-11
+
+## 🟡 claude.cmd on Windows drops positional-prompt argv
+**Pattern:** Running `claude.cmd --print "my prompt text"` as a subprocess on Windows (via openclaw exec tool or SSH) causes Claude Code to ignore the positional prompt entirely and return its idle greeting ("How can I help you?") or a vague "Could you clarify what you'd like me to reply to?" response.
+**Root cause:** `claude.cmd` is a batch wrapper that uses `%*` to forward argv to `node cli.js`. The `%*` expansion on Windows has known issues with quoted arguments containing spaces, special characters, or when the enclosing process isn't a fully-quoted parent shell.
+**Bad:**
+```
+["claude.cmd", "--print", "Respond with pong"]
+```
+Returns: `How can I help you?`
+**Good (stdin pipe):**
+```
+["cmd", "/c", "echo Respond with pong | claude.cmd --print --dangerously-skip-permissions"]
+```
+Returns: `pong`
+**Rule of thumb:** Always pipe the prompt into `claude.cmd` via stdin (`echo` or `type file.txt`). NEVER pass the prompt as a positional argument from non-interactive Windows subprocess contexts.
+**Added:** 2026-04-11
 
 ## 🟡 PowerShell 5.x vs 7.x TLS Incompatibility
 **Pattern:** PowerShell 5.x (default on Windows) fails TLS handshakes with modern endpoints. Remote Coder and Scheduled Tasks silently fail when using PS 5.x.

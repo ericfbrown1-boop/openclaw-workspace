@@ -20,11 +20,11 @@ flowchart TD
 
     %% ===== CODE PIPELINE (RIGHT) =====
     subgraph Phase1["📐 PHASE 1: ARCHITECTURE"]
-        P["📐 Architect — Planner<br/>(GPT 5.4)<br/>System design, PLAN.md,<br/>tech stack decisions"]
+        P["📐 Architect — Planner<br/>(Opus 4.6)<br/>System design, PLAN.md,<br/>tech stack decisions"]
     end
 
     subgraph Phase1Review["🔄 PARALLEL REVIEW"]
-        GPT["🧠 GPT 5.4 Cross-Review<br/>Speed + fresh perspective"]
+        GPT["🧠 Grok 4.20 Beta Adversarial Review<br/>Fresh perspective + production stress-test"]
         COND_PRE["🚂 Conductor Preflight<br/>(Sonnet 4.6)<br/>Verify Docker, Railway, env"]
     end
 

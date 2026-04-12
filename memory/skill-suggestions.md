@@ -16,3 +16,4 @@ Track proactive skill improvement suggestions here.
 
 ## Declined
 (none yet)
+[2026-04-12T00:30:09Z] weekly scan: 1 patterns → pipeline×2

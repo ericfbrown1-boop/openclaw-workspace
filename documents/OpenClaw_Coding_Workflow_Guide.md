@@ -97,8 +97,8 @@ Eric's request arrives
 ┌──────────────────────────▼──────────────────────────────────────────┐
 │                     PHASE 2: PLAN                                    │
 │                                                                      │
-│  Planner creates PLAN.md (architecture, tasks, risks)               │
-│  GPT-5.4 Pro cross-review for edge cases (1M context)               │
+│  Planner creates PLAN.md (architecture, tasks, risks) — Opus 4.6    │
+│  Grok 4.20 Beta adversarial review for edge cases (2M context)      │
 │  Must include Compute Allocation table (MacBook vs PowerSpec)        │
 │  Must include Repository Setup section                               │
 │  Gate: PLAN.md approved by Jarvis                                    │
@@ -447,7 +447,7 @@ PHASE 2: PLAN
     │   - yfinance for stock data
     │   - Railway deployment
     │   - Compute: Docker build on PowerSpec, UI on MacBook
-    │ GPT-5.4 cross-reviews for edge cases
+    │ Grok 4.20 Beta adversarially reviews for edge cases
     │ Jarvis approves plan
     │
     ▼
