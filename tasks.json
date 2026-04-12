@@ -292,11 +292,17 @@
       "progress": 25,
       "owner": "jarvis",
       "priority": "high",
-      "summary": "SPEC LOCKED. Windows 11 Pro, 1TB RAM, dual NVIDIA 6000. Corporate Claude API + MCP-only stack. Kathir Nagireddy = IT contact. sanjay.poonen@cohesity.com hardcoded blocked. 12-month log retention. Slack via Eric user token. Logger Agent + PII Guardian mandatory V1. Raw text \u2192 Obsidian \u2192 RAG pipeline. Awaiting hardware arrival.",
+      "summary": "SPEC LOCKED. AMD Threadripper PRO 9965WX (96c), 2x RTX PRO 5000 (96GB VRAM total), 1TB DDR5 ECC RAM. Tower workstation, office-deployable. Corporate Claude API + MCP-only stack. Kathir Nagireddy = IT contact. sanjay.poonen@cohesity.com hardcoded blocked. 12-month log retention. Slack via Eric user token. Logger Agent + PII Guardian mandatory V1. Awaiting hardware arrival.",
       "updates": [
         "15% \u2014 Full system design complete.",
         "25% \u2014 All 7 config questions answered. Spec locked. CEO block hardcoded. MCP server build list defined. Logger audit schema written."
-      ]
+      ],
+      "hardware": {
+        "cpu": "AMD Threadripper PRO 9965WX \u2014 96 cores (handles CPU offloading for layers that exceed VRAM)",
+        "gpu": "2x NVIDIA RTX PRO 5000 \u2014 48GB VRAM each, 96GB total (runs models up to ~90B params at FP16)",
+        "ram": "1,024 GB DDR5 ECC (1TB \u2014 massive overflow for model weights and context)",
+        "formFactor": "Tower workstation (office-deployable)"
+      }
     }
   }
 }
