@@ -150,3 +150,27 @@
 - Start at 60Hz, then increase to 120Hz once stable
 - Inputs available: 2x HDMI 2.1, 2x DisplayPort 1.4, 1x Thunderbolt 4, 3x USB-C upstream
 - Built-in: KVM switch, 2.5GbE Ethernet, USB hub, 2x9W speakers
+
+## Project Ajax — Jarvis NemoClaw Migration (2026-04-12)
+- **What:** New dedicated AI server, to be deployed inside Cohesity network
+- **Hardware:** 1TB total RAM, dual NVIDIA 6000-series GPUs
+- **Platform:** NemoClaw (NVIDIA's enterprise AI agent framework, built on OpenClaw)
+- **Codename:** Project Ajax — named after HMS Ajax, British cruiser at Battle of the River Plate (1939)
+- **Purpose:** Production-grade Jarvis with enterprise security, SOC 2, 5x throughput, 1M context window
+- **Key NemoClaw advantages:** OpenShell containerized sandboxing, cryptographic skill signing, native Salesforce/ServiceNow/SAP connectors, 1M token context vs OpenClaw's 200K
+- **NemoClaw NOT:** not a replacement for OpenClaw — it's an upgrade layer. Skills and config are portable.
+- **Migration plan:** snapshot MacBook Jarvis → clone to Ajax → stand up Jarvis NemoClaw V1.0
+- **Plan file:** `plans/cic-command-information-center.md` Phase 5 section
+- **Tasks:** `project-ajax` in tasks.json
+- **Status:** Hardware ordered — plan ready, waiting for hardware arrival
+- **Key questions pending:** Linux distro choice, Tailscale vs Cohesity IP, run mode (primary vs parallel), NemoClaw license via Cohesity
+
+## CIC — Command Information Center (2026-04-12)
+- **What:** Live force-directed entity graph of entire Jarvis SDLC in Mission Control
+- **New tab:** "CIC" in Mission Control sidebar (Radar icon)
+- **Tech:** Python parser (parse_sdlc.py) → graph_data.json → Cytoscape.js
+- **Also:** populates Obsidian EricBrain/JarvisSDLC/ vault for native Obsidian graph view
+- **Auto-update:** fires on every Dropbox backup
+- **Plan file:** `plans/cic-command-information-center.md`
+- **V1 target:** 2026-04-12 morning
+- **Vault:** EricBrain with /JarvisSDLC/ subfolder (pending Eric confirmation)

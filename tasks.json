@@ -258,6 +258,44 @@
       "completedAt": "2026-04-12T03:35:40Z",
       "completedCommit": "c39a32a",
       "lastUpdate": "jarvis-pipeline completed"
+    },
+    "sdlc-diagram-first": {
+      "id": "sdlc-diagram-first",
+      "title": "SDLC: Diagram-First Planning Mandate \u2014 All Agent & Config Files",
+      "status": "completed",
+      "progress": 100,
+      "owner": "jarvis",
+      "priority": "high",
+      "summary": "Eric directive 2026-04-12: Mandatory Mermaid diagrams in all PLAN.md files. Updated 6 SDLC files: PIPELINE.md, DELEGATION.md, DISPATCH_TEMPLATE.md, Planner AGENTS.md+RULES.md, Coder AGENTS.md, Quality AGENTS.md.",
+      "completedAt": "2026-04-12T13:42:00Z",
+      "completedCommit": "5894f2f1edf34762c6994a66959e31b740b379e4",
+      "updates": [
+        "25% \u2014 PIPELINE.md updated with Diagram-First section.",
+        "100% \u2014 All 6 files updated + committed + pushed. SHA: 5894f2f"
+      ]
+    },
+    "cic-command-information-center": {
+      "id": "cic-command-information-center",
+      "title": "CIC \u2014 Command Information Center (SDLC Graph in Mission Control)",
+      "status": "completed",
+      "progress": 100,
+      "owner": "jarvis",
+      "priority": "critical",
+      "summary": "342 nodes / 131 edges. Cytoscape.js + ELK layout. Live in Mission Control at /cic. parse_sdlc.py auto-updates on backup. Sidebar Radar icon. Color-coded by type. Click-to-inspect detail panel.",
+      "completedAt": "2026-04-12T14:06:00Z",
+      "completedCommit": "452154b"
+    },
+    "project-ajax": {
+      "id": "project-ajax",
+      "title": "Project Ajax \u2014 Jarvis NemoClaw Enterprise AI Server (Cohesity Network)",
+      "status": "queued",
+      "progress": 15,
+      "owner": "jarvis",
+      "priority": "high",
+      "summary": "Windows 11 Pro, 1TB RAM, dual NVIDIA 6000. NemoClaw + full Cohesity MCP integrations (M365, Salesforce, Snowflake, Workday, Slack, Tableau). Logger Agent + PII Guardian mandatory. Raw text \u2192 Obsidian Wiki \u2192 RAG analysis. V1: Eric only. V2: project teams with cumulative permissions.",
+      "updates": [
+        "15% \u2014 Full system design complete. Plan: plans/project-ajax.md. 7 open questions pending from Eric."
+      ]
     }
   }
 }
