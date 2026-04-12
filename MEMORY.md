@@ -174,3 +174,14 @@
 - **Plan file:** `plans/cic-command-information-center.md`
 - **V1 target:** 2026-04-12 morning
 - **Vault:** EricBrain with /JarvisSDLC/ subfolder (pending Eric confirmation)
+
+## Project Ajax — Configuration Details (2026-04-12)
+- **NemoClaw license:** Corporate NVIDIA agreement (Kathir Nagireddy handles procurement/IT)
+- **IT contact:** Kathir Nagireddy — primary contact for AD join, firewall rules, MCP credentials, developer SSH access
+- **Claude API:** Corporate Claude API key (not personal) — configure via Cohesity enterprise account
+- **Kathir SSH access:** Scope TBD — Kathir is also IT contact, project scope to be defined once hardware arrives
+- **CEO block (hardcoded):** sanjay.poonen@cohesity.com — PERMANENTLY blocked from all Ajax scanning/access
+- **Log retention:** 12 months for all AI action logs
+- **Slack access:** Via Eric's user access token + Cohesity corporate Slack MCP server
+- **Core platform rule:** Claude + MCP servers is the primary stack for everything on Ajax — not raw API calls, not custom connectors
+- **No OpenAI / no Grok on Ajax** — Claude is the exclusive LLM, MCP is the integration layer

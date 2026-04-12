@@ -289,12 +289,13 @@
       "id": "project-ajax",
       "title": "Project Ajax \u2014 Jarvis NemoClaw Enterprise AI Server (Cohesity Network)",
       "status": "queued",
-      "progress": 15,
+      "progress": 25,
       "owner": "jarvis",
       "priority": "high",
-      "summary": "Windows 11 Pro, 1TB RAM, dual NVIDIA 6000. NemoClaw + full Cohesity MCP integrations (M365, Salesforce, Snowflake, Workday, Slack, Tableau). Logger Agent + PII Guardian mandatory. Raw text \u2192 Obsidian Wiki \u2192 RAG analysis. V1: Eric only. V2: project teams with cumulative permissions.",
+      "summary": "SPEC LOCKED. Windows 11 Pro, 1TB RAM, dual NVIDIA 6000. Corporate Claude API + MCP-only stack. Kathir Nagireddy = IT contact. sanjay.poonen@cohesity.com hardcoded blocked. 12-month log retention. Slack via Eric user token. Logger Agent + PII Guardian mandatory V1. Raw text \u2192 Obsidian \u2192 RAG pipeline. Awaiting hardware arrival.",
       "updates": [
-        "15% \u2014 Full system design complete. Plan: plans/project-ajax.md. 7 open questions pending from Eric."
+        "15% \u2014 Full system design complete.",
+        "25% \u2014 All 7 config questions answered. Spec locked. CEO block hardcoded. MCP server build list defined. Logger audit schema written."
       ]
     }
   }

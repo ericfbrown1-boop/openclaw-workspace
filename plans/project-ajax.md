@@ -477,3 +477,113 @@ This is the Karpathy/Obsidian pattern applied to Cohesity enterprise data.
 - `[MED]` No-delete rule conflicts with agent autonomy model. Need to enforce at the MCP layer (read-only tokens where possible) not just in agent instructions.
 - `[MED]` 1TB RAM + dual 6000 series is overkill for current workloads — but right-sized for future team expansion and local LLM inference.
 - `[LOW]` Windows Remote Desktop + SSH gives two attack surfaces. Recommend disabling RDP and using SSH-only for non-Eric users.
+
+---
+
+## ✅ Configuration Confirmed — 2026-04-12
+
+All 7 open questions resolved. Ajax spec is now locked.
+
+| # | Question | Answer |
+|---|---------|--------|
+| 1 | NemoClaw license | **Corporate** — via Cohesity NVIDIA enterprise agreement. Kathir Nagireddy handles. |
+| 2 | IT contact | **Kathir Nagireddy** — AD join, firewall rules, MCP credentials, developer access |
+| 3 | Claude API | **Corporate Claude API key** — Cohesity enterprise account. No personal key. |
+| 4 | Kathir SSH scope | **TBD** — define once hardware arrives and initial system is stable |
+| 5 | CEO block | **sanjay.poonen@cohesity.com** — hardcoded block from day one, no exceptions ever |
+| 6 | Log retention | **12 months** — all AI action logs, all categories |
+| 7 | Slack access | **Eric's user token + Cohesity corporate Slack MCP server** — full user-level access |
+
+## Core Platform Decision (LOCKED)
+
+> **Ajax runs exclusively on Claude + MCP servers. This is the entire stack.**
+
+- **LLM:** Corporate Claude API key (Cohesity enterprise account)
+- **Integrations:** Every enterprise system accessed via MCP server — NO raw REST calls, NO custom connectors
+- **Pattern:** Claude ↔ MCP server ↔ Enterprise system (Salesforce, Snowflake, Workday, Slack, M365, Tableau)
+- **No OpenAI, no Grok, no Gemini** on Ajax — Claude is the exclusive inference engine
+- **Implication:** Every new enterprise integration = build/configure an MCP server first, then connect Claude to it
+
+### MCP Server Build List (V1 — Eric's access scope)
+
+| MCP Server | System | Access Type | Build Priority | Notes |
+|-----------|--------|-------------|----------------|-------|
+| M365/Exchange MCP | `eric.brown@cohesity.com` email | User token (Eric) | 🔴 Day 3 | Read + send in Eric's name |
+| Slack MCP | Cohesity Slack workspace | User token (Eric) | 🔴 Day 3 | All channels Eric is member of |
+| Salesforce MCP | Cohesity CRM | Eric's Salesforce session | 🔴 Day 3 | Full pipeline + opps visibility |
+| Snowflake MCP | Cohesity data warehouse | Eric's Snowflake credentials | 🔴 Day 3 | ARR, churn, NRR, metrics |
+| Workday MCP | Cohesity HCM | Eric's Workday access | 🟡 Day 4 | Headcount, org — no salary data |
+| Tableau MCP | Published dashboards | Eric's Tableau access | 🟡 Day 4 | Read published dashboards |
+| GitHub Enterprise MCP | Cohesity GitHub org | Eric's GitHub PAT | 🟡 Day 4 | Repos, PRs, issues |
+| OneDrive/SharePoint MCP | M365 files | User token (Eric) | 🟢 Week 2 | Document analysis |
+
+### PII Guardian — CEO Block Hardcoded
+
+```python
+# This goes into the PII Guardian module — IMMUTABLE, never overridable
+PERMANENTLY_BLOCKED_IDENTITIES = {
+    "sanjay.poonen@cohesity.com": "CEO — permanently blocked, all systems",
+    # Add CLO, CHRO when known
+}
+
+BLOCKED_DATA_CATEGORIES = [
+    "individual_salary",
+    "medical_records", 
+    "attorney_client_privileged",
+    "board_confidential",
+    "hr_performance_reviews",
+]
+
+LOG_RETENTION_DAYS = 365  # 12 months
+```
+
+### Logger Agent — Action Schema (12-month retention)
+
+Every single Claude + MCP action logged to `ajax_audit_log` table:
+
+```sql
+CREATE TABLE ajax_audit_log (
+    id          BIGSERIAL PRIMARY KEY,
+    ts          TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    agent_id    TEXT NOT NULL,           -- 'jarvis', 'planner', 'logger', etc.
+    action_type TEXT NOT NULL,           -- 'mcp_call', 'llm_inference', 'file_write', etc.
+    mcp_server  TEXT,                    -- 'salesforce', 'slack', 'm365', etc.
+    resource_id TEXT,                    -- email_id, opportunity_id, channel_id, etc.
+    user_ctx    TEXT NOT NULL,           -- 'eric.brown@cohesity.com' (always Eric in V1)
+    pii_check   TEXT NOT NULL,           -- 'allowed', 'blocked', 'redacted'
+    block_reason TEXT,                   -- populated if blocked
+    duration_ms INTEGER,
+    output_hash TEXT,                    -- SHA256 of response (never stores content)
+    session_id  TEXT                     -- links to the Jarvis session
+);
+
+-- Retention: auto-delete after 365 days
+CREATE INDEX ON ajax_audit_log(ts);
+-- Immutable: no DELETE or UPDATE ever permitted on this table
+```
+
+### Daily Observability Report — What Eric Sees Each Morning
+
+```
+📊 Ajax Daily Report — [DATE]
+
+Systems accessed (24h):
+  • Exchange/M365:  47 emails read, 3 sent
+  • Slack:          128 messages read, 2 channels
+  • Salesforce:     12 opportunity records, 3 account records  
+  • Snowflake:      4 queries, 2.3MB data processed
+  
+PII Guardian:
+  • 0 CEO mailbox access attempts ✅
+  • 0 blocked identity access attempts ✅
+  • 2 salary data fields redacted (Workday headcount query)
+  
+Actions taken by Claude:
+  • 3 emails drafted (awaiting Eric approval before send)
+  • 1 Salesforce record updated (pipeline stage)
+  • 1 Snowflake query — ARR analysis
+  
+Anomalies: none
+Log entries this period: 847
+Retention status: 11 months 14 days remaining on oldest entry
+```
