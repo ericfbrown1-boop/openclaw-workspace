@@ -306,3 +306,90 @@ I'll then:
 ## Skill to Create After This Works
 
 Once the prototype is validated, I'll create a `nemoclaw` AgentSkill so future sessions know exactly how to manage the NemoClaw instance (connect, status, logs, restart, migrate config).
+
+---
+
+## Multi-Model API Configuration on NemoClaw
+
+**Key insight:** NemoClaw's OpenShell sandbox is the *security layer* — it does NOT replace or limit the LLM stack. Claude, Grok, and OpenAI all continue to work exactly as configured. The model tiering from `openclaw.json` migrates unchanged.
+
+### The NemoClaw conflict to avoid
+NemoClaw installs its own `NVIDIA NIM` inference provider and expects to be the default. If `ANTHROPIC_API_KEY` is set in the shell environment, it silently wins. Solution: inject ALL API keys through OpenShell provider config, not shell env vars.
+
+### Configure all three providers in OpenShell (run inside WSL2 after Step 7)
+
+```bash
+# 1. Anthropic (Claude) — primary for Jarvis + Planner
+openshell provider create \
+  --name anthropic \
+  --type openai-compatible \
+  --base-url https://api.anthropic.com/v1 \
+  --credential ANTHROPIC_API_KEY=sk-ant-YOUR_KEY
+
+# 2. xAI (Grok) — adversarial review + quality
+openshell provider create \
+  --name xai \
+  --type openai-compatible \
+  --base-url https://api.x.ai/v1 \
+  --credential XAI_API_KEY=xai-YOUR_KEY
+
+# 3. OpenAI — fallback + specific tasks
+openshell provider create \
+  --name openai \
+  --type openai-compatible \
+  --base-url https://api.openai.com/v1 \
+  --credential OPENAI_API_KEY=sk-YOUR_KEY
+
+# 4. NVIDIA NIM (Nemotron) — local/fast inference, GPU tasks
+openshell provider create \
+  --name nvidia-nim \
+  --type nvidia \
+  --credential NVIDIA_API_KEY=nvapi-YOUR_KEY
+
+# Verify all 4 providers registered:
+openshell provider list
+```
+
+### Model Tiering — Exactly Mirrors Current OpenClaw Config
+
+This is the **existing agent→model mapping** preserved on Ajax:
+
+| Agent | Model | Provider | Rationale |
+|-------|-------|----------|-----------|
+| Jarvis (main) | `anthropic/claude-opus-4-6` | Anthropic | Orchestration needs best reasoning |
+| Planner | `anthropic/claude-opus-4-6` | Anthropic | Architecture depth |
+| Adversarial Review | `xai/grok-4` | xAI | 1M context + challenges assumptions |
+| Coder | `anthropic/claude-sonnet-4-6` | Anthropic | Code tasks, auto mode |
+| Quality | `xai/grok-4` | xAI | Independent review perspective |
+| Auditor | `xai/grok-4` | xAI | External perspective for audit |
+| Tester | `anthropic/claude-sonnet-4-6` | Anthropic | Deterministic test execution |
+| Conductor | `anthropic/claude-sonnet-4-6` | Anthropic | Infrastructure tasks |
+| Librarian | `anthropic/claude-sonnet-4-6` | Anthropic | Analysis + memory |
+| Monitor | `anthropic/claude-sonnet-4-6` | Anthropic | Monitoring sweeps |
+| Researcher | `anthropic/claude-sonnet-4-6` | Anthropic | Web search + synthesis |
+| Logger (new) | `anthropic/claude-sonnet-4-6` | Anthropic | Audit logging — cost-efficient |
+| PII Guardian (new) | `anthropic/claude-sonnet-4-6` | Anthropic | PII detection — cost-efficient |
+
+### openclaw.json migration (Step 12 — after NemoClaw is running)
+
+The existing `~/.openclaw/openclaw.json` on MacBook has all model assignments already. Migration is:
+
+```bash
+# On MacBook — export current config
+cp ~/.openclaw/openclaw.json /tmp/openclaw_ajax.json
+
+# Transfer to PowerSpec NemoClaw sandbox via Tailscale
+scp /tmp/openclaw_ajax.json "Eric Brown@100.81.21.114:/tmp/"
+
+# On PowerSpec inside sandbox — restore config
+# (Jarvis handles this step after you confirm NemoClaw is running)
+```
+
+The only change needed in `openclaw.json` for NemoClaw: API keys move from shell env vars to OpenShell provider config (already done in Steps above). The model IDs, agent IDs, tool allowlists — all unchanged.
+
+### Fallback chain on Ajax (same as MacBook)
+```
+Opus 4.6 → Grok 4 → Sonnet 4.6
+Grok 4 → Opus 4.6 → Sonnet 4.6  
+Sonnet 4.6 → Grok Fast → Haiku 4.5
+```

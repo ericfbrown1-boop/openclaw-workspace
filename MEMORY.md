@@ -185,3 +185,10 @@
 - **Slack access:** Via Eric's user access token + Cohesity corporate Slack MCP server
 - **Core platform rule:** Claude + MCP servers is the primary stack for everything on Ajax — not raw API calls, not custom connectors
 - **No OpenAI / no Grok on Ajax** — Claude is the exclusive LLM, MCP is the integration layer
+
+## Project Ajax — LLM Stack (2026-04-12)
+- **All API keys available on Ajax:** Anthropic (Claude), xAI (Grok), OpenAI — full multi-model stack
+- **Model tiering preserved exactly** from current OpenClaw setup — same agent→model assignments
+- **NemoClaw does NOT replace the LLM stack** — it's the sandbox/security layer only; Claude/Grok/OpenAI route through it unchanged
+- **Critical:** When migrating to NemoClaw, unset ANTHROPIC_API_KEY from shell environment (NemoClaw conflict); inject it via OpenShell provider config instead
+- **openclaw.json model config migrates as-is** — all agent model assignments carry over
