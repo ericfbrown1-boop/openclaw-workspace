@@ -1,3 +1,109 @@
+# OpenClaw Daily Smoke Test
+**Run:** 2026-04-11 05:30:33 PDT
+**Host:** Mac
+
+## 1. Gateway Health
+
+  Installed: OpenClaw 2026.4.9 (0512059)
+  Latest available: 2026.4.10
+  ⚠️  Update available: 2026.4.9 → 2026.4.10
+  ✅ Gateway process running (pid 71911)
+  ✅ Gateway HTTP health check passed (HTTP 200)
+
+## 2. Tailscale Connectivity ⚡
+
+  State: Running
+  Self: erics-macbook-pro (100.101.203.113)
+  Online: True
+  Peers:
+    powerspecpc: 100.81.21.114 (🟢 online)
+    localhost: 100.86.157.19 (🟢 online)
+  ✅ Tailscale running and connected (100.101.203.113)
+  ✅ Tailscale CLI: /usr/local/bin/tailscale (correct)
+  ⚠️  Tailscale Funnel not detected for voice calls
+
+## 3. Telegram Bot Health ⚡
+
+  ✅ Telegram bot responding (2109ms)
+  ⚠️  Telegram streaming: {'mode': 'partial'} (consider 'partial' for better UX)
+  ✅ Telegram retry attempts: 10
+
+## 4. Google OAuth Token
+
+  ✅ Google OAuth token present (issued: 2026-04-10T03:59:15Z)
+  ✅ Gmail API responding
+  ✅ Calendar API responding
+
+## 5. Zapier MCP Integration
+
+  ⚠️  Zapier MCP may not be responding
+
+## 6. LLM Provider Health
+
+  ✅ anthropic:default (anthropic): healthy, last used never
+  ✅ openai:default (openai): healthy, last used never
+  ✅ grokheavy:default (grokheavy): healthy, last used never
+  ✅ xai:default (xai): healthy, last used never
+  ✅ LLM timeout: 180s (good — fast failover)
+  ⚠️  75 LLM timeouts in recent logs
+
+## 6.5 API Usage & Budget
+
+  Monthly spend: $0.00 / $100.00 (0.0%)
+  Today's spend: $0.0000
+  Projected monthly: $0.00
+  Days remaining: 20
+  Daily tokens: 0 in / 0 out
+  Monthly tokens: 0 in / 0 out
+  Alert level: none
+  ✅ Budget healthy (0.0% used)
+  ✅ API budget within limits (0.0%)
+
+## 7. Agent Configuration
+
+  Agents: 8
+  ✅ main: anthropic/claude-opus-4-6 +2 fallbacks workspace=✅
+  ✅ researcher: anthropic/claude-sonnet-4-6 +2 fallbacks workspace=✅
+  ✅ planner: anthropic/claude-sonnet-4-6 +2 fallbacks workspace=✅
+  ✅ coder: anthropic/claude-sonnet-4-6 +2 fallbacks workspace=✅
+  ✅ quality: anthropic/claude-sonnet-4-6 +1 fallbacks workspace=✅
+  ✅ monitor: anthropic/claude-sonnet-4-6 +1 fallbacks workspace=✅
+  ✅ auditor: xai/grok-4.20 +1 fallbacks workspace=✅
+  ✅ conductor: anthropic/claude-sonnet-4-6 +1 fallbacks workspace=✅
+
+## 8. LaunchAgent Services
+
+  ✅ com.openclaw.tailscale.monitor (exit=0, pid=-)
+  ✅ com.openclaw.batteryguard (exit=0, pid=-)
+  ✅ com.openclaw.heartbeat (exit=0, pid=-)
+  ✅ ai.openclaw.gateway (exit=0, pid=71911)
+  ✅ com.openclaw.weeklysecurity (exit=0, pid=-)
+  ✅ com.openclaw.logrotation (exit=0, pid=-)
+  ✅ com.openclaw.gatewaywatchdog (exit=0, pid=-)
+  ✅ com.openclaw.caffeinate (exit=0, pid=21190)
+  ✅ com.openclaw.selfheal (exit=0, pid=-)
+  ⚠️  com.openclaw.sessionmonitor (exit=1)
+
+## 9. System Resources
+
+  ✅ Disk: 4% used (285Gi free)
+  ✅ Log directory: 10M
+  ✅ Session store: 44M
+  System: up 26 days
+
+## 10. Security
+
+  ⚠️  Dependabot: 3 high alerts
+
+## 11. Software Updates
+
+  ✅ Node.js: v25.6.1
+  ✅ npm: 11.9.0
+  ✅ mcporter: 0.7.3
+  ✅ gog CLI: v0.9.0 (99d9575 2026-01-22T04:15:12Z)
+
+## 12. Agent Skills & Configuration Changes
+
 ### 🤖 Your 8 Agents — What They Do
 
 **🤖 Jarvis** (main) — Primary orchestrator & personal assistant
@@ -7,7 +113,7 @@
   Financial earnings analysis (Rubrik, Commvault, Veeam), competitive intelligence, market research, fact-checking, delivers Word doc reports
 
 **📐 Planner** (planner) — Architecture & project planning
-  Designs new projects, creates PLAN.md files, defines tech stacks, writes architecture docs. Drafts with Opus 4.6, stress-tested by Grok 4.20 Beta adversarial review
+  Designs new projects, creates PLAN.md files, defines tech stacks, writes architecture docs. Uses GPT 5.4 + cross-review loop
 
 **💻 Coder** (coder) — Code implementation
   Writes code from PLAN.md specs, builds scripts, generates reports, creates Dockerfiles. Reads PLAN.md before writing any code
@@ -35,7 +141,7 @@
 - **Contract Analysis** — "Run Contract Analyzer on [files]" — AI-powered legal contract review with 17-section report, risk flags, entity attribution (Cohesity/Arctera)
 
 **💻 Code & Deployment**
-- **Build a Project** — "Build [description]" — Full pipeline: Researcher → Planner (Opus) → Grok 4.20 Beta adversarial review → Coder → Quality (Grok 4.20 Beta) → Auditor → Conductor deploys to Railway
+- **Build a Project** — "Build [description]" — Full pipeline: Planner → GPT review → Coder → Tester → Quality audit → Conductor deploys to Railway
 - **Railway Deployment** — "Deploy [project] to Railway" — Docker build, Railway config, Celery workers, MinIO, smoke tests
 - **Security Audit** — "Run security audit on [repo]" — Secret scanning, git history check, dependency vulnerabilities, BFG cleanup
 - **Code Review** — "Review [repo/PR]" — Quality + External Auditor pipeline, optional Grok cross-review via repomix
@@ -73,4 +179,23 @@
 ### 📝 Agent Configuration Changes
 
 **📝 Modified:**
-- `planner/AGENTS.md` — updated 2026-04-11 15:16 (59 lines)
+- `main/AGENTS.md` — updated 2026-04-10 22:42 (170 lines)
+
+  ⚠️  Agent configuration files have been modified since last check
+
+## Summary
+
+**Health Score: 72/100** (18/25 checks passed, 7 warnings, 0 failures)
+
+## 🔔 Action Items for Eric
+
+1. [UPDATE] Run: npm install -g openclaw@latest (current: 2026.4.9, available: 2026.4.10)
+2. [TAILSCALE] Voice calls may not work — run: tailscale serve --bg 3334 && tailscale funnel --bg 3334
+3. [TELEGRAM] Enable streaming: set channels.telegram.streaming = 'partial' in config
+4. [MCP] Check Zapier MCP connection — run: mcporter list
+5. [STABILITY] Frequent LLM timeouts detected (75) — may indicate provider issues or overloaded API
+6. [SECURITY] 3 high-severity Dependabot alerts — review and patch
+7. [AGENTS] Review agent configuration changes in the Agent Skills section above
+
+---
+*Generated by OpenClaw Daily Smoke Test v1.0 at 2026-04-11 05:30:48 PDT*

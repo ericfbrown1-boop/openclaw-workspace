@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "nodeId": "f2068d8c-f014-49a7-88dd-cc9b7da58931",
+  "displayName": "PowerSpec",
+  "gateway": {
+    "host": "127.0.0.1",
+    "port": 18790,
+    "tls": false
+  }
+}

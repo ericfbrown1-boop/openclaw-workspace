@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "socket": {
+    "path": "C:\\\\Users\\\\Eric Brown/.openclaw/exec-approvals.sock",
+    "token": "S-9cwUgNEEE9VcKWXphLVcBk7Xh_7iWs"
+  },
+  "defaults": {
+    "security": "full",
+    "ask": "off",
+    "askFallback": "full"
+  },
+  "agents": {}
+}
