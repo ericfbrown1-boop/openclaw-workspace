@@ -2,7 +2,7 @@
 
 **Date:** 2026-04-12
 **Author:** Planner Agent (Jarvis)
-**Status:** ✅ Auditor Approved (PASS_WITH_NOTES) — All 6 notes resolved
+**Status:** ✅ Auditor Approved + Scope Refined (2026-04-12 19:48 PDT) — Google removed, Cohesity G Drive added, final skill/cron decisions locked
 **Based on:** [Research Report](nemoclaw-powerspec-research.md)
 
 ---
@@ -15,7 +15,12 @@ This plan deploys NemoClaw (NVIDIA's security-sandboxed OpenClaw wrapper) on the
 - PowerSpec NemoClaw gateway runs on **port 18790** (Mac keeps 18789)
 - Telegram stays on Mac — PowerSpec prototype uses **TUI/CLI only** (no bot token conflict)
 - Google OAuth is **deferred** — too complex for WSL2 prototype; Gmail/Calendar skills run Mac-only
-- 19 skills migrate immediately, 4 are Mac-only (skipped), 7 need reconfiguration (5 deferred, 2 adapted)
+- **All Google Workspace services removed** from NemoClaw scope (gog, google-oauth-reauth, tax-automation)
+- **File storage:** Cohesity Google Drive (Eric.brown@cohesity.com) replaces personal Dropbox for NemoClaw outputs
+- **Crons removed:** Daily 6 AM Briefing, Daily Tax Email Scan, Daily Subscription Monitor, Weekly Background Info Update, clawdbot-data-refresh, Auth Health Check (all Google/personal-dependent)
+- **Skills removed:** gog, google-oauth-reauth, tax-automation, blucli, peekaboo, tailscale-troubleshooting, remote-coder, linkedin-carousel
+- **Skills kept (including Cohesity analytics):** financial-report-gen ✅, earnings-analyzer ✅
+- 19 skills migrate immediately (down from 20 — linkedin-carousel dropped), 9 skipped total
 - Mission Control stays on Mac — PowerSpec accesses it via Tailscale at `100.101.203.113:3000`
 
 **Estimated total time:** 2.5–4 hours across all phases
@@ -400,8 +405,7 @@ tar czf /tmp/jarvis-nemoclaw-migration.tar.gz \
   skills/monitor/ \
   skills/mc-snapshot/ \
   skills/tax-automation/ \
-  skills/gog/ \
-  skills/linkedin-carousel/
+  skills/gog/
 
 echo "Migration bundle size:"
 ls -lh /tmp/jarvis-nemoclaw-migration.tar.gz
@@ -637,11 +641,11 @@ Also disable the `linkedin-carousel` skill (was in research but not in current w
 | 25 | peekaboo | workspace | ❌ | **Skip** — macOS Accessibility/AppleScript only |
 | 26 | tailscale-troubleshooting | workspace | ❌ | **Skip** — Mac App Store Tailscale specific |
 | 27 | google-oauth-reauth | workspace | ❌ | **Skip** — Mac-specific OAuth flow |
-| 28 | linkedin-carousel | workspace | ✅ | Copy as-is |
+| 28 | linkedin-carousel | workspace | ❌ | **Skip** — not Cohesity business-relevant |
 
 **Standard OpenClaw skills** (installed at `/opt/homebrew/lib/node_modules/openclaw/skills/` on Mac) are bundled with OpenClaw itself. NemoClaw's embedded OpenClaw will include its own copy of these standard skills (1password, apple-notes, coding-agent, gemini, gh-issues, github, goplaces, healthcheck, himalaya, nano-pdf, node-connect, obsidian, openai-whisper, skill-creator, summarize, taskflow, tmux, video-frames, voice-call, weather, etc.). No manual migration needed for standard skills.
 
-**Summary:** 20 copy as-is | 4 skip (Mac-only) | 5 copy but partially non-functional (deferred Google/email deps) | 2 copy with path updates needed
+**Summary:** 19 copy as-is | 4 skip (Mac-only) | 5 copy but partially non-functional (deferred Google/email deps) | 2 copy with path updates needed
 
 ---
 
