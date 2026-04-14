@@ -16,7 +16,7 @@
 - **Farm/vineyard:** 3553 Old Mission Road, Traverse City MI 49686 (tracked for IRS Form F)
   - **Farm vendors:** Agrivine (vineyard labor), Manigold Orchards (cherry/pear tree maintenance), Ginops (farm equipment)
 - **Rental property 1:** 3469 Old Mission Road, Traverse City MI 49686 (managed by Soper Services)
-- **Rental property 2:** 100 1st Street #209, Los Altos CA 94022
+- **Rental property 2:** 100 First Street #209, Los Altos CA 94022
 - **Lot (sold 2024):** 3503 Golf Club Drive, Lot #27, Clear Creek Tahoe, Carson City NV 89705
   - Purchased: Oct 16, 2020 for $795,500 (cash, no loan) + $50,000 social membership fee
   - Buyers: Eric Brown & Hyun-Ju Park (Brown Park Family Trust)
