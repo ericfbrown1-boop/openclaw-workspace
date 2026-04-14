@@ -1,0 +1,56 @@
+{
+  "id": "DIARY-20260414-001",
+  "type": "claude_product_diary",
+  "date": "2026-04-14",
+  "title": "Claude Product Diary — inaugural entry, 8 updates mapped to Eric's use cases",
+  "summary": "Mapped 8 Anthropic platform + Claude Code updates to Eric's active use cases. Top findings: (1) Advisor Tool = ~$1.85 savings per FinancialReportApp report, detailed 4-file implementation plan written; (2) Managed Agents may be a first-party alternative to NemoClaw for Project Ajax — evaluate before Kathir procurement; (3) Background Monitor plugin (2.1.105) is the architectural basis for Monitor Agent v2 with real-time log watching + auto-RCA; (4) Batch API 300K + 50% pricing = overnight pre-computation of all 3 competitor analyses for 6AM briefing.",
+  "features_covered": [
+    "advisor-tool-2026-03-01",
+    "managed-agents-2026-04-01",
+    "ant-cli",
+    "batch-api-300k-output",
+    "claude-code-2.1.105-background-monitor",
+    "claude-code-2.1.105-precompact-hook",
+    "claude-code-2.1.101-team-onboarding",
+    "1m-context-window-ga"
+  ],
+  "actions_generated": [
+    {
+      "id": "ACT-001",
+      "feature": "Advisor Tool",
+      "use_case": "FinancialReportApp",
+      "status": "planned",
+      "effort_hours": 2.5,
+      "files": ["config.py", "tagger.py", "generate_report.py", "test_tagger.py"],
+      "savings_est": "$1.85/report (~65% cost reduction)"
+    },
+    {
+      "id": "ACT-002",
+      "feature": "Claude Managed Agents",
+      "use_case": "Project Ajax / NemoClaw decision",
+      "status": "idea_needs_eric_input",
+      "effort_hours": null,
+      "note": "Evaluate vs NemoClaw before Kathir procurement — potential major cost avoidance"
+    },
+    {
+      "id": "ACT-003",
+      "feature": "Background Monitor plugin (2.1.105)",
+      "use_case": "Monitor Agent v2",
+      "status": "planned",
+      "effort_hours": null,
+      "note": "Part of Monitor Agent improvement plan (2026-04-14)"
+    },
+    {
+      "id": "ACT-004",
+      "feature": "Batch API 300K",
+      "use_case": "6AM briefing competitive intel",
+      "status": "idea",
+      "effort_hours": 3,
+      "note": "50% cost reduction, batch all 3 competitors overnight"
+    }
+  ],
+  "diary_path": "claude-product-diary/2026-04-14.md",
+  "tags": ["claude-product-diary", "feature-relevance", "financial-report-app", "project-ajax", "monitor-agent", "cost-reduction"],
+  "created_at": "2026-04-14T12:00:00Z",
+  "created_by": "jarvis"
+}
