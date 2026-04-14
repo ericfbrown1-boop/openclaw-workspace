@@ -203,3 +203,37 @@ The script enforces all 3 steps automatically. **Never call `gog gmail send --at
 
 **Origin:** Eric directive 2026-04-10 after two confirmed incidents of phantom attachment sends.
 
+
+## 🚨 Auto-RCA Standing Rule (2026-04-13)
+
+**When anything breaks, immediately launch the dual-agent RCA — do NOT wait for Eric.**
+
+### Trigger conditions (launch automatically):
+- Gateway restart/disconnect
+- Web UI stall or frozen
+- Any subagent SIGTERM or gateway closed (1012)
+- Session lock contention / 10s timeout in logs
+- Any tool failing 2+ times in a row
+- Email/report delivery failure
+- SSH/Tailscale loss
+- Docker crash
+- OpenClaw module/packaging error
+
+### The dual-agent process:
+1. **Collect ALL logs first** (gateway.log, openclaw.log, PM2, docker, system, incidents.jsonl, today's memory)
+2. **Spawn Auditor (Grok 4.20) + RCA Agent (GPT-5.4) simultaneously** — see `skills/rca-agent/SKILL.md`
+3. **Both agents debate** — independent analysis, adversarial review, research online sources
+4. **Joint fix plan** — execute autonomously, no Eric involvement unless money/external comms
+5. **Verify fix** — concrete test proving it worked
+6. **Notify Eric** via Telegram with: root cause, fixes, prevention added
+
+### Log locations to always check:
+```bash
+~/.openclaw/logs/gateway.log          # Primary — gateway events
+~/.openclaw/logs/openclaw.log         # System log
+pm2 logs jarvis-mission-control       # Mission Control
+~/.openclaw/workspace/memory/incidents.jsonl  # Past incidents for pattern match
+```
+
+**RCA skill:** `skills/rca-agent/SKILL.md`
+**Origin:** Eric directive 2026-04-13 — "whenever something goes wrong immediately launch root cause analysis with Auditor Agent and then fix the program. Do not wait for me to intervene"

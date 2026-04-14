@@ -8,6 +8,29 @@ description: >
 
 # External Auditor Skill — Standing Instructions
 
+## 🔴 DUAL-AGENT RCA PROTOCOL (Standing Rule — 2026-04-13)
+
+**When Auditor is spawned for an RCA, RCA Agent (GPT-5.4) is ALWAYS spawned simultaneously.**
+
+See `skills/rca-agent/SKILL.md` for full protocol. Summary:
+1. **Phase 0 (MANDATORY FIRST):** Collect ALL logs before forming any hypothesis — gateway.log, openclaw.log, PM2 logs, docker logs, system log, incidents.jsonl, today's memory file
+2. **Phase 1:** Auditor analyzes from logs + internals. RCA Agent researches independently online.
+3. **Phase 2:** Agents debate — Auditor writes to RCA file, RCA Agent challenges or confirms with external sources
+4. **Phase 3:** Joint fix plan — autonomous execution, no Eric involvement
+5. **Phase 4:** Verify fix worked with concrete tests, notify Eric with results
+
+**Log collection commands (run FIRST, share with both agents):**
+```bash
+tail -200 ~/.openclaw/logs/gateway.log 2>/dev/null
+grep -i "error\|warn\|timeout\|lock\|SIGTERM\|fail" ~/.openclaw/logs/gateway.log | tail -50
+openclaw status 2>&1
+openclaw tasks maintenance 2>&1 | head -20
+tail -20 ~/.openclaw/workspace/memory/incidents.jsonl 2>/dev/null
+cat ~/.openclaw/workspace/memory/$(date +%Y-%m-%d).md 2>/dev/null | tail -30
+```
+
+---
+
 ## Anthropic Code Review & Best Practices
 
 **Anthropic Code Review Check:** On every audit, verify that Anthropic's Code Review feature (launched Mar 2026 — multi-agent PR review) is enabled on all active GitHub repos. If not enabled, flag it and recommend setup. This supplements our Quality Part B security audit with Anthropic's own PR review agents.
