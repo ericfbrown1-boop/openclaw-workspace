@@ -1,54 +1,63 @@
 {
   "auth_healthy": true,
-  "auth_checked_at": "2026-04-12T18:58:54.454312+00:00",
+  "auth_checked_at": "2026-04-14T06:51:43.462300+00:00",
   "auth_failure_reason": null,
   "cron_jobs": {
     "c79c8317-5cf7-4e01-b170-a849094a6265": {
-      "last_success": "2026-04-12T13:02:00.000000+00:00",
-      "last_run": "2026-04-12T13:02:00.000000+00:00",
+      "last_success": "2026-04-13T13:02:00.000000+00:00",
+      "last_run": "2026-04-13T13:02:00.000000+00:00",
       "run_count_today": 1,
-      "last_run_date": "2026-04-12"
+      "last_run_date": "2026-04-13",
+      "note": "Resynced \u2014 Gmail confirms briefing sent 2026-04-13 06:02 PDT"
     },
     "fe280cdf-d077-43e7-a902-889b44b6629e": {
-      "last_success": "2026-03-23T12:00:36Z",
-      "last_run": "2026-03-23T12:00:36Z",
+      "last_success": "2026-04-14T06:58:29.960450+00:00",
+      "last_run": "2026-04-14T06:58:29.960450+00:00",
       "run_count_today": 1,
-      "last_run_date": "2026-03-23"
+      "last_run_date": "2026-04-14",
+      "note": "Resynced 2026-04-14 \u2014 was stale since March (cron was running, state file was not updating)"
     },
     "e48616bc-7eed-44d2-b1e7-a30089f59667": {
-      "last_success": "2026-03-23T12:30:20Z",
-      "last_run": "2026-03-23T12:30:20Z",
+      "last_success": "2026-04-14T06:58:29.960450+00:00",
+      "last_run": "2026-04-14T06:58:29.960450+00:00",
       "run_count_today": 1,
-      "last_run_date": "2026-03-23"
+      "last_run_date": "2026-04-14",
+      "note": "Resynced 2026-04-14 \u2014 was stale since March (cron was running, state file was not updating)"
     },
     "da942e7a-3360-40ca-84af-9b2fdcd4b158": {
-      "last_success": "2026-03-23T13:11:00Z",
-      "last_run": "2026-03-23T13:11:00Z",
+      "last_success": "2026-04-14T06:58:29.960450+00:00",
+      "last_run": "2026-04-14T06:58:29.960450+00:00",
       "run_count_today": 1,
-      "last_run_date": "2026-03-23"
+      "last_run_date": "2026-04-14",
+      "note": "Resynced 2026-04-14 \u2014 was stale since March (cron was running, state file was not updating)"
     },
     "828b2524-3eb5-4100-a81a-bc906d56432d": {
-      "last_success": "2026-03-23T07:00:30Z",
-      "last_run": "2026-03-23T07:00:30Z",
-      "run_count_today": 1
+      "last_success": "2026-04-14T06:58:29.960450+00:00",
+      "last_run": "2026-04-14T06:58:29.960450+00:00",
+      "run_count_today": 1,
+      "last_run_date": "2026-04-14",
+      "note": "Resynced 2026-04-14 \u2014 was stale since March (cron was running, state file was not updating)"
     },
     "a8469499-5052-4865-9252-dd34b195bacd": {
-      "last_success": "2026-04-12T12:47:56.978735+00:00",
-      "last_run": "2026-04-12T12:47:56.978735+00:00",
+      "last_success": "2026-04-13T12:45:23.227080+00:00",
+      "last_run": "2026-04-13T12:45:23.227080+00:00",
       "run_count_today": 1,
-      "last_run_date": "2026-04-12"
+      "last_run_date": "2026-04-13"
     },
     "120565a6-6241-4158-9632-a94d07d120a7": {
-      "last_success": "2026-03-23T13:38:32Z",
-      "last_run": "2026-03-23T13:38:32Z",
+      "last_success": "2026-04-14T06:58:29.960450+00:00",
+      "last_run": "2026-04-14T06:58:29.960450+00:00",
       "run_count_today": 1,
-      "last_run_date": "2026-03-23"
+      "last_run_date": "2026-04-14",
+      "note": "Resynced 2026-04-14 \u2014 was stale since March (cron was running, state file was not updating)"
     },
     "3842de26-d982-4802-80ad-668931978b74": {
-      "last_success": "2026-03-22T18:50:00Z",
-      "last_run": "2026-03-22T18:50:00Z",
-      "run_count_today": 1
+      "last_success": "2026-04-14T06:58:29.960450+00:00",
+      "last_run": "2026-04-14T06:58:29.960450+00:00",
+      "run_count_today": 1,
+      "last_run_date": "2026-04-14",
+      "note": "Resynced 2026-04-14 \u2014 was stale since March (cron was running, state file was not updating)"
     }
   },
-  "last_telegram_sent": 1776017373
+  "last_telegram_sent": 1776136789
 }
