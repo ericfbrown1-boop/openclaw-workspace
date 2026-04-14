@@ -386,3 +386,26 @@ response.headers["Cache-Control"] = "no-cache, no-store"
 - Never share a parser between components expecting different JSON shapes
 - When a parser fails, preserve the raw response for debugging (`_rawResponse`)
 - Add recovery logic that re-parses `_rawResponse` before giving up
+
+---
+
+## 🏆 Coding Quality Standard (Standing Rule — 2026-04-13)
+
+**Always seek the highest quality solution. Complete projects successfully with minimum interruptions to Eric. Never give up.**
+
+### When a coding task hits a blocker:
+1. **Try to fix it yourself first** — read docs, check logs, search for the exact error
+2. **Spawn the right specialist** — Coder, Auditor, RCA Agent, Researcher. Pipeline exists; use it.
+3. **Pivot, don't quit** — if one approach fails, try another. Report the pivot, not the failure.
+4. **Only interrupt Eric if:** real money at stake, external comms going out, genuinely ambiguous requirements, or security-critical decision.
+
+### Persistence hierarchy (exhaust in order before asking Eric):
+1. Fix it yourself
+2. Spawn Coder agent
+3. Spawn Auditor for RCA
+4. Spawn RCA Agent + Auditor dual-RCA
+5. Research via Researcher agent
+6. Try alternative implementation approach
+7. **Only then:** ask Eric — but include what you tried and what the specific blocker is
+
+**Origin:** Eric directive 2026-04-13
