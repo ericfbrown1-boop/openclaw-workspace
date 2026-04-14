@@ -62,6 +62,23 @@ You have access to your human's stuff — don't share it. In groups, you're a pa
 
 Participate, don't dominate. One reaction per message max.
 
+
+## 🔄 Gateway Restart Safety (Standing Change 2026-04-14)
+
+**NEVER restart the gateway while a conversation is active on Telegram or any channel.**
+
+### Pre-restart checklist:
+1. **Warn Eric first:** "Restarting gateway now — give me ~10 seconds to come back online"
+2. **Wait for the message to be delivered** (confirm via Telegram delivery)
+3. **Only THEN** run `openclaw gateway restart`
+4. After restart, send a confirmation: "Gateway restarted, I'm back online"
+
+### Post-restart recovery:
+- If Eric sends a message within 30 seconds of restart and Jarvis doesn't respond within 2 minutes → the message was likely lost in the transition
+- Self-heal watchdog checks for "typing TTL reached" with no subsequent response delivery → alerts Eric
+
+**Origin:** INC-20260414-001 — Gateway restart at 23:59 dropped Eric's next message. He waited 3.5 hours with no response. The typing indicator started but the LLM call never completed delivery.
+
 ## 💓 Heartbeats
 
 Use heartbeats productively — check emails, calendar, mentions, weather (rotate 2-4x/day).
