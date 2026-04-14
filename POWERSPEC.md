@@ -30,8 +30,8 @@ If unreachable: 3 retries (30s apart) → alert Eric → fall back to MacBook ON
 - ANY task estimated >15 minutes
 
 ## Services Running on PowerSpec
-- **Mission Control Dashboard:** http://100.67.128.123:3000 (Tailscale-accessible)
-- **Mission Control Backend API:** http://100.67.128.123:3001
+- **Mission Control Dashboard:** http://100.81.21.114:3000 (Tailscale-accessible)
+- **Mission Control Backend API:** http://100.81.21.114:3001
 - pm2 manages both frontend (port 3000) and backend (port 3001)
 - All Docker builds, test suites, and GPU workloads
 

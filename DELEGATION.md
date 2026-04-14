@@ -65,7 +65,7 @@ When a plan is produced via `~/openclaw-workspace/scripts/jarvis_pipeline.py`, t
 
 **Git & Repo Mandate:** Every PLAN.md must include a "Repository Setup" section. No coding begins until the repo exists on GitHub.
 
-**PowerSpec Pre-Check:** Before finalizing any plan with >15min tasks, run `tailscale ping remote-coder-main`.
+**PowerSpec Pre-Check:** Before finalizing any plan with >15min tasks, run `tailscale ping powerspecpc`.
 
 ### 📊 Diagram-First Planning (Standing Change 2026-04-12 — MANDATORY)
 
@@ -178,7 +178,7 @@ Coder can now run on PowerSpec directly via `jarvis_pipeline.py`'s `task.executi
 Default is `"local"` (Mac). When `"powerspec"`, the orchestrator:
 
 1. **Plumbing (SSH)**: ensures the remote work dir exists, stages `_prompt.txt` with the full Coder brief + Librarian memory, reads back `_output.txt` + git sha
-2. **Workload (openclaw nodes)**: dispatches via `openclaw agent --agent main` with the `exec` tool routing to `host=PowerSpec`. Main instructs the PowerSpec node host to run `cmd /c type _prompt.txt | claude.cmd --print --dangerously-skip-permissions --model sonnet > _output.txt`
+2. **Workload (openclaw nodes)**: dispatches via `openclaw agent --agent main` with the `exec` tool routing to `host=PowerSpec`. Main instructs the PowerSpec node host to run `cmd /c type _prompt.txt | claude.cmd --print --dangerously-skip-permissions --model sonnet > _output.txt` (Note: `--dangerously-skip-permissions` is used here ONLY because PowerSpec runs headless via SSH with no TTY for the auto-mode classifier. Local Mac dispatches MUST use `--permission-mode auto`.)
 3. **Mission Control**: every coder-stage agentChain entry gets `host: "powerspec"` so the dashboard reflects which machine did the work
 
 The Coder on PowerSpec HAS ACCESS to Librarian memory (injected via the prompt file) and will honor past lessons — verified 2026-04-11 smoke test where PowerSpec Claude Code ran `/simplify` quality audit before committing, matching the `feedback_quality_audit.md` rule.

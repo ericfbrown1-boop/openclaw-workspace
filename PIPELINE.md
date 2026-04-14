@@ -178,16 +178,15 @@ Agents read `alert_level` from the state file:
 | Tester | Sonnet 4.6 | 200K | $3 / $15 | Test execution is deterministic |
 | Quality | Grok 4.20 Beta | 2M | ~$2 / $6 | Adversarial output-correctness judgment — same reason Auditor uses Grok. Updated 2026-04-11. |
 | Conductor | Sonnet 4.6 | 200K | $3 / $15 | Infrastructure tasks well-defined |
-| External Auditor | Sonnet 4.6 | 200K | $3 / $15 | Packaging is straightforward |
+| External Auditor | Grok 4.20 Beta | 2M | ~$2 / $6 | Adversarial final-gate review; same model as Quality for consistency (updated 2026-04-13) |
 | Librarian | Sonnet 4.6 | 200K | $3 / $15 | Analysis can use cheaper model |
 | Monitor | Sonnet 4.6 | 200K | $3 / $15 | Simple monitoring tasks |
-| Researcher | Sonnet 4.6 | 200K | $3 / $15 | Web search + synthesis |
 
 ### Model Fallback Chain
 If a primary model is unavailable (rate limit, outage, cooldown):
 1. **Opus 4.6** → Grok 4.20 Beta → Sonnet 4.6 (used by main/researcher/planner/coder)
 2. **Grok 4.20 Beta** → Opus 4.6 → Sonnet 4.6 (used by auditor/quality)
-3. **Sonnet 4.6** → Opus 4.6 → Grok 4.20 Beta (used by coder fallback only)
+3. **Sonnet 4.6** → Grok 4.20 Beta → Opus 4.6 (used by tester/conductor/monitor fallback)
 4. **Sonnet 4.6** → Grok 4.20 Beta (used by monitor/conductor — upgraded 2026-04-11 from grok-4)
 
 ## Test Oracle Schemas

@@ -5,8 +5,14 @@
 - Lives at: `~/ProjectScraper/`
 - Node.js + Playwright web crawler for competitive intelligence
 - Crawls company websites: maps site structure, extracts content, samples docs, outputs to Google Sheets
-- Code: `~/ProjectScraper/code/` (crawler.js, crawler_v2.js, extract_sitemap.js, process_urls.js)
-- Completed research on: Rubrik, Commvault, Veeam, Cohesity, BI Tools, Sentra, EverQuote, AI Cluster
+- **ACTIVE CRAWLER: `crawl_hybrid.js` (V3) — ALWAYS use this**
+  - Command: `node /Users/ericbrown/ProjectScraper/code/crawl_hybrid.js --target <company> --sections ir,pr`
+  - Available targets: rubrik, commvault, crowdstrike, veeam, workday
+  - 3-step pipeline: rapid scan → Firecrawl rescue → LLM tagging (Claude Opus 4.6)
+  - Output: `~/ProjectScraper/output/`
+- **ARCHIVED: `crawler_v2.js`** — moved to `~/ProjectScraper/code/archive/crawler_v2.js.archived` (2026-04-13). Rubrik-only, no LLM tagging. Do NOT use.
+- **Trigger rule:** Use `crawl_hybrid.js` whenever Eric mentions "Project Scraper", "comprehensive company analysis", or "Financial Analyst skill"
+- Completed research on: Rubrik, Commvault, Veeam, Cohesity, BI Tools, Sentra, EverQuote, AI Cluster, CrowdStrike (in progress)
 - Also produced "Build_Your_Own_Jarvis_Complete_Guide.docx"
 
 ## Context
@@ -75,13 +81,12 @@
 - First established: 2026-02-07
 - Memory wiped at some point, reconnected ~2026-02-23
 
-## GPT 5.4 Trial (HISTORICAL — 2026-03-11 to 2026-03-27, replaced by Grok 4.20 Beta)
-- Eric approved trial of GPT 5.4 (openai/gpt-5.1-codex) for subagent work (2026-03-11 to 2026-03-27)
-- Primary use was: Cross-review loop for Planner output (dual-model architecture review)
-- Inspired by Alex Finn's recommendation (switched from Opus to 5.4 for speed)
-- Jarvis main model stayed Opus 4.6 — GPT 5.4 was a reviewer/second opinion
-- Trial ended 2026-03-27 with the "Dual-Model Planning Process" standing change: adversarial review moved from GPT 5.4 to Grok 4.20 Beta (`xai/grok-4.20`). See DELEGATION.md Stage 3.
-- 2026-04-11: Quality Agent also moved to Grok 4.20 Beta for the same reason (adversarial output-correctness judgment is its core skill).
+## GPT 5.4 — Model Usage History
+- Eric approved GPT 5.4 (openai/gpt-5.1-codex) trial for subagent work (2026-03-11)
+- **Planning review role (ENDED 2026-03-27):** Was used for cross-review of Planner output; replaced by Grok 4.20 Beta
+- **Quality Agent (ENDED 2026-04-11):** Also moved to Grok 4.20 Beta for adversarial output-correctness judgment
+- **RCA Agent (STILL ACTIVE):** GPT 5.4 remains the RCA Agent model (`codex/gpt-5.4` in openclaw.json). This is intentional — the dual-agent RCA protocol pairs GPT 5.4 (RCA Agent) against Grok 4.20 (Auditor) for adversarial root cause analysis. Two different models catch more than one.
+- Jarvis main model stayed Opus 4.6 throughout
 
 ## Alex Finn YouTube Monitoring (Started 2026-03-11)
 - Eric requested daily monitoring of Alex Finn's YouTube for OpenClaw enhancement ideas
