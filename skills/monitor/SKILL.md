@@ -173,14 +173,68 @@ done
 - No `.git` in project dir → log + create initialization task
 - **File size check:** Flag any workspace .md file >10KB for splitting
 
-### 4. PowerSpec Readiness
+### 4. PowerSpec Readiness — Full Connectivity & Offload Assessment
+
+**This check must answer ONE binary question: Can MacBook offload work to PowerSpec RIGHT NOW?**
+
+Run in sequence — stop at first failure and report with specific diagnosis:
+
 ```bash
-tailscale ping remote-coder-main
-ssh ericf@100.67.128.123 "hostname && nvidia-smi --query-gpu=utilization.gpu,memory.used,memory.total --format=csv,noheader"
+# Step 4a: Tailscale reachability (5s timeout)
+/usr/local/bin/tailscale ping -c 1 --timeout 5s powerspecpc 2>&1
+# Expected: "pong from powerspecpc (100.81.21.114) via <route> in <Xms>"
+# FAIL pattern: "timeout" or no output
+
+# Step 4b: SSH connectivity test (8s timeout)
+ssh -o ConnectTimeout=8 -o BatchMode=yes "Eric Brown@100.81.21.114" "echo ONLINE && hostname" 2>&1
+# Expected: "ONLINE\nPowerSpecPC"
+# FAIL pattern: "timed out", "Connection refused", "Permission denied"
+
+# Step 4c: OpenClaw node service status
+ssh -o ConnectTimeout=8 "Eric Brown@100.81.21.114" "cmd /c openclaw node status" 2>&1
+# Expected: "running (last run..."
+# FAIL pattern: "not running", "stopped", command not found
+
+# Step 4d: GPU readiness
+ssh -o ConnectTimeout=8 "Eric Brown@100.81.21.114" "powershell -NonInteractive -Command "nvidia-smi --query-gpu=name,utilization.gpu,memory.used,memory.total,temperature.gpu --format=csv,noheader"" 2>&1
+# Expected: "NVIDIA GeForce RTX 5080, X %, XMIB, 16384MiB, X"
+# FAIL pattern: SSH error or nvidia-smi not found
+
+# Step 4e: Docker containers (task-execution readiness)
+ssh -o ConnectTimeout=8 "Eric Brown@100.81.21.114" "cmd /c docker ps --format "table {{.Names}}\t{{.Status}}"" 2>&1
 ```
-- Unreachable → 3 retries (30s) → alert Eric
-- GPU util <5% + queued tasks → alert Conductor to offload
-- Running task with >15min remaining → keep PowerSpec online
+
+**Interpret results into a single OFFLOAD_STATUS verdict:**
+
+| Condition | OFFLOAD_STATUS | Action |
+|-----------|---------------|--------|
+| All 5 checks pass, GPU util <80% | ✅ READY — offload available | Normal operations |
+| Tailscale ping OK, SSH OK, node running, GPU >80% | ⚠️ BUSY — GPU saturated | Queue task, retry in 10 min |
+| Tailscale ping OK but SSH timeout | ❌ SSH DOWN — node unreachable | Try `openclaw nodes invoke powerspecpc ping`; alert Eric if fails |
+| Tailscale ping timeout | ❌ TAILSCALE DOWN — PC unreachable | Check Windows-side watchdog log; alert Eric immediately |
+| OpenClaw node stopped | ❌ NODE STOPPED — restart needed | SSH in and run `schtasks /run /tn OpenClawNode`; verify |
+| Machine waking up (DERP relay, no direct) | ⏳ CONNECTING — wait 60s | Retry after 60s; direct P2P usually establishes |
+
+**Report format for daily briefing and Telegram:**
+```
+PowerSpec: ✅ READY | Tailscale: 28ms (direct) | SSH: OK | Node: running | GPU: 12% (15,800/16,384MB VRAM) | Docker: 10 containers up
+```
+or if degraded:
+```
+PowerSpec: ❌ TAILSCALE DOWN | Last seen: 2h ago | Watchdog: 3 recovery attempts failed | Action needed: open Tailscale on PC
+```
+
+**Escalation:**
+- Tailscale down > 5 min → CRITICAL Telegram alert immediately (bypass hourly throttle)
+- SSH unreachable > 5 min with queued tasks → CRITICAL alert
+- GPU util >80% for >30 min with new task queued → warn Eric, suggest scheduling
+- OpenClaw node stopped → auto-restart via schtasks, log incident, alert if restart fails
+- "DERP relay" in ping output (no direct) → informational only, NOT an error; note in report
+
+**Correct SSH host and user (updated 2026-04-01):**
+- Host: `100.81.21.114` (Tailscale IP) or hostname `powerspecpc`
+- User: `"Eric Brown"` (with quotes — Windows user has a space)
+- NOT: `ericf@100.67.128.123` (old hostname/IP pre-rebuild)
 
 ### 4.5. Tailscale Health Check
 ```bash
