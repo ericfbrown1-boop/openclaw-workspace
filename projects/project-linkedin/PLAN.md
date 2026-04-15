@@ -72,3 +72,12 @@ Run with a sample draft post, verify:
 
 ## Created
 2026-04-15
+
+## ✅ First Run Complete (2026-04-15)
+- **Post:** Claude Mythos / Cohesity cyber recovery — polished and emailed to Eric
+- **Graphic v1:** Rejected (had text overlay)
+- **Graphic v2:** Approved — pure visual, no text, dark navy + shield/lock + neural net + red→blue beam
+- **LinkedIn posting:** Browser automation partially working (text entered, image upload blocked by native file picker). Next step: LinkedIn API OAuth for full automation.
+- **Action items:**
+  1. Refresh OpenAI API key (or top up xAI credits) for photorealistic image gen
+  2. Set up LinkedIn API OAuth for one-click posting

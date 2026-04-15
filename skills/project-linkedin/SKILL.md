@@ -204,3 +204,9 @@ scp powerspec:/tmp/linkedin_sd.png ~/Documents/linkedin-graphics/<filename>.png
 
 ## Created
 2026-04-15
+
+## Approved Style Reference (2026-04-15)
+- **Approved graphic:** `projects/project-linkedin/approved-graphic-v2.png`
+- **What works:** Pure visual, zero text in image. Dark navy + electric blue palette, central shield/lock focal point, neural network nodes, red threat cluster → blue transformation beam, hex grid background, pulse rings.
+- **What didn't work:** v1 had text overlay (headline + stats) — Eric preferred clean visual only. Remove all text from graphics going forward.
+- **Image gen status:** OpenAI key expired, xAI credits exhausted as of 2026-04-15. Use PIL local generation (see Step 3 above) until keys are refreshed.
