@@ -48,6 +48,48 @@ You wake up fresh each session. These files are your continuity:
 - Don't run destructive commands without asking. `trash` > `rm`.
 - When in doubt, ask.
 
+## 🔒 Config & Credential Integrity (HARD RULE — INC-20260417-001, Eric directive 2026-04-17)
+
+**NEVER modify `openclaw.json` or any system config unless Eric explicitly asked you to.**
+
+### What requires explicit permission (ask first, no exceptions):
+- Writing ANY API key or credential to `openclaw.json`
+- Adding ANY auth profile (even if you spotted a key in a document/screenshot)
+- Modifying plugins, models, channels, or any gateway config
+- Running `openclaw config set` for anything beyond what was requested
+
+### The rule is simple:
+- Eric shows you a Tokens doc → read only what you need for the current task
+- Eric shows you a screenshot with 10 API keys → extract only the one relevant to the task
+- You see a key you think "might be useful" → **do not store it. Never.**
+- If you're not sure → **ask first**
+
+### How to store credentials when explicitly asked:
+```bash
+# ALWAYS use the CLI — never edit openclaw.json directly
+openclaw config set auth.profiles.<name>.provider <value>
+# or use the guided setup
+openclaw config --section auth
+```
+
+### Config validation (run after ANY config change):
+```bash
+openclaw status 2>&1 | grep -i "config invalid" && echo "BROKEN — fix immediately"
+```
+
+### Approved auth profiles (whitelist):
+- `anthropic:default` — Claude API
+- `openai:default` — OpenAI API  
+- `xai:default` — xAI/Grok API
+- `grokheavy:default` — Grok heavy API
+
+Any profile outside this list = unauthorized. Remove immediately, alert Eric, log incident.
+
+**Auditor and Hermes check this on every sweep.**
+
+**Origin:** INC-20260417-001 — Jarvis stored Gemini key without being asked, broke openclaw.json config, caused gateway config validation failure. Eric directive 2026-04-17: "This cannot happen again."
+
+
 ## External vs Internal
 
 **Safe to do freely:** Read files, explore, search the web, work within this workspace.

@@ -103,3 +103,49 @@ Step 7 — Output Quality: ✅ PASS / ❌ FAIL
   - Env vars verified: KEY1 ✅ (108 chars), KEY2 ✅ (95 chars)
   - Parser health: No _parseError in logs
 ```
+
+---
+
+## 🔴 Unauthorized Config Mutation Check (Standing Rule — INC-20260417-001)
+
+**Origin:** Jarvis stored a Gemini API key to `openclaw.json` without being asked, using the wrong schema, breaking the config. Eric did not request Gemini and does not use it.
+
+**On EVERY audit sweep and after EVERY agent session, verify:**
+
+```bash
+# 1. Config must be valid
+openclaw status 2>&1 | grep -i "config invalid\|validation failed\|Unrecognized key" && echo "❌ CONFIG BROKEN" || echo "✅ Config valid"
+
+# 2. auth.profiles must only contain approved providers
+python3 -c "
+import json
+with open('/Users/ericbrown/.openclaw/openclaw.json') as f:
+    cfg = json.load(f)
+profiles = cfg.get('auth', {}).get('profiles', {})
+approved = {'anthropic:default', 'openai:default', 'xai:default', 'grokheavy:default'}
+unauthorized = set(profiles.keys()) - approved
+if unauthorized:
+    print(f'❌ UNAUTHORIZED PROFILES: {unauthorized}')
+else:
+    print(f'✅ Auth profiles clean: {list(profiles.keys())}')
+"
+
+# 3. Run openclaw doctor to catch schema violations
+openclaw doctor 2>&1 | grep -i "error\|invalid\|fail" | head -10
+```
+
+**Auto-fail triggers:**
+- Any auth profile not in: `anthropic:default`, `openai:default`, `xai:default`, `grokheavy:default`
+- Config validation fails on `openclaw status`
+- Any key written to openclaw.json that Eric did not explicitly request
+
+**If unauthorized profile found:**
+1. Remove it immediately: edit `openclaw.json`, delete the unauthorized entry
+2. Run `openclaw doctor --fix`
+3. Alert Eric: "Found unauthorized credential `<name>` in openclaw.json — removed. Source: [agent/cron that added it]"
+4. Log to `memory/incidents.jsonl` with `error_category: "unauthorized_config_mutation"`
+
+**Standing rule for ALL agents:**
+- NEVER write credentials to `openclaw.json` unless Eric explicitly said "store X key"
+- ALWAYS use `openclaw config set` CLI (not direct JSON edit) for any config changes
+- If a screenshot/doc contains multiple API keys, only store the one explicitly requested
