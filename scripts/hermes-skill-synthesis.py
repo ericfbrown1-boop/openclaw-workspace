@@ -77,28 +77,30 @@ def analyze(wins: list, losses: list) -> list[dict]:
     tag_wins: dict[str, list] = defaultdict(list)
     tag_losses: dict[str, list] = defaultdict(list)
 
-    for w in wins:
-        for t in extract_tags(w):
-            tag_wins[t].append(w)
+    for win in wins:
+        for t in extract_tags(win):
+            tag_wins[t].append(win)
+
     for loss in losses:
         for t in extract_tags(loss):
-            tag_losses[t].append(l)
+            tag_losses[t].append(loss)
 
     suggestions = []
     for tag in set(tag_wins) | set(tag_losses):
-        w, n_losses = len(tag_wins[tag]), len(tag_losses[tag])
-        total = w + n_losses
+        n_wins = len(tag_wins[tag])
+        n_losses = len(tag_losses[tag])
+        total = n_wins + n_losses
         if total < 2:
             continue
-        confidence = w / total
+        confidence = n_wins / total
         recurrence = min(total / 5.0, 1.0)
-        if confidence < 0.5 and l < 2:
+        if confidence < 0.5 and n_losses < 2:
             continue
         priority = round(confidence * 0.6 + recurrence * 0.4, 2)
         suggestions.append({
             "tag": tag,
-            "wins": w,
-            "losses": l,
+            "wins": n_wins,
+            "losses": n_losses,
             "total": total,
             "confidence": round(confidence, 2),
             "priority": priority,
@@ -120,19 +122,19 @@ def create_skill(suggestion: dict, wins: list, losses: list) -> bool:
 
     skill_dir.mkdir(parents=True, exist_ok=True)
 
-    relevant_wins = [w for w in wins if tag in extract_tags(w)][:10]
+    relevant_wins = [win for win in wins if tag in extract_tags(win)][:10]
     relevant_losses = [loss for loss in losses if tag in extract_tags(loss)][:5]
 
     fixes = []
-    for w in relevant_wins:
-        fix = w.get("fix") or w.get("resolution") or w.get("summary", "")
+    for win in relevant_wins:
+        fix = win.get("fix") or win.get("resolution") or win.get("summary", "")
         if fix and len(fix) > 20:
             fixes.append(f"- {fix[:200]}")
     fix_text = "\n".join(fixes[:8]) if fixes else "- See ClawEvolveRepo wins/ for details"
 
     win_text = "\n".join(
-        f"- {w.get('title', 'Unknown')} (ID: {w.get('id', '?')})"
-        for w in relevant_wins
+        f"- {win.get('title', 'Unknown')} (ID: {win.get('id', '?')})"
+        for win in relevant_wins
     ) or "- See ClawEvolveRepo wins/ for details"
 
     loss_text = "\n".join(
@@ -170,7 +172,7 @@ description: >
 jq 'select(.tags[]? == "{tag}")' ~/.openclaw/workspace/ClawEvolveRepo/wins/*.json
 ```
 
-_Generated: {ts()} | Re-run synthesis to update: `python3 ~/.openclaw/workspace/scripts/hermes-skill-synthesis.py`_
+_Generated: {ts()} | Re-run synthesis: `python3 ~/.openclaw/workspace/scripts/hermes-skill-synthesis.py`_
 """
     (skill_dir / "SKILL.md").write_text(content)
     log(f"[SKILL_SYNTHESIS] Created: {skill_name} ({suggestion['wins']}W/{suggestion['losses']}L)")
