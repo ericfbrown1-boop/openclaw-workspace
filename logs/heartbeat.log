@@ -153,3 +153,19 @@ Gateway service not loaded.
 Start with: openclaw gateway install
 Start with: openclaw gateway
 Start with: launchctl bootstrap gui/$UID ~/Library/LaunchAgents/ai.openclaw.gateway.plist
+[2026-04-11 06:07:43] Gateway process missing — starting
+Gateway LaunchAgent was installed but not loaded; re-bootstrapped launchd service.
+[2026-04-12 05:47:20] Gateway process missing — starting
+Gateway LaunchAgent was installed but not loaded; re-bootstrapped launchd service.
+[2026-04-12 10:37:56] Gateway unhealthy (HTTP 000000) — restarting
+Restarted LaunchAgent: gui/501/ai.openclaw.gateway
+[2026-04-12 19:51:06] Gateway unhealthy (HTTP 000000) — restarting
+Restarted LaunchAgent: gui/501/ai.openclaw.gateway
+[2026-04-13 09:53:16] Gateway unhealthy (HTTP 000000) — restarting
+Restarted LaunchAgent: gui/501/ai.openclaw.gateway
+[2026-04-13 21:38:24] Gateway process missing — starting
+Gateway LaunchAgent was installed but not loaded; re-bootstrapped launchd service.
+[2026-04-15 05:48:49] Gateway process missing — starting
+Gateway LaunchAgent was installed but not loaded; re-bootstrapped launchd service.
+[2026-04-17 08:41:44] Gateway unhealthy (HTTP 000000) — restarting
+Restarted LaunchAgent: gui/501/ai.openclaw.gateway

@@ -1,0 +1,44 @@
+{
+  "id": "DIARY-20260415-001",
+  "type": "claude_product_diary",
+  "date": "2026-04-15",
+  "watch_period": "2026-04-14 to 2026-04-15",
+  "title": "Claude Daily Watch 2026-04-15: Code Routines, Desktop Redesign, Prompt Cache 1hr TTL, Model Deprecation",
+  "summary": "Major releases on April 14: Claude Code Routines (cloud-hosted scheduled automations, research preview, up to 25/day on Team/Enterprise); Claude Code Desktop redesign (parallel sessions, integrated terminal, HTML/PDF preview); CHANGELOG v2.1.108 adds 1-hr prompt cache TTL env var and /recap session context; v2.1.105 adds PreCompact hooks and plugin background monitors. Model deprecation alert: claude-sonnet-4-20250514 and claude-opus-4-20250514 retire June 15 2026 — migrate to 4.6 variants.",
+  "features_covered": [
+    "Claude Code Routines (research preview) — cloud-hosted scheduled automations",
+    "Claude Code Desktop Redesign — parallel sessions, integrated terminal, diff viewer",
+    "CHANGELOG v2.1.109 — extended-thinking indicator improvement",
+    "CHANGELOG v2.1.108 — ENABLE_PROMPT_CACHING_1H env var, /recap, Skill-invocable slash commands, /undo alias",
+    "CHANGELOG v2.1.105 — PreCompact hook, plugin background monitors, EnterWorktree path param, skill description cap 1536 chars, WebFetch style stripping",
+    "Model deprecation — claude-sonnet-4-20250514 & claude-opus-4-20250514 retire 2026-06-15",
+    "Project Glasswing + Claude Mythos Preview — defensive cybersecurity, invite-only"
+  ],
+  "actions_generated": [
+    "IMMEDIATE: Set ENABLE_PROMPT_CACHING_1H=1 in all agent project envs (Jarvis, Ajax, FinancialReportApp)",
+    "URGENT: Audit all project model IDs; migrate claude-sonnet-4-20250514 and claude-opus-4-20250514 to 4.6 variants before June 15 2026",
+    "Q2 SPRINT: Prototype Claude Code Routine for Jarvis nightly pipeline stage",
+    "Q2 SPRINT: Prototype Claude Code Routine for Competitive Intel daily scrape",
+    "Q2 SPRINT: Evaluate Claude Code Routine for FinancialReportApp EOD report trigger",
+    "DEV: Add PreCompact hook to Jarvis agent for state checkpoint before compaction",
+    "DEV: Audit and enrich all custom skill descriptions (now supports up to 1536 chars)",
+    "MONITOR: Watch Project Glasswing / Claude Mythos for GA availability"
+  ],
+  "diary_path": "~/.openclaw/workspace/claude-product-diary/2026-04-15.md",
+  "tags": [
+    "claude-code",
+    "routines",
+    "automation",
+    "prompt-caching",
+    "model-deprecation",
+    "desktop-redesign",
+    "precompact-hooks",
+    "plugin-monitors",
+    "jarvis",
+    "financial-report-app",
+    "project-ajax",
+    "competitive-intel",
+    "salesforce-snowflake",
+    "glasswing"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "consecutive_failures": 0,
+  "recovery_attempts": 0,
+  "last_check": "2026-04-17T16:00:14Z",
+  "last_status": "healthy",
+  "last_recovery": null,
+  "total_checks": 2,
+  "total_recoveries": 0,
+  "learning_log": []
+}

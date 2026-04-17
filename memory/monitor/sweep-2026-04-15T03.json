@@ -1,0 +1,13 @@
+{
+  "timestamp": "2026-04-15T03:20:00.080758Z",
+  "checks": {
+    "auth": "OK - gog healthy, gh authenticated",
+    "app_health": "OK - frontend:3000 up, backend:3001 up, pm2 online",
+    "dashboard_parity": "OK - 5/5 tasks synced",
+    "git_hygiene": "WARN - AGENTS.md 14KB (>5KB limit); PIPELINE.md 20KB, DELEGATION.md 27KB, MEMORY.md 13KB, KNOWN_FAILURES.md 15KB all >10KB",
+    "powerspec": "FAIL - SSH timeout on both 100.67.128.123 and auth denied 100.81.21.114",
+    "tailscale": "OK - Running, self online, 2/2 peers, PS_ONLINE:True",
+    "cron_drift": "OK - no job issues logged",
+    "tasks": "5 total, 0 running, 0 queued, 2 completed - no stale tasks"
+  }
+}

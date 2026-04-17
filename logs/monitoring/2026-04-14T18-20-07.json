@@ -1,0 +1,19 @@
+{
+  "timestamp": "2026-04-14T18:20:07.200622Z",
+  "macbook": {
+    "cpu_idle_pct": 82.98,
+    "ram_used_gb": 2.7
+  },
+  "powerspec": {
+    "reachable": true,
+    "ssh_auth": false,
+    "tailscale_ping_ms": 1,
+    "gpu_util_pct": null,
+    "vram_used_mb": null
+  },
+  "tailscale": {
+    "state": "Running",
+    "self_online": true,
+    "peers_online": "3/3"
+  }
+}

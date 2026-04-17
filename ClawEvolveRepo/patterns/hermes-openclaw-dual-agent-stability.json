@@ -1,0 +1,22 @@
+{
+  "id": "PATTERN-20260417-hermes-openclaw-stability",
+  "created_at": "20260417T154900Z",
+  "title": "Dual-Agent Stability: Hermes Supervisor + OpenClaw Executor",
+  "description": "Cross-cutting pattern for maximum stability using Hermes as a supervisor/self-healing layer over OpenClaw. Eliminates single point of failure, adds learning loop for improving recovery time, and reduces costs through model tiering.",
+  "applies_to": ["gateway-stability", "self-healing", "cost-optimization", "quality-review", "incident-recovery"],
+  "core_principle": "OpenClaw executes. Hermes watches, reviews, learns, and heals. Mutual health monitoring = zero single point of failure.",
+  "key_rules": [
+    "Health check interval: 30 seconds minimum (cheaper models, minimal token cost)",
+    "Failure threshold: 3 consecutive failures before escalation (avoid false alarms)",
+    "Intent marker protocol: [STATUS_REQUEST], [REVIEW_REQUEST], [ESCALATION_NOTICE], [ACK]",
+    "[ACK] is terminal — never reply to it",
+    "Max 3 message turns per exchange between agents",
+    "Separate supervisor profile: hermes -p supervisor",
+    "Cost tiering: Hermes on Haiku/cheap model ($0.25-$1/day), OpenClaw stays on Opus",
+    "Hermes learning loop improves recovery time over repeated incidents (40s → 11s documented)",
+    "Run Hermes as system service (systemd/launchd) for crash recovery of Hermes itself",
+    "Keep OpenClaw as primary for multi-agent orchestration (Auditor, RCA, etc.)"
+  ],
+  "related_wins": ["RESEARCH-20260417-hermes-openclaw-best-practices"],
+  "related_incidents": ["gateway-crashes", "self-heal-failures", "update-breakage"]
+}

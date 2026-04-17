@@ -234,7 +234,34 @@ Trigger: AFTER Quality security audit passes. FINAL step in code pipeline. Also 
 
 **Spawn allowlist:** auditor is now included in main agent allowAgents (updated 2026-04-10). Can be spawned via sessions_spawn with agentId: auditor.
 
-**Pipeline:** Coder → Quality → External Auditor → Done
+**Pipeline:** Coder → Quality → **Adversarial Code Review Loop** → GitHub Push → Conductor → Done
+
+### 🔁 Recursive Adversarial Code Review Loop (Standing Change 2026-04-17)
+
+**MANDATORY. No code reaches GitHub without passing this loop.**
+
+The Auditor does NOT do a single-pass review. It runs a recursive loop:
+
+```
+Coder completes → Auditor reviews (Grok 4.20+)
+  → If CRITICAL/HIGH findings:
+    → Findings → Jarvis → Plan update → Coder re-implements → Auditor re-reviews
+    → Loop until APPROVED or max 3 iterations
+  → If APPROVED:
+    → git push to GitHub (NOW safe to commit)
+```
+
+**Key rules:**
+- Auditor model: Grok 4.20 Beta minimum (`xai/grok-4.20`)
+- Each iteration: verify PREVIOUS fixes + check for NEW issues
+- CRITICAL/HIGH block approval. MEDIUM logged but don't block.
+- Max 3 iterations. If max reached → escalate to Eric.
+- No self-review: Jarvis/Coder cannot approve their own code.
+- Auditor uses the 6-step QA gate (below) WITHIN each loop iteration.
+
+See `PIPELINE.md` → "Recursive Adversarial Code Review" for full specification.
+
+**Origin:** Eric directive 2026-04-17
 
 ### 🧠 Learn Before Review Rule (Standing Change 2026-04-11)
 

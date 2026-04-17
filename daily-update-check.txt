@@ -1,10 +1,9 @@
 OpenClaw Daily Update Check
 ===========================
-Timestamp: 2026-04-10 05:45 AM PT (2026-04-10T12:45Z)
-Status: ✅ Already on latest version
-Current Version: OpenClaw 2026.4.9 (0512059)
+Timestamp: 2026-04-16 05:47 AM PT (12:47 UTC)
+Status: Already on latest version
+Current Version: 2026.4.14 (323493f)
 Channel: stable
 Install Method: pnpm
 
-Summary for 6 AM briefing:
-OpenClaw is up to date on v2026.4.9 (stable). No updates needed.
+Summary for 6 AM brief: OpenClaw v2026.4.14 — up to date, no action needed.

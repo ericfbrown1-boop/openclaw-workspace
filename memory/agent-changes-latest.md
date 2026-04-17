@@ -35,7 +35,7 @@
 - **Contract Analysis** — "Run Contract Analyzer on [files]" — AI-powered legal contract review with 17-section report, risk flags, entity attribution (Cohesity/Arctera)
 
 **💻 Code & Deployment**
-- **Build a Project** — "Build [description]" — Full pipeline: Researcher → Planner (Opus) → Grok 4.20 Beta adversarial review → Coder → Quality (Grok 4.20 Beta) → Auditor → Conductor deploys to Railway
+- **Build a Project** — "Build [description]" — Full pipeline: Planner → GPT review → Coder → Tester → Quality audit → Conductor deploys to Railway
 - **Railway Deployment** — "Deploy [project] to Railway" — Docker build, Railway config, Celery workers, MinIO, smoke tests
 - **Security Audit** — "Run security audit on [repo]" — Secret scanning, git history check, dependency vulnerabilities, BFG cleanup
 - **Code Review** — "Review [repo/PR]" — Quality + External Auditor pipeline, optional Grok cross-review via repomix
@@ -73,4 +73,9 @@
 ### 📝 Agent Configuration Changes
 
 **📝 Modified:**
-- `planner/AGENTS.md` — updated 2026-04-11 15:16 (59 lines)
+- `main/skills/monitor/SKILL.md` — updated 2026-04-15 10:07 (388 lines)
+- `monitor/skills/monitor/SKILL.md` — updated 2026-04-15 10:07 (388 lines)
+
+**🆕 Newly tracked:**
+- `main/skills/project-linkedin/SKILL.md`
+- `monitor/skills/project-linkedin/SKILL.md`

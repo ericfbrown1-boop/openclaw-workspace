@@ -1,0 +1,185 @@
+{
+  "id": "RESEARCH-20260417-hermes-openclaw-best-practices",
+  "recorded_at": "20260417T154900Z",
+  "status": "win",
+  "category": "research",
+  "title": "Hermes + OpenClaw Best Practices for Maximum Stability & Reliability",
+  "summary": "Comprehensive research from 10+ highly rated sources on integrating Hermes Agent as a supervisor/self-healing layer for OpenClaw. Covers architecture patterns, cost optimization, security posture, and implementation roadmap.",
+  "tags": ["hermes", "openclaw", "stability", "reliability", "supervisor", "self-healing", "dual-agent", "best-practices"],
+  "sources": [
+    {
+      "name": "Hongkiat — How to Set Up Hermes to Supervise OpenClaw",
+      "url": "https://www.hongkiat.com/blog/hermes-oversee-openclaw-bot/",
+      "rating": "high",
+      "date": "2026-04-13",
+      "key_insights": [
+        "Three supervision models: chat-based, programmatic MCP/API, hybrid group orchestration",
+        "Create dedicated supervisor profile: hermes profile create supervisor",
+        "Use hermes -p supervisor to keep oversight separate from main Hermes environment",
+        "Hermes adds persistent memory, skill synthesis, failure review, and feedback loops OpenClaw lacks natively",
+        "Migration path: hermes claw migrate (use --dry-run first)"
+      ]
+    },
+    {
+      "name": "NxCode — Hermes Agent vs OpenClaw 2026",
+      "url": "https://www.nxcode.io/resources/news/hermes-agent-vs-openclaw-2026-which-ai-agent-to-choose",
+      "rating": "high",
+      "date": "2026-04-11",
+      "key_insights": [
+        "OpenClaw bets on connectivity (24+ platforms), Hermes bets on cognition (learning loop)",
+        "Hermes has zero agent-specific CVEs vs OpenClaw's 9 CVEs in March 2026 (including CVSS 9.9)",
+        "Hermes skills are self-generated (no supply chain risk), OpenClaw ClawHub had 341-900 malicious skills",
+        "Hermes v0.7.0 added pluggable memory providers, credential rotation, stability improvements",
+        "Hermes v0.8.0 added Browser Use, Firecrawl, git worktree parallelism, background task notifications",
+        "61K+ GitHub stars in under 2 months",
+        "Hermes supports serverless backends (Modal, Daytona) that hibernate when idle"
+      ]
+    },
+    {
+      "name": "Mejba Ahmed — OpenClaw + Hermes: The Two-Agent System I Run Daily",
+      "url": "https://www.mejba.me/blog/openclaw-hermes-multi-agent-workflow",
+      "rating": "very-high",
+      "date": "2026-04-13",
+      "key_insights": [
+        "Practitioner reduced OpenClaw crash recovery from 15 minutes to 11 seconds with Hermes",
+        "Health check every 30 seconds (process status ping, minimal token cost)",
+        "3 consecutive failures before escalation (avoids false alarms)",
+        "Hermes learning loop: first fix 40s, third time 11s (pattern cataloged)",
+        "Mutual monitoring: OpenClaw monitors Hermes health too — zero single point of failure",
+        "Supervisor-Builder Pattern: Opus plans, cheap model executes, Opus reviews — 75% lower cost, same quality",
+        "40% lower total AI spend after switching from all-Opus to paired system",
+        "Monitor workflow: Hermes runs watchdog checks every 2 hours on cheap model (cost-separated from OpenClaw)",
+        "Don't set health check interval below 30 seconds — token cost noticeable with no benefit"
+      ]
+    },
+    {
+      "name": "ChatGPT.ca — How to Set Up Hermes as an AI Supervisor for OpenClaw",
+      "url": "https://www.chatgpt.ca/blog/openclaw-hermes-supervisor-setup-guide",
+      "rating": "high",
+      "date": "2026-04-10",
+      "key_insights": [
+        "Intent Marker Protocol: [STATUS_REQUEST], [REVIEW_REQUEST], [ESCALATION_NOTICE], [ACK]",
+        "Every message must have exactly one intent marker + one @mention",
+        "[ACK] is terminal — receiving bot stays silent, prevents infinite loops",
+        "Max 3 turns per exchange — hard limit prevents runaway conversations",
+        "Dedicated private channel (#operator-ai) for supervision traffic, separate from production",
+        "Run Hermes as systemd service for crash recovery of Hermes itself",
+        "Hermes on Haiku costs $0.25-$1/day for supervision; Sonnet $1-$5/day",
+        "Config files: ~/.hermes/.env (API keys + Discord wiring), ~/.hermes/config.yaml (model + identity)"
+      ]
+    },
+    {
+      "name": "Hermes Agent Official Docs",
+      "url": "https://hermes-agent.nousresearch.com/docs/",
+      "rating": "authoritative",
+      "date": "2026-04-08",
+      "key_insights": [
+        "Closed learning loop: execute → evaluate → extract → refine → retrieve",
+        "47 built-in tools, MCP support, 6 terminal backends (local, Docker, SSH, Daytona, Singularity, Modal)",
+        "FTS5 full-text search over memory with ~10ms latency even over 10K+ entries",
+        "Honcho dialectic user modeling for deepening user understanding",
+        "Skills compatible with agentskills.io open standard",
+        "15+ messaging platforms (Telegram, Discord, Slack, WhatsApp, Signal, Matrix, Mattermost, Email, SMS, etc.)",
+        "Built-in cron scheduler with delivery to any platform",
+        "Subagent spawning for parallel workstreams with zero-context-cost turns via Python RPC"
+      ]
+    },
+    {
+      "name": "Hermes Agent GitHub Repository",
+      "url": "https://github.com/NousResearch/hermes-agent",
+      "rating": "authoritative",
+      "date": "2026-04-17",
+      "key_insights": [
+        "Built by Nous Research (Hermes, Nomos, Psyche model families)",
+        "MIT license, Python-based",
+        "hermes claw migrate for OpenClaw migration (imports SOUL.md, memories, skills, API keys, messaging settings, TTS assets)",
+        "Works with Nous Portal, OpenRouter (200+ models), OpenAI, or any custom endpoint",
+        "Install: curl -fsSL https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scripts/install.sh | bash",
+        "hermes doctor for diagnostics"
+      ]
+    },
+    {
+      "name": "Kilo.ai — OpenClaw vs Hermes: What Reddit Actually Says",
+      "url": "https://kilo.ai/articles/openclaw-vs-hermes-what-reddit-says",
+      "rating": "high",
+      "date": "2026-04-10",
+      "key_insights": [
+        "Choose OpenClaw for: multi-channel integrations, multi-agent orchestration, deterministic cron, largest skill ecosystem",
+        "Choose Hermes for: easier setup, better default memory, self-learning skills",
+        "Best combo: OpenClaw for execution, Hermes for oversight — complementary strengths"
+      ]
+    },
+    {
+      "name": "Reddit r/openclaw — Multiple Threads",
+      "url": "https://www.reddit.com/r/openclaw/",
+      "rating": "community",
+      "key_insights": [
+        "Hermes breaks less than OpenClaw on updates",
+        "OpenClaw still has features Hermes lacks (multi-agent communication, reply context on Telegram)",
+        "Two agents: if one goes down, the other can fix it — surprisingly valuable in practice",
+        "OpenClaw easy to use hard to master, other claws hard to use impossible to master"
+      ]
+    }
+  ],
+  "architecture_patterns": {
+    "pattern_1_chat_supervision": {
+      "description": "Simplest. Both agents in shared Telegram/Discord channel. Hermes monitors with intent markers.",
+      "pros": ["Easy setup", "Works with existing channels"],
+      "cons": ["Loose coupling", "Depends on messaging platform availability"]
+    },
+    "pattern_2_programmatic_mcp": {
+      "description": "Hermes calls OpenClaw directly via MCP/API. Start with: hermes gateway start --mcp",
+      "pros": ["Tighter control", "No messaging dependency", "Direct tool calls"],
+      "cons": ["More complex setup", "Requires MCP configuration"]
+    },
+    "pattern_3_mutual_health_monitor": {
+      "description": "Both agents monitor each other. Zero single point of failure.",
+      "pros": ["Maximum reliability", "Auto-recovery", "Learning improves recovery time"],
+      "cons": ["Highest complexity", "Both must be robust independently"]
+    }
+  },
+  "implementation_roadmap": {
+    "phase_1": "Install Hermes + create supervisor profile",
+    "phase_2": "Health monitor: Hermes monitors OpenClaw gateway every 30s, auto-recovery on crash",
+    "phase_3": "Quality review: Hermes reviews outputs (daily briefing) before delivery",
+    "phase_4": "Skill synthesis: Hermes learns from repeated patterns, auto-generates reusable skills"
+  },
+  "cost_analysis": {
+    "hermes_supervisor_haiku": "$0.25-$1.00/day",
+    "hermes_supervisor_sonnet": "$1-$5/day",
+    "savings_from_paired_system": "~40% lower total AI spend (Opus plans, cheap model executes, Opus reviews)",
+    "cost_per_supervised_output": "~75% cheaper than all-Opus for same quality"
+  },
+  "security_comparison": {
+    "hermes_cves": 0,
+    "openclaw_cves_march_2026": 9,
+    "openclaw_highest_cvss": 9.9,
+    "hermes_skill_supply_chain_risk": "none (self-generated)",
+    "openclaw_clawhub_malicious_skills": "341-900 confirmed",
+    "hermes_isolation": "Container hardening + namespace isolation for subagents",
+    "hermes_credential_rotation": "Pluggable memory providers (v0.7.0+)"
+  },
+  "gotchas": [
+    "Don't set health checks below 30 seconds — token cost adds up with no benefit",
+    "Migration confusion: if Hermes acts like OpenClaw after migration, reset profile and re-migrate",
+    "Hermes can get RAM-heavy during active learning — monitor resources",
+    "Run Hermes as systemd/launchd service for production stability",
+    "Always use hermes -p supervisor to keep oversight separate",
+    "Hermes doesn't do multi-agent comms as well as OpenClaw — keep OpenClaw for agent orchestration",
+    "Native Windows not supported — WSL2 required (our PowerSpec setup would need WSL2)",
+    "Max 3 message exchange depth to prevent infinite agent-to-agent ping-pong"
+  ],
+  "commands_reference": {
+    "install": "curl -fsSL https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scripts/install.sh | bash",
+    "setup": "hermes setup",
+    "migrate_from_openclaw": "hermes claw migrate --dry-run (then without --dry-run)",
+    "create_supervisor_profile": "hermes profile create supervisor",
+    "run_supervisor": "hermes -p supervisor",
+    "start_gateway_with_mcp": "hermes gateway start --mcp",
+    "check_health": "hermes doctor",
+    "update": "hermes update",
+    "list_skills": "hermes skills list",
+    "search_memory": "hermes memory search \"topic\"",
+    "config_files": ["~/.hermes/config.yaml", "~/.hermes/.env"]
+  }
+}

@@ -1,11 +1,9 @@
 # ClawEvolveRepo — Knowledge Index
-_Last updated: 2026-04-10 13:16 UTC_
+_Last updated: 2026-04-17 15:52 UTC_
 
-**Total Wins:** 12 | **Total Losses:** 122
+**Total Wins:** 17 | **Total Losses:** 122
 
 ## Recent Wins
-- ✅ `INC-20260324-015` — RESOLVED: fe280cdf (Doctor Fix, 15 errors) and e48616bc (Smoke Test, 8 errors) h
-- ✅ `INC-20260324-064` — 
 - ✅ `INC-20260324-065` — 
 - ✅ `INC-20260328-118` — Reports generated with empty content — 3 silent failures in pipeline (env trunca
 - ✅ `INC-20260328-119` — Reports marked done with empty content — 14 bugs across 8 files
@@ -13,7 +11,9 @@ _Last updated: 2026-04-10 13:16 UTC_
 - ✅ `INC-20260409-126` — 
 - ✅ `INC-20260409-127` — 
 - ✅ `INC-20260409-128` — 
+- ✅ `RESEARCH-20260417-hermes-openclaw-best-practices` — 
 - ✅ `TEST-WIN-001` — Test win: Tailscale retry fixed SSH
+- ✅ `nemoclaw-powerspec-setup-20260414` — 
 
 ## Recent Losses (Do Not Retry)
 - ❌ `INC-20260327-114` —  (reason: unresolved)

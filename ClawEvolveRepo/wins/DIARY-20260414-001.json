@@ -2,55 +2,48 @@
   "id": "DIARY-20260414-001",
   "type": "claude_product_diary",
   "date": "2026-04-14",
-  "title": "Claude Product Diary — inaugural entry, 8 updates mapped to Eric's use cases",
-  "summary": "Mapped 8 Anthropic platform + Claude Code updates to Eric's active use cases. Top findings: (1) Advisor Tool = ~$1.85 savings per FinancialReportApp report, detailed 4-file implementation plan written; (2) Managed Agents may be a first-party alternative to NemoClaw for Project Ajax — evaluate before Kathir procurement; (3) Background Monitor plugin (2.1.105) is the architectural basis for Monitor Agent v2 with real-time log watching + auto-RCA; (4) Batch API 300K + 50% pricing = overnight pre-computation of all 3 competitor analyses for 6AM briefing.",
+  "title": "Claude Ecosystem Daily Watch — April 14 2026",
+  "summary": "Major release day: Claude Code Desktop redesigned with parallel multi-session sidebar; Claude Code Routines (research preview) launched — scheduled automations run on Anthropic infra without local machine. Claude Code v2.1.108/2.1.109 ship 1-hour prompt caching TTL env var, recap feature, Skill tool built-in slash command discovery, and background plugin monitors. Model deprecation notice issued for claude-sonnet-4-20250514 and claude-opus-4-20250514 (retire June 15 2026). Message Batches API supports 300k output tokens for Opus/Sonnet 4.6. Claude Cowork reached GA (April 9).",
   "features_covered": [
-    "advisor-tool-2026-03-01",
-    "managed-agents-2026-04-01",
-    "ant-cli",
-    "batch-api-300k-output",
-    "claude-code-2.1.105-background-monitor",
-    "claude-code-2.1.105-precompact-hook",
-    "claude-code-2.1.101-team-onboarding",
-    "1m-context-window-ga"
+    "Claude Code Desktop Redesign — parallel multi-session sidebar, integrated terminal, file editing, HTML/PDF preview",
+    "Claude Code Routines (Research Preview) — scheduled/triggered automations on Anthropic infra",
+    "Claude Code v2.1.109 — extended-thinking progress indicator improvement",
+    "Claude Code v2.1.108 — ENABLE_PROMPT_CACHING_1H env var (API, Bedrock, Vertex, Foundry)",
+    "Claude Code v2.1.108 — recap feature on session resume",
+    "Claude Code v2.1.108 — Skill tool discovers/invokes built-in slash commands",
+    "Claude Code v2.1.108 — background plugin monitors via monitors manifest key",
+    "Model Deprecation — claude-sonnet-4-20250514 and claude-opus-4-20250514 retire June 15 2026",
+    "Message Batches API — 300k output tokens via output-300k-2026-03-24 beta header (Opus 4.6, Sonnet 4.6)",
+    "Claude Cowork GA — enterprise management and monitoring tools",
+    "Claude Mythos — cybersecurity preview to 11 orgs",
+    "LTBT — Vas Narasimhan board appointment"
   ],
   "actions_generated": [
-    {
-      "id": "ACT-001",
-      "feature": "Advisor Tool",
-      "use_case": "FinancialReportApp",
-      "status": "planned",
-      "effort_hours": 2.5,
-      "files": ["config.py", "tagger.py", "generate_report.py", "test_tagger.py"],
-      "savings_est": "$1.85/report (~65% cost reduction)"
-    },
-    {
-      "id": "ACT-002",
-      "feature": "Claude Managed Agents",
-      "use_case": "Project Ajax / NemoClaw decision",
-      "status": "idea_needs_eric_input",
-      "effort_hours": null,
-      "note": "Evaluate vs NemoClaw before Kathir procurement — potential major cost avoidance"
-    },
-    {
-      "id": "ACT-003",
-      "feature": "Background Monitor plugin (2.1.105)",
-      "use_case": "Monitor Agent v2",
-      "status": "planned",
-      "effort_hours": null,
-      "note": "Part of Monitor Agent improvement plan (2026-04-14)"
-    },
-    {
-      "id": "ACT-004",
-      "feature": "Batch API 300K",
-      "use_case": "6AM briefing competitive intel",
-      "status": "idea",
-      "effort_hours": 3,
-      "note": "50% cost reduction, batch all 3 competitors overnight"
-    }
+    "P1: Audit all projects for deprecated model IDs (sonnet-4-20250514, opus-4-20250514) — migrate to 4.6 before June 15 2026",
+    "P1: Test output-300k-2026-03-24 beta header in FinancialReportApp and Snowflake Analytics batch pipelines",
+    "P1: Set ENABLE_PROMPT_CACHING_1H in Jarvis Pipeline and Snowflake Analytics container configs",
+    "P2: Evaluate Claude Code Routines for Jarvis automation, Competitive Intel monitoring, Project Ajax CI/CD",
+    "P2: Adopt Claude Code Desktop multi-session for Project Ajax dev team",
+    "P3: Update Project Ajax skill manifests to leverage Skill tool built-in slash command discovery",
+    "P3: Design background plugin monitor manifest for Project Ajax repo event watching",
+    "P4: Update Competitive Intel brief with Claude Cowork GA and Claude Mythos cybersecurity positioning"
   ],
-  "diary_path": "claude-product-diary/2026-04-14.md",
-  "tags": ["claude-product-diary", "feature-relevance", "financial-report-app", "project-ajax", "monitor-agent", "cost-reduction"],
-  "created_at": "2026-04-14T12:00:00Z",
-  "created_by": "jarvis"
+  "diary_path": "~/.openclaw/workspace/claude-product-diary/2026-04-14.md",
+  "tags": [
+    "claude-code",
+    "routines",
+    "multi-session",
+    "prompt-caching",
+    "model-deprecation",
+    "message-batches",
+    "claude-cowork",
+    "claude-mythos",
+    "jarvis",
+    "project-ajax",
+    "financial-report-app",
+    "snowflake",
+    "salesforce",
+    "competitive-intel",
+    "anthropic"
+  ]
 }

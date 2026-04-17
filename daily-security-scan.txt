@@ -1,27 +1,34 @@
-═══════════════════════════════════════════════════
-  DAILY SECURITY SCAN — 2026-04-10 05:50 AM PT
-═══════════════════════════════════════════════════
+═══════════════════════════════════════════════════════
+  DAILY SECURITY SCAN — 2026-04-16 05:50 AM PT
+═══════════════════════════════════════════════════════
 
-── SECURITY AUDIT (deep) ────────────────────────
+── SECURITY AUDIT ──────────────────────────────────
 Result: 0 critical · 2 warnings · 1 info
 
-⚠️  WARN: tools.exec.security_full_configured
-   Full exec trust enabled for 8 agents (main, researcher, planner, coder, quality, monitor, auditor, conductor).
-   Recommendation: Prefer "allowlist" mode; reserve "full" for break-glass agents.
+WARN 1: tools.exec.security_full_configured
+  Exec security=full enabled for 11 agents (main, researcher,
+  planner, coder, quality, monitor, auditor, conductor,
+  rca-agent, tester, librarian). Recommendation: prefer
+  allowlist with ask prompts for most agents.
 
-⚠️  WARN: gateway.nodes.deny_commands_ineffective
-   Some denyCommands entries use unknown/mismatched command names (camera.snap, camera.clip, screen.record, etc.).
-   Recommendation: Use exact command IDs from allowCommands.
+WARN 2: gateway.nodes.deny_commands_ineffective
+  Some denyCommands entries use unknown command names
+  (camera.snap, camera.clip, screen.record, calendar.add,
+  contacts.add, reminders.add). These are ineffective —
+  exact command-name matching only.
 
-ℹ️  INFO: Attack surface summary
-   Groups: open=0, allowlist=1 | Elevated: enabled | Webhooks: disabled
-   Browser control: enabled | Trust model: personal assistant (single operator)
+INFO: Attack surface summary
+  Open groups: 0 | Allowlist groups: 1
+  Elevated exec: enabled | Webhooks: disabled
+  Browser control: enabled
+  Trust model: personal assistant (single operator)
 
-── UPDATE STATUS ─────────────────────────────────
-Channel: stable | Install: pnpm | Status: ✅ Up to date (latest: 2026.4.9)
+── UPDATE STATUS ───────────────────────────────────
+OpenClaw: up to date (stable channel, npm latest 2026.4.14)
+Install method: pnpm
 
-── SUMMARY FOR DAILY BRIEF ──────────────────────
-• No critical security issues.
-• 2 standing warnings (exec full-trust policy, denyCommands naming) — unchanged, low urgency.
-• OpenClaw is up to date on stable channel.
-• No new skills released.
+── SUMMARY ─────────────────────────────────────────
+✅ No critical issues found
+✅ OpenClaw is up to date
+⚠️  2 standing warnings (exec security policy + ineffective
+   denyCommands) — low risk, no change from prior scans

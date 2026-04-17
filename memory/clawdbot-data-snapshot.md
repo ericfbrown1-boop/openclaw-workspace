@@ -10,7 +10,7 @@ I have a house farm/vineyard at 3553 Old Mission Road Traverse City Michigan 496
 
 I also own a rental property at 3469 Old Mission Road Traverse City Michigan 49686. I track income and expenses for this property for tax purposes. I incur outside expenses for this property that are deductible for tax purposes. I have a property management company called Soper Services that does maintenance and repairs on this property that are tax deductible.
 
-I also own a rental property at 100 Main Street Los Altos CA 94022. I track income and expenses for this property for tax purposes.
+I also own a rental property at 100 First Street # 209 Los Altos CA 94022 that I purchased in February 2015. I track income and expenses for this property for tax purposes.
 
 I also enjoy boating and own a 2022 Princess F50 which I keep in Sausalito CA. I am doing research on buying a new boat, potentially a Marlow Explorer CB 62 or CB66 or CB 58, so I am interested in listings and prices on this boat and other similar boats, 58 feet to 66 feet long. I have a long term ambition to do lots of cruising when I retire, in cool places like Seattle, Puget Sound, and San Francisco Bay and the Delta.
 

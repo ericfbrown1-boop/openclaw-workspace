@@ -1,0 +1,10 @@
+{
+  "timestamp": "2026-04-12T00:09:03.905925Z",
+  "macbook": {
+    "cpu_pct": 257.1,
+    "ram_used_mb": 2357
+  },
+  "powerspec": {
+    "reachable": false
+  }
+}

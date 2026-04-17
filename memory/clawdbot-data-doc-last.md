@@ -42,7 +42,3 @@ Whenever I ask you to perform a financial analysis of a company, you should assu
 
 2/Tax Preparation
 When you are asked to perform Tax Analysis or document collection and analysis for Tax preparation use all the Skills you have.
-
-
-
-

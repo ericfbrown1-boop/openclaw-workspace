@@ -87,20 +87,101 @@ Phase 2: PLAN
 Phase 3: IMPLEMENT
   → Coder implements (writes CHECKPOINT.md at each phase)
   → Coder verifies at each checkpoint (tests, Docker build, health check)
-  → Output: HANDOFF.md + git push
+  → Output: HANDOFF.md + git push (DO NOT commit to GitHub yet)
 
-Phase 4: VERIFY
+Phase 4: VERIFY (includes Recursive Adversarial Code Review Loop)
   → Tester (import verification + test suite)
     → If FAIL: returns to Coder (Phase 3)
     → If PASS: HANDOFF.md for Quality
   → Quality (Security Audit + Code Review)
     → If CRITICAL: BFG cleanup, loop back to Phase 3
     → If CLEAN: proceed
-  → External Auditor (6-step QA gate)
+  ┌─── ADVERSARIAL CODE REVIEW LOOP (MANDATORY) ──────────────────┐
+  │                                                                │
+  │  LOOP ITERATION 1:                                             │
+  │  → Auditor (Grok 4.20+) performs adversarial code review       │
+  │    → Reviews ALL code for: bugs, security, edge cases,         │
+  │      performance, architecture, missing tests, race conditions │
+  │    → Produces structured findings: CRITICAL / HIGH / MEDIUM    │
+  │    → If CRITICAL or HIGH findings exist:                       │
+  │      → Findings fed back to Jarvis                             │
+  │      → Jarvis updates PLAN.md with Auditor feedback            │
+  │      → Coder re-implements fixes                               │
+  │      → Code pushed again (still not to GitHub main)            │
+  │      → LOOP BACK to Auditor for re-review                     │
+  │                                                                │
+  │  LOOP ITERATION 2+:                                            │
+  │  → Auditor re-reviews ALL changes + verifies fixes             │
+  │    → Confirms each CRITICAL/HIGH finding is resolved           │
+  │    → May find NEW issues introduced by fixes                   │
+  │    → If new CRITICAL/HIGH: loop again (max 3 iterations)       │
+  │    → If all CRITICAL/HIGH resolved: APPROVE                   │
+  │                                                                │
+  │  EXIT CONDITIONS:                                              │
+  │  → All CRITICAL and HIGH findings resolved (APPROVED)          │
+  │  → Max 3 loop iterations reached (escalate to Eric)            │
+  │  → MEDIUM findings logged but do NOT block                     │
+  │                                                                │
+  └────────────────────────────────────────────────────────────────┘
+  → Auditor APPROVED → git push to GitHub (NOW safe to commit)
   → Conductor (Docker build + deploy + smoke tests)
   → Librarian (post-audit review, suggests improvements)
   → Code shipped ✅
 ```
+
+## 🔁 Recursive Adversarial Code Review (Standing Change 2026-04-17)
+
+**MANDATORY for ALL code projects. No code reaches GitHub without passing this loop.**
+
+### The Rule
+
+Before ANY `git push` to GitHub, the Auditor Agent (Grok 4.20 or higher) MUST perform a full adversarial code review. If the Auditor finds CRITICAL or HIGH severity issues:
+
+1. **Auditor findings → Jarvis** — Jarvis receives the structured review
+2. **Jarvis → Plan update** — Jarvis incorporates findings into the plan
+3. **Plan → Coder** — Coder re-implements based on updated plan + Auditor feedback
+4. **Coder → Auditor** — Fixed code goes back to Auditor for re-review
+5. **Repeat** until Auditor approves OR max 3 iterations reached
+
+This is a **recursive loop** — not a single-pass gate. The Auditor reviews the FIXES too, catching regressions and new bugs introduced by the remediation.
+
+### Auditor Review Scope (EVERY iteration)
+
+The Auditor MUST check ALL of the following on EVERY review pass:
+
+| Category | What to Check |
+|----------|---------------|
+| **Correctness** | Logic bugs, wrong model names, incorrect API calls, broken integrations |
+| **Security** | Leaked secrets, injection vectors, auth bypasses, unsafe defaults |
+| **Edge Cases** | Empty inputs, timeouts, race conditions, concurrent access, error paths |
+| **Performance** | Unbounded loops, missing pagination, log file growth, resource leaks |
+| **Architecture** | Wrong abstractions, tight coupling, missing error handling layers |
+| **Testing** | Missing test coverage, untested error paths, no integration tests |
+| **Operations** | Log rotation, alerting gaps, missing health checks, config drift |
+| **Dependencies** | Wrong versions, deprecated APIs, missing fallbacks |
+
+### Severity Classification
+
+| Severity | Definition | Action |
+|----------|-----------|--------|
+| **CRITICAL** | System will break, security vulnerability, data loss risk | MUST fix — blocks approval |
+| **HIGH** | Significant bug, incorrect behavior, missing functionality | MUST fix — blocks approval |
+| **MEDIUM** | Code quality, minor edge case, improvement opportunity | Logged, does NOT block |
+| **LOW** | Style, naming, documentation | Noted for future |
+
+### Loop Control
+
+- **Max iterations:** 3 (prevents infinite loops)
+- **If max reached:** Escalate remaining issues to Eric with full context
+- **Each iteration:** Auditor must confirm PREVIOUS findings are resolved AND check for NEW issues
+- **Auditor model:** Grok 4.20 Beta minimum (`xai/grok-4.20`). Using a lower model invalidates the review.
+- **No self-review:** Jarvis/Coder cannot approve their own code. Only the Auditor agent can approve.
+
+### What This Replaces
+
+This replaces the old single-pass "External Auditor (6-step QA gate)" as the final code quality gate. The 6-step checklist is still used BY the Auditor within each iteration, but the recursive loop is the new enforcement mechanism.
+
+**Origin:** Eric directive 2026-04-17 — "At the end of every project before you commit code to GitHub, the Auditor agent using Grok 4.20 or higher has to perform an adversarial code review. Feed it back into Plan, redo Coding, loop back to Auditor. This establishes a recursive loop with adversarial code review each time."
 
 ## Global Completion Gate
 

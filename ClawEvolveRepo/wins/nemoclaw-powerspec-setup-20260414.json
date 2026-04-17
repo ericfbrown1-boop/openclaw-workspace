@@ -1,0 +1,55 @@
+{
+  "id": "nemoclaw-powerspec-setup-20260414",
+  "type": "win",
+  "date": "2026-04-14",
+  "title": "NemoClaw my-jetson Sandbox Setup on PowerSpec — Architecture Confirmed for Project Ajax",
+  "summary": "Successfully installed NemoClaw v0.0.15 on PowerSpec (WSL2/Ubuntu-22.04), provisioned the my-jetson sandbox with claude-opus-4-6 + RTX 5080 GPU. Confirmed that NemoClaw sandboxes CANNOT connect outbound to an external OpenClaw gateway by design — OpenShell intercepts all traffic at kernel level. Confirmed correct architecture for Project Ajax: run OpenClaw gateway on the Ajax host machine (outside sandbox), sandbox connects to localhost:18789.",
+  "problem": "NemoClaw sandboxes run inside isolated OpenShell/k3s containers with their own network namespace. All outbound traffic is intercepted by OpenShell's kernel-level policy engine (Landlock + seccomp + netns). Even with explicit TCP policy allowing 100.101.203.113:18789, the openclaw node run command exits silently — OpenShell intercepts before any network call leaves the sandbox.",
+  "root_cause": "NemoClaw is designed to block all outbound traffic by design. Its OpenShell gateway is the ONLY allowed egress path. openclaw node run attempts raw outbound WebSocket which OpenShell intercepts before it leaves the sandbox network namespace. This is not a bug — it is the security model.",
+  "confirmed_dead_ends": [
+    "Option 3 (network policy to allow outbound WebSocket): DOES NOT WORK — OpenShell intercepts at kernel level before policy evaluation for raw TCP on non-standard ports",
+    "openshell policy set with protocol:rest: DOES NOT WORK for WebSocket upgrades",
+    "openshell policy set with protocol:tcp: Policy loads but connection still silently blocked",
+    "openclaw node install inside sandbox: FAILS — no systemd in sandbox",
+    "openclaw node start inside sandbox: FAILS — unknown command (older openclaw version in sandbox)",
+    "nohup openclaw node run: Silently exits, no log file created at expected path"
+  ],
+  "confirmed_working_architecture": {
+    "description": "Option 2: Run OpenClaw gateway on Ajax HOST machine (outside NemoClaw sandbox). Sandbox OpenClaw connects to localhost:18789 which is already in the default allowed policy.",
+    "topology": "MacBook (Jarvis main) → Tailscale → Ajax Server Host [OpenClaw Gateway :18789] ← NemoClaw Sandbox [OpenClaw agent → localhost:18789]",
+    "for_powerspec_today": "my-jetson sandbox runs standalone via nemoclaw my-jetson connect + openclaw tui. No MacBook gateway connection needed for experimentation."
+  },
+  "solution": {
+    "steps": [
+      "1. Install NemoClaw via official NVIDIA installer in WSL2 Ubuntu-22.04: `curl -fsSL https://www.nvidia.com/nemoclaw.sh | bash`",
+      "2. During onboard wizard: select Anthropic (claude-opus-4-6), Standard policy tier, all presets, sandbox name = my-jetson",
+      "3. Sandbox is ready: nemoclaw my-jetson connect → openclaw tui",
+      "4. For Ajax: install openclaw gateway on HOST (not in sandbox), configure sandbox openclaw.json to point at localhost:18789"
+    ]
+  },
+  "lessons_learned": [
+    "NemoClaw npm package on public registry is a STUB — always use `curl -fsSL https://www.nvidia.com/nemoclaw.sh | bash` for real install",
+    "openshell and nemoclaw CLIs are in WSL2 only, not Windows PATH — always prefix with `wsl -d Ubuntu-22.04 bash -l -c`",
+    "MacBook Tailscale IP is 100.101.203.113 (not 100.81.21.114 which is PowerSpec)",
+    "MacBook gateway port is 18789 (not 18790)",
+    "NemoClaw sandboxes CANNOT connect outbound to external OpenClaw gateways — architecture must use localhost gateway on Ajax host",
+    "OpenShell cluster runs as Docker container `openshell-cluster-nemoclaw` (image: ghcr.io/nvidia/openshell/cluster:0.0.26) inside WSL2",
+    "Live sandbox policy updates cannot remove filesystem rules — use `--global` flag for network-only additions",
+    "File transfer to WSL2 via SSH: SCP to Windows home dir, then access from WSL at /mnt/c/Users/Eric Brown/<file>",
+    "nemoclaw connect opens interactive TUI — cannot be run headlessly over SSH",
+    "CONFIG:LOADED log line confirms policy reached sandbox — but kernel-level Landlock still blocks the connection",
+    "openclaw node run silently exits in sandbox with no error — check openshell logs for NET:OPEN DENIED entries"
+  ],
+  "environment": {
+    "host": "PowerSpec (100.81.21.114)",
+    "os": "Windows 11 + WSL2 Ubuntu-22.04",
+    "nemoclaw_version": "0.0.15",
+    "openshell_version": "0.0.26",
+    "openclaw_version": "2026.4.1",
+    "sandbox_name": "my-jetson",
+    "model": "claude-opus-4-6",
+    "gpu": "RTX 5080",
+    "macbook_gateway": "100.101.203.113:18789"
+  },
+  "tags": ["nemoclaw", "openshell", "powerspec", "wsl2", "network-policy", "sandbox", "project-ajax", "gateway", "architecture"]
+}

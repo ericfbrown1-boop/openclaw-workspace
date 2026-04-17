@@ -1,0 +1,48 @@
+{
+  "id": "DIARY-20260416-001",
+  "type": "claude_product_diary",
+  "date": "2026-04-16",
+  "title": "Claude Ecosystem Daily Watch — April 16, 2026",
+  "summary": "High-activity day: Claude Opus 4.7 launched (GA, breaking API changes vs 4.6). Claude Code Desktop redesigned with Mission Control sidebar + Routines automation (Scheduled/API/Webhook) in research preview. Sonnet 4 + Opus 4 deprecated (Jun 15 retirement). CC 2.1.110 ships MCP SSE hang fix critical for Jarvis. 5 P1/P2 actions generated across FinancialReportApp, Ajax, and Jarvis.",
+  "features_covered": [
+    "Claude Opus 4.7 launch (API breaking changes, new tokenizer)",
+    "Claude Code Desktop redesign — Mission Control sidebar, Side Chat",
+    "Routines research preview — Scheduled, API, Webhook modes",
+    "Model deprecation — Sonnet 4 + Opus 4 retiring June 15 2026",
+    "Advisor Tool public beta (advisor-tool-2026-03-01 header)",
+    "Claude Managed Agents public beta (managed-agents-2026-04-01 header)",
+    "ant CLI — YAML-versioned API resources",
+    "Claude Code 2.1.110 — MCP SSE hang fix, push notifications, /tui, security hardening",
+    "300k max_tokens Batches API (output-300k-2026-03-24 header)"
+  ],
+  "actions_generated": [
+    "P1: Migrate FinancialReportApp/Ajax/Jarvis off deprecated Sonnet 4 + Opus 4 model IDs before June 15",
+    "P1: Review Opus 4.7 breaking changes — validate tool schemas in Ajax + FinancialReportApp staging",
+    "P1: Update Claude Code to 2.1.110 on Jarvis MCP nodes — fixes SSE hang bug",
+    "P2: Configure GitHub Webhook Routine for Jarvis PR automation",
+    "P2: Migrate Jarvis nightly cron jobs to Scheduled Routines",
+    "P2: Architecture spike — Claude Managed Agents vs custom Ajax harness",
+    "P2: Benchmark Advisor Tool cost/quality on FinancialReportApp and Ajax tasks",
+    "P3: Enable 300k Batches API beta header for FinancialReportApp + Snowflake exports",
+    "P3: Update competitive intel brief — Routines vs Copilot Workspace",
+    "P3: Evaluate ant CLI for Salesforce/Snowflake analytics resource versioning"
+  ],
+  "diary_path": "~/.openclaw/workspace/claude-product-diary/2026-04-16.md",
+  "tags": [
+    "opus-4.7",
+    "claude-code",
+    "routines",
+    "model-deprecation",
+    "managed-agents",
+    "advisor-tool",
+    "mcp",
+    "ant-cli",
+    "batch-api",
+    "breaking-changes",
+    "financial-report-app",
+    "project-ajax",
+    "jarvis-pipeline",
+    "competitive-intel",
+    "salesforce-snowflake"
+  ]
+}
