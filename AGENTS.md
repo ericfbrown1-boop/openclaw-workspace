@@ -48,48 +48,8 @@ You wake up fresh each session. These files are your continuity:
 - Don't run destructive commands without asking. `trash` > `rm`.
 - When in doubt, ask.
 
-## 🔒 Config & Credential Integrity (HARD RULE — INC-20260417-001, Eric directive 2026-04-17)
-
-**NEVER modify `openclaw.json` or any system config unless Eric explicitly asked you to.**
-
-### What requires explicit permission (ask first, no exceptions):
-- Writing ANY API key or credential to `openclaw.json`
-- Adding ANY auth profile (even if you spotted a key in a document/screenshot)
-- Modifying plugins, models, channels, or any gateway config
-- Running `openclaw config set` for anything beyond what was requested
-
-### The rule is simple:
-- Eric shows you a Tokens doc → read only what you need for the current task
-- Eric shows you a screenshot with 10 API keys → extract only the one relevant to the task
-- You see a key you think "might be useful" → **do not store it. Never.**
-- If you're not sure → **ask first**
-
-### How to store credentials when explicitly asked:
-```bash
-# ALWAYS use the CLI — never edit openclaw.json directly
-openclaw config set auth.profiles.<name>.provider <value>
-# or use the guided setup
-openclaw config --section auth
-```
-
-### Config validation (run after ANY config change):
-```bash
-openclaw status 2>&1 | grep -i "config invalid" && echo "BROKEN — fix immediately"
-```
-
-### Approved auth profiles (whitelist):
-- `anthropic:default` — Claude API
-- `openai:default` — OpenAI API  
-- `xai:default` — xAI/Grok API
-- `grokheavy:default` — Grok heavy API
-
-Any profile outside this list = unauthorized. Remove immediately, alert Eric, log incident.
-
-**Auditor and Hermes check this on every sweep.**
-
-**Origin:** INC-20260417-001 — Jarvis stored Gemini key without being asked, broke openclaw.json config, caused gateway config validation failure. Eric directive 2026-04-17: "This cannot happen again."
-
-
+## 🔒 Config & Credential Integrity (HARD RULE)
+NEVER write credentials to `openclaw.json` unless Eric explicitly requested it. Approved profiles: `anthropic:default`, `openai:default`, `xai:default`, `grokheavy:default`. Use `openclaw config set` CLI only. Auditor + Hermes verify every sweep. Origin: INC-20260417-001.
 ## External vs Internal
 
 **Safe to do freely:** Read files, explore, search the web, work within this workspace.
@@ -198,71 +158,10 @@ See `PIPELINE.md` → "API Budget Cost Gate" for full rules.
 
 All failures → `memory/incidents.jsonl`. See `INCIDENTS.md` for full schema and the mandatory RCA loop.
 
-## 🔗 Pipeline Execution (Standing Change 2026-04-11)
-
-**Full multi-agent pipelines run via `~/openclaw-workspace/scripts/jarvis_pipeline.py`, not main's in-turn orchestration.**
-
-**Why:** `openclaw agent --agent main` runs ONE CLI turn per invocation. Main's reply text can narrate "dispatching to X next" but the `sessions_spawn` tool call doesn't execute before the turn ends (upstream limitation in `acp-cli-DsBOatVe.js`). Full Research→Plan→Audit→Code→Quality chains must be driven from outside.
-
-**How to run a full pipeline:**
-```bash
-python3 ~/openclaw-workspace/scripts/jarvis_pipeline.py run <task-id>          # fresh run
-python3 ~/openclaw-workspace/scripts/jarvis_pipeline.py run <task-id> --resume  # resume from last completed stage
-python3 ~/openclaw-workspace/scripts/jarvis_pipeline.py status <task-id>        # show current state
-python3 ~/openclaw-workspace/scripts/jarvis_pipeline.py list                    # all active pipelines
-```
-
-**When main gets a full-pipeline task in a direct dispatch:** shell out to the orchestrator via the Bash tool in a single call. Do NOT attempt to spawn subagents from within main's turn — it will not work and will look like it worked. The orchestrator handles stage state, resumability, Quality gate enforcement, and Conductor dual-write.
-
-**State:** `~/openclaw-workspace/memory/pipeline-state.json` (dict of pipelines keyed by task id; ISO8601 timestamps; `.lock` adjacent file for concurrency).
-
-**Outputs:** `~/openclaw-workspace/pipeline-outputs/<task-id>/NN-stage.md` for each stage's raw assistant text.
-
-**Auto-revision:** `jarvis_pipeline.py run <task> --max-revision-loops N` (default 2) enables:
-- Auditor REJECTED → Planner re-drafts with feedback injected, then Auditor re-reviews
-- Quality LLM REJECTED (cmd passed) → Coder re-implements with feedback, then Quality re-reviews
-- Deterministic `verificationCmd` failure does NOT retry — halts immediately
-- Revisions exhausted → pipeline fails, incident logged, Conductor skipped
-
-**Librarian auto-injection:** Planner, Auditor, and Coder all receive the full Librarian memory (`~/.claude/projects/*/memory/*.md`) prepended to their prompts by the orchestrator. See DELEGATION.md "Learn First" / "Learn Before Review" / "Learn Before Code" rules.
-
-**Weekly pattern scan:** `com.openclaw.librarian.weekly.plist` (launchd, Sundays 06:00) runs `scripts/librarian_weekly.py` to scan `memory/incidents.jsonl` for recurring patterns and write a `type: feedback` memory file that auto-feeds back into the next pipeline run.
-
-**External knowledge hook:** Researcher and Planner also auto-inject user-provided context from an optional hook — drop a `scripts/external_context_hook.py` with `fetch_context(task, stage) -> str` and the orchestrator imports it at runtime. Intended for Obsidian vaults, karpathy/autoresearch-style depth-bounded exploration, or any per-task knowledge backend. Fail-safe: any error → logged to `logs/jarvis-pipeline-hooks.log`, pipeline continues with empty context. Template at `scripts/external_context_hook.py.example`. Alternative shell-command path via `JARVIS_EXTERNAL_CONTEXT_CMD` env var for non-Python backends. Task opt-out: `task["externalContext"]["enabled"] = false` skips the hook for trivial tasks.
-
-See `KNOWN_FAILURES.md` "Jarvis one-turn CLI limit" for the root cause. See the plan file at `~/.claude/plans/replicated-squishing-mccarthy.md` for the design.
-
-## 📎 File Delivery Protocol (Standing Rule — 2026-04-10)
-
-**MANDATORY for ALL file attachment sends (PPTX, DOCX, PDF, any binary).**
-
-### Always use the reusable script:
-```bash
-python3 ~/.openclaw/workspace/scripts/send_file_email.py \
-  --file ~/Documents/filename.ext \
-  --to ericfbrown1@gmail.com \
-  --cc Eric.brown@cohesity.com \
-  --subject "Subject" \
-  --body "Body text"
-```
-The script enforces all 3 steps automatically. **Never call `gog gmail send --attach` directly for file delivery.**
-
-### The 3 steps (enforced by the script):
-1. **Pre-flight:** `ls -la $FILE && [ -s $FILE ]` — abort if file missing or zero bytes
-2. **Send:** `gog gmail send --attach $FILE` (with SMTP fallback if gog fails)
-3. **Confirm:** `gog gmail search "subject:X newer_than:10m"` — verify email landed
-
-### File write rules (no exceptions):
-- **Always write generated files to `~/Documents/<filename>`** — never `/tmp/`, never relative paths
-- **Verify after save:** `os.path.exists(path) and os.path.getsize(path) > 5000`
-- **Backup to Dropbox** before email: `python3 ~/.openclaw/workspace/dropbox-cli.py upload <file> "/Jarvis Reports/<filename>"`
-
-### Why this exists (INC-20260409-128):
-`gog gmail send --attach` returns a valid message_id even when the attachment file is missing — it silently sends the email body-only. The Gmail API has no attachment validation. The only protection is external pre-flight validation before calling gog.
-
-**Origin:** Eric directive 2026-04-10 after two confirmed incidents of phantom attachment sends.
-
-
+## 🔗 Pipeline Execution
+See `PIPELINE.md` for full multi-agent pipeline rules, orchestrator commands, and stage state management.
+## 📎 File Delivery Protocol
+Always use `python3 ~/.openclaw/workspace/scripts/send_file_email.py` for file attachments. Never call `gog gmail send --attach` directly. See `PIPELINE.md` → File Delivery for full 3-step protocol.
 ## 🚨 Auto-RCA Standing Rule (2026-04-13)
 
 **When anything breaks, immediately launch the dual-agent RCA — do NOT wait for Eric.**
