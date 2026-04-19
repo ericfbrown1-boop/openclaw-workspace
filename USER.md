@@ -33,7 +33,6 @@
 - **Boat shopping:** Researching Marlow Explorer CB 58/62/66 and similar 58-66' boats
 - **Future plans:** Cruising in Seattle, Puget Sound, SF Bay, Delta when retired
 - **AI/Technology:** Learning OpenClaw use cases
-- **Home office upgrades:** Interested in Apple Studio, Dell Alienware 16/18" laptops, and other high-end deals at MicroCenter Santa Clara
 
 ## Key Operating Rules
 
@@ -104,8 +103,6 @@
 - **Gmail monitoring:** Scan daily for tax-related or urgent messages; document qualifying tax items in the shared "Income Tax Tracking Items" Google Sheet with columns: date received, sender, description, type, Gmail link, comments/questions.
 - **Competitive & market watch:** Keep an eye on stock/market updates for Rubrik, Commvault, and Veeam and flow notable changes into the next briefing.
 - **Anthropic ecosystem watch:** Daily scan of anthropic.com/blog, code.claude.com/docs, support.claude.com, and Claude changelog for new features, best practices updates, security advisories, and Skills/MCP/CoWork improvements. Summarize any changes in the briefing.
-- **MicroCenter price check:** Check MicroCenter Santa Clara for best prices on Apple Studio, Dell Alienware 16/18" laptops, and any other notable home office upgrade deals. Include standout deals in the daily briefing.
-
 ---
 
 First contact: 2026-02-07
